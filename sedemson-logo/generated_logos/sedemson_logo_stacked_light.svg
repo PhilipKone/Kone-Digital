@@ -1,0 +1,15 @@
+<svg width="400" height="400" viewBox="0 0 400 400" fill="none" xmlns="http://www.w3.org/2000/svg">
+  
+  
+      
+    <g transform="translate(150, 40) scale(1)">
+      
+  <path d="M 55 10 Q 85 10 85 45 Q 85 80 45 100 Q 65 80 65 45 Q 65 10 55 10 Z" fill="#FFFFFF" />
+  <path d="M 45 130 Q 15 130 15 95 Q 15 60 55 40 Q 35 60 35 95 Q 35 130 45 130 Z" fill="#FFFFFF" />
+
+    </g>
+  
+      <text x="200" y="240" font-family="Inter, sans-serif" font-weight="900" font-size="48" fill="#FFFFFF" text-anchor="middle">SEDEMSON</text>
+      <text x="200" y="275" font-family="Inter, sans-serif" font-weight="400" font-size="14" fill="#FFFFFF" text-anchor="middle" letter-spacing="4">STONE CRAFTSMANSHIP</text>
+    
+</svg>

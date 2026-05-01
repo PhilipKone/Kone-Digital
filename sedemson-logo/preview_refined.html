@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <style>
+        body { background: #333; display: flex; flex-direction: column; align-items: center; padding: 50px; color: white; }
+        .container { display: flex; gap: 40px; margin-top: 20px; }
+        svg { background: white; border-radius: 8px; }
+        .label { margin-bottom: 10px; font-weight: bold; }
+    </style>
+</head>
+<body>
+    <div class="label">Reference Image</div>
+    <img src="file:///c:/Users/DELL/KCA/Kone-Code-Academy/image.png" style="height: 100px; background: white; padding: 10px; border-radius: 8px;">
+
+    <div class="container">
+        <div>
+            <div class="label">Flame Interlock S (Accurate)</div>
+            <svg width="200" height="200" viewBox="0 0 100 120">
+              <linearGradient id="gold" x1="0%" y1="0%" x2="100%" y2="100%">
+                <stop offset="0%" stop-color="#D4AF37" />
+                <stop offset="50%" stop-color="#F1C40F" />
+                <stop offset="100%" stop-color="#9A7B0C" />
+              </linearGradient>
+              <!-- Shape 1: Left Sweep (Bottom to Top) -->
+              <path d="M 42 110 Q 10 110 10 70 Q 10 30 55 5 Q 30 30 30 70 Q 30 110 42 110 Z" fill="url(#gold)" />
+              <!-- Shape 2: Right Sweep (Top to Bottom) -->
+              <path d="M 58 10 Q 90 10 90 50 Q 90 90 45 115 Q 70 90 70 50 Q 70 10 58 10 Z" fill="url(#gold)" />
+            </svg>
+        </div>
+    </div>
+</body>
+</html>

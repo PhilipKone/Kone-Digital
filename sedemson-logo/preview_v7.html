@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <style>
+        body { background: #333; display: flex; flex-direction: column; align-items: center; padding: 50px; color: white; }
+        .container { display: flex; gap: 40px; margin-top: 20px; }
+        svg { background: white; border-radius: 8px; }
+        .label { margin-bottom: 10px; font-weight: bold; }
+    </style>
+</head>
+<body>
+    <div class="label">Reference Image</div>
+    <img src="file:///c:/Users/DELL/KCA/Kone-Code-Academy/image.png" style="height: 100px; background: white; padding: 10px; border-radius: 8px;">
+
+    <div class="container">
+        <div>
+            <div class="label">Clean S-Path (V7)</div>
+            <svg width="200" height="300" viewBox="0 0 100 150">
+              <linearGradient id="gold" x1="0%" y1="0%" x2="100%" y2="100%">
+                <stop offset="0%" stop-color="#D4AF37" />
+                <stop offset="50%" stop-color="#F1C40F" />
+                <stop offset="100%" stop-color="#9A7B0C" />
+              </linearGradient>
+              <!-- Shape 1: Top Sweep -->
+              <path d="M 45 5 Q 15 5 15 55 Q 15 95 65 95 Q 40 85 40 55 Q 40 25 45 5 Z" fill="url(#gold)" />
+              <!-- Shape 2: Bottom Sweep -->
+              <path d="M 55 145 Q 85 145 85 95 Q 85 55 35 55 Q 60 65 60 95 Q 60 125 55 145 Z" fill="url(#gold)" />
+            </svg>
+        </div>
+    </div>
+</body>
+</html>

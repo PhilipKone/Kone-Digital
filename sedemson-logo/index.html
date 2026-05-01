@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Sedemson Logo Variants</title>
+    <style>
+        body { font-family: sans-serif; background: #f5f5f5; padding: 40px; }
+        .section { margin-bottom: 60px; }
+        h2 { border-bottom: 2px solid #ddd; padding-bottom: 10px; margin-bottom: 30px; }
+        .grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(300px, 1fr)); gap: 40px; }
+        .card { background: white; padding: 20px; border-radius: 12px; box-shadow: 0 4px 20px rgba(0,0,0,0.05); text-align: center; }
+        .card.dark-bg { background: #1a1a1a; color: white; }
+        .card img { max-width: 100%; height: auto; }
+        .card-label { margin-top: 15px; font-weight: bold; font-size: 14px; opacity: 0.7; }
+    </style>
+</head>
+<body>
+    <h1>Sedemson Logo System</h1>
+    
+    <div class="section">
+        <h2>Gold Variants (Premium)</h2>
+        <div class="grid">
+            <div class="card">
+                <img src="generated_logos/sedemson_icon_gold.svg" alt="Icon Gold">
+                <div class="card-label">Icon Only (Gold)</div>
+            </div>
+            <div class="card">
+                <img src="generated_logos/sedemson_logo_stacked_gold.svg" alt="Stacked Gold">
+                <div class="card-label">Stacked (Gold)</div>
+            </div>
+            <div class="card">
+                <img src="generated_logos/sedemson_logo_horizontal_gold.svg" alt="Horizontal Gold">
+                <div class="card-label">Horizontal (Gold)</div>
+            </div>
+        </div>
+    </div>
+
+    <div class="section">
+        <h2>Dark Variants</h2>
+        <div class="grid">
+            <div class="card">
+                <img src="generated_logos/sedemson_logo_stacked_dark.svg" alt="Stacked Dark">
+                <div class="card-label">Stacked (Dark)</div>
+            </div>
+            <div class="card">
+                <img src="generated_logos/sedemson_logo_horizontal_dark.svg" alt="Horizontal Dark">
+                <div class="card-label">Horizontal (Dark)</div>
+            </div>
+        </div>
+    </div>
+
+    <div class="section">
+        <h2>Light Variants (On Dark Background)</h2>
+        <div class="grid">
+            <div class="card dark-bg">
+                <img src="generated_logos/sedemson_logo_stacked_light.svg" alt="Stacked Light">
+                <div class="card-label">Stacked (Light)</div>
+            </div>
+            <div class="card dark-bg">
+                <img src="generated_logos/sedemson_logo_horizontal_light.svg" alt="Horizontal Light">
+                <div class="card-label">Horizontal (Light)</div>
+            </div>
+        </div>
+    </div>
+</body>
+</html>
