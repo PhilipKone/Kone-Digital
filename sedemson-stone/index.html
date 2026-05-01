@@ -1,0 +1,381 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Sedemson Stone | Premium Natural Stone Finishes</title>
+    <!-- Premium Typography -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400..900;1,400..900&family=Inter:wght@100..900&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --primary: #5d4037; /* Deep Earthy Stone */
+            --accent: #f1c40f;  /* Elegant Gold */
+            --bg: #fafafa;
+            --text: #1a202c;
+            --glass: rgba(255, 255, 255, 0.85);
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Inter', sans-serif;
+        }
+
+        body {
+            background-color: var(--bg);
+            color: var(--text);
+            line-height: 1.6;
+            overflow-x: hidden;
+        }
+
+        /* --- Animations --- */
+        @keyframes fadeIn {
+            from { opacity: 0; transform: translateY(20px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+
+        /* --- Header / Nav --- */
+        nav {
+            padding: 1.5rem 5%;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            position: absolute;
+            width: 100%;
+            z-index: 100;
+        }
+
+        .logo-text {
+            font-family: 'Playfair Display', serif;
+            font-size: 1.2rem;
+            font-weight: 800;
+            color: white;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            display: flex;
+            flex-direction: column;
+            line-height: 1;
+        }
+
+        .logo-text span {
+            font-size: 0.7rem;
+            font-weight: 400;
+            letter-spacing: 3px;
+            margin-top: 2px;
+        }
+
+        /* --- Hero Section --- */
+        .hero {
+            height: 90vh;
+            background: linear-gradient(rgba(0,0,0,0.55), rgba(0,0,0,0.55)), url('file:///c:/Users/DELL/.gemini/antigravity/brain/973d7afc-9dd8-452a-a9c7-e0b88c7b9f5f/media__1777413691993.jpg') center/cover no-repeat;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            text-align: center;
+            padding: 0 5%;
+            color: white;
+        }
+
+        .hero-badge {
+            background: var(--accent);
+            color: var(--primary);
+            padding: 0.5rem 1.5rem;
+            font-weight: 700;
+            border-radius: 50px;
+            margin-bottom: 1.5rem;
+            text-transform: uppercase;
+            font-size: 0.8rem;
+            letter-spacing: 1px;
+            animation: fadeIn 1s ease-out;
+        }
+
+        .hero h1 {
+            font-family: 'Playfair Display', serif;
+            font-size: clamp(2.5rem, 8vw, 4.5rem);
+            font-weight: 900;
+            margin-bottom: 1.5rem;
+            line-height: 1.1;
+            animation: fadeIn 1.2s ease-out;
+            max-width: 900px;
+        }
+
+        .hero p {
+            font-size: 1.2rem;
+            max-width: 700px;
+            margin-bottom: 2.5rem;
+            opacity: 0.9;
+            animation: fadeIn 1.4s ease-out;
+        }
+
+        .btn {
+            padding: 1.2rem 2.8rem;
+            border-radius: 8px;
+            font-weight: 700;
+            text-decoration: none;
+            transition: all 0.3s ease;
+            text-transform: uppercase;
+            font-size: 0.9rem;
+            display: inline-block;
+        }
+
+        .btn-primary {
+            background: var(--accent);
+            color: var(--primary);
+            box-shadow: 0 10px 20px rgba(241, 196, 15, 0.3);
+        }
+
+        .btn-primary:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 15px 30px rgba(241, 196, 15, 0.5);
+        }
+
+        /* --- Services --- */
+        .section {
+            padding: 100px 5%;
+        }
+
+        .section-header {
+            text-align: center;
+            margin-bottom: 60px;
+        }
+
+        .section-header h2 {
+            font-family: 'Playfair Display', serif;
+            font-size: 3rem;
+            color: var(--primary);
+            margin-bottom: 1rem;
+        }
+
+        .grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+            gap: 2.5rem;
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+
+        .card {
+            background: white;
+            padding: 3rem;
+            border-radius: 20px;
+            box-shadow: 0 10px 40px rgba(0,0,0,0.03);
+            transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+            border: 1px solid rgba(0,0,0,0.05);
+            position: relative;
+            overflow: hidden;
+        }
+
+        .card::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 4px;
+            height: 100%;
+            background: var(--accent);
+            transition: width 0.3s ease;
+        }
+
+        .card:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 25px 50px rgba(0,0,0,0.08);
+        }
+
+        .card:hover::before {
+            width: 8px;
+        }
+
+        .card h3 {
+            font-family: 'Playfair Display', serif;
+            font-size: 1.6rem;
+            margin-bottom: 1.2rem;
+            color: var(--primary);
+        }
+
+        /* --- Contact Glass Card --- */
+        .contact-container {
+            background: var(--primary);
+            color: white;
+            padding: 120px 5%;
+            border-radius: 60px 60px 0 0;
+            text-align: center;
+        }
+
+        .glass-card {
+            background: rgba(255, 255, 255, 0.1);
+            backdrop-filter: blur(15px);
+            -webkit-backdrop-filter: blur(15px);
+            border: 1px solid rgba(255, 255, 255, 0.2);
+            padding: 4rem 2rem;
+            border-radius: 32px;
+            max-width: 700px;
+            margin: 0 auto;
+        }
+
+        .glass-card h2 {
+            font-family: 'Playfair Display', serif;
+            margin-bottom: 2rem;
+            font-size: 3rem;
+        }
+
+        .phone-group {
+            display: flex;
+            flex-direction: column;
+            gap: 1.5rem;
+            font-size: 1.4rem;
+            margin-bottom: 2.5rem;
+        }
+
+        .phone-link {
+            color: var(--accent);
+            text-decoration: none;
+            font-weight: 800;
+            transition: opacity 0.3s ease;
+        }
+
+        .phone-link:hover {
+            opacity: 0.8;
+        }
+
+        /* --- Sticky WhatsApp --- */
+        .whatsapp-sticky {
+            position: fixed;
+            bottom: 30px;
+            right: 30px;
+            background: #25D366;
+            color: white;
+            padding: 1.2rem 2.5rem;
+            border-radius: 50px;
+            display: flex;
+            align-items: center;
+            gap: 14px;
+            text-decoration: none;
+            font-weight: 900;
+            box-shadow: 0 15px 35px rgba(37, 211, 102, 0.4);
+            z-index: 1000;
+            transition: all 0.3s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+            text-transform: uppercase;
+            font-size: 1rem;
+        }
+
+        .whatsapp-sticky:hover {
+            transform: scale(1.08);
+            box-shadow: 0 20px 45px rgba(37, 211, 102, 0.6);
+        }
+
+        /* --- Footer --- */
+        footer {
+            padding: 3rem 5%;
+            background: #0a0a0a;
+            color: #444;
+            text-align: center;
+            font-size: 0.9rem;
+            letter-spacing: 1px;
+        }
+
+        @media (max-width: 768px) {
+            .hero h1 { font-size: 3rem; }
+            .hero p { font-size: 1.1rem; }
+            .whatsapp-sticky {
+                bottom: 20px;
+                right: 20px;
+                left: 20px;
+                padding: 1rem 1.5rem;
+                font-size: 0.9rem;
+                justify-content: center;
+            }
+        }
+    </style>
+</head>
+<body>
+
+    <nav>
+        <a href="/" class="logo">
+            <img src="assets/logo.svg" alt="Sedemson Stone" style="height: 60px; width: auto;">
+        </a>
+        <div>
+            <a href="#contact" class="btn btn-primary" style="padding: 0.8rem 1.8rem; font-size: 0.8rem;">Contact Us</a>
+        </div>
+    </nav>
+
+    <header class="hero" style="background: linear-gradient(rgba(0,0,0,0.55), rgba(0,0,0,0.55)), url('assets/exterior_stone_cladding_hero_1777414375118.png') center/cover no-repeat;">
+        <div class="hero-badge">Registered Business – BN036120125</div>
+        <h1>TRANSFORM YOUR SPACE</h1>
+        <p>Expert Natural Stone finishes that redefine elegance and durability. Based in Accra, serving Ghana with pride.</p>
+        <div class="cta-group">
+            <a href="#services" class="btn btn-primary">Discover Our Services</a>
+        </div>
+    </header>
+
+    <section id="services" class="section">
+        <div class="section-header">
+            <h2>Our Expertise</h2>
+            <p>Elegant • Durable • Timeless</p>
+        </div>
+        <div class="grid">
+            <div class="card">
+                <div style="height: 200px; background: url('assets/exterior_stone_cladding_hero_1777414375118.png') center/cover; margin: -3rem -3rem 2rem -3rem; border-radius: 20px 20px 0 0;"></div>
+                <h3>Exterior Stone Cladding</h3>
+                <p>Natural stone finishes that protect and beautify your building's facade for a lifetime.</p>
+            </div>
+            <div class="card">
+                <div style="height: 200px; background: url('assets/decorative_brick_feature_wall_1777414398477.png') center/cover; margin: -3rem -3rem 2rem -3rem; border-radius: 20px 20px 0 0;"></div>
+                <h3>Decorative Brick Work</h3>
+                <p>Unique mixed stone and decorative brick designs for premium residential and commercial spaces.</p>
+            </div>
+            <div class="card">
+                <div style="height: 200px; background: url('assets/natural_stone_paving_driveway_1777414429687.png') center/cover; margin: -3rem -3rem 2rem -3rem; border-radius: 20px 20px 0 0;"></div>
+                <h3>Stone Paving</h3>
+                <p>High-quality driveway and walkway paving engineered for heavy use and visual impact.</p>
+            </div>
+            <div class="card">
+                <div style="height: 200px; background: url('assets/interior_stone_feature_wall_1777415213278.png') center/cover; margin: -3rem -3rem 2rem -3rem; border-radius: 20px 20px 0 0;"></div>
+                <h3>Interior Feature Walls</h3>
+                <p>Bringing the natural world indoors with bespoke feature walls, fireplaces, and entryways.</p>
+            </div>
+            <div class="card">
+                <div style="height: 200px; background: url('assets/premium_tile_laying_sales_1777415255083.png') center/cover; margin: -3rem -3rem 2rem -3rem; border-radius: 20px 20px 0 0;"></div>
+                <h3>Professional Tile Laying</h3>
+                <p>Expert installation of premium tiles for kitchens, bathrooms, and high-end commercial patios.</p>
+            </div>
+            <div class="card">
+                <div style="height: 200px; background: url('assets/realistic_stone_sales_pallet_1777415713900.png') center/cover; margin: -3rem -3rem 2rem -3rem; border-radius: 20px 20px 0 0;"></div>
+                <h3>Sales of Natural Stones</h3>
+                <p>Direct supply of the region's finest natural stones. Bulk orders available for contractors and homeowners.</p>
+            </div>
+            <div class="card">
+                <div style="height: 200px; background: url('assets/custom_stone_mosaic_design_1777415954995.png') center/cover; margin: -3rem -3rem 2rem -3rem; border-radius: 20px 20px 0 0;"></div>
+                <h3>Custom Stone Designs</h3>
+                <p>Whatever your architectural vision, our master craftsmen can bring it to life in stone.</p>
+            </div>
+        </div>
+    </section>
+
+    <section id="contact" class="contact-container">
+        <div class="glass-card">
+            <h2>Get a Quote</h2>
+            <p style="margin-bottom: 2.5rem; opacity: 0.8; font-size: 1.1rem;">Ready to transform your project? Tap a number below or use the WhatsApp button.</p>
+            <div class="phone-group">
+                <a href="https://wa.me/233240697545" class="phone-link">+233 24 069 7545</a>
+                <a href="https://wa.me/233256779768" class="phone-link">+233 256 779 768</a>
+            </div>
+            <p style="font-size: 1rem; opacity: 0.6; font-style: italic;">Greater Accra, Ashanti & Eastern Region, Ghana</p>
+        </div>
+    </section>
+
+    <a href="https://wa.me/233240697545?text=Hi%20Sedemson%20Stone,%20I%20visited%20your%20website%20and%20I'm%20interested%20in%20getting%20a%20quote%20for%20some%20work." class="whatsapp-sticky" target="_blank">
+        <svg width="24" height="24" fill="white" viewBox="0 0 24 24" style="margin-right: 10px;"><path d="M.057 24l1.687-6.163c-1.041-1.804-1.588-3.849-1.587-5.946.003-6.556 5.338-11.891 11.893-11.891 3.181.001 6.167 1.24 8.413 3.488 2.246 2.248 3.484 5.232 3.484 8.412-.003 6.557-5.338 11.892-11.893 11.892-1.997-.001-3.951-.5-5.688-1.448l-6.309 1.656zm6.224-3.82c1.516.903 3.132 1.38 4.788 1.381 5.069 0 9.199-4.13 9.201-9.199.001-2.454-.952-4.761-2.686-6.494-1.734-1.734-4.041-2.688-6.498-2.689-5.074 0-9.207 4.129-9.208 9.199-.001 1.73.455 3.415 1.32 4.89l-.103.16-1.11 4.054 4.151-1.089.16.095zm10.125-6.702c-.281-.141-1.664-.822-1.921-.916-.257-.094-.443-.141-.63.141-.186.281-.723.916-.885 1.102-.162.186-.324.21-.605.069-.282-.141-1.189-.439-2.264-1.401-.836-.746-1.4-1.667-1.564-1.948-.164-.282-.017-.434.124-.573.127-.125.281-.328.422-.492.141-.164.188-.281.282-.469.094-.188.047-.352-.023-.492-.07-.141-.63-1.523-.863-2.086-.226-.552-.455-.477-.63-.486-.162-.008-.349-.01-.536-.01-.188 0-.492.07-.75.352-.257.282-.984.961-.984 2.343 0 1.382 1.008 2.718 1.148 2.906.141.188 1.984 3.029 4.806 4.242.671.289 1.194.462 1.602.592.674.214 1.287.184 1.77.112.539-.081 1.664-.68 1.898-1.336.234-.656.234-1.219.164-1.336-.07-.117-.257-.188-.539-.328z"/></svg>
+        WhatsApp Quote
+    </a>
+
+    <footer>
+        <img src="assets/logo.svg" alt="" style="height: 40px; margin-bottom: 1rem; filter: grayscale(1) opacity(0.5);"><br>
+        &copy; 2026 Sedemson Stone Craftsmanship Enterprise. Handcrafted by <strong>Kone Digital</strong>.
+    </footer>
+
+</body>
+</html>
