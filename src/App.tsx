@@ -1,6 +1,7 @@
 import { useEffect, useRef } from 'react';
 import { Portfolio } from './components/Portfolio';
 import { Pricing } from './components/Pricing';
+import { CurrencyToggle } from './components/CurrencyToggle/CurrencyToggle';
 
 function App() {
   const containerRef = useRef<HTMLDivElement>(null);
@@ -31,6 +32,7 @@ function App() {
           <a href="#pricing">Pricing</a>
           <a href="#process">Process</a>
           <a href="#contact">Contact</a>
+          <CurrencyToggle />
         </nav>
       </header>
 

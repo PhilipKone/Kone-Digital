@@ -1,6 +1,10 @@
 
 
+import { useCurrency } from '../context/CurrencyContext';
+
 export const Pricing = () => {
+  const { formatPrice } = useCurrency();
+
   return (
     <section className="pricing-section" id="pricing">
       <div className="pricing-header fade-in-up">
@@ -15,8 +19,7 @@ export const Pricing = () => {
           <div className="card-top">
             <h3>Starter</h3>
             <div className="price">
-              <span className="currency">GHS</span>
-              <span className="amount">499</span>
+              <span className="amount">{formatPrice(499)}</span>
               <span className="period">/mo</span>
             </div>
             <p className="card-desc">Perfect for small businesses needing a digital flyer.</p>
@@ -36,8 +39,7 @@ export const Pricing = () => {
           <div className="card-top">
             <h3 className="neon-text">Professional</h3>
             <div className="price">
-              <span className="currency">GHS</span>
-              <span className="amount">999</span>
+              <span className="amount">{formatPrice(999)}</span>
               <span className="period">/mo</span>
             </div>
             <p className="card-desc">For growing businesses needing a full corporate hub.</p>
