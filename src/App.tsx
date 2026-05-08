@@ -1,8 +1,8 @@
-import { useEffect, useRef } from 'react';
-import { Portfolio } from './components/Portfolio';
-import { Pricing } from './components/Pricing';
+import { useEffect, useRef, lazy, Suspense } from 'react';
 import { CurrencyToggle } from './components/CurrencyToggle/CurrencyToggle';
 
+const Portfolio = lazy(() => import('./components/Portfolio').then(module => ({ default: module.Portfolio })));
+const Pricing = lazy(() => import('./components/Pricing').then(module => ({ default: module.Pricing })));
 function App() {
   const containerRef = useRef<HTMLDivElement>(null);
 
@@ -15,10 +15,29 @@ function App() {
       });
     }, { threshold: 0.1 });
 
-    const elements = containerRef.current?.querySelectorAll('.fade-in-up') || [];
-    elements.forEach(el => observer.observe(el));
+    const observeElements = () => {
+      const elements = containerRef.current?.querySelectorAll('.fade-in-up:not(.observed)') || [];
+      elements.forEach(el => {
+        observer.observe(el);
+        el.classList.add('observed');
+      });
+    };
 
-    return () => observer.disconnect();
+    observeElements();
+
+    // Watch for lazy-loaded components entering the DOM
+    const mutationObserver = new MutationObserver(() => {
+      observeElements();
+    });
+
+    if (containerRef.current) {
+      mutationObserver.observe(containerRef.current, { childList: true, subtree: true });
+    }
+
+    return () => {
+      observer.disconnect();
+      mutationObserver.disconnect();
+    };
   }, []);
   return (
     <div className="hub-container" ref={containerRef}>
@@ -42,9 +61,10 @@ function App() {
         <button className="neon-btn neon-border">Request a Consultation</button>
       </section>
 
-      <Portfolio />
-      
-      <Pricing />
+      <Suspense fallback={<div className="loading-placeholder">Loading...</div>}>
+        <Portfolio />
+        <Pricing />
+      </Suspense>
       
       <a 
         href="https://wa.me/233551993820" 

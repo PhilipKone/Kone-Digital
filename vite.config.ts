@@ -7,5 +7,16 @@ export default defineConfig({
   server: {
     port: 4000,
     strictPort: true,
+  },
+  build: {
+    outDir: 'dist',
+    chunkSizeWarningLimit: 600,
+    rollupOptions: {
+      output: {
+        manualChunks: {
+          'vendor-react': ['react', 'react-dom']
+        }
+      }
+    }
   }
 })
