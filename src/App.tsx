@@ -1,8 +1,8 @@
-import { useEffect, useRef, lazy, Suspense } from 'react';
+import { useEffect, useRef } from 'react';
 import { CurrencyToggle } from './components/CurrencyToggle/CurrencyToggle';
+import { Portfolio } from './components/Portfolio';
+import { Pricing } from './components/Pricing';
 
-const Portfolio = lazy(() => import('./components/Portfolio').then(module => ({ default: module.Portfolio })));
-const Pricing = lazy(() => import('./components/Pricing').then(module => ({ default: module.Pricing })));
 function App() {
   const containerRef = useRef<HTMLDivElement>(null);
 
@@ -39,11 +39,12 @@ function App() {
       mutationObserver.disconnect();
     };
   }, []);
+
   return (
     <div className="hub-container" ref={containerRef}>
-      <header className="hub-header fade-in-up">
+      <header className="hub-header">
         <div className="logo" style={{ display: 'flex', alignItems: 'center', gap: '0.75rem' }}>
-          <img src="/kone-digital-logo.svg" alt="Kone Digital Logo" className="logo-icon neon-logo" style={{ height: '2.5rem', width: 'auto' }} />
+          <img src="/kone-digital-logo.svg" alt="Kone Digital Logo" className="logo-icon neon-logo" width="40" height="40" />
           <span className="logo-text">KONE <span className="neon-text">DIGITAL</span></span>
         </div>
         <nav className="hub-nav">
@@ -55,16 +56,17 @@ function App() {
         </nav>
       </header>
 
-      <section className="hub-hero fade-in-up">
-        <h1 className="gold-text">Putting Accra's Best<br/>Businesses Online.</h1>
-        <p>Traditional marketing ends at the flyer. We build dedicated, high-performance 'Digital Flyers' that drive customers straight to your WhatsApp. Zero maintenance, maximum growth.</p>
-        <button className="neon-btn neon-border">Request a Consultation</button>
-      </section>
+      {/* Main Content Area */}
+      <main id="main-content" style={{ flex: '1 0 auto', display: 'flex', flexDirection: 'column', width: '100%', gap: '3rem' }}>
+        <section className="hub-hero">
+          <h1 className="gold-text">Putting Accra's Best<br/>Businesses Online.</h1>
+          <p>Traditional marketing ends at the flyer. We build dedicated, high-performance 'Digital Flyers' that drive customers straight to your WhatsApp. Zero maintenance, maximum growth.</p>
+          <button className="neon-btn neon-border">Request a Consultation</button>
+        </section>
 
-      <Suspense fallback={<div className="loading-placeholder">Loading...</div>}>
         <Portfolio />
         <Pricing />
-      </Suspense>
+      </main>
       
       <a 
         href="https://wa.me/233551993820" 
