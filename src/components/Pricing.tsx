@@ -34,7 +34,7 @@ export const Pricing = () => {
             href="https://wa.me/233551993820?text=Hi%20Kone%20Digital%2C%20I'm%20interested%20in%20the%20SME%20Lite%20Plan%20(GHS%2049%2Fmo)."
             target="_blank"
             rel="noopener noreferrer"
-            className="neon-btn flex-center"
+            className="neon-btn neon-border flex-center"
             style={{ textDecoration: 'none', display: 'flex' }}
           >
             Get Started
@@ -61,7 +61,7 @@ export const Pricing = () => {
             href="https://wa.me/233551993820?text=Hi%20Kone%20Digital%2C%20I'm%20interested%20in%20the%20Starter%20Plan%20(GHS%20499%2Fmo)."
             target="_blank"
             rel="noopener noreferrer"
-            className="neon-btn flex-center"
+            className="neon-btn neon-border flex-center"
             style={{ textDecoration: 'none', display: 'flex' }}
           >
             Get Started
@@ -115,7 +115,7 @@ export const Pricing = () => {
             href="https://wa.me/233551993820?text=Hi%20Kone%20Digital%2C%20I'd%20like%20to%20discuss%20a%20Custom%20Enterprise%20Plan%20for%20my%20business."
             target="_blank"
             rel="noopener noreferrer"
-            className="neon-btn flex-center"
+            className="neon-btn neon-border flex-center"
             style={{ textDecoration: 'none', display: 'flex' }}
           >
             Contact Us
