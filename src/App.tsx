@@ -61,7 +61,6 @@ function App() {
         <nav className="hub-nav">
           <a href="#work">Our Work</a>
           <a href="#pricing">Pricing</a>
-          <a href="#process">Process</a>
           <a 
             href="https://wa.me/233551993820?text=Hi%20Kone%20Digital%2C%20I'd%20like%20to%20get%20in%20touch%20about%20your%20services." 
             target="_blank" 
