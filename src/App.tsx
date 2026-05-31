@@ -7,6 +7,17 @@ function App() {
   const containerRef = useRef<HTMLDivElement>(null);
 
   useEffect(() => {
+    const isReactSnap = navigator.userAgent === 'ReactSnap';
+
+    if (isReactSnap) {
+      // Immediately make all fade-in-up elements visible during prerendering
+      const elements = containerRef.current?.querySelectorAll('.fade-in-up') || [];
+      elements.forEach(el => {
+        el.classList.add('visible');
+      });
+      return;
+    }
+
     const observer = new IntersectionObserver((entries) => {
       entries.forEach(entry => {
         if (entry.isIntersecting) {
