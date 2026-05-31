@@ -9,7 +9,7 @@ export const Pricing = () => {
     <section className="pricing-section" id="pricing">
       <div className="pricing-header fade-in-up">
         <h2>Transparent <span className="neon-text">Pricing</span></h2>
-        <p>Simple, predictable Website as a Service plans for Accra businesses.</p>
+        <p>Simple, predictable Website as a Service plans for businesses across Ghana.</p>
       </div>
 
       <div className="pricing-cards">
