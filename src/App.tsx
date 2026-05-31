@@ -59,7 +59,7 @@ function App() {
       {/* Main Content Area */}
       <main id="main-content" style={{ flex: '1 0 auto', display: 'flex', flexDirection: 'column', width: '100%', gap: '3rem' }}>
         <section className="hub-hero">
-          <h1 className="gold-text">Putting Accra's Best<br/>Businesses Online.</h1>
+          <h1 className="gold-text">Putting Ghana's Best<br/>Businesses Online.</h1>
           <p>Traditional marketing ends at the flyer. We build dedicated, high-performance 'Digital Flyers' that drive customers straight to your WhatsApp. Zero maintenance, maximum growth.</p>
           <button className="neon-btn neon-border">Request a Consultation</button>
         </section>
