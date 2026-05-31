@@ -62,7 +62,13 @@ function App() {
           <a href="#work">Our Work</a>
           <a href="#pricing">Pricing</a>
           <a href="#process">Process</a>
-          <a href="#contact">Contact</a>
+          <a 
+            href="https://wa.me/233551993820?text=Hi%20Kone%20Digital%2C%20I'd%20like%20to%20get%20in%20touch%20about%20your%20services." 
+            target="_blank" 
+            rel="noopener noreferrer"
+          >
+            Contact
+          </a>
           <CurrencyToggle />
         </nav>
       </header>
@@ -72,7 +78,15 @@ function App() {
         <section className="hub-hero">
           <h1 className="gold-text">Putting Ghana's Best<br/>Businesses Online.</h1>
           <p>Traditional marketing ends at the flyer. We build dedicated, high-performance 'Digital Flyers' that drive customers straight to your WhatsApp. Zero maintenance, maximum growth.</p>
-          <button className="neon-btn neon-border">Request a Consultation</button>
+          <a 
+            href="https://wa.me/233551993820?text=Hi%20Kone%20Digital%2C%20I'd%20like%20to%20request%20a%20consultation%20for%20my%20business%20website."
+            target="_blank"
+            rel="noopener noreferrer"
+            className="neon-btn neon-border flex-center"
+            style={{ textDecoration: 'none', display: 'inline-flex' }}
+          >
+            Request a Consultation
+          </a>
         </section>
 
         <Portfolio />

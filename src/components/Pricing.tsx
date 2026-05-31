@@ -30,7 +30,15 @@ export const Pricing = () => {
             <li>✓ Direct WhatsApp Ordering</li>
             <li>✓ Standard Hosting & Support</li>
           </ul>
-          <button className="neon-btn">Get Started</button>
+          <a 
+            href="https://wa.me/233551993820?text=Hi%20Kone%20Digital%2C%20I'm%20interested%20in%20the%20SME%20Lite%20Plan%20(GHS%2049%2Fmo)."
+            target="_blank"
+            rel="noopener noreferrer"
+            className="neon-btn flex-center"
+            style={{ textDecoration: 'none', display: 'flex' }}
+          >
+            Get Started
+          </a>
         </div>
 
         {/* Starter Plan */}
@@ -49,7 +57,15 @@ export const Pricing = () => {
             <li>✓ Mobile Optimized</li>
             <li>✓ Monthly Maintenance</li>
           </ul>
-          <button className="neon-btn">Get Started</button>
+          <a 
+            href="https://wa.me/233551993820?text=Hi%20Kone%20Digital%2C%20I'm%20interested%20in%20the%20Starter%20Plan%20(GHS%20499%2Fmo)."
+            target="_blank"
+            rel="noopener noreferrer"
+            className="neon-btn flex-center"
+            style={{ textDecoration: 'none', display: 'flex' }}
+          >
+            Get Started
+          </a>
         </div>
 
         {/* Professional Plan (Highlighted) */}
@@ -69,7 +85,15 @@ export const Pricing = () => {
             <li>✓ Custom Form Integrations</li>
             <li>✓ Priority Support</li>
           </ul>
-          <button className="neon-btn neon-border active">Get Started</button>
+          <a 
+            href="https://wa.me/233551993820?text=Hi%20Kone%20Digital%2C%20I'm%20interested%20in%20the%20Professional%20Plan%20(GHS%20999%2Fmo)."
+            target="_blank"
+            rel="noopener noreferrer"
+            className="neon-btn neon-border active flex-center"
+            style={{ textDecoration: 'none', display: 'flex' }}
+          >
+            Get Started
+          </a>
         </div>
 
         {/* Enterprise Plan */}
@@ -87,7 +111,15 @@ export const Pricing = () => {
             <li>✓ Advanced Analytics</li>
             <li>✓ Dedicated Account Manager</li>
           </ul>
-          <button className="neon-btn">Contact Us</button>
+          <a 
+            href="https://wa.me/233551993820?text=Hi%20Kone%20Digital%2C%20I'd%20like%20to%20discuss%20a%20Custom%20Enterprise%20Plan%20for%20my%20business."
+            target="_blank"
+            rel="noopener noreferrer"
+            className="neon-btn flex-center"
+            style={{ textDecoration: 'none', display: 'flex' }}
+          >
+            Contact Us
+          </a>
         </div>
 
       </div>
