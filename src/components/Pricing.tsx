@@ -14,6 +14,25 @@ export const Pricing = () => {
 
       <div className="pricing-cards">
         
+        {/* Lite Plan */}
+        <div className="price-card neon-border fade-in-up" style={{ transitionDelay: '0.05s' }}>
+          <div className="card-top">
+            <h3>Lite</h3>
+            <div className="price">
+              <span className="amount">{formatPrice(49)}</span>
+              <span className="period">/mo</span>
+            </div>
+            <p className="card-desc">Ideal for market traders, Susu groups, and local artisans.</p>
+          </div>
+          <ul className="features">
+            <li>✓ Niche SME Website Catalog</li>
+            <li>✓ Automated MoMo Payments</li>
+            <li>✓ Direct WhatsApp Ordering</li>
+            <li>✓ Standard Hosting & Support</li>
+          </ul>
+          <button className="neon-btn">Get Started</button>
+        </div>
+
         {/* Starter Plan */}
         <div className="price-card neon-border fade-in-up" style={{ transitionDelay: '0.1s' }}>
           <div className="card-top">
