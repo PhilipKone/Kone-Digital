@@ -22,7 +22,9 @@ export const Portfolio = () => {
                 <span className="tag">WaaS</span>
                 <span className="tag">B2B</span>
               </div>
-              <a href="/sedemson-stone/" target="_blank" rel="noreferrer" className="view-link neon-text">View Live Site &rarr;</a>
+              <span className="view-link" style={{ color: '#64748b', cursor: 'not-allowed', display: 'inline-flex', alignItems: 'center', gap: '0.25rem' }}>
+                Payment Pending 🔒
+              </span>
             </div>
           </div>
         </div>
