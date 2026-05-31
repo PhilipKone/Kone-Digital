@@ -2,7 +2,7 @@
 <html lang="en">
 <head>
   <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
   <meta name="theme-color" content="#090B10">
   <title>Kofi's Premium Furniture | Handcrafted in Ghana</title>
   <!-- Google Fonts -->
@@ -12,53 +12,88 @@
   <!-- Stylesheet -->
   <link rel="stylesheet" href="style.css">
 </head>
-<body>
+<body class="app-body">
 
-  <!-- Floating Mobile Header -->
-  <header class="header">
+  <!-- Floating Mobile App Header -->
+  <header class="app-header">
     <div class="header-container">
       <div class="logo">
         <span class="logo-icon">🪚</span>
         <div class="logo-meta">
           <h1>Kofi's Furniture</h1>
-          <p>Handcrafted Mahogany & Hardwood</p>
+          <p>Premium Mahogany & Hardwood</p>
         </div>
       </div>
-      <button class="cart-trigger" id="cart-toggle" aria-label="Open Cart">
+      <!-- Desktop-only Cart Trigger (Hidden on Mobile) -->
+      <button class="cart-trigger desktop-only" id="cart-toggle" aria-label="Open Cart">
         <span class="cart-icon">🛒</span>
         <span class="cart-count" id="cart-count">0</span>
       </button>
     </div>
   </header>
 
-  <!-- Hero Section -->
-  <section class="hero">
-    <div class="hero-content">
-      <span class="badge">Local Ghanaian Artisan 🇬🇭</span>
-      <h2>Premium Handcrafted Furniture, Built to Last.</h2>
-      <p>Transform your living space with custom-made, seasoned mahogany and premium hardwood furniture. Straight from our workshop in Accra to your home.</p>
-      <div class="hero-actions">
-        <a href="#catalog" class="btn primary">Browse Catalog</a>
-        <a href="https://wa.me/233551993820?text=Hi%20Kofi%2C%20I'd%20like%20to%20discuss%20a%20custom%20furniture%20design." target="_blank" rel="noopener noreferrer" class="btn secondary">Custom Order</a>
+  <!-- App Scrollable Container (Locks viewport on mobile, scrolls content) -->
+  <div class="app-scroll-container" id="scroll-root">
+    
+    <!-- Hero Section -->
+    <section class="hero" id="home">
+      <div class="hero-content">
+        <span class="badge">Local Ghanaian Artisan 🇬🇭</span>
+        <h2>Premium Handcrafted Furniture, Built to Last.</h2>
+        <p>Transform your living space with custom-made, seasoned mahogany and premium hardwood furniture. Straight from our workshop in Accra to your home.</p>
+        <div class="hero-actions">
+          <button class="btn primary" id="hero-browse-btn">Browse Catalog</button>
+          <a href="https://wa.me/233551993820?text=Hi%20Kofi%2C%20I'd%20like%20to%20discuss%20a%20custom%20furniture%20design." target="_blank" rel="noopener noreferrer" class="btn secondary">Custom Order</a>
+        </div>
       </div>
-    </div>
-  </section>
+    </section>
 
-  <!-- Main Catalog -->
-  <main class="catalog-section" id="catalog">
-    <div class="section-title">
-      <h2>Our Work</h2>
-      <p>Click any item to add it to your order. Delivery arranged nationwide.</p>
-    </div>
+    <!-- Main Catalog Section -->
+    <main class="catalog-section" id="shop">
+      <div class="section-title">
+        <h2>Our Work</h2>
+        <p>Click any item to add it to your order. Delivery arranged nationwide.</p>
+      </div>
 
-    <div class="products-grid" id="products-grid">
-      <!-- Products will be dynamically loaded by app.js -->
-    </div>
-  </main>
+      <div class="products-grid" id="products-grid">
+        <!-- Products will be dynamically loaded by app.js -->
+      </div>
+    </main>
 
-  <!-- Sliding Cart Drawer (Overlay) -->
+    <!-- Footer -->
+    <footer class="footer">
+      <p>&copy; 2026 Kofi's Furniture. Digitized by <a href="https://digital.koneacademy.io" target="_blank" rel="noopener noreferrer">Kone Digital</a>.</p>
+    </footer>
+
+  </div>
+
+  <!-- Native Bottom Navigation Tab Bar for Mobile -->
+  <nav class="bottom-nav-bar">
+    <button class="nav-tab active" id="tab-home">
+      <span class="tab-icon">🏠</span>
+      <span class="tab-label">Home</span>
+    </button>
+    <button class="nav-tab" id="tab-shop">
+      <span class="tab-icon">🛍️</span>
+      <span class="tab-label">Shop</span>
+    </button>
+    <button class="nav-tab" id="tab-cart">
+      <span class="tab-icon">
+        🛒
+        <span class="tab-badge" id="cart-badge-count">0</span>
+      </span>
+      <span class="tab-label">Order</span>
+    </button>
+    <a href="https://wa.me/233551993820?text=Hi%20Kofi%2C%20I'd%20like%20to%20chat%20about%20your%20furniture." target="_blank" rel="noopener noreferrer" class="nav-tab">
+      <span class="tab-icon">💬</span>
+      <span class="tab-label">Chat</span>
+    </a>
+  </nav>
+
+  <!-- Sliding Cart Drawer (Right on Desktop, Bottom-Sheet on Mobile) -->
   <div class="cart-drawer" id="cart-drawer">
     <div class="cart-header">
+      <div class="header-indicator desktop-hidden"></div>
       <h3>Your Order Summary</h3>
       <button class="close-cart" id="close-cart">&times;</button>
     </div>
@@ -85,7 +120,7 @@
         <span class="summary-value" id="cart-total">GHS 0.00</span>
       </div>
 
-      <!-- Payment / Verification Status Alert -->
+      <!-- MoMo Payment Alert -->
       <div class="momo-alert">
         <span class="momo-icon">⚡</span>
         <p>MoMo payment prompt will be sent upon order confirmation.</p>
@@ -93,15 +128,10 @@
 
       <button class="whatsapp-checkout-btn" id="whatsapp-checkout">
         <span class="whatsapp-logo">💬</span>
-        Order via WhatsApp
+        Confirm Order via WhatsApp
       </button>
     </div>
   </div>
-
-  <!-- Footer -->
-  <footer class="footer">
-    <p>&copy; 2026 Kofi's Furniture. Digitized by <a href="https://digital.koneacademy.io" target="_blank" rel="noopener noreferrer">Kone Digital</a>.</p>
-  </footer>
 
   <!-- Background Blur Lights -->
   <div class="glow-light light-1"></div>

@@ -1,11 +1,11 @@
 /* ========================================================================
-   KOFI'S PREMIUM FURNITURE - WAAS MOBILE-FIRST CSS LAYOUT
+   KOFI'S PREMIUM FURNITURE - WAAS MOBILE-FIRST APP CSS LAYOUT
    ======================================================================== */
 
 :root {
   --bg-dark: #07090E;
   --bg-surface: #0E1219;
-  --bg-glass: rgba(14, 18, 25, 0.75);
+  --bg-glass: rgba(14, 18, 25, 0.85);
   
   --text-main: #FFFFFF;
   --text-muted: #8E9BAE;
@@ -26,12 +26,19 @@
   --font-body: 'Plus Jakarta Sans', sans-serif;
 }
 
-/* 1. Global Resets & Styling Setup */
+/* 1. Global Resets & Layout Setup */
 * {
   box-sizing: border-box;
   margin: 0;
   padding: 0;
   scroll-behavior: smooth;
+  -webkit-tap-highlight-color: transparent;
+}
+
+html, body {
+  width: 100%;
+  height: 100%;
+  background-color: var(--bg-dark);
 }
 
 body {
@@ -40,27 +47,41 @@ body {
   color: var(--text-main);
   font-family: var(--font-body);
   line-height: 1.6;
-  overflow-x: hidden;
-  padding-top: 75px; /* Offset for floating header */
+  overflow: hidden; /* Lock viewport for native-app scrolling */
 }
 
-/* 2. Floating Mobile Header */
-.header {
+/* App-Body Scroll Container */
+.app-scroll-container {
+  width: 100%;
+  height: 100%;
+  overflow-y: auto;
+  padding-top: 75px; /* Offset for header */
+  padding-bottom: 20px; /* Offset for desktop */
+  -webkit-overflow-scrolling: touch; /* Inertial iOS scroll */
+}
+
+/* Hide scrollbars for an ultra-clean layout */
+.app-scroll-container::-webkit-scrollbar {
+  display: none;
+}
+
+/* 2. Floating Header */
+.app-header {
   position: fixed;
   top: 0;
   left: 0;
   width: 100%;
   z-index: 1000;
   background: var(--bg-glass);
-  backdrop-filter: blur(16px);
-  -webkit-backdrop-filter: blur(16px);
+  backdrop-filter: blur(20px);
+  -webkit-backdrop-filter: blur(20px);
   border-bottom: 1px solid var(--border-glass);
 }
 
 .header-container {
   max-width: 1200px;
   margin: 0 auto;
-  padding: 0.75rem 1.25rem;
+  padding: 0.85rem 1.5rem;
   display: flex;
   justify-content: space-between;
   align-items: center;
@@ -79,7 +100,7 @@ body {
 
 .logo-meta h1 {
   font-family: var(--font-display);
-  font-size: 1.15rem;
+  font-size: 1.2rem;
   font-weight: 700;
   letter-spacing: -0.5px;
   line-height: 1.1;
@@ -87,7 +108,7 @@ body {
 }
 
 .logo-meta p {
-  font-size: 0.72rem;
+  font-size: 0.75rem;
   color: var(--text-muted);
 }
 
@@ -134,7 +155,7 @@ body {
 
 /* 3. Hero Section */
 .hero {
-  padding: 4rem 1.25rem 3rem 1.25rem;
+  padding: 4rem 1.5rem 3rem 1.5rem;
   text-align: center;
   max-width: 800px;
   margin: 0 auto;
@@ -156,7 +177,7 @@ body {
 
 .hero h2 {
   font-family: var(--font-display);
-  font-size: 2.5rem;
+  font-size: 2.75rem;
   font-weight: 700;
   line-height: 1.2;
   margin-bottom: 1.25rem;
@@ -191,6 +212,7 @@ body {
   justify-content: center;
   cursor: pointer;
   letter-spacing: 0.5px;
+  border: none;
 }
 
 .btn.primary {
@@ -217,7 +239,7 @@ body {
 
 /* 4. Catalog Layout */
 .catalog-section {
-  padding: 3rem 1.25rem;
+  padding: 3rem 1.5rem;
   max-width: 1200px;
   margin: 0 auto;
 }
@@ -229,7 +251,7 @@ body {
 
 .section-title h2 {
   font-family: var(--font-display);
-  font-size: 2rem;
+  font-size: 2.2rem;
   margin-bottom: 0.5rem;
 }
 
@@ -354,7 +376,7 @@ body {
   box-shadow: 0 4px 12px rgba(214, 175, 55, 0.3);
 }
 
-/* 5. Sliding Cart Drawer Overlay */
+/* 5. Sliding Drawer (Responsive: Right on Desktop, Bottom-sheet on Mobile) */
 .cart-drawer {
   position: fixed;
   top: 0;
@@ -364,11 +386,11 @@ body {
   height: 100%;
   background: var(--bg-surface);
   border-left: 1px solid var(--border-glass);
-  box-shadow: -10px 0 30px rgba(0,0,0,0.5);
+  box-shadow: -10px 0 30px rgba(0,0,0,0.6);
   z-index: 2000;
   display: flex;
   flex-direction: column;
-  transition: right 0.4s cubic-bezier(0.16, 1, 0.3, 1);
+  transition: all 0.4s cubic-bezier(0.16, 1, 0.3, 1);
 }
 
 .cart-drawer.open {
@@ -381,6 +403,11 @@ body {
   display: flex;
   justify-content: space-between;
   align-items: center;
+  position: relative;
+}
+
+.header-indicator {
+  display: none;
 }
 
 .cart-header h3 {
@@ -593,9 +620,14 @@ body {
   font-size: 1.3rem;
 }
 
-/* 6. Footer */
+/* 6. Bottom Navigation Tab Bar (Hidden on Desktop) */
+.bottom-nav-bar {
+  display: none;
+}
+
+/* 7. Footer */
 .footer {
-  padding: 4rem 1.25rem 2rem 1.25rem;
+  padding: 4rem 1.5rem 2rem 1.5rem;
   text-align: center;
   color: var(--text-muted);
   font-size: 0.8rem;
@@ -612,7 +644,7 @@ body {
   text-decoration: underline;
 }
 
-/* 7. Background Lights */
+/* 8. Background Lights */
 .glow-light {
   position: absolute;
   width: 300px;
@@ -621,7 +653,7 @@ body {
   filter: blur(120px);
   z-index: 1;
   pointer-events: none;
-  opacity: 0.4;
+  opacity: 0.3;
 }
 
 .light-1 {
@@ -636,34 +668,183 @@ body {
   right: -100px;
 }
 
-/* 8. Mobile Adaptations */
+/* 9. Helpers & Desktop-Only visibility */
+.desktop-only {
+  display: flex;
+}
+
+/* 10. Native Mobile App Layout Implementation (Screens <= 600px) */
 @media (max-width: 600px) {
+  /* Lock base layout */
   body {
-    padding-top: 65px;
+    overflow: hidden;
+    height: 100vh;
+    height: 100dvh;
+    display: flex;
+    flex-direction: column;
   }
-  
+
+  /* Independent scroll container */
+  .app-scroll-container {
+    flex: 1 1 auto;
+    padding-top: 65px;
+    padding-bottom: 75px; /* Offset for bottom nav bar */
+    overflow-y: scroll;
+    height: calc(100vh - 65px - 65px);
+  }
+
+  /* Hide Desktop Cart Toggle */
+  .desktop-only {
+    display: none !important;
+  }
+
+  /* Reduce Hero Spacing */
   .hero {
-    padding: 3rem 1rem 2rem 1rem;
+    padding: 3rem 1.25rem 2rem 1.25rem;
   }
   
   .hero h2 {
-    font-size: 1.85rem;
+    font-size: 2rem;
   }
   
   .hero p {
     font-size: 0.95rem;
   }
-  
+
   .btn {
     width: 100%;
   }
-  
+
   .hero-actions {
     flex-direction: column;
     width: 100%;
   }
-  
+
   .products-grid {
     grid-template-columns: 1fr;
+    gap: 1.5rem;
+  }
+
+  /* Render Fixed Bottom Nav Bar */
+  .bottom-nav-bar {
+    display: flex;
+    position: fixed;
+    bottom: 0;
+    left: 0;
+    width: 100%;
+    height: 65px;
+    background: var(--bg-glass);
+    backdrop-filter: blur(20px);
+    -webkit-backdrop-filter: blur(20px);
+    border-top: 1px solid var(--border-glass);
+    justify-content: space-around;
+    align-items: center;
+    z-index: 1000;
+    padding-bottom: env(safe-area-inset-bottom); /* iOS home bar offset */
+  }
+
+  .nav-tab {
+    background: transparent;
+    border: none;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    color: var(--text-muted);
+    font-size: 0.72rem;
+    font-family: var(--font-body);
+    font-weight: 600;
+    cursor: pointer;
+    flex: 1;
+    height: 100%;
+    transition: all 0.2s;
+    text-decoration: none;
+  }
+
+  .nav-tab:active {
+    transform: scale(0.95);
+  }
+
+  .tab-icon {
+    font-size: 1.35rem;
+    line-height: 1;
+    margin-bottom: 2px;
+    position: relative;
+    display: inline-block;
+  }
+
+  .nav-tab.active {
+    color: var(--primary-accent);
+    filter: drop-shadow(0 0 5px rgba(214, 175, 55, 0.2));
+  }
+
+  .tab-badge {
+    position: absolute;
+    top: -5px;
+    right: -10px;
+    background: #ff4a4a;
+    color: white;
+    font-size: 0.65rem;
+    font-weight: 700;
+    border-radius: 10px;
+    min-width: 16px;
+    height: 16px;
+    padding: 0 4px;
+    display: none;
+    align-items: center;
+    justify-content: center;
+    box-shadow: 0 2px 5px rgba(0,0,0,0.3);
+  }
+
+  .tab-badge.visible {
+    display: flex;
+  }
+
+  /* Redesign Cart Drawer as a Native Bottom Sheet Drawer */
+  .cart-drawer {
+    right: 0;
+    bottom: -100%;
+    top: auto;
+    width: 100%;
+    max-width: 100%;
+    height: 82%;
+    border-left: none;
+    border-top: 1px solid var(--border-glass);
+    border-radius: 20px 20px 0 0;
+    box-shadow: 0 -10px 30px rgba(0,0,0,0.7);
+    transition: bottom 0.4s cubic-bezier(0.16, 1, 0.3, 1);
+  }
+
+  .cart-drawer.open {
+    bottom: 0;
+  }
+
+  /* Native drag indicator line at top of drawer sheet */
+  .header-indicator {
+    display: block;
+    width: 40px;
+    height: 4px;
+    background: rgba(255, 255, 255, 0.15);
+    border-radius: 10px;
+    position: absolute;
+    top: 10px;
+    left: 50%;
+    transform: translateX(-50%);
+  }
+
+  .cart-header {
+    padding: 1.75rem 1.25rem 1rem 1.25rem;
+  }
+
+  .close-cart {
+    font-size: 1.75rem;
+  }
+
+  .cart-body {
+    padding: 1rem 1.25rem;
+  }
+
+  .cart-footer {
+    padding: 1.25rem;
   }
 }

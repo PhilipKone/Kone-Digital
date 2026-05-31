@@ -88,21 +88,35 @@ const PRODUCTS = [
 let cart = {};
 
 // 4. Domestic WhatsApp Ordering details
-const MERCHANT_PHONE = "233551993820"; // Kone Digital representative number for demo
-const GRA_LEVY_RATE = 0.05; // 5% flat local levy placeholder
+const MERCHANT_PHONE = "233551993820"; 
+const GRA_LEVY_RATE = 0.05; 
 
 // 5. DOM Elements
 const productsGrid = document.getElementById('products-grid');
 const cartDrawer = document.getElementById('cart-drawer');
-const cartToggleBtn = document.getElementById('cart-toggle');
+const desktopCartBtn = document.getElementById('cart-toggle');
 const closeCartBtn = document.getElementById('close-cart');
 const cartItemsContainer = document.getElementById('cart-items-container');
 const emptyState = document.getElementById('empty-state');
-const cartCount = document.getElementById('cart-count');
+
+// Badges
+const cartCountDesktop = document.getElementById('cart-count');
+const cartCountMobileTab = document.getElementById('cart-badge-count');
+
+// Subtotals
 const cartSubtotal = document.getElementById('cart-subtotal');
 const cartTax = document.getElementById('cart-tax');
 const cartTotal = document.getElementById('cart-total');
 const whatsappCheckoutBtn = document.getElementById('whatsapp-checkout');
+
+// Scroll Container
+const scrollRoot = document.getElementById('scroll-root');
+const heroBrowseBtn = document.getElementById('hero-browse-btn');
+
+// Tab Buttons
+const tabHome = document.getElementById('tab-home');
+const tabShop = document.getElementById('tab-shop');
+const tabCart = document.getElementById('tab-cart');
 
 // 6. Initialize App
 function init() {
@@ -162,20 +176,43 @@ window.updateQty = function(productId, delta) {
 
 function openCart() {
   cartDrawer.classList.add('open');
+  setActiveTab(tabCart);
 }
 
 function closeCart() {
   cartDrawer.classList.remove('open');
+  // Return active state to home/shop depending on scroll location
+  updateActiveTabOnScroll();
 }
 
-// 9. Update UI Calculations
+// Helper to set active nav tab
+function setActiveTab(activeTabElement) {
+  const tabs = document.querySelectorAll('.nav-tab');
+  tabs.forEach(tab => tab.classList.remove('active'));
+  if (activeTabElement) {
+    activeTabElement.classList.add('active');
+  }
+}
+
+// 9. Update UI Calculations & Cart Drawer
 function updateCartUI() {
   const items = Object.values(cart);
+  const qtyTotal = items.reduce((acc, item) => acc + item.qty, 0);
   
+  // Update both desktop and mobile cart count badges
+  if (cartCountDesktop) cartCountDesktop.innerText = qtyTotal;
+  if (cartCountMobileTab) {
+    cartCountMobileTab.innerText = qtyTotal;
+    if (qtyTotal > 0) {
+      cartCountMobileTab.classList.add('visible');
+    } else {
+      cartCountMobileTab.classList.remove('visible');
+    }
+  }
+
   if (items.length === 0) {
     emptyState.style.display = 'flex';
     cartItemsContainer.innerHTML = '';
-    cartCount.innerText = '0';
     cartSubtotal.innerText = 'GHS 0.00';
     cartTax.innerText = 'GHS 0.00';
     cartTotal.innerText = 'GHS 0.00';
@@ -183,7 +220,6 @@ function updateCartUI() {
   }
 
   emptyState.style.display = 'none';
-  cartCount.innerText = items.reduce((acc, item) => acc + item.qty, 0);
 
   // Render items with smaller custom SVG vectors
   cartItemsContainer.innerHTML = items.map(item => `
@@ -255,11 +291,81 @@ function handleCheckout() {
   window.open(whatsappUrl, '_blank');
 }
 
-// 11. Event Listeners setup
+// 11. Custom Tab Navigation Logic for App Mode
+function scrollToSection(sectionId) {
+  const targetElement = document.getElementById(sectionId);
+  if (targetElement) {
+    // If we are on mobile, scroll the independent scrollRoot container
+    if (window.innerWidth <= 600) {
+      const headerOffset = 65; 
+      const elementPosition = targetElement.offsetTop;
+      const offsetPosition = elementPosition - headerOffset;
+
+      scrollRoot.scrollTo({
+        top: offsetPosition,
+        behavior: 'smooth'
+      });
+    } else {
+      // Standard desktop window scroll
+      targetElement.scrollIntoView({ behavior: 'smooth' });
+    }
+  }
+}
+
+// Update Active Nav Icon dynamically as user scrolls down the mobile body container
+function updateActiveTabOnScroll() {
+  if (cartDrawer.classList.contains('open')) return; // Cart is currently open, lock active cart tab
+
+  const scrollPos = scrollRoot.scrollTop;
+  const shopElement = document.getElementById('shop');
+  
+  // Header height offset
+  const offsetLimit = shopElement.offsetTop - 120;
+
+  if (scrollPos >= offsetLimit) {
+    setActiveTab(tabShop);
+  } else {
+    setActiveTab(tabHome);
+  }
+}
+
+// Event Listeners setup
 function setupEventListeners() {
-  cartToggleBtn.addEventListener('click', openCart);
+  if (desktopCartBtn) desktopCartBtn.addEventListener('click', openCart);
   closeCartBtn.addEventListener('click', closeCart);
   whatsappCheckoutBtn.addEventListener('click', handleCheckout);
+
+  // Browse Hero button
+  if (heroBrowseBtn) {
+    heroBrowseBtn.addEventListener('click', () => {
+      scrollToSection('shop');
+      setActiveTab(tabShop);
+    });
+  }
+
+  // Bottom Tabs Click Bindings
+  tabHome.addEventListener('click', () => {
+    closeCart();
+    scrollToSection('home');
+    setActiveTab(tabHome);
+  });
+
+  tabShop.addEventListener('click', () => {
+    closeCart();
+    scrollToSection('shop');
+    setActiveTab(tabShop);
+  });
+
+  tabCart.addEventListener('click', () => {
+    if (cartDrawer.classList.contains('open')) {
+      closeCart();
+    } else {
+      openCart();
+    }
+  });
+
+  // Track independent body scroll on mobile to toggle active navigation tabs
+  scrollRoot.addEventListener('scroll', updateActiveTabOnScroll);
 }
 
 // Start the app on mount
