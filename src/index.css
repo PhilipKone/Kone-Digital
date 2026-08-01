@@ -428,3 +428,72 @@ body {
     height: 1.8rem;
   }
 }
+
+/* Desktop default: hide mobile bottom nav */
+.digital-mobile-bottom-nav {
+  display: none;
+}
+
+@media (max-width: 768px) {
+  .hub-nav a {
+    display: none;
+  }
+  
+  .whatsapp-fab {
+    display: none !important;
+  }
+
+  /* Floating Bottom Navigation Bar (Instagram Neon Cyan Style) */
+  .digital-mobile-bottom-nav {
+    display: flex;
+    position: fixed;
+    bottom: 20px;
+    left: 50%;
+    transform: translateX(-50%);
+    width: calc(100% - 36px);
+    max-width: 440px;
+    height: 64px;
+    background: rgba(16, 21, 28, 0.94);
+    border: 1.5px solid var(--cyan-glow-dim);
+    border-radius: 36px;
+    justify-content: space-around;
+    align-items: center;
+    z-index: 9999;
+    box-shadow: 0 12px 35px rgba(0, 0, 0, 0.7),
+                0 0 20px var(--cyan-glow-dim);
+    padding: 0 8px;
+  }
+
+  .mobile-tab {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    text-decoration: none;
+    color: var(--text-muted);
+    padding: 6px;
+    border-radius: 26px;
+    transition: all 0.25s cubic-bezier(0.16, 1, 0.3, 1);
+  }
+
+  .mobile-tab .mobile-icon-pill {
+    width: 52px;
+    height: 42px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border-radius: 22px;
+    transition: all 0.25s cubic-bezier(0.16, 1, 0.3, 1);
+  }
+
+  .mobile-tab.active .mobile-icon-pill {
+    background: var(--cyan-glow-dim);
+    color: var(--cyan-glow);
+    border: 1px solid var(--cyan-glow-strong);
+    box-shadow: 0 0 16px var(--cyan-glow-dim);
+    transform: scale(1.05);
+  }
+
+  .mobile-tab:active {
+    transform: scale(0.92);
+  }
+}
