@@ -30,6 +30,7 @@
     "reactSnap":  {
                       "source":  "dist",
                       "ignoreErrors": true,
+                      "userAgent": "ReactSnap",
                       "include": [
                           "/",
                           "/services",
