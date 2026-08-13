@@ -273,9 +273,9 @@ function App() {
       {/* Mobile Floating Bottom Bar (Instagram Neon Style) */}
       <nav className="digital-mobile-bottom-nav">
         <a 
-          href="#main-content" 
-          className={`mobile-tab ${activeTab === 'home' ? 'active' : ''}`}
-          onClick={() => setActiveTab('home')}
+          href="#" 
+          className={`mobile-tab ${currentRoute === 'home' ? 'active' : ''}`}
+          onClick={() => setCurrentRoute('home')}
           title="Home"
         >
           <div className="mobile-icon-pill">
@@ -287,8 +287,8 @@ function App() {
         </a>
         <a 
           href="#work" 
-          className={`mobile-tab ${activeTab === 'work' ? 'active' : ''}`}
-          onClick={() => setActiveTab('work')}
+          className={`mobile-tab ${currentRoute === 'work' ? 'active' : ''}`}
+          onClick={() => setCurrentRoute('work')}
           title="Our Work"
         >
           <div className="mobile-icon-pill">
@@ -300,8 +300,8 @@ function App() {
         </a>
         <a 
           href="#pricing" 
-          className={`mobile-tab ${activeTab === 'pricing' ? 'active' : ''}`}
-          onClick={() => setActiveTab('pricing')}
+          className={`mobile-tab ${currentRoute === 'pricing' ? 'active' : ''}`}
+          onClick={() => setCurrentRoute('pricing')}
           title="Pricing"
         >
           <div className="mobile-icon-pill">

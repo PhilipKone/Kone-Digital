@@ -1,4 +1,3 @@
-import React from 'react';
 import './ServiceDetail.css';
 
 export interface ServiceData {
