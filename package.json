@@ -30,6 +30,16 @@
     "reactSnap":  {
                       "source":  "dist",
                       "ignoreErrors": true,
+                      "include": [
+                          "/",
+                          "/services",
+                          "/services/web-development",
+                          "/services/mobile-apps",
+                          "/services/brand-design",
+                          "/services/cloud-devops",
+                          "/work",
+                          "/pricing"
+                      ],
                       "puppeteerArgs":  [
                                             "--no-sandbox",
                                             "--disable-setuid-sandbox",
