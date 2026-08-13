@@ -13,7 +13,7 @@ export const Portfolio = () => {
           {/* Sedemson Stone Card */}
           <div className="portfolio-card neon-border fade-in-up" style={{ transitionDelay: '0.1s' }}>
             <div className="card-image-placeholder" style={{ padding: 0 }}>
-              <img src="/sedemson_thumbnail.png" alt="Sedemson Stone Exterior Cladding" style={{ width: '100%', height: '100%', objectFit: 'cover', objectPosition: 'center' }} />
+              <img src="/sedemson_stone_hero.png" alt="Sedemson Stone Exterior Cladding" style={{ width: '100%', height: '100%', objectFit: 'cover', objectPosition: 'center' }} />
             </div>
             <div className="card-content">
               <h3>Sedemson Stone</h3>
