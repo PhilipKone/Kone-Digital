@@ -117,7 +117,7 @@ export const TrustMetrics: React.FC = () => {
       {/* Integration Partner Logos */}
       <div style={{ 
         display: 'flex', 
-        justify-content: 'center', 
+        justifyContent: 'center', 
         alignItems: 'center', 
         gap: '2.5rem', 
         flexWrap: 'wrap', 
