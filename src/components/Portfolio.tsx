@@ -45,7 +45,7 @@ export const Portfolio: React.FC = () => {
         {/* Filter Tabs & Search Bar */}
         <div style={{ 
           display: 'flex', 
-          justify-content: 'center', 
+          justifyContent: 'center', 
           alignItems: 'center', 
           gap: '1rem', 
           flexWrap: 'wrap', 
