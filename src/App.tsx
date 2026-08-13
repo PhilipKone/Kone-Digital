@@ -2,17 +2,30 @@ import { useEffect, useRef, useState } from 'react';
 import { CurrencyToggle } from './components/CurrencyToggle/CurrencyToggle';
 import { Portfolio } from './components/Portfolio';
 import { Pricing } from './components/Pricing';
+import ServicesHub from './components/ServicesHub';
+import ServiceDetail from './components/ServiceDetail';
 
 function App() {
   const containerRef = useRef<HTMLDivElement>(null);
-  const [activeTab, setActiveTab] = useState<'home' | 'work' | 'pricing'>('home');
+  const [currentRoute, setCurrentRoute] = useState<'home' | 'services' | 'service-detail' | 'work' | 'pricing'>('home');
+  const [activeServiceSlug, setActiveServiceSlug] = useState<string>('web-development');
 
   useEffect(() => {
     const handleHashChange = () => {
       const hash = window.location.hash;
-      if (hash === '#work') setActiveTab('work');
-      else if (hash === '#pricing') setActiveTab('pricing');
-      else setActiveTab('home');
+      if (hash.startsWith('#services/')) {
+        const slug = hash.replace('#services/', '');
+        setActiveServiceSlug(slug);
+        setCurrentRoute('service-detail');
+      } else if (hash === '#services') {
+        setCurrentRoute('services');
+      } else if (hash === '#work') {
+        setCurrentRoute('work');
+      } else if (hash === '#pricing') {
+        setCurrentRoute('pricing');
+      } else {
+        setCurrentRoute('home');
+      }
     };
     window.addEventListener('hashchange', handleHashChange);
     handleHashChange();
@@ -72,8 +85,10 @@ function App() {
           <span className="logo-text">KONE <span className="neon-text">DIGITAL</span></span>
         </div>
         <nav className="hub-nav">
-          <a href="#work">Our Work</a>
-          <a href="#pricing">Pricing</a>
+          <a href="#" className={currentRoute === 'home' ? 'active-nav' : ''}>Overview</a>
+          <a href="#services" className={currentRoute === 'services' || currentRoute === 'service-detail' ? 'active-nav' : ''}>Services</a>
+          <a href="#work" className={currentRoute === 'work' ? 'active-nav' : ''}>Our Work</a>
+          <a href="#pricing" className={currentRoute === 'pricing' ? 'active-nav' : ''}>Pricing</a>
           <a 
             href="https://wa.me/233551993820?text=Hi%20Kone%20Digital%2C%20I'd%20like%20to%20get%20in%20touch%20about%20your%20services." 
             target="_blank" 
@@ -87,22 +102,48 @@ function App() {
 
       {/* Main Content Area */}
       <main id="main-content" style={{ flex: '1 0 auto', display: 'flex', flexDirection: 'column', width: '100%', gap: '3rem' }}>
-        <section className="hub-hero">
-          <h1 className="gold-text">Putting Ghana's Best<br/>Businesses Online.</h1>
-          <p>Traditional marketing ends at the flyer. We build dedicated, high-performance 'Digital Flyers' that drive customers straight to your WhatsApp. Zero maintenance, maximum growth.</p>
-          <a 
-            href="https://wa.me/233551993820?text=Hi%20Kone%20Digital%2C%20I'd%20like%20to%20request%20a%20consultation%20for%20my%20business%20website."
-            target="_blank"
-            rel="noopener noreferrer"
-            className="neon-btn neon-border flex-center"
-            style={{ textDecoration: 'none', display: 'inline-flex' }}
-          >
-            Request a Consultation
-          </a>
-        </section>
+        {currentRoute === 'service-detail' ? (
+          <ServiceDetail 
+            slug={activeServiceSlug} 
+            onBack={() => setCurrentRoute('services')}
+          />
+        ) : currentRoute === 'services' ? (
+          <ServicesHub 
+            onSelectService={(slug) => {
+              setActiveServiceSlug(slug);
+              setCurrentRoute('service-detail');
+            }} 
+          />
+        ) : currentRoute === 'work' ? (
+          <Portfolio />
+        ) : currentRoute === 'pricing' ? (
+          <Pricing />
+        ) : (
+          <>
+            <section className="hub-hero">
+              <h1 className="gold-text">Putting Ghana's Best<br/>Businesses Online.</h1>
+              <p>Traditional marketing ends at the flyer. We build dedicated, high-performance 'Digital Flyers' that drive customers straight to your WhatsApp. Zero maintenance, maximum growth.</p>
+              <a 
+                href="https://wa.me/233551993820?text=Hi%20Kone%20Digital%2C%20I'd%20like%20to%20request%20a%20consultation%20for%20my%20business%20website."
+                target="_blank"
+                rel="noopener noreferrer"
+                className="neon-btn neon-border flex-center"
+                style={{ textDecoration: 'none', display: 'inline-flex' }}
+              >
+                Request a Consultation
+              </a>
+            </section>
 
-        <Portfolio />
-        <Pricing />
+            <ServicesHub 
+              onSelectService={(slug) => {
+                setActiveServiceSlug(slug);
+                setCurrentRoute('service-detail');
+              }} 
+            />
+            <Portfolio />
+            <Pricing />
+          </>
+        )}
       </main>
 
       {/* Footer */}

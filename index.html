@@ -31,18 +31,99 @@
     <link rel="preload" as="style" href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=Space+Grotesk:wght@500;700&display=swap">
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=Space+Grotesk:wght@500;700&display=swap" rel="stylesheet">
     
-    <!-- Structured Data (Professional Search Indexing) -->
+    <!-- Structured Data (Professional Search Indexing & Sitelinks Schema) -->
     <script type="application/ld+json">
       {
         "@context": "https://schema.org",
         "@type": "WebSite",
         "name": "Kone Digital",
+        "alternateName": ["Kone Digital Agency", "Kone WaaS Hub"],
         "url": "https://digital.koneacademy.io/",
+        "potentialAction": {
+          "@type": "SearchAction",
+          "target": "https://digital.koneacademy.io/#work?q={search_term_string}",
+          "query-input": "required name=search_term_string"
+        },
+        "hasPart": [
+          {
+            "@type": "WebPage",
+            "name": "Custom Web & SaaS Development",
+            "url": "https://digital.koneacademy.io/#services/web-development"
+          },
+          {
+            "@type": "WebPage",
+            "name": "iOS & Android Mobile Apps",
+            "url": "https://digital.koneacademy.io/#services/mobile-apps"
+          },
+          {
+            "@type": "WebPage",
+            "name": "Brand Design & UI/UX Systems",
+            "url": "https://digital.koneacademy.io/#services/brand-design"
+          },
+          {
+            "@type": "WebPage",
+            "name": "Cloud & DevOps Infrastructure",
+            "url": "https://digital.koneacademy.io/#services/cloud-devops"
+          },
+          {
+            "@type": "WebPage",
+            "name": "Client Work & Portfolio",
+            "url": "https://digital.koneacademy.io/#work"
+          },
+          {
+            "@type": "WebPage",
+            "name": "Transparent Pricing Plans",
+            "url": "https://digital.koneacademy.io/#pricing"
+          }
+        ],
         "parentOrganization": {
           "@type": "Organization",
           "name": "Kone Academy",
           "url": "https://www.koneacademy.io/"
         }
+      }
+    </script>
+    <script type="application/ld+json">
+      {
+        "@context": "https://schema.org",
+        "@graph": [
+          {
+            "@type": "SiteNavigationElement",
+            "name": "Custom Web Development",
+            "description": "High-performance React, Next.js, and custom SaaS web application development.",
+            "url": "https://digital.koneacademy.io/#services/web-development"
+          },
+          {
+            "@type": "SiteNavigationElement",
+            "name": "Mobile App Engineering",
+            "description": "iOS and Android mobile app development using React Native and native tools.",
+            "url": "https://digital.koneacademy.io/#services/mobile-apps"
+          },
+          {
+            "@type": "SiteNavigationElement",
+            "name": "Brand Design & UI/UX",
+            "description": "Corporate logo systems, brand manuals, and interactive Figma UI/UX prototypes.",
+            "url": "https://digital.koneacademy.io/#services/brand-design"
+          },
+          {
+            "@type": "SiteNavigationElement",
+            "name": "Cloud & DevOps Infrastructure",
+            "description": "Firebase, AWS, automated CI/CD pipelines, and cloud security audits.",
+            "url": "https://digital.koneacademy.io/#services/cloud-devops"
+          },
+          {
+            "@type": "SiteNavigationElement",
+            "name": "Our Portfolio & Work",
+            "description": "Client case studies, web app showcases, and verified project outcomes.",
+            "url": "https://digital.koneacademy.io/#work"
+          },
+          {
+            "@type": "SiteNavigationElement",
+            "name": "Development Pricing",
+            "description": "Transparent GHS and USD pricing plans for custom websites and web applications.",
+            "url": "https://digital.koneacademy.io/#pricing"
+          }
+        ]
       }
     </script>
     <script type="application/ld+json">
