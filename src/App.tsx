@@ -7,8 +7,21 @@ import ServiceDetail from './components/ServiceDetail';
 
 function App() {
   const containerRef = useRef<HTMLDivElement>(null);
-  const [currentRoute, setCurrentRoute] = useState<'home' | 'services' | 'service-detail' | 'work' | 'pricing'>('home');
-  const [activeServiceSlug, setActiveServiceSlug] = useState<string>('web-development');
+  
+  const [currentRoute, setCurrentRoute] = useState<'home' | 'services' | 'service-detail' | 'work' | 'pricing'>(() => {
+    const hash = typeof window !== 'undefined' ? window.location.hash : '';
+    if (hash.startsWith('#services/')) return 'service-detail';
+    if (hash === '#services') return 'services';
+    if (hash === '#work') return 'work';
+    if (hash === '#pricing') return 'pricing';
+    return 'home';
+  });
+
+  const [activeServiceSlug, setActiveServiceSlug] = useState<string>(() => {
+    const hash = typeof window !== 'undefined' ? window.location.hash : '';
+    if (hash.startsWith('#services/')) return hash.replace('#services/', '');
+    return 'web-development';
+  });
 
   useEffect(() => {
     const handleHashChange = () => {
