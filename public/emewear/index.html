@@ -1,0 +1,544 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Emewear | Ghana-Made Plus-Size Ankara & Luxury Fashion</title>
+    <meta name="description" content="Emewear: Handcrafted Ghanaian Ankara print wide-leg trousers, tailored jumpsuits, and luxury African heritage wear designed for curvy & plus-size Ghanaian women." />
+    <link rel="icon" type="image/jpeg" href="/emewear/emewear_hero.jpg" />
+    
+    <!-- Google Typography -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@600;800;900&family=Outfit:wght@300;400;600;700;800&family=Playfair+Display:ital,wght@0,600;0,800;1,600&display=swap" rel="stylesheet">
+    
+    <style>
+        :root {
+            --burgundy-deep: #3b0910;
+            --burgundy-main: #5c121e;
+            --rose-gold: #e5b882;
+            --gold-glow: #f3d3a2;
+            --silk-cream: #fdfaf6;
+            --dark-card: #1f0b10;
+            --text-dark: #221215;
+            --text-muted: #9c8a8e;
+            --glass-bg: rgba(31, 11, 16, 0.85);
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Outfit', sans-serif;
+        }
+
+        body {
+            background-color: #120508;
+            color: var(--silk-cream);
+            line-height: 1.6;
+            overflow-x: hidden;
+        }
+
+        /* --- Header Navigation --- */
+        nav {
+            padding: 1.5rem 6%;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            position: absolute;
+            width: 100%;
+            z-index: 100;
+            background: linear-gradient(to bottom, rgba(18, 5, 8, 0.9) 0%, transparent 100%);
+        }
+
+        .brand-logo {
+            display: flex;
+            flex-direction: column;
+            text-decoration: none;
+        }
+
+        .brand-title {
+            font-family: 'Cinzel', serif;
+            font-size: 1.8rem;
+            font-weight: 900;
+            color: var(--gold-glow);
+            letter-spacing: 3px;
+            text-transform: uppercase;
+        }
+
+        .brand-tagline {
+            font-size: 0.68rem;
+            color: var(--rose-gold);
+            letter-spacing: 4px;
+            text-transform: uppercase;
+            font-weight: 600;
+        }
+
+        .nav-links {
+            display: flex;
+            gap: 2rem;
+            align-items: center;
+        }
+
+        .nav-links a {
+            color: var(--silk-cream);
+            text-decoration: none;
+            font-weight: 600;
+            font-size: 0.9rem;
+            letter-spacing: 1px;
+            transition: color 0.3s ease;
+        }
+
+        .nav-links a:hover {
+            color: var(--gold-glow);
+        }
+
+        .contact-pill {
+            background: linear-gradient(135deg, var(--rose-gold) 0%, #b8864e 100%);
+            color: #120508 !important;
+            padding: 0.6rem 1.4rem;
+            border-radius: 50px;
+            font-weight: 800 !important;
+            box-shadow: 0 4px 15px rgba(229, 184, 130, 0.3);
+        }
+
+        /* --- Hero Section --- */
+        .hero {
+            min-height: 95vh;
+            background: linear-gradient(rgba(18, 5, 8, 0.65), rgba(18, 5, 8, 0.85)), url('/emewear/emewear_hero.jpg') center/cover no-repeat;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            text-align: center;
+            padding: 7rem 5% 4rem;
+            position: relative;
+        }
+
+        .hero-badge {
+            background: rgba(229, 184, 130, 0.15);
+            border: 1px solid var(--rose-gold);
+            color: var(--gold-glow);
+            padding: 0.5rem 1.6rem;
+            font-weight: 800;
+            border-radius: 50px;
+            margin-bottom: 1.8rem;
+            text-transform: uppercase;
+            font-size: 0.8rem;
+            letter-spacing: 2px;
+            backdrop-filter: blur(10px);
+        }
+
+        .hero h1 {
+            font-family: 'Playfair Display', serif;
+            font-size: clamp(2.8rem, 7vw, 5rem);
+            font-weight: 900;
+            margin-bottom: 1.5rem;
+            line-height: 1.1;
+            color: #ffffff;
+            max-width: 950px;
+        }
+
+        .hero h1 span {
+            color: var(--gold-glow);
+            font-style: italic;
+        }
+
+        .hero p {
+            font-size: 1.25rem;
+            max-width: 720px;
+            margin-bottom: 2.8rem;
+            color: #e2d7d9;
+            font-weight: 400;
+            line-height: 1.7;
+        }
+
+        .hero-actions {
+            display: flex;
+            gap: 1.5rem;
+            flex-wrap: wrap;
+            justify-content: center;
+        }
+
+        .btn-luxury {
+            padding: 1.1rem 2.8rem;
+            border-radius: 50px;
+            font-weight: 800;
+            text-decoration: none;
+            text-transform: uppercase;
+            font-size: 0.88rem;
+            letter-spacing: 1px;
+            transition: all 0.3s ease;
+            display: inline-flex;
+            align-items: center;
+            gap: 0.6rem;
+        }
+
+        .btn-gold {
+            background: linear-gradient(135deg, var(--gold-glow) 0%, var(--rose-gold) 100%);
+            color: #120508;
+            box-shadow: 0 10px 25px rgba(229, 184, 130, 0.3);
+        }
+
+        .btn-gold:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 15px 35px rgba(229, 184, 130, 0.5);
+        }
+
+        .btn-outline {
+            background: rgba(255, 255, 255, 0.05);
+            border: 1px solid rgba(255, 255, 255, 0.3);
+            color: #ffffff;
+            backdrop-filter: blur(10px);
+        }
+
+        .btn-outline:hover {
+            background: rgba(255, 255, 255, 0.15);
+            border-color: var(--gold-glow);
+        }
+
+        /* --- Collections Showcase Section --- */
+        .collections-section {
+            padding: 100px 6%;
+            background: #18080c;
+        }
+
+        .section-header {
+            text-align: center;
+            margin-bottom: 70px;
+        }
+
+        .section-header .sub {
+            color: var(--rose-gold);
+            font-size: 0.85rem;
+            font-weight: 800;
+            letter-spacing: 3px;
+            text-transform: uppercase;
+            margin-bottom: 0.8rem;
+            display: block;
+        }
+
+        .section-header h2 {
+            font-family: 'Playfair Display', serif;
+            font-size: clamp(2.2rem, 5vw, 3.4rem);
+            color: #ffffff;
+            font-weight: 800;
+        }
+
+        .collections-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 2.5rem;
+        }
+
+        .collection-card {
+            background: var(--dark-card);
+            border: 1px solid rgba(229, 184, 130, 0.15);
+            border-radius: 24px;
+            overflow: hidden;
+            transition: all 0.35s ease;
+            display: flex;
+            flex-direction: column;
+        }
+
+        .collection-card:hover {
+            transform: translateY(-8px);
+            border-color: var(--rose-gold);
+            box-shadow: 0 20px 40px rgba(0, 0, 0, 0.6);
+        }
+
+        .card-img-wrapper {
+            height: 380px;
+            overflow: hidden;
+            position: relative;
+        }
+
+        .card-img-wrapper img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            object-position: top;
+            transition: transform 0.6s ease;
+        }
+
+        .collection-card:hover .card-img-wrapper img {
+            transform: scale(1.06);
+        }
+
+        .card-body {
+            padding: 2rem;
+            display: flex;
+            flex-direction: column;
+            flex-grow: 1;
+        }
+
+        .card-body h3 {
+            font-family: 'Playfair Display', serif;
+            font-size: 1.5rem;
+            color: var(--gold-glow);
+            margin-bottom: 0.6rem;
+        }
+
+        .card-body p {
+            font-size: 0.95rem;
+            color: #c4b5b8;
+            line-height: 1.6;
+            margin-bottom: 1.5rem;
+        }
+
+        .size-tags {
+            display: flex;
+            gap: 0.5rem;
+            flex-wrap: wrap;
+            margin-bottom: 1.8rem;
+        }
+
+        .size-badge {
+            background: rgba(229, 184, 130, 0.12);
+            border: 1px solid rgba(229, 184, 130, 0.3);
+            color: var(--gold-glow);
+            padding: 0.25rem 0.75rem;
+            border-radius: 6px;
+            font-size: 0.78rem;
+            font-weight: 700;
+        }
+
+        .card-footer {
+            margin-top: auto;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding-top: 1rem;
+            border-top: 1px solid rgba(255, 255, 255, 0.08);
+        }
+
+        .status-launching {
+            color: var(--rose-gold);
+            font-weight: 800;
+            font-size: 0.9rem;
+            display: inline-flex;
+            align-items: center;
+            gap: 0.4rem;
+        }
+
+        /* --- Brand Philosophy --- */
+        .philosophy-section {
+            padding: 90px 6%;
+            background: linear-gradient(135deg, var(--burgundy-deep) 0%, #120508 100%);
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 4rem;
+            align-items: center;
+        }
+
+        .phil-content h2 {
+            font-family: 'Playfair Display', serif;
+            font-size: 2.8rem;
+            color: #ffffff;
+            margin-bottom: 1.5rem;
+        }
+
+        .phil-content p {
+            font-size: 1.05rem;
+            color: #d1c2c5;
+            line-height: 1.8;
+            margin-bottom: 1.5rem;
+        }
+
+        .feature-bullets {
+            list-style: none;
+            display: flex;
+            flex-direction: column;
+            gap: 0.9rem;
+        }
+
+        .feature-bullets li {
+            font-size: 1rem;
+            color: var(--gold-glow);
+            display: flex;
+            align-items: center;
+            gap: 0.75rem;
+            font-weight: 600;
+        }
+
+        .phil-image {
+            border-radius: 24px;
+            overflow: hidden;
+            box-shadow: 0 20px 40px rgba(0, 0, 0, 0.6);
+            border: 1px solid rgba(229, 184, 130, 0.25);
+        }
+
+        .phil-image img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            display: block;
+        }
+
+        /* --- Footer --- */
+        footer {
+            padding: 4rem 6% 3rem;
+            background: #0d0305;
+            border-top: 1px solid rgba(255, 255, 255, 0.08);
+            text-align: center;
+        }
+
+        .footer-brand {
+            font-family: 'Cinzel', serif;
+            font-size: 1.6rem;
+            color: var(--gold-glow);
+            letter-spacing: 3px;
+            margin-bottom: 0.8rem;
+        }
+
+        .footer-text {
+            color: var(--text-muted);
+            font-size: 0.9rem;
+            max-width: 500px;
+            margin: 0 auto 2rem;
+        }
+
+        @media (max-width: 850px) {
+            .philosophy-section {
+                grid-template-columns: 1fr;
+            }
+
+            .nav-links {
+                display: none;
+            }
+        }
+    </style>
+</head>
+<body>
+
+    <!-- Header Navigation -->
+    <nav>
+        <a href="#" class="brand-logo">
+            <span class="brand-title">EMEWEAR</span>
+            <span class="brand-tagline">HERITAGE FASHION</span>
+        </a>
+        <div class="nav-links">
+            <a href="#collections">Collections</a>
+            <a href="#about">About</a>
+            <a href="https://digital.koneacademy.io" target="_blank" class="contact-pill">Kone Digital Studio</a>
+        </div>
+    </nav>
+
+    <!-- Hero Section -->
+    <section class="hero">
+        <span class="hero-badge">✨ LAUNCHING SOON • GHANA HERITAGE FASHION</span>
+        <h1>Elegance Tailored for <span>Every Curve</span></h1>
+        <p>
+            Handcrafted Ghanaian Ankara print wide-leg trousers, tailored jumpsuits, and contemporary African luxury apparel designed specifically for curvy & plus-size Ghanaian women.
+        </p>
+        <div class="hero-actions">
+            <a href="#collections" class="btn-luxury btn-gold">
+                <span>Explore Collections</span>
+                <span>✨</span>
+            </a>
+            <a href="https://digital.koneacademy.io/#work" class="btn-luxury btn-outline">
+                <span>Powered by Kone Digital WaaS</span>
+            </a>
+        </div>
+    </section>
+
+    <!-- Collections Section -->
+    <section id="collections" class="collections-section">
+        <div className="section-header">
+            <span className="sub">SIGNATURE LINES</span>
+            <h2>Ghana-Made Plus-Size Collections</h2>
+        </div>
+
+        <div className="collections-grid">
+            <!-- Card 1 -->
+            <div className="collection-card">
+                <div className="card-img-wrapper">
+                    <img src="/emewear/emewear_hero.jpg" alt="Ankara Wide-Leg Cargo Trousers" />
+                </div>
+                <div className="card-body">
+                    <h3>Ankara Wide-Leg Cargo Trousers</h3>
+                    <p>High-waist geometric Ankara print trousers with functional cargo pockets and adjustable drawstring waist for effortless comfort.</p>
+                    <div className="size-tags">
+                        <span className="size-badge">UK 16/18</span>
+                        <span className="size-badge">UK 20/22</span>
+                        <span className="size-badge">UK 24/26/28</span>
+                    </div>
+                    <div className="card-footer">
+                        <span className="status-launching">🚀 Launching Soon</span>
+                        <span style="color: var(--gold-glow); font-weight: 800;">GH₵ 190</span>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Card 2 -->
+            <div className="collection-card">
+                <div className="card-img-wrapper">
+                    <img src="/emewear/emewear_hero.jpg" alt="Volta Heritage Royal Batik Set" style="object-position: center;" />
+                </div>
+                <div className="card-body">
+                    <h3>Royal Batik Palazzo & Top Set</h3>
+                    <p>Vibrant hand-dyed Ghanaian batik wide-leg trousers paired with tailored white fitted tops for casual luxury & formal events.</p>
+                    <div className="size-tags">
+                        <span className="size-badge">UK 18</span>
+                        <span className="size-badge">UK 22</span>
+                        <span className="size-badge">UK 26</span>
+                    </div>
+                    <div className="card-footer">
+                        <span className="status-launching">🚀 Launching Soon</span>
+                        <span style="color: var(--gold-glow); font-weight: 800;">GH₵ 240</span>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Card 3 -->
+            <div className="collection-card">
+                <div className="card-img-wrapper">
+                    <img src="/emewear/emewear_hero.jpg" alt="Contemporary African Duster Coat" style="object-position: bottom;" />
+                </div>
+                <div className="card-body">
+                    <h3>Heritage Duster Coat & Trouser Duo</h3>
+                    <p>Floor-length lightweight African wax print duster coats tailored to drape gracefully over full-figure silhouettes.</p>
+                    <div className="size-tags">
+                        <span className="size-badge">UK 20</span>
+                        <span className="size-badge">UK 24</span>
+                        <span className="size-badge">UK 28/30</span>
+                    </div>
+                    <div className="card-footer">
+                        <span className="status-launching">🚀 Launching Soon</span>
+                        <span style="color: var(--gold-glow); font-weight: 800;">GH₵ 290</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Brand Philosophy Section -->
+    <section id="about" class="philosophy-section">
+        <div className="phil-content">
+            <h2>Designed for Ghanaian Royalty</h2>
+            <p>
+                Emewear was born out of a passion to celebrate the rich, authentic beauty of full-figured Ghanaian women. We believe plus-size fashion should never mean compromising on style, tailoring, or quality.
+            </p>
+            <ul className="feature-bullets">
+                <li>✨ 100% Authentic Ghanaian Sourced Ankara & Batik Fabrics</li>
+                <li>✨ Precision Plus-Size Pattern Drafting (UK Sizes 16 – 30)</li>
+                <li>✨ Stretch Drawstrings & High-Rise Comfort Waistbands</li>
+                <li>✨ Handcrafted by Veteran Seamstresses in Accra & Kumasi</li>
+            </ul>
+        </div>
+        <div className="phil-image">
+            <img src="/emewear/emewear_hero.jpg" alt="Emewear Fashion Boutique Studio" />
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer>
+        <div className="footer-brand">EMEWEAR</div>
+        <p className="footer-text">Ghana-Made Plus-Size Fashion & Contemporary African Apparel.</p>
+        <p style="color: var(--rose-gold); font-size: 0.82rem; margin-top: 1rem;">
+            © 2026 Emewear. All rights reserved. Designed & Engineered by <a href="https://digital.koneacademy.io" target="_blank" style="color: var(--gold-glow); font-weight: 700; text-decoration: none;">Kone Digital WaaS</a>.
+        </p>
+    </footer>
+
+</body>
+</html>
