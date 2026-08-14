@@ -16,65 +16,40 @@ export const MerchantDashboard: React.FC = () => {
   const { currency, setCurrency, formatPrice } = useCurrency();
 
   // State
-  const [selectedBusiness, setSelectedBusiness] = useState<string>('Ama Heritage Kente');
+  const [selectedBusiness, setSelectedBusiness] = useState<string>('My New Business');
   const [language, setLanguage] = useState<'EN' | 'TWI' | 'GA' | 'EWE'>('EN');
   const [activeTab, setActiveTab] = useState<'overview' | 'products' | 'activity'>('overview');
   const [isShareModalOpen, setIsShareModalOpen] = useState<boolean>(false);
   const [isAddProductOpen, setIsAddProductOpen] = useState<boolean>(false);
+  const [isSampleMode, setIsSampleMode] = useState<boolean>(false);
 
   // Products State
-  const [products, setProducts] = useState([
-    { id: '1', title: 'Royal Kente Palazzo Set', price: 220, category: 'Apparel', status: 'In Stock' },
-    { id: '2', title: 'Handcrafted Batik Duster Coat', price: 350, category: 'Luxury', status: 'In Stock' },
-    { id: '3', title: 'Wide-Leg Cargo Trousers', price: 180, category: 'Casual', status: 'Low Stock' }
+  const [products, setProducts] = useState<Array<{ id: string; title: string; price: number; category: string; status: string }>>([
+    { id: '1', title: 'Sample Starter Product', price: 150, category: 'General', status: 'In Stock' }
   ]);
 
   // Form State for New Product
   const [newTitle, setNewTitle] = useState('');
   const [newPrice, setNewPrice] = useState('');
-  const [newCategory, setNewCategory] = useState('Apparel');
+  const [newCategory, setNewCategory] = useState('General');
 
-  // Activities
-  const activities: ActivityItem[] = [
+  // Activities (Sample demo vs Real live state)
+  const sampleActivities: ActivityItem[] = [
     {
       id: 'a1',
-      time: '5m ago',
+      time: 'Demo Sample',
       type: 'order',
-      title: 'Customer ordered via WhatsApp',
-      detail: 'Kwame A. (Accra) • Royal Kente Palazzo Set',
-      amount: formatPrice(220),
-      badge: 'WhatsApp Order',
+      title: 'Customer ordered via WhatsApp (Demo)',
+      detail: 'Kwame A. (Accra) • Sample Product',
+      amount: formatPrice(150),
+      badge: 'Demo Order',
       badgeColor: '#25d366'
-    },
-    {
-      id: 'a2',
-      time: '24m ago',
-      type: 'momo',
-      title: 'MoMo Payment Prompt Initialized',
-      detail: 'Sarah O. (Kumasi) • MTN Mobile Money',
-      amount: formatPrice(350),
-      badge: 'MTN MoMo',
-      badgeColor: '#ffcc00'
-    },
-    {
-      id: 'a3',
-      time: '1h ago',
-      type: 'visit',
-      title: 'Catalog Viewed',
-      detail: 'Visitor from Takoradi via Instagram Bio',
-      badge: 'Traffic Lead',
-      badgeColor: 'var(--cyan-glow)'
-    },
-    {
-      id: 'a4',
-      time: '3h ago',
-      type: 'share',
-      title: 'Digital Flyer Shared',
-      detail: 'Shared to WhatsApp Group (Kejetia Traders Hub)',
-      badge: 'Viral Share',
-      badgeColor: 'var(--gold-accent)'
     }
   ];
+
+  const liveActivities: ActivityItem[] = [];
+
+  const activities = isSampleMode ? sampleActivities : liveActivities;
 
   const handleAddProduct = (e: React.FormEvent) => {
     e.preventDefault();
@@ -95,7 +70,7 @@ export const MerchantDashboard: React.FC = () => {
   // Translations
   const t = {
     EN: {
-      planStatus: 'Starter Plan (Active)',
+      planStatus: 'New Account (Active)',
       visits: 'Total Page Visits',
       orders: 'WhatsApp Orders',
       sales: 'MoMo Sales Volume',
@@ -104,10 +79,12 @@ export const MerchantDashboard: React.FC = () => {
       viewSite: 'View Live Site',
       share: 'Share on WhatsApp',
       recentActivity: 'Recent Customer Activity Stream',
-      support: 'VIP WhatsApp Support'
+      support: 'VIP WhatsApp Support',
+      emptyActivity: 'No customer actions recorded yet.',
+      emptyActivitySub: 'Share your website link on WhatsApp or Instagram to begin capturing real customer orders and MoMo payments.'
     },
     TWI: {
-      planStatus: 'Starter Plan (Ɛrekɔ so)',
+      planStatus: 'Account Foforɔ (Ɛrekɔ so)',
       visits: 'Nnipa A Wɔaba Ha Nyinaa',
       orders: 'WhatsApp Nkratoɔ A Wɔayɛ',
       sales: 'MoMo Sika Nyinaa',
@@ -116,10 +93,12 @@ export const MerchantDashboard: React.FC = () => {
       viewSite: 'Hwɛ Wo Wɛbsaet',
       share: 'Fa Kɔ WhatsApp So',
       recentActivity: 'Nnipa Nneyɛeɛ Nnansa Yi',
-      support: 'WhatsApp Mmoa'
+      support: 'WhatsApp Mmoa',
+      emptyActivity: 'Obiara nnyɛɛ hwee da.',
+      emptyActivitySub: 'Fa wo wɛbsaet link no kɔ WhatsApp so na nnipa ntumi ntɔ nneɛma.'
     },
     GA: {
-      planStatus: 'Starter Plan (Etsɔɔ mli)',
+      planStatus: 'Account Hee (Etsɔɔ mli)',
       visits: 'Gbɔmɛi Ni Ba Biɛ',
       orders: 'WhatsApp Nibii Ni Ahɔɔ',
       sales: 'MoMo Shika',
@@ -128,10 +107,12 @@ export const MerchantDashboard: React.FC = () => {
       viewSite: 'Kwɛ O Wɛbsaet Lɛ',
       share: 'Maje Yɛ WhatsApp Nɔ',
       recentActivity: 'Nii Ni Ya Nɔ Nyɛsɛɛ Nɛɛ',
-      support: 'WhatsApp Yelikɛbuamɔ'
+      support: 'WhatsApp Yelikɛbuamɔ',
+      emptyActivity: 'Mɔko mɔko bako lolo.',
+      emptyActivitySub: 'Maje o wɛbsaet link lɛ yɛ WhatsApp nɔ koni gbɔmɛi ahé nibii.'
     },
     EWE: {
-      planStatus: 'Starter Plan (Le Edzi)',
+      planStatus: 'Account Yeye (Le Edzi)',
       visits: 'Amewo Katã Va',
       orders: 'WhatsApp Nuwɔwɔwo',
       sales: 'MoMo Ga Katã',
@@ -140,7 +121,9 @@ export const MerchantDashboard: React.FC = () => {
       viewSite: 'Kpɔ Wò Wɛbsaet La',
       share: 'Ɖoe Ðe WhatsApp Dzi',
       recentActivity: 'Nusiwo Dzɔ Nyitsɔ Laa',
-      support: 'WhatsApp Kpekpeɖeŋu'
+      support: 'WhatsApp Kpekpeɖeŋu',
+      emptyActivity: 'Ame aɖeke me wɔ nane haɖe o.',
+      emptyActivitySub: 'Ɖo wò wɛbsaet kadodo ɖe WhatsApp dzi be amewo nate ŋu aƒle nuwo.'
     }
   }[language];
 
@@ -313,10 +296,13 @@ export const MerchantDashboard: React.FC = () => {
             <span style={{ fontSize: '0.82rem', color: 'var(--text-muted)', fontWeight: 700, textTransform: 'uppercase', letterSpacing: '0.8px' }}>{t.visits}</span>
             <span style={{ fontSize: '1.2rem', opacity: 0.8 }}>📈</span>
           </div>
-          <div style={{ fontSize: '2.4rem', fontWeight: 900, color: '#fff', letterSpacing: '-0.5px' }}>1,420</div>
+          <div style={{ fontSize: '2.4rem', fontWeight: 900, color: '#fff', letterSpacing: '-0.5px' }}>
+            {isSampleMode ? '1,420' : '0'}
+          </div>
           <div style={{ display: 'flex', alignItems: 'center', gap: '0.4rem', marginTop: '0.4rem' }}>
-            <span style={{ color: '#10b981', fontWeight: 800, fontSize: '0.8rem' }}>↑ +18.4%</span>
-            <span style={{ color: 'var(--text-subtle)', fontSize: '0.78rem' }}>vs last week</span>
+            <span style={{ color: isSampleMode ? '#10b981' : 'var(--text-subtle)', fontWeight: 700, fontSize: '0.8rem' }}>
+              {isSampleMode ? '↑ +18.4% vs last week' : 'Awaiting first visitors'}
+            </span>
           </div>
         </div>
 
@@ -333,9 +319,11 @@ export const MerchantDashboard: React.FC = () => {
             <span style={{ fontSize: '0.82rem', color: 'var(--text-muted)', fontWeight: 700, textTransform: 'uppercase', letterSpacing: '0.8px' }}>{t.orders}</span>
             <span style={{ fontSize: '1.2rem', opacity: 0.8 }}>📲</span>
           </div>
-          <div style={{ fontSize: '2.4rem', fontWeight: 900, color: '#25d366', letterSpacing: '-0.5px' }}>48 Leads</div>
+          <div style={{ fontSize: '2.4rem', fontWeight: 900, color: '#25d366', letterSpacing: '-0.5px' }}>
+            {isSampleMode ? '48 Leads' : '0 Leads'}
+          </div>
           <div style={{ color: 'var(--text-subtle)', fontSize: '0.78rem', marginTop: '0.4rem' }}>
-            Direct WhatsApp message triggers
+            {isSampleMode ? 'Direct WhatsApp message triggers' : 'No WhatsApp inquiries yet'}
           </div>
         </div>
 
@@ -353,10 +341,10 @@ export const MerchantDashboard: React.FC = () => {
             <span style={{ fontSize: '1.2rem', opacity: 0.8 }}>💰</span>
           </div>
           <div style={{ fontSize: '2.4rem', fontWeight: 900, color: 'var(--gold-accent)', letterSpacing: '-0.5px' }}>
-            {formatPrice(7350)}
+            {isSampleMode ? formatPrice(7350) : formatPrice(0)}
           </div>
           <div style={{ color: 'var(--text-subtle)', fontSize: '0.78rem', marginTop: '0.4rem' }}>
-            MTN MoMo & Telecel Cash settlements
+            {isSampleMode ? 'MTN MoMo & Telecel Cash settlements' : 'No payment settlements yet'}
           </div>
         </div>
       </div>
@@ -509,58 +497,99 @@ export const MerchantDashboard: React.FC = () => {
           padding: '1.8rem',
           boxShadow: '0 20px 40px -15px rgba(0,0,0,0.5)'
         }}>
-          <div style={{ display: 'flex', flexDirection: 'column', gap: '1rem' }}>
-            {activities.map((act) => (
-              <div
-                key={act.id}
-                style={{
-                  display: 'flex',
-                  justifyContent: 'space-between',
-                  alignItems: 'center',
-                  padding: '1.2rem',
-                  borderRadius: '14px',
-                  background: 'rgba(255, 255, 255, 0.02)',
-                  border: '1px solid rgba(255, 255, 255, 0.05)',
-                  flexWrap: 'wrap',
-                  gap: '1rem',
-                  transition: 'background 0.2s'
-                }}
-              >
-                <div style={{ display: 'flex', alignItems: 'center', gap: '1.2rem' }}>
-                  <div style={{
-                    width: '10px',
-                    height: '10px',
-                    borderRadius: '50%',
-                    background: act.badgeColor,
-                    boxShadow: `0 0 10px ${act.badgeColor}`
-                  }} />
-                  <div>
-                    <div style={{ fontWeight: 800, color: '#fff', fontSize: '0.95rem' }}>{act.title}</div>
-                    <div style={{ color: 'var(--text-muted)', fontSize: '0.82rem', marginTop: '0.2rem' }}>{act.detail}</div>
+          {activities.length === 0 ? (
+            <div style={{ textAlign: 'center', padding: '3rem 1rem' }}>
+              <div style={{ fontSize: '2.5rem', marginBottom: '0.8rem' }}>📭</div>
+              <h4 style={{ fontSize: '1.15rem', fontWeight: 800, color: '#fff', marginBottom: '0.4rem' }}>{t.emptyActivity}</h4>
+              <p style={{ color: 'var(--text-muted)', fontSize: '0.88rem', maxWidth: '480px', margin: '0 auto 1.5rem', lineHeight: 1.6 }}>
+                {t.emptyActivitySub}
+              </p>
+              <div style={{ display: 'flex', gap: '1rem', justifyContent: 'center', flexWrap: 'wrap' }}>
+                <button
+                  onClick={() => setIsShareModalOpen(true)}
+                  style={{
+                    background: '#25d366',
+                    color: '#07090E',
+                    border: 'none',
+                    padding: '0.6rem 1.4rem',
+                    borderRadius: '50px',
+                    fontWeight: 800,
+                    fontSize: '0.82rem',
+                    cursor: 'pointer'
+                  }}
+                >
+                  📲 Share Store on WhatsApp
+                </button>
+                <button
+                  onClick={() => setIsSampleMode(!isSampleMode)}
+                  style={{
+                    background: 'rgba(255, 255, 255, 0.08)',
+                    color: 'var(--text-main)',
+                    border: '1px solid rgba(255, 255, 255, 0.2)',
+                    padding: '0.6rem 1.4rem',
+                    borderRadius: '50px',
+                    fontWeight: 700,
+                    fontSize: '0.82rem',
+                    cursor: 'pointer'
+                  }}
+                >
+                  {isSampleMode ? 'View Real Zero-State' : '✨ Preview Sample Demo Data'}
+                </button>
+              </div>
+            </div>
+          ) : (
+            <div style={{ display: 'flex', flexDirection: 'column', gap: '1rem' }}>
+              {activities.map((act) => (
+                <div
+                  key={act.id}
+                  style={{
+                    display: 'flex',
+                    justifyContent: 'space-between',
+                    alignItems: 'center',
+                    padding: '1.2rem',
+                    borderRadius: '14px',
+                    background: 'rgba(255, 255, 255, 0.02)',
+                    border: '1px solid rgba(255, 255, 255, 0.05)',
+                    flexWrap: 'wrap',
+                    gap: '1rem'
+                  }}
+                >
+                  <div style={{ display: 'flex', alignItems: 'center', gap: '1.2rem' }}>
+                    <div style={{
+                      width: '10px',
+                      height: '10px',
+                      borderRadius: '50%',
+                      background: act.badgeColor,
+                      boxShadow: `0 0 10px ${act.badgeColor}`
+                    }} />
+                    <div>
+                      <div style={{ fontWeight: 800, color: '#fff', fontSize: '0.95rem' }}>{act.title}</div>
+                      <div style={{ color: 'var(--text-muted)', fontSize: '0.82rem', marginTop: '0.2rem' }}>{act.detail}</div>
+                    </div>
+                  </div>
+
+                  <div style={{ display: 'flex', alignItems: 'center', gap: '1.2rem' }}>
+                    {act.amount && (
+                      <span style={{ fontWeight: 900, color: 'var(--gold-accent)', fontSize: '1.05rem' }}>
+                        {act.amount}
+                      </span>
+                    )}
+                    <span style={{
+                      background: 'rgba(255, 255, 255, 0.06)',
+                      color: act.badgeColor,
+                      padding: '0.3rem 0.8rem',
+                      borderRadius: '50px',
+                      fontSize: '0.74rem',
+                      fontWeight: 800
+                    }}>
+                      {act.badge}
+                    </span>
+                    <span style={{ color: 'var(--text-subtle)', fontSize: '0.78rem' }}>{act.time}</span>
                   </div>
                 </div>
-
-                <div style={{ display: 'flex', alignItems: 'center', gap: '1.2rem' }}>
-                  {act.amount && (
-                    <span style={{ fontWeight: 900, color: 'var(--gold-accent)', fontSize: '1.05rem' }}>
-                      {act.amount}
-                    </span>
-                  )}
-                  <span style={{
-                    background: 'rgba(255, 255, 255, 0.06)',
-                    color: act.badgeColor,
-                    padding: '0.3rem 0.8rem',
-                    borderRadius: '50px',
-                    fontSize: '0.74rem',
-                    fontWeight: 800
-                  }}>
-                    {act.badge}
-                  </span>
-                  <span style={{ color: 'var(--text-subtle)', fontSize: '0.78rem' }}>{act.time}</span>
-                </div>
-              </div>
-            ))}
-          </div>
+              ))}
+            </div>
+          )}
         </div>
       )}
 
