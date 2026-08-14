@@ -156,18 +156,18 @@ export const MerchantDashboard: React.FC = () => {
         background: 'rgba(13, 18, 29, 0.85)',
         backdropFilter: 'blur(20px)',
         borderRadius: '20px',
-        padding: '1.2rem 1.8rem',
+        padding: '1.2rem 1.4rem',
         marginBottom: '2rem',
         display: 'flex',
         justifyContent: 'space-between',
         alignItems: 'center',
         flexWrap: 'wrap',
-        gap: '1.2rem',
+        gap: '1rem',
         boxShadow: '0 20px 40px -15px rgba(0,0,0,0.6)'
       }}>
         {/* Business Selector & Plan Pill */}
-        <div style={{ display: 'flex', alignItems: 'center', gap: '1.2rem', flexWrap: 'wrap' }}>
-          <div style={{ display: 'flex', alignItems: 'center', gap: '0.6rem' }}>
+        <div style={{ display: 'flex', alignItems: 'center', gap: '0.8rem', flexWrap: 'wrap', width: '100%', maxWidth: '500px' }}>
+          <div style={{ display: 'flex', alignItems: 'center', gap: '0.5rem', flexGrow: 1 }}>
             <span style={{ fontSize: '1.3rem' }}>🏪</span>
             <select
               value={selectedBusiness}
@@ -177,11 +177,12 @@ export const MerchantDashboard: React.FC = () => {
                 border: '1px solid rgba(255, 255, 255, 0.12)',
                 color: '#fff',
                 fontWeight: 800,
-                fontSize: '0.95rem',
-                padding: '0.5rem 1rem',
+                fontSize: '0.92rem',
+                padding: '0.6rem 0.8rem',
                 borderRadius: '10px',
                 outline: 'none',
-                cursor: 'pointer'
+                cursor: 'pointer',
+                flexGrow: 1
               }}
             >
               <option value="Ama Heritage Kente">Ama Heritage Kente</option>
@@ -194,14 +195,15 @@ export const MerchantDashboard: React.FC = () => {
             background: 'rgba(16, 185, 129, 0.12)',
             border: '1px solid rgba(16, 185, 129, 0.3)',
             color: '#10b981',
-            padding: '0.35rem 0.9rem',
+            padding: '0.4rem 0.85rem',
             borderRadius: '50px',
-            fontSize: '0.78rem',
+            fontSize: '0.75rem',
             fontWeight: 800,
             display: 'inline-flex',
             alignItems: 'center',
             gap: '0.4rem',
-            letterSpacing: '0.5px'
+            letterSpacing: '0.5px',
+            whiteSpace: 'nowrap'
           }}>
             <span style={{ width: '6px', height: '6px', borderRadius: '50%', background: '#10b981', boxShadow: '0 0 6px #10b981' }}></span>
             {t.planStatus}
@@ -209,53 +211,59 @@ export const MerchantDashboard: React.FC = () => {
         </div>
 
         {/* Controls: Language, Currency, Live Support */}
-        <div style={{ display: 'flex', alignItems: 'center', gap: '0.75rem', flexWrap: 'wrap' }}>
-          {/* Segmented Language Switcher */}
-          <div style={{
-            display: 'flex',
-            background: '#090D15',
-            borderRadius: '10px',
-            padding: '3px',
-            border: '1px solid rgba(255, 255, 255, 0.08)'
-          }}>
-            {(['EN', 'TWI', 'GA', 'EWE'] as const).map((lang) => (
-              <button
-                key={lang}
-                onClick={() => setLanguage(lang)}
-                style={{
-                  background: language === lang ? 'var(--cyan-glow)' : 'transparent',
-                  color: language === lang ? '#07090E' : 'var(--text-muted)',
-                  border: 'none',
-                  padding: '0.35rem 0.7rem',
-                  borderRadius: '7px',
-                  fontWeight: 800,
-                  fontSize: '0.75rem',
-                  cursor: 'pointer',
-                  transition: 'all 0.2s'
-                }}
-              >
-                {lang}
-              </button>
-            ))}
-          </div>
-
-          {/* Currency Toggle */}
-          <button
-            onClick={() => setCurrency(currency === 'GHS' ? 'USD' : 'GHS')}
-            style={{
-              background: 'rgba(229, 192, 123, 0.1)',
-              border: '1px solid rgba(229, 192, 123, 0.3)',
-              color: 'var(--gold-accent)',
-              padding: '0.45rem 0.9rem',
+        <div style={{ display: 'flex', alignItems: 'center', gap: '0.6rem', flexWrap: 'wrap', width: '100%', justifyContent: 'space-between' }}>
+          <div style={{ display: 'flex', alignItems: 'center', gap: '0.6rem', flexWrap: 'wrap' }}>
+            {/* Segmented Language Switcher */}
+            <div style={{
+              display: 'flex',
+              background: '#090D15',
               borderRadius: '10px',
-              fontWeight: 800,
-              fontSize: '0.78rem',
-              cursor: 'pointer',
-              transition: 'all 0.2s'
-            }}
-          >
-            {currency === 'GHS' ? '₵ GHS' : '$ USD'}
-          </button>
+              padding: '3px',
+              border: '1px solid rgba(255, 255, 255, 0.08)'
+            }}>
+              {(['EN', 'TWI', 'GA', 'EWE'] as const).map((lang) => (
+                <button
+                  key={lang}
+                  onClick={() => setLanguage(lang)}
+                  style={{
+                    background: language === lang ? 'var(--cyan-glow)' : 'transparent',
+                    color: language === lang ? '#07090E' : 'var(--text-muted)',
+                    border: 'none',
+                    padding: '0.4rem 0.65rem',
+                    borderRadius: '7px',
+                    fontWeight: 800,
+                    fontSize: '0.75rem',
+                    cursor: 'pointer',
+                    transition: 'all 0.2s',
+                    minHeight: '36px',
+                    display: 'flex',
+                    alignItems: 'center',
+                    justifyContent: 'center'
+                  }}
+                >
+                  {lang}
+                </button>
+              ))}
+            </div>
+
+            {/* Currency Toggle */}
+            <button
+              onClick={() => setCurrency(currency === 'GHS' ? 'USD' : 'GHS')}
+              style={{
+                background: 'rgba(229, 192, 123, 0.1)',
+                border: '1px solid rgba(229, 192, 123, 0.3)',
+                color: 'var(--gold-accent)',
+                padding: '0.4rem 0.8rem',
+                borderRadius: '10px',
+                fontWeight: 800,
+                fontSize: '0.78rem',
+                cursor: 'pointer',
+                minHeight: '36px'
+              }}
+            >
+              {currency === 'GHS' ? '₵ GHS' : '$ USD'}
+            </button>
+          </div>
 
           {/* VIP Support Button */}
           <a
@@ -266,15 +274,18 @@ export const MerchantDashboard: React.FC = () => {
               background: '#25d366',
               color: '#07090E',
               textDecoration: 'none',
-              padding: '0.5rem 1.1rem',
+              padding: '0.55rem 1rem',
               borderRadius: '10px',
               fontWeight: 800,
-              fontSize: '0.82rem',
+              fontSize: '0.8rem',
               display: 'inline-flex',
               alignItems: 'center',
-              gap: '0.45rem',
+              justifyContent: 'center',
+              gap: '0.4rem',
               boxShadow: '0 4px 15px rgba(37, 211, 102, 0.25)',
-              transition: 'transform 0.2s'
+              minHeight: '36px',
+              flexGrow: 1,
+              maxWidth: '220px'
             }}
           >
             <span>💬</span> {t.support}
