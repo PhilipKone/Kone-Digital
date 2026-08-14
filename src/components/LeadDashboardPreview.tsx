@@ -47,13 +47,13 @@ export const LeadDashboardPreview: React.FC = () => {
           display: 'inline-block',
           marginBottom: '1rem'
         }}>
-          📲 DAILY RETENTION ENGINE • WHATSAPP LEAD CRM
+          DEMO WORKFLOW PREVIEW • WHATSAPP LEAD CRM
         </span>
         <h2 style={{ fontSize: 'clamp(1.8rem, 4vw, 2.6rem)', fontWeight: 900 }}>
-          Every Order & Lead <span style={{ color: '#10b981' }}>Tracked in Real-Time</span>
+          Centralize Every WhatsApp <span style={{ color: '#10b981' }}>Order & MoMo Lead</span>
         </h2>
         <p style={{ color: 'var(--text-muted)', fontSize: '1.05rem', marginTop: '0.5rem', maxWidth: '650px', margin: '0.5rem auto 0' }}>
-          Never lose a customer order. Our unified merchant dashboard logs every customer interaction with automated daily morning WhatsApp digests.
+          An interactive demonstration of how your merchant dashboard organizes customer inquiries, MoMo payment verifications, and automated WhatsApp notifications.
         </p>
       </div>
 

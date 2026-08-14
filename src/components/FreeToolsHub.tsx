@@ -457,16 +457,16 @@ export const FreeToolsHub: React.FC<FreeToolsHubProps> = ({ onOpenWizard }) => {
 
                 <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(140px, 1fr))', gap: '1rem', marginBottom: '1.5rem' }}>
                   <div style={{ background: 'rgba(239,68,68,0.1)', padding: '1rem', borderRadius: '10px', textAlign: 'center' }}>
-                    <div style={{ fontSize: '1.8rem', fontWeight: 900, color: '#ef4444' }}>5.8s</div>
-                    <div style={{ fontSize: '0.75rem', color: 'var(--text-muted)' }}>Load Time on MTN 3G</div>
+                    <div style={{ fontSize: '1.8rem', fontWeight: 900, color: '#ef4444' }}>Heavy</div>
+                    <div style={{ fontSize: '0.75rem', color: 'var(--text-muted)' }}>Legacy CMS Plugin Overhead</div>
                   </div>
-                  <div style={{ background: 'rgba(239,68,68,0.1)', padding: '1rem', borderRadius: '10px', textAlign: 'center' }}>
-                    <div style={{ fontSize: '1.8rem', fontWeight: 900, color: '#ef4444' }}>~42%</div>
-                    <div style={{ fontSize: '0.75rem', color: 'var(--text-muted)' }}>Estimated Lost Sales</div>
+                  <div style={{ background: 'rgba(255,204,0,0.1)', padding: '1rem', borderRadius: '10px', textAlign: 'center' }}>
+                    <div style={{ fontSize: '1.8rem', fontWeight: 900, color: '#ffcc00' }}>3G / 4G</div>
+                    <div style={{ fontSize: '0.75rem', color: 'var(--text-muted)' }}>Mobile Network Latency</div>
                   </div>
                   <div style={{ background: 'rgba(16,185,129,0.1)', padding: '1rem', borderRadius: '10px', textAlign: 'center' }}>
-                    <div style={{ fontSize: '1.8rem', fontWeight: 900, color: '#10b981' }}>0.8s</div>
-                    <div style={{ fontSize: '0.75rem', color: 'var(--text-muted)' }}>Kone Digital Speed</div>
+                    <div style={{ fontSize: '1.8rem', fontWeight: 900, color: '#10b981' }}>Sub-1s</div>
+                    <div style={{ fontSize: '0.75rem', color: 'var(--text-muted)' }}>Kone Digital Target TTFB</div>
                   </div>
                 </div>
 

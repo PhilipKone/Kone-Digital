@@ -1,28 +1,32 @@
-import React, { useState, useEffect } from 'react';
+import React from 'react';
 
 export const TrustMetrics: React.FC = () => {
-  const [websitesCount, setWebsitesCount] = useState(0);
-  const [momoProcessed, setMomoProcessed] = useState(0);
-  const [leadsGenerated, setLeadsGenerated] = useState(0);
-
-  useEffect(() => {
-    const duration = 2000;
-    const steps = 50;
-    const stepTime = duration / steps;
-    let step = 0;
-
-    const timer = setInterval(() => {
-      step++;
-      const progress = Math.min(step / steps, 1);
-      setWebsitesCount(Math.floor(progress * 50));
-      setMomoProcessed(Math.floor(progress * 1200000));
-      setLeadsGenerated(Math.floor(progress * 25000));
-
-      if (step >= steps) clearInterval(timer);
-    }, stepTime);
-
-    return () => clearInterval(timer);
-  }, []);
+  const capabilities = [
+    {
+      metric: '48h',
+      title: 'Rapid Launch Turnaround',
+      description: 'Your bespoke business hub deployed with zero technical overhead.',
+      color: 'var(--cyan-glow)'
+    },
+    {
+      metric: 'Direct',
+      title: 'MoMo & WhatsApp Routing',
+      description: 'Automated order collection straight to your MTN, Telecel, or AT phone.',
+      color: 'var(--gold-accent)'
+    },
+    {
+      metric: '100%',
+      title: 'Fully Managed WaaS',
+      description: 'Zero maintenance headaches. We handle hosting, SSL, updates & security.',
+      color: '#10b981'
+    },
+    {
+      metric: '99.9%',
+      title: 'Guaranteed Uptime & Speed',
+      description: 'Ultra-lightweight code optimized for African 3G/4G networks.',
+      color: 'var(--cyan-glow)'
+    }
+  ];
 
   return (
     <section className="trust-metrics-section" style={{ padding: '3rem 0', margin: '2rem 0' }}>
@@ -38,7 +42,7 @@ export const TrustMetrics: React.FC = () => {
           letterSpacing: '1.5px',
           textTransform: 'uppercase'
         }}>
-          TRUSTED ACROSS GHANA & WEST AFRICA
+          ENTERPRISE ARCHITECTURE • ZERO MAINTENANCE
         </span>
         <h2 style={{ fontSize: '2.2rem', marginTop: '1rem', fontWeight: 800 }}>
           Engineered for <span className="neon-text">Real Business Growth</span>
@@ -53,65 +57,25 @@ export const TrustMetrics: React.FC = () => {
         margin: '0 auto',
         padding: '0 1rem'
       }}>
-        <div className="metric-card neon-border" style={{ 
-          background: 'var(--bg-surface)', 
-          padding: '2rem 1.5rem', 
-          borderRadius: '16px', 
-          textAlign: 'center',
-          backdropFilter: 'blur(10px)'
-        }}>
-          <div style={{ fontSize: '2.8rem', fontWeight: 900, color: 'var(--cyan-glow)' }}>
-            {websitesCount}+
+        {capabilities.map((cap, idx) => (
+          <div key={idx} className="metric-card neon-border" style={{ 
+            background: 'var(--bg-surface)', 
+            padding: '2rem 1.5rem', 
+            borderRadius: '16px', 
+            textAlign: 'center',
+            backdropFilter: 'blur(10px)'
+          }}>
+            <div style={{ fontSize: '2.6rem', fontWeight: 900, color: cap.color }}>
+              {cap.metric}
+            </div>
+            <h3 style={{ color: 'var(--text-main)', fontSize: '1rem', fontWeight: 700, marginTop: '0.6rem', marginBottom: '0.3rem' }}>
+              {cap.title}
+            </h3>
+            <p style={{ color: 'var(--text-muted)', fontSize: '0.82rem', lineHeight: 1.5 }}>
+              {cap.description}
+            </p>
           </div>
-          <p style={{ color: 'var(--text-muted)', fontSize: '0.92rem', fontWeight: 600, marginTop: '0.4rem' }}>
-            High-Performance Websites Built
-          </p>
-        </div>
-
-        <div className="metric-card neon-border" style={{ 
-          background: 'var(--bg-surface)', 
-          padding: '2rem 1.5rem', 
-          borderRadius: '16px', 
-          textAlign: 'center',
-          backdropFilter: 'blur(10px)'
-        }}>
-          <div style={{ fontSize: '2.8rem', fontWeight: 900, color: 'var(--gold-accent)' }}>
-            GH₵ {(momoProcessed / 1000000).toFixed(1)}M+
-          </div>
-          <p style={{ color: 'var(--text-muted)', fontSize: '0.92rem', fontWeight: 600, marginTop: '0.4rem' }}>
-            MoMo Payments Processed
-          </p>
-        </div>
-
-        <div className="metric-card neon-border" style={{ 
-          background: 'var(--bg-surface)', 
-          padding: '2rem 1.5rem', 
-          borderRadius: '16px', 
-          textAlign: 'center',
-          backdropFilter: 'blur(10px)'
-        }}>
-          <div style={{ fontSize: '2.8rem', fontWeight: 900, color: '#10b981' }}>
-            {(leadsGenerated).toLocaleString()}+
-          </div>
-          <p style={{ color: 'var(--text-muted)', fontSize: '0.92rem', fontWeight: 600, marginTop: '0.4rem' }}>
-            WhatsApp Leads Generated
-          </p>
-        </div>
-
-        <div className="metric-card neon-border" style={{ 
-          background: 'var(--bg-surface)', 
-          padding: '2rem 1.5rem', 
-          borderRadius: '16px', 
-          textAlign: 'center',
-          backdropFilter: 'blur(10px)'
-        }}>
-          <div style={{ fontSize: '2.8rem', fontWeight: 900, color: 'var(--cyan-glow)' }}>
-            99.9%
-          </div>
-          <p style={{ color: 'var(--text-muted)', fontSize: '0.92rem', fontWeight: 600, marginTop: '0.4rem' }}>
-            Guaranteed Uptime & Instant Load
-          </p>
-        </div>
+        ))}
       </div>
 
       {/* Integration Partner Logos */}
