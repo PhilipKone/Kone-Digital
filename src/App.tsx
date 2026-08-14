@@ -1,5 +1,7 @@
+import React, { useEffect, useRef, useState } from 'react';
 import { HeroSection } from './components/HeroSection';
 import { TrustMetrics } from './components/TrustMetrics';
+import { OnboardingWizard } from './components/OnboardingWizard';
 import { CurrencyToggle } from './components/CurrencyToggle/CurrencyToggle';
 import { Portfolio } from './components/Portfolio';
 import { Pricing } from './components/Pricing';
@@ -8,6 +10,7 @@ import ServiceDetail from './components/ServiceDetail';
 
 function App() {
   const containerRef = useRef<HTMLDivElement>(null);
+  const [isWizardOpen, setIsWizardOpen] = useState<boolean>(false);
   
   const [currentRoute, setCurrentRoute] = useState<'home' | 'services' | 'service-detail' | 'work' | 'pricing'>(() => {
     const hash = typeof window !== 'undefined' ? window.location.hash : '';
@@ -134,7 +137,7 @@ function App() {
           <Pricing />
         ) : (
           <>
-            <HeroSection />
+            <HeroSection onOpenWizard={() => setIsWizardOpen(true)} />
             <TrustMetrics />
             <ServicesHub 
               onSelectService={(slug) => {
@@ -147,6 +150,11 @@ function App() {
           </>
         )}
       </main>
+
+      <OnboardingWizard 
+        isOpen={isWizardOpen} 
+        onClose={() => setIsWizardOpen(false)} 
+      />
 
       {/* Footer */}
       <footer className="hub-footer" style={{

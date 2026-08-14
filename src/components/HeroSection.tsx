@@ -1,6 +1,8 @@
-import React, { useState } from 'react';
+interface HeroSectionProps {
+  onOpenWizard: () => void;
+}
 
-export const HeroSection: React.FC = () => {
+export const HeroSection: React.FC<HeroSectionProps> = ({ onOpenWizard }) => {
   const [activeTab, setActiveTab] = useState<'stone' | 'fashion' | 'momo'>('stone');
 
   return (
@@ -32,25 +34,28 @@ export const HeroSection: React.FC = () => {
         </p>
 
         <div style={{ display: 'flex', gap: '1.2rem', justifyContent: 'center', flexWrap: 'wrap' }}>
-          <a 
-            href="https://wa.me/233551993820?text=Hi%20Kone%20Digital%2C%20I'd%20like%20to%20request%20a%20consultation%20for%20my%20business%20website." 
-            target="_blank" 
-            rel="noopener noreferrer" 
+          <button 
+            onClick={onOpenWizard}
             className="neon-btn neon-border"
             style={{ 
-              textDecoration: 'none', 
               display: 'inline-flex', 
               alignItems: 'center', 
               gap: '0.5rem',
               padding: '0.9rem 2.2rem',
-              fontSize: '0.95rem'
+              fontSize: '0.95rem',
+              cursor: 'pointer',
+              background: 'var(--cyan-glow)',
+              color: '#090B10',
+              fontWeight: 800
             }}
           >
-            <span>💬 Request WhatsApp Consultation</span>
-          </a>
+            <span>🚀 Build My Digital Flyer in 30s</span>
+          </button>
 
           <a 
-            href="#pricing" 
+            href="https://wa.me/233551993820?text=Hi%20Kone%20Digital%2C%20I'd%20like%20to%20request%20a%20consultation%20for%20my%20business%20website." 
+            target="_blank" 
+            rel="noopener noreferrer" 
             className="neon-btn"
             style={{ 
               textDecoration: 'none', 
@@ -61,7 +66,7 @@ export const HeroSection: React.FC = () => {
               fontSize: '0.95rem'
             }}
           >
-            <span>📊 Explore Interactive Pricing</span>
+            <span>💬 Request WhatsApp Consultation</span>
           </a>
         </div>
       </div>
