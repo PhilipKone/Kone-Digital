@@ -192,19 +192,19 @@ export const FreeToolsHub: React.FC<FreeToolsHubProps> = ({ onOpenWizard }) => {
                   onClick={handleCopyLink}
                   style={{
                     background: waCopied ? '#10b981' : '#25d366',
-                    color: '#000',
+                    color: '#07090E',
                     border: 'none',
-                    padding: '0.75rem 1.4rem',
-                    borderRadius: '50px',
+                    padding: '0.65rem 1.4rem',
+                    borderRadius: '8px',
                     fontWeight: 800,
-                    fontSize: '0.9rem',
+                    fontSize: '0.88rem',
                     cursor: 'pointer',
                     display: 'inline-flex',
                     alignItems: 'center',
                     gap: '0.4rem'
                   }}
                 >
-                  {waCopied ? '✓ Link Copied to Clipboard!' : '📋 Copy WhatsApp Link'}
+                  {waCopied ? 'Link Copied to Clipboard' : 'Copy WhatsApp Link'}
                 </button>
               </div>
             </div>
