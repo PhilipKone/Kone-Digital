@@ -2,6 +2,9 @@ import React, { useEffect, useRef, useState } from 'react';
 import { HeroSection } from './components/HeroSection';
 import { TrustMetrics } from './components/TrustMetrics';
 import { OnboardingWizard } from './components/OnboardingWizard';
+import { FreeToolsHub } from './components/FreeToolsHub';
+import { LeadDashboardPreview } from './components/LeadDashboardPreview';
+import { PoweredByBadge } from './components/PoweredByBadge';
 import { CurrencyToggle } from './components/CurrencyToggle/CurrencyToggle';
 import { Portfolio } from './components/Portfolio';
 import { Pricing } from './components/Pricing';
@@ -11,13 +14,21 @@ import ServiceDetail from './components/ServiceDetail';
 function App() {
   const containerRef = useRef<HTMLDivElement>(null);
   const [isWizardOpen, setIsWizardOpen] = useState<boolean>(false);
+  const [wizardPrefill, setWizardPrefill] = useState<{ phone?: string; businessName?: string }>({});
+
+  const handleOpenWizardWithPrefill = (data?: { phone?: string; businessName?: string }) => {
+    if (data) setWizardPrefill(data);
+    setIsWizardOpen(true);
+  };
   
-  const [currentRoute, setCurrentRoute] = useState<'home' | 'services' | 'service-detail' | 'work' | 'pricing'>(() => {
+  const [currentRoute, setCurrentRoute] = useState<'home' | 'services' | 'service-detail' | 'work' | 'pricing' | 'tools' | 'crm'>(() => {
     const hash = typeof window !== 'undefined' ? window.location.hash : '';
     if (hash.startsWith('#services/')) return 'service-detail';
     if (hash === '#services') return 'services';
     if (hash === '#work') return 'work';
     if (hash === '#pricing') return 'pricing';
+    if (hash === '#tools') return 'tools';
+    if (hash === '#crm') return 'crm';
     return 'home';
   });
 
@@ -40,6 +51,10 @@ function App() {
         setCurrentRoute('work');
       } else if (hash === '#pricing') {
         setCurrentRoute('pricing');
+      } else if (hash === '#tools') {
+        setCurrentRoute('tools');
+      } else if (hash === '#crm') {
+        setCurrentRoute('crm');
       } else {
         setCurrentRoute('home');
       }
@@ -53,7 +68,6 @@ function App() {
     const isReactSnap = navigator.userAgent === 'ReactSnap';
 
     if (isReactSnap) {
-      // Immediately make all fade-in-up elements visible during prerendering
       const elements = containerRef.current?.querySelectorAll('.fade-in-up') || [];
       elements.forEach(el => {
         el.classList.add('visible');
@@ -79,7 +93,6 @@ function App() {
 
     observeElements();
 
-    // Watch for lazy-loaded components entering the DOM
     const mutationObserver = new MutationObserver(() => {
       observeElements();
     });
@@ -105,6 +118,7 @@ function App() {
           <a href="#" className={currentRoute === 'home' ? 'active-nav' : ''}>Overview</a>
           <a href="#services" className={currentRoute === 'services' || currentRoute === 'service-detail' ? 'active-nav' : ''}>Services</a>
           <a href="#work" className={currentRoute === 'work' ? 'active-nav' : ''}>Our Work</a>
+          <a href="#tools" className={currentRoute === 'tools' ? 'active-nav' : ''}>Free Tools</a>
           <a href="#pricing" className={currentRoute === 'pricing' ? 'active-nav' : ''}>Pricing</a>
           <a 
             href="https://wa.me/233551993820?text=Hi%20Kone%20Digital%2C%20I'd%20like%20to%20get%20in%20touch%20about%20your%20services." 
@@ -133,11 +147,13 @@ function App() {
           />
         ) : currentRoute === 'work' ? (
           <Portfolio />
+        ) : currentRoute === 'tools' ? (
+          <FreeToolsHub onOpenWizard={handleOpenWizardWithPrefill} />
         ) : currentRoute === 'pricing' ? (
           <Pricing />
         ) : (
           <>
-            <HeroSection onOpenWizard={() => setIsWizardOpen(true)} />
+            <HeroSection onOpenWizard={() => handleOpenWizardWithPrefill()} />
             <TrustMetrics />
             <ServicesHub 
               onSelectService={(slug) => {
@@ -146,14 +162,20 @@ function App() {
               }} 
             />
             <Portfolio />
+            <FreeToolsHub onOpenWizard={handleOpenWizardWithPrefill} />
+            <LeadDashboardPreview />
             <Pricing />
           </>
         )}
       </main>
 
+      <PoweredByBadge onOpenWizard={() => handleOpenWizardWithPrefill()} />
+
       <OnboardingWizard 
         isOpen={isWizardOpen} 
         onClose={() => setIsWizardOpen(false)} 
+        initialPhone={wizardPrefill.phone}
+        initialBusinessName={wizardPrefill.businessName}
       />
 
       {/* Footer */}

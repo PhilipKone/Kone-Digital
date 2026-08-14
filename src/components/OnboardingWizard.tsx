@@ -5,18 +5,25 @@ import { db } from '../firebase/config';
 interface OnboardingWizardProps {
   isOpen: boolean;
   onClose: () => void;
+  initialPhone?: string;
+  initialBusinessName?: string;
 }
 
-export const OnboardingWizard: React.FC<OnboardingWizardProps> = ({ isOpen, onClose }) => {
+export const OnboardingWizard: React.FC<OnboardingWizardProps> = ({ 
+  isOpen, 
+  onClose,
+  initialPhone = '',
+  initialBusinessName = ''
+}) => {
   const [step, setStep] = useState<number>(1);
 
   // Step 1 State
-  const [businessName, setBusinessName] = useState<string>('');
+  const [businessName, setBusinessName] = useState<string>(initialBusinessName);
   const [industry, setIndustry] = useState<string>('Fashion & Apparel');
   const [primaryColor, setPrimaryColor] = useState<string>('#f59e0b');
 
   // Step 2 State
-  const [whatsappNumber, setWhatsappNumber] = useState<string>('');
+  const [whatsappNumber, setWhatsappNumber] = useState<string>(initialPhone);
   const [momoNetwork, setMomoNetwork] = useState<string>('MTN MoMo');
   const [momoNumber, setMomoNumber] = useState<string>('');
   const [itemTitle, setItemTitle] = useState<string>('Signature Collection Item');
