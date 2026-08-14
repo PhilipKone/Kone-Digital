@@ -4,6 +4,7 @@ import { TrustMetrics } from './components/TrustMetrics';
 import { OnboardingWizard } from './components/OnboardingWizard';
 import { FreeToolsHub } from './components/FreeToolsHub';
 import { LeadDashboardPreview } from './components/LeadDashboardPreview';
+import { MerchantDashboard } from './components/MerchantDashboard';
 import { PoweredByBadge } from './components/PoweredByBadge';
 import { CurrencyToggle } from './components/CurrencyToggle/CurrencyToggle';
 import { Portfolio } from './components/Portfolio';
@@ -21,7 +22,7 @@ function App() {
     setIsWizardOpen(true);
   };
   
-  const [currentRoute, setCurrentRoute] = useState<'home' | 'services' | 'service-detail' | 'work' | 'pricing' | 'tools' | 'crm'>(() => {
+  const [currentRoute, setCurrentRoute] = useState<'home' | 'services' | 'service-detail' | 'work' | 'pricing' | 'tools' | 'crm' | 'dashboard'>(() => {
     const hash = typeof window !== 'undefined' ? window.location.hash : '';
     if (hash.startsWith('#services/')) return 'service-detail';
     if (hash === '#services') return 'services';
@@ -29,6 +30,7 @@ function App() {
     if (hash === '#pricing') return 'pricing';
     if (hash === '#tools') return 'tools';
     if (hash === '#crm') return 'crm';
+    if (hash === '#dashboard') return 'dashboard';
     return 'home';
   });
 
@@ -55,6 +57,8 @@ function App() {
         setCurrentRoute('tools');
       } else if (hash === '#crm') {
         setCurrentRoute('crm');
+      } else if (hash === '#dashboard') {
+        setCurrentRoute('dashboard');
       } else {
         setCurrentRoute('home');
       }
@@ -119,6 +123,7 @@ function App() {
           <a href="#services" className={currentRoute === 'services' || currentRoute === 'service-detail' ? 'active-nav' : ''}>Services</a>
           <a href="#work" className={currentRoute === 'work' ? 'active-nav' : ''}>Our Work</a>
           <a href="#tools" className={currentRoute === 'tools' ? 'active-nav' : ''}>Free Tools</a>
+          <a href="#dashboard" className={currentRoute === 'dashboard' ? 'active-nav' : ''} style={{ color: 'var(--cyan-glow)', fontWeight: 800 }}>Dashboard</a>
           <a href="#pricing" className={currentRoute === 'pricing' ? 'active-nav' : ''}>Pricing</a>
           <a 
             href="https://wa.me/233551993820?text=Hi%20Kone%20Digital%2C%20I'd%20like%20to%20get%20in%20touch%20about%20your%20services." 
@@ -149,6 +154,8 @@ function App() {
           <Portfolio />
         ) : currentRoute === 'tools' ? (
           <FreeToolsHub onOpenWizard={handleOpenWizardWithPrefill} />
+        ) : currentRoute === 'dashboard' ? (
+          <MerchantDashboard />
         ) : currentRoute === 'pricing' ? (
           <Pricing />
         ) : (
