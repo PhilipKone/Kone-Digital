@@ -13,7 +13,7 @@ export const Portfolio: React.FC = () => {
       tagline: 'Premium Natural Stone Finishes & Architectural Cladding',
       image: '/sedemson_stone_hero.png',
       tags: ['WaaS', 'B2B', 'Cladding'],
-      status: 'Launching Soon 🚀'
+      status: 'Launching Soon'
     },
     {
       id: 'emewear',
@@ -23,7 +23,7 @@ export const Portfolio: React.FC = () => {
       tagline: 'Ghana-Made Plus-Size Ankara & Luxury Heritage Fashion',
       image: '/emewear/emewear_hero.jpg',
       tags: ['Fashion WaaS', 'E-Commerce', '3D Runway'],
-      status: 'Launching Soon 🚀'
+      status: 'Launching Soon'
     }
   ];
 

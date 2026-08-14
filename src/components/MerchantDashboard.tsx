@@ -356,6 +356,29 @@ export const MerchantDashboard: React.FC = () => {
             <span style={{ width: '6px', height: '6px', borderRadius: '50%', background: '#10b981' }}></span>
             {t.planStatus}
           </span>
+
+          <span style={{
+            background: isFirestoreConnected ? 'rgba(0, 240, 255, 0.1)' : 'rgba(229, 192, 123, 0.1)',
+            border: isFirestoreConnected ? '1px solid rgba(0, 240, 255, 0.25)' : '1px solid rgba(229, 192, 123, 0.25)',
+            color: isFirestoreConnected ? 'var(--cyan-glow)' : 'var(--gold-accent)',
+            padding: '0.3rem 0.75rem',
+            borderRadius: '50px',
+            fontSize: '0.75rem',
+            fontWeight: 700,
+            display: 'inline-flex',
+            alignItems: 'center',
+            gap: '0.35rem',
+            whiteSpace: 'nowrap'
+          }}>
+            <span style={{ 
+              width: '6px', 
+              height: '6px', 
+              borderRadius: '50%', 
+              background: isFirestoreConnected ? 'var(--cyan-glow)' : 'var(--gold-accent)',
+              boxShadow: isFirestoreConnected ? '0 0 8px var(--cyan-glow)' : 'none'
+            }}></span>
+            {isFirestoreConnected ? 'Live Synced' : 'Demo Offline'}
+          </span>
         </div>
 
         {/* Controls: Language, Currency, Support */}

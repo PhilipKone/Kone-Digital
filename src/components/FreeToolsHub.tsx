@@ -48,78 +48,78 @@ export const FreeToolsHub: React.FC<FreeToolsHubProps> = ({ onOpenWizard }) => {
     <section className="free-tools-section" id="tools" style={{ padding: '4rem 1rem', maxWidth: '1100px', margin: '0 auto' }}>
       <div style={{ textAlign: 'center', marginBottom: '2.5rem' }}>
         <span style={{
-          background: 'rgba(0, 255, 255, 0.1)',
-          border: '1px solid var(--cyan-glow)',
+          background: 'rgba(0, 255, 255, 0.08)',
+          border: '1px solid var(--border-cyan)',
           color: 'var(--cyan-glow)',
           padding: '0.35rem 1.2rem',
           borderRadius: '50px',
           fontSize: '0.78rem',
-          fontWeight: 800,
-          letterSpacing: '1.5px',
+          fontWeight: 700,
+          letterSpacing: '1.2px',
           textTransform: 'uppercase',
           display: 'inline-block',
           marginBottom: '1rem'
         }}>
-          🧰 FREE GROWTH MINI-TOOLS (100% FREE FOREVER)
+          FREE UTILITY TOOLS
         </span>
         <h2 style={{ fontSize: 'clamp(1.8rem, 4vw, 2.6rem)', fontWeight: 900 }}>
-          Free Utilities for <span className="neon-text">African Business Owners</span>
+          Digital Commerce Tools for <span className="neon-text">African Merchants</span>
         </h2>
         <p style={{ color: 'var(--text-muted)', fontSize: '1.05rem', marginTop: '0.5rem', maxWidth: '650px', margin: '0.5rem auto 0' }}>
-          No credit card required. Free standalone tools to streamline your WhatsApp orders and Mobile Money payments.
+          Free standalone utilities to streamline your WhatsApp customer communications and Mobile Money payment records.
         </p>
 
         {/* Tool Selector Tabs */}
-        <div style={{ display: 'flex', gap: '0.8rem', justifyContent: 'center', flexWrap: 'wrap', marginTop: '2rem' }}>
+        <div style={{ display: 'flex', gap: '0.6rem', justifyContent: 'center', flexWrap: 'wrap', marginTop: '2rem' }}>
           <button
             onClick={() => setActiveTool('whatsapp')}
             style={{
-              background: activeTool === 'whatsapp' ? 'var(--cyan-glow)' : 'var(--bg-surface)',
-              color: activeTool === 'whatsapp' ? '#090B10' : 'var(--text-main)',
-              border: '1px solid var(--cyan-glow)',
+              background: activeTool === 'whatsapp' ? 'rgba(255, 255, 255, 0.12)' : 'var(--bg-surface)',
+              color: activeTool === 'whatsapp' ? '#fff' : 'var(--text-muted)',
+              border: '1px solid ' + (activeTool === 'whatsapp' ? 'rgba(255, 255, 255, 0.25)' : 'var(--border-subtle)'),
               padding: '0.6rem 1.4rem',
-              borderRadius: '30px',
-              fontWeight: 800,
-              fontSize: '0.88rem',
+              borderRadius: '8px',
+              fontWeight: 700,
+              fontSize: '0.85rem',
               cursor: 'pointer',
-              transition: 'all 0.3s'
+              transition: 'all 0.2s'
             }}
           >
-            📲 WhatsApp Link & QR Maker
+            WhatsApp Link Maker
           </button>
 
           <button
             onClick={() => setActiveTool('invoice')}
             style={{
-              background: activeTool === 'invoice' ? 'var(--cyan-glow)' : 'var(--bg-surface)',
-              color: activeTool === 'invoice' ? '#090B10' : 'var(--text-main)',
-              border: '1px solid var(--cyan-glow)',
+              background: activeTool === 'invoice' ? 'rgba(255, 255, 255, 0.12)' : 'var(--bg-surface)',
+              color: activeTool === 'invoice' ? '#fff' : 'var(--text-muted)',
+              border: '1px solid ' + (activeTool === 'invoice' ? 'rgba(255, 255, 255, 0.25)' : 'var(--border-subtle)'),
               padding: '0.6rem 1.4rem',
-              borderRadius: '30px',
-              fontWeight: 800,
-              fontSize: '0.88rem',
+              borderRadius: '8px',
+              fontWeight: 700,
+              fontSize: '0.85rem',
               cursor: 'pointer',
-              transition: 'all 0.3s'
+              transition: 'all 0.2s'
             }}
           >
-            🧾 Free Ghana MoMo Invoice Generator
+            MoMo Invoice Generator
           </button>
 
           <button
             onClick={() => setActiveTool('speed')}
             style={{
-              background: activeTool === 'speed' ? 'var(--cyan-glow)' : 'var(--bg-surface)',
-              color: activeTool === 'speed' ? '#090B10' : 'var(--text-main)',
-              border: '1px solid var(--cyan-glow)',
+              background: activeTool === 'speed' ? 'rgba(255, 255, 255, 0.12)' : 'var(--bg-surface)',
+              color: activeTool === 'speed' ? '#fff' : 'var(--text-muted)',
+              border: '1px solid ' + (activeTool === 'speed' ? 'rgba(255, 255, 255, 0.25)' : 'var(--border-subtle)'),
               padding: '0.6rem 1.4rem',
-              borderRadius: '30px',
-              fontWeight: 800,
-              fontSize: '0.88rem',
+              borderRadius: '8px',
+              fontWeight: 700,
+              fontSize: '0.85rem',
               cursor: 'pointer',
-              transition: 'all 0.3s'
+              transition: 'all 0.2s'
             }}
           >
-            ⚡ 10s Mobile Speed & 3G Auditor
+            Mobile Speed Auditor
           </button>
         </div>
       </div>
@@ -136,8 +136,8 @@ export const FreeToolsHub: React.FC<FreeToolsHubProps> = ({ onOpenWizard }) => {
         {activeTool === 'whatsapp' && (
           <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(300px, 1fr))', gap: '2.5rem', alignItems: 'center' }}>
             <div>
-              <h3 style={{ fontSize: '1.4rem', color: '#25d366', fontWeight: 800, marginBottom: '0.5rem', display: 'flex', alignItems: 'center', gap: '0.5rem' }}>
-                <span>📲</span> WhatsApp Order Link Maker
+              <h3 style={{ fontSize: '1.3rem', color: '#fff', fontWeight: 800, marginBottom: '0.5rem' }}>
+                WhatsApp Order Link Maker
               </h3>
               <p style={{ color: 'var(--text-muted)', fontSize: '0.9rem', marginBottom: '1.5rem' }}>
                 Generate instant click-to-chat links with custom greetings for your Instagram bio, TikTok, or posters.
@@ -242,25 +242,25 @@ export const FreeToolsHub: React.FC<FreeToolsHubProps> = ({ onOpenWizard }) => {
                 marginTop: '1rem'
               }}>
                 <div style={{ fontSize: '1rem', fontWeight: 800, color: '#fff', marginBottom: '0.4rem' }}>
-                  🚀 Want a Full Website Instead of Just a Link?
+                  Need a Full Website Instead of Just a Link?
                 </div>
                 <p style={{ color: 'var(--text-muted)', fontSize: '0.82rem', marginBottom: '1rem', lineHeight: 1.5 }}>
-                  Turn this WhatsApp number into a high-converting digital storefront with automated MoMo checkout in 30 seconds!
+                  Turn this WhatsApp number into a high-converting digital storefront with automated MoMo checkout in 30 seconds.
                 </p>
                 <button
                   onClick={() => onOpenWizard({ phone: waPhone })}
-                  className="neon-btn neon-border"
+                  className="neon-btn"
                   style={{
                     padding: '0.65rem 1.4rem',
                     fontSize: '0.85rem',
                     fontWeight: 800,
                     cursor: 'pointer',
                     background: 'var(--cyan-glow)',
-                    color: '#090B10',
+                    color: '#07090E',
                     width: '100%'
                   }}
                 >
-                  ⚡ Turn Into Website in 30s ➔
+                  Generate Storefront ➔
                 </button>
               </div>
             </div>
@@ -271,8 +271,8 @@ export const FreeToolsHub: React.FC<FreeToolsHubProps> = ({ onOpenWizard }) => {
         {activeTool === 'invoice' && (
           <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(300px, 1fr))', gap: '2.5rem' }}>
             <div>
-              <h3 style={{ fontSize: '1.4rem', color: '#ffcc00', fontWeight: 800, marginBottom: '0.5rem', display: 'flex', alignItems: 'center', gap: '0.5rem' }}>
-                <span>🧾</span> Ghana MoMo Business Invoice Maker
+              <h3 style={{ fontSize: '1.3rem', color: '#fff', fontWeight: 800, marginBottom: '0.5rem' }}>
+                MoMo Business Invoice Generator
               </h3>
               <p style={{ color: 'var(--text-muted)', fontSize: '0.9rem', marginBottom: '1.5rem' }}>
                 Generate clean, shareable digital receipts for clients with embedded Mobile Money payment prompts.
@@ -335,19 +335,19 @@ export const FreeToolsHub: React.FC<FreeToolsHubProps> = ({ onOpenWizard }) => {
                 style={{
                   background: 'rgba(255,255,255,0.1)',
                   color: '#fff',
-                  border: '1px solid rgba(255,255,255,0.3)',
-                  padding: '0.7rem 1.4rem',
-                  borderRadius: '50px',
+                  border: '1px solid rgba(255,255,255,0.2)',
+                  padding: '0.65rem 1.4rem',
+                  borderRadius: '8px',
                   fontWeight: 700,
-                  fontSize: '0.88rem',
+                  fontSize: '0.85rem',
                   cursor: 'pointer'
                 }}
               >
-                🖨️ Print / Save as PDF
+                Print / Save as PDF
               </button>
             </div>
 
-            {/* Simulated Clean Invoice Card */}
+            {/* Clean Invoice Card */}
             <div style={{
               background: '#ffffff',
               color: '#111827',
@@ -390,7 +390,7 @@ export const FreeToolsHub: React.FC<FreeToolsHubProps> = ({ onOpenWizard }) => {
               </div>
 
               <div style={{ background: '#fef3c7', padding: '0.8rem', borderRadius: '8px', border: '1px dashed #d97706', fontSize: '0.82rem', textAlign: 'center' }}>
-                <span style={{ fontWeight: 800, color: '#92400e' }}>⚡ Payment Instructions:</span>
+                <span style={{ fontWeight: 800, color: '#92400e' }}>Payment Instructions:</span>
                 <div style={{ color: '#78350f', marginTop: '0.2rem' }}>{invMomo}</div>
               </div>
             </div>
@@ -400,8 +400,8 @@ export const FreeToolsHub: React.FC<FreeToolsHubProps> = ({ onOpenWizard }) => {
         {/* TOOL 3: Speed & Mobile Readiness Auditor */}
         {activeTool === 'speed' && (
           <div style={{ maxWidth: '650px', margin: '0 auto', textAlign: 'center' }}>
-            <h3 style={{ fontSize: '1.5rem', color: 'var(--cyan-glow)', fontWeight: 800, marginBottom: '0.5rem' }}>
-              ⚡ 10-Second African Mobile Speed Auditor
+            <h3 style={{ fontSize: '1.3rem', color: '#fff', fontWeight: 800, marginBottom: '0.5rem' }}>
+              African Mobile Speed Auditor
             </h3>
             <p style={{ color: 'var(--text-muted)', fontSize: '0.92rem', marginBottom: '2rem' }}>
               Test your existing website’s load speed across MTN & Telecel 3G/4G networks in Ghana.
@@ -417,10 +417,10 @@ export const FreeToolsHub: React.FC<FreeToolsHubProps> = ({ onOpenWizard }) => {
                   flexGrow: 1,
                   minWidth: '240px',
                   background: 'rgba(255,255,255,0.05)',
-                  border: '1px solid rgba(255,255,255,0.2)',
+                  border: '1px solid rgba(255,255,255,0.15)',
                   color: '#fff',
-                  padding: '0.8rem 1.2rem',
-                  borderRadius: '30px',
+                  padding: '0.75rem 1.2rem',
+                  borderRadius: '8px',
                   fontSize: '0.95rem',
                   outline: 'none'
                 }}
@@ -428,12 +428,14 @@ export const FreeToolsHub: React.FC<FreeToolsHubProps> = ({ onOpenWizard }) => {
               />
               <button
                 type="submit"
-                className="neon-btn neon-border"
+                className="neon-btn"
                 style={{
-                  padding: '0.8rem 1.8rem',
-                  fontSize: '0.92rem',
+                  padding: '0.75rem 1.8rem',
+                  fontSize: '0.88rem',
                   fontWeight: 800,
-                  cursor: 'pointer'
+                  cursor: 'pointer',
+                  background: 'var(--cyan-glow)',
+                  color: '#07090E'
                 }}
                 disabled={isAuditing}
               >
@@ -445,13 +447,13 @@ export const FreeToolsHub: React.FC<FreeToolsHubProps> = ({ onOpenWizard }) => {
             {auditResult && (
               <div style={{
                 background: 'rgba(255,255,255,0.04)',
-                border: '1px solid rgba(239,68,68,0.4)',
+                border: '1px solid rgba(239,68,68,0.3)',
                 borderRadius: '16px',
                 padding: '2rem',
                 textAlign: 'left'
               }}>
                 <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', marginBottom: '1rem', flexWrap: 'wrap', gap: '0.5rem' }}>
-                  <span style={{ color: '#ef4444', fontWeight: 800, fontSize: '0.85rem' }}>⚠️ SPEED BOTTLENECK DETECTED</span>
+                  <span style={{ color: '#ef4444', fontWeight: 700, fontSize: '0.82rem', letterSpacing: '0.5px' }}>SPEED BOTTLENECK DETECTED</span>
                   <span style={{ color: 'var(--text-muted)', fontSize: '0.8rem' }}>Host: {auditUrl}</span>
                 </div>
 
@@ -473,17 +475,17 @@ export const FreeToolsHub: React.FC<FreeToolsHubProps> = ({ onOpenWizard }) => {
                 <div style={{ textAlign: 'center' }}>
                   <button
                     onClick={() => onOpenWizard({ businessName: auditUrl.replace(/\..+/, '') })}
-                    className="neon-btn neon-border"
+                    className="neon-btn"
                     style={{
                       padding: '0.85rem 2rem',
-                      fontSize: '0.95rem',
+                      fontSize: '0.92rem',
                       fontWeight: 800,
                       background: 'var(--cyan-glow)',
-                      color: '#090B10',
+                      color: '#07090E',
                       cursor: 'pointer'
                     }}
                   >
-                    ⚡ Migrate to Ultra-Fast WaaS (Free in 48h) ➔
+                    Migrate to Managed WaaS ➔
                   </button>
                 </div>
               </div>

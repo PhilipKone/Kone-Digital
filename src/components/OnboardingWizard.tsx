@@ -60,7 +60,7 @@ export const OnboardingWizard: React.FC<OnboardingWizardProps> = ({
           if (next < 30) setGenerationStatus('Configuring SSL domain & mobile layout...');
           else if (next < 65) setGenerationStatus(`Wiring ${momoNetwork} payment links...`);
           else if (next < 90) setGenerationStatus('Connecting automated WhatsApp lead engine...');
-          else setGenerationStatus('🎉 Website Generated Successfully!');
+          else setGenerationStatus('Website Generated Successfully');
           return next;
         });
       }, 150);
@@ -244,11 +244,11 @@ export const OnboardingWizard: React.FC<OnboardingWizardProps> = ({
                   outline: 'none'
                 }}
               >
-                <option value="Fashion & Apparel">👗 Fashion & Apparel</option>
-                <option value="Stone Cladding & Construction">🏛️ Stone Cladding & Construction</option>
-                <option value="Food, Spices & Agriculture">🍱 Food, Spices & Agriculture</option>
-                <option value="Beauty, Hair & Cosmetics">💄 Beauty, Hair & Cosmetics</option>
-                <option value="Artisan Services & Susu">🛠️ Artisan Services & Susu</option>
+                <option value="Fashion & Apparel">Fashion & Apparel</option>
+                <option value="Stone Cladding & Construction">Stone Cladding & Construction</option>
+                <option value="Food, Spices & Agriculture">Food, Spices & Agriculture</option>
+                <option value="Beauty, Hair & Cosmetics">Beauty, Hair & Cosmetics</option>
+                <option value="Artisan Services & Susu">Artisan Services & Susu</option>
               </select>
             </div>
 
@@ -447,7 +447,7 @@ export const OnboardingWizard: React.FC<OnboardingWizardProps> = ({
                   cursor: 'pointer'
                 }}
               >
-                Generate Website in 30 Seconds ⚡
+                Generate Website in 30 Seconds ➔
               </button>
             </div>
           </form>
@@ -458,7 +458,7 @@ export const OnboardingWizard: React.FC<OnboardingWizardProps> = ({
           <div>
             {!isGenerated ? (
               <div style={{ textAlign: 'center', padding: '2rem 1rem' }}>
-                <div style={{ fontSize: '3.5rem', marginBottom: '1rem', animation: 'spin 2s linear infinite' }}>⚡</div>
+                <div style={{ width: '48px', height: '48px', margin: '0 auto 1.5rem', borderRadius: '50%', border: '3px solid rgba(0,255,255,0.2)', borderTopColor: 'var(--cyan-glow)', animation: 'spin 1s linear infinite' }} />
                 <h2 style={{ fontSize: '1.8rem', fontWeight: 800, marginBottom: '0.8rem' }}>
                   Generating <span className="neon-text">{businessName}</span>
                 </h2>
@@ -479,8 +479,8 @@ export const OnboardingWizard: React.FC<OnboardingWizardProps> = ({
             ) : (
               <div>
                 <div style={{ textAlign: 'center', marginBottom: '1.5rem' }}>
-                  <span style={{ background: '#10b981', color: '#000', padding: '0.3rem 1rem', borderRadius: '20px', fontWeight: 800, fontSize: '0.8rem' }}>
-                    🎉 WEBSITE GENERATED SUCCESSFULLY!
+                  <span style={{ background: 'rgba(16, 185, 129, 0.15)', border: '1px solid #10b981', color: '#10b981', padding: '0.35rem 1.2rem', borderRadius: '20px', fontWeight: 700, fontSize: '0.78rem', letterSpacing: '0.5px' }}>
+                    WEBSITE GENERATED SUCCESSFULLY
                   </span>
                   <h2 style={{ fontSize: '1.8rem', fontWeight: 900, marginTop: '0.8rem', color: '#fff' }}>
                     {businessName}
@@ -516,7 +516,7 @@ export const OnboardingWizard: React.FC<OnboardingWizardProps> = ({
                       GH₵ {itemPrice}
                     </div>
                     <div style={{ fontSize: '0.78rem', color: '#ffcc00' }}>
-                      ⚡ Pay via {momoNetwork} ({momoNumber || whatsappNumber})
+                      Pay via {momoNetwork} ({momoNumber || whatsappNumber})
                     </div>
                   </div>
 
@@ -525,20 +525,19 @@ export const OnboardingWizard: React.FC<OnboardingWizardProps> = ({
                     target="_blank"
                     rel="noopener noreferrer"
                     style={{
-                      background: '#25d366',
-                      color: '#000',
+                      background: '#10b981',
+                      color: '#07090E',
                       textDecoration: 'none',
                       display: 'inline-flex',
                       alignItems: 'center',
                       gap: '0.4rem',
                       padding: '0.75rem 1.4rem',
-                      borderRadius: '50px',
+                      borderRadius: '8px',
                       fontWeight: 800,
-                      fontSize: '0.88rem',
-                      boxShadow: '0 4px 15px rgba(37,211,102,0.4)'
+                      fontSize: '0.88rem'
                     }}
                   >
-                    <span>💬 Order via WhatsApp</span>
+                    <span>Order via WhatsApp</span>
                   </a>
                 </div>
 
@@ -547,25 +546,25 @@ export const OnboardingWizard: React.FC<OnboardingWizardProps> = ({
                     href={`https://wa.me/233551993820?text=Hi%20Kone%20Digital%2C%20I%20just%20generated%20a%20starter%20website%20for%20"${encodeURIComponent(businessName)}"%20and%20I'd%20like%20to%20claim%20it.`}
                     target="_blank"
                     rel="noopener noreferrer"
-                    className="neon-btn neon-border"
-                    style={{ textDecoration: 'none', padding: '0.85rem 1.8rem', fontSize: '0.9rem', fontWeight: 800 }}
+                    className="neon-btn"
+                    style={{ textDecoration: 'none', padding: '0.85rem 1.8rem', fontSize: '0.9rem', fontWeight: 800, background: 'var(--cyan-glow)', color: '#07090E' }}
                   >
-                    🚀 Claim My Website on Kone Digital
+                    Claim My Website on Kone Digital ➔
                   </a>
 
                   <button
                     onClick={() => setStep(1)}
                     style={{
-                      background: 'rgba(255,255,255,0.08)',
-                      color: 'var(--text-main)',
-                      border: 'none',
+                      background: 'rgba(255,255,255,0.06)',
+                      color: 'var(--text-muted)',
+                      border: '1px solid rgba(255,255,255,0.1)',
                       padding: '0.85rem 1.5rem',
-                      borderRadius: '100px',
-                      fontWeight: 700,
+                      borderRadius: '8px',
+                      fontWeight: 600,
                       cursor: 'pointer'
                     }}
                   >
-                    🔄 Create Another Flyer
+                    Create Another Flyer
                   </button>
                 </div>
               </div>

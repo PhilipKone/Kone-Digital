@@ -7,7 +7,7 @@ export default function ServicesHub({ onSelectService }: { onSelectService: (slu
   return (
     <section className="services-hub-section" id="services">
       <div className="services-hero-header">
-        <span className="services-badge">🚀 AGENCY SPECIALIZATIONS</span>
+        <span className="services-badge">AGENCY SPECIALIZATIONS</span>
         <h2 className="services-title">Digital Engineering & Design Services</h2>
         <p className="services-subtitle">
           From custom SaaS applications and native mobile apps to corporate brand design and cloud DevOps infrastructure.
@@ -18,7 +18,6 @@ export default function ServicesHub({ onSelectService }: { onSelectService: (slu
         {servicesList.map((service) => (
           <div key={service.id} className="service-hub-card">
             <div className="card-top-row">
-              <span className="hub-card-icon">{service.icon}</span>
               <span className="hub-card-badge">{service.badge}</span>
             </div>
 
@@ -30,7 +29,7 @@ export default function ServicesHub({ onSelectService }: { onSelectService: (slu
               <strong>Includes:</strong>
               <ul>
                 {service.deliverables.slice(0, 2).map((item, idx) => (
-                  <li key={idx}>✓ {item.title}</li>
+                  <li key={idx}>• {item.title}</li>
                 ))}
               </ul>
             </div>

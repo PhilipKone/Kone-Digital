@@ -38,15 +38,16 @@ export const PoweredByBadge: React.FC<PoweredByBadgeProps> = ({ onOpenWizard }) 
         Powered by <strong style={{ color: '#fff' }}>Kone Digital</strong>
       </span>
       <span style={{
-        background: 'rgba(0, 255, 255, 0.15)',
+        background: 'rgba(0, 255, 255, 0.1)',
         color: 'var(--cyan-glow)',
         fontSize: '0.68rem',
-        fontWeight: 800,
+        fontWeight: 700,
         padding: '0.15rem 0.5rem',
         borderRadius: '20px',
-        textTransform: 'uppercase'
+        textTransform: 'uppercase',
+        letterSpacing: '0.5px'
       }}>
-        ⚡ Build in 30s
+        Build in 30s
       </span>
     </div>
   );

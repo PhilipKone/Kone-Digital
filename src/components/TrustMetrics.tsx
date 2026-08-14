@@ -83,18 +83,30 @@ export const TrustMetrics: React.FC = () => {
         display: 'flex', 
         justifyContent: 'center', 
         alignItems: 'center', 
-        gap: '2.5rem', 
+        gap: '2rem', 
         flexWrap: 'wrap', 
         marginTop: '3rem',
-        opacity: 0.85 
+        opacity: 0.9 
       }}>
-        <div style={{ color: 'var(--text-muted)', fontSize: '0.85rem', fontWeight: 700, textTransform: 'uppercase', letterSpacing: '1px' }}>
-          INTEGRATION PARTNERS:
+        <div style={{ color: 'var(--text-subtle)', fontSize: '0.8rem', fontWeight: 700, textTransform: 'uppercase', letterSpacing: '1px' }}>
+          INTEGRATIONS:
         </div>
-        <span style={{ color: '#ffcc00', fontWeight: 800, fontSize: '0.95rem' }}>⚡ MTN Mobile Money</span>
-        <span style={{ color: '#e60000', fontWeight: 800, fontSize: '0.95rem' }}>📱 Telecel Cash</span>
-        <span style={{ color: '#0055ff', fontWeight: 800, fontSize: '0.95rem' }}>🔴 AT Money</span>
-        <span style={{ color: '#25d366', fontWeight: 800, fontSize: '0.95rem' }}>💬 WhatsApp Business API</span>
+        <span style={{ color: '#ffcc00', fontWeight: 700, fontSize: '0.88rem', display: 'inline-flex', alignItems: 'center', gap: '0.4rem' }}>
+          <span style={{ width: '8px', height: '8px', borderRadius: '50%', background: '#ffcc00' }} />
+          MTN Mobile Money
+        </span>
+        <span style={{ color: '#e60000', fontWeight: 700, fontSize: '0.88rem', display: 'inline-flex', alignItems: 'center', gap: '0.4rem' }}>
+          <span style={{ width: '8px', height: '8px', borderRadius: '50%', background: '#e60000' }} />
+          Telecel Cash
+        </span>
+        <span style={{ color: '#38bdf8', fontWeight: 700, fontSize: '0.88rem', display: 'inline-flex', alignItems: 'center', gap: '0.4rem' }}>
+          <span style={{ width: '8px', height: '8px', borderRadius: '50%', background: '#38bdf8' }} />
+          AT Money
+        </span>
+        <span style={{ color: '#10b981', fontWeight: 700, fontSize: '0.88rem', display: 'inline-flex', alignItems: 'center', gap: '0.4rem' }}>
+          <span style={{ width: '8px', height: '8px', borderRadius: '50%', background: '#10b981' }} />
+          WhatsApp Business
+        </span>
       </div>
     </section>
   );

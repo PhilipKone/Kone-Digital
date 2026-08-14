@@ -26,10 +26,10 @@ export const servicesData: Record<string, ServiceData> = {
     slug: 'web-development',
     title: 'Custom Web & SaaS Application Engineering',
     headline: 'High-Performance Web Applications & Custom SaaS Platforms',
-    badge: '💻 CORE ENGINEERING',
+    badge: 'CORE ENGINEERING',
     summary: 'We build production-grade, high-speed web applications using React, Next.js, TypeScript, and modern cloud architectures. Optimized for sub-second page loads, SEO dominance, and maximum conversion rates.',
-    icon: '⚡',
-    coverGradient: 'linear-gradient(135deg, rgba(0, 255, 255, 0.15) 0%, rgba(9, 13, 22, 0.8) 100%)',
+    icon: '',
+    coverGradient: 'linear-gradient(135deg, rgba(0, 240, 255, 0.12) 0%, rgba(9, 13, 22, 0.8) 100%)',
     deliverables: [
       { title: 'Single-Page & Multi-Page Web Apps', spec: 'Vite / Next.js SSR & static pre-rendering with React 18+' },
       { title: 'API Integration & Cloud Backends', spec: 'RESTful / GraphQL APIs, Node.js microservices, and Firebase real-time sync' },
@@ -53,10 +53,10 @@ export const servicesData: Record<string, ServiceData> = {
     slug: 'mobile-apps',
     title: 'iOS & Android Mobile App Development',
     headline: 'Native Performance Cross-Platform Mobile Applications',
-    badge: '📱 MOBILE SYSTEMS',
+    badge: 'MOBILE SYSTEMS',
     summary: 'From concept to App Store and Google Play publication. We engineer cross-platform mobile apps using React Native and Flutter, delivering native 60fps animations, push notifications, and offline-first database sync.',
-    icon: '📲',
-    coverGradient: 'linear-gradient(135deg, rgba(168, 85, 247, 0.15) 0%, rgba(9, 13, 22, 0.8) 100%)',
+    icon: '',
+    coverGradient: 'linear-gradient(135deg, rgba(168, 85, 247, 0.12) 0%, rgba(9, 13, 22, 0.8) 100%)',
     deliverables: [
       { title: 'Cross-Platform iOS & Android Apps', spec: 'Single codebase compiled to native iOS Swift & Android Kotlin binaries' },
       { title: 'Offline-First Database Sync', spec: 'Local SQLite / Realm storage with automatic cloud reconciliation' },
@@ -80,10 +80,10 @@ export const servicesData: Record<string, ServiceData> = {
     slug: 'brand-design',
     title: 'Brand Identity & UI/UX Design Systems',
     headline: 'World-Class Logo Systems, Brand Manuals & Figma UI/UX Prototypes',
-    badge: '🎨 DESIGN STUDIO',
+    badge: 'DESIGN STUDIO',
     summary: 'We craft iconic corporate brand identity systems that command trust and market authority. Includes logo vectors, color tokens, typography scales, interactive Figma UI/UX wireframes, and complete brand manuals.',
-    icon: '✨',
-    coverGradient: 'linear-gradient(135deg, rgba(234, 179, 8, 0.15) 0%, rgba(9, 13, 22, 0.8) 100%)',
+    icon: '',
+    coverGradient: 'linear-gradient(135deg, rgba(234, 179, 8, 0.12) 0%, rgba(9, 13, 22, 0.8) 100%)',
     deliverables: [
       { title: 'Vector Logo Systems', spec: 'Scalable SVG, EPS, PNG, and PDF asset packages with dark/light variants' },
       { title: 'Interactive Figma UI/UX Prototypes', spec: 'High-fidelity component design systems, wireframes, and interactive user flows' },
@@ -107,10 +107,10 @@ export const servicesData: Record<string, ServiceData> = {
     slug: 'cloud-devops',
     title: 'Cloud Infrastructure & DevOps Automation',
     headline: 'Scalable Cloud Systems, Automated CI/CD & Security Audits',
-    badge: '☁️ CLOUD ARCHITECTURE',
+    badge: 'CLOUD ARCHITECTURE',
     summary: 'Architecting resilient, self-healing cloud infrastructure on AWS, Firebase, and Cloudflare. We build automated GitHub Actions CI/CD pipelines, SSL/TLS encryption, and real-time uptime monitoring.',
-    icon: '🛡️',
-    coverGradient: 'linear-gradient(135deg, rgba(34, 197, 94, 0.15) 0%, rgba(9, 13, 22, 0.8) 100%)',
+    icon: '',
+    coverGradient: 'linear-gradient(135deg, rgba(34, 197, 94, 0.12) 0%, rgba(9, 13, 22, 0.8) 100%)',
     deliverables: [
       { title: 'Automated CI/CD Deployment Pipelines', spec: 'GitHub Actions workflows for automated build, lint, test, and zero-downtime deployment' },
       { title: 'Cloud Infrastructure Setup', spec: 'Firebase Firestore, AWS S3/CloudFront, Cloudflare DNS, and serverless edge functions' },
@@ -165,17 +165,17 @@ export default function ServiceDetail({ slug, onBack }: { slug: string; onBack?:
             rel="noopener noreferrer"
             className="service-primary-btn"
           >
-            <span>💬 Book a Technical Consultation</span>
+            <span>Book a Technical Consultation</span>
           </a>
           <a href="#pricing" className="service-secondary-btn">
-            <span>🏷️ View Pricing Estimates</span>
+            <span>View Pricing Estimates</span>
           </a>
         </div>
       </header>
 
       {/* Main Deliverables Grid */}
       <section className="service-deliverables-section">
-        <h2 className="section-title">📦 Key Technical Deliverables & Features</h2>
+        <h2 className="section-title">Key Technical Deliverables & Features</h2>
         <div className="deliverables-grid">
           {service.deliverables.map((item, idx) => (
             <div key={idx} className="deliverable-card">
@@ -189,7 +189,7 @@ export default function ServiceDetail({ slug, onBack }: { slug: string; onBack?:
 
       {/* Tech Stack Pills */}
       <section className="service-tech-section">
-        <h2 className="section-title">🛠️ Engineering Tech Stack</h2>
+        <h2 className="section-title">Engineering Tech Stack</h2>
         <div className="tech-pills-row">
           {service.techStack.map((tech) => (
             <span key={tech} className="service-tech-pill">{tech}</span>

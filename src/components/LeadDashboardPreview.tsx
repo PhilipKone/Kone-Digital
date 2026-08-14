@@ -75,13 +75,13 @@ export const LeadDashboardPreview: React.FC = () => {
           <div style={{ background: 'rgba(255,255,255,0.03)', border: '1px solid rgba(255,255,255,0.08)', borderRadius: '12px', padding: '1.2rem' }}>
             <span style={{ fontSize: '0.78rem', color: 'var(--text-muted)', fontWeight: 700 }}>MOMO REVENUE PIPELINE</span>
             <div style={{ fontSize: '1.8rem', fontWeight: 900, color: 'var(--gold-accent)', marginTop: '0.3rem' }}>GH₵ 4,850</div>
-            <span style={{ fontSize: '0.72rem', color: 'var(--gold-accent)' }}>⚡ Instant settlement</span>
+            <span style={{ fontSize: '0.72rem', color: 'var(--gold-accent)' }}>Direct network settlement</span>
           </div>
 
           <div style={{ background: 'rgba(255,255,255,0.03)', border: '1px solid rgba(255,255,255,0.08)', borderRadius: '12px', padding: '1.2rem' }}>
             <span style={{ fontSize: '0.78rem', color: 'var(--text-muted)', fontWeight: 700 }}>MORNING DIGEST STATUS</span>
-            <div style={{ fontSize: '1.8rem', fontWeight: 900, color: 'var(--cyan-glow)', marginTop: '0.3rem' }}>Active 🌅</div>
-            <span style={{ fontSize: '0.72rem', color: 'var(--text-muted)' }}>Delivered daily at 8:00 AM</span>
+            <div style={{ fontSize: '1.8rem', fontWeight: 900, color: 'var(--cyan-glow)', marginTop: '0.3rem' }}>Active</div>
+            <span style={{ fontSize: '0.72rem', color: 'var(--text-muted)' }}>Delivered daily at 08:00 GMT</span>
           </div>
         </div>
 

@@ -1,4 +1,4 @@
-import React, { useEffect, useRef, useState } from 'react';
+import { useEffect, useRef, useState } from 'react';
 import { HeroSection } from './components/HeroSection';
 import { TrustMetrics } from './components/TrustMetrics';
 import { OnboardingWizard } from './components/OnboardingWizard';
