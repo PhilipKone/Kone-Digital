@@ -1,5 +1,7 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import { useCurrency } from '../context/CurrencyContext';
+import { db } from '../firebase/config';
+import { collection, onSnapshot, addDoc, serverTimestamp, query, orderBy, limit } from 'firebase/firestore';
 
 interface ActivityItem {
   id: string;
@@ -17,23 +19,101 @@ export const MerchantDashboard: React.FC = () => {
 
   // State
   const [selectedBusiness, setSelectedBusiness] = useState<string>('My New Business');
+  const [availableBusinesses, setAvailableBusinesses] = useState<string[]>([
+    'My New Business',
+    'Ama Heritage Kente',
+    'Sedemson Stone',
+    'Emewear'
+  ]);
   const [language, setLanguage] = useState<'EN' | 'TWI' | 'GA' | 'EWE'>('EN');
   const [activeTab, setActiveTab] = useState<'overview' | 'products' | 'activity'>('overview');
   const [isShareModalOpen, setIsShareModalOpen] = useState<boolean>(false);
   const [isAddProductOpen, setIsAddProductOpen] = useState<boolean>(false);
   const [isSampleMode, setIsSampleMode] = useState<boolean>(false);
 
-  // Products State
-  const [products, setProducts] = useState<Array<{ id: string; title: string; price: number; category: string; status: string }>>([
-    { id: '1', title: 'Sample Starter Product', price: 150, category: 'General', status: 'In Stock' }
-  ]);
+  // Firestore Synced Products State
+  const [products, setProducts] = useState<Array<{ id: string; title: string; price: number; category: string; status: string }>>([]);
+  const [firebaseActivities, setFirebaseActivities] = useState<ActivityItem[]>([]);
+  const [isFirestoreConnected, setIsFirestoreConnected] = useState<boolean>(false);
 
   // Form State for New Product
   const [newTitle, setNewTitle] = useState('');
   const [newPrice, setNewPrice] = useState('');
   const [newCategory, setNewCategory] = useState('General');
 
-  // Activities (Sample demo vs Real live state)
+  // Real-time Firestore Sync Listeners
+  useEffect(() => {
+    if (!db || !db.type) return;
+
+    try {
+      // 1. Sync Registered Businesses from Onboarding Submissions
+      const unsubBusinesses = onSnapshot(collection(db, 'onboarding_submissions'), (snapshot) => {
+        setIsFirestoreConnected(true);
+        const fetchedNames: string[] = [];
+        snapshot.forEach((doc) => {
+          const data = doc.data();
+          if (data.businessName && !fetchedNames.includes(data.businessName)) {
+            fetchedNames.push(data.businessName);
+          }
+        });
+        if (fetchedNames.length > 0) {
+          setAvailableBusinesses((prev) => Array.from(new Set([...fetchedNames, ...prev])));
+        }
+      }, (err) => {
+        console.log('Firestore Business Sync notice:', err.message);
+      });
+
+      // 2. Sync Products from Firestore
+      const unsubProducts = onSnapshot(collection(db, 'merchant_products'), (snapshot) => {
+        const fetchedProducts: Array<{ id: string; title: string; price: number; category: string; status: string }> = [];
+        snapshot.forEach((doc) => {
+          const data = doc.data();
+          fetchedProducts.push({
+            id: doc.id,
+            title: data.title || 'Untitled',
+            price: Number(data.price) || 0,
+            category: data.category || 'General',
+            status: data.status || 'In Stock'
+          });
+        });
+        setProducts(fetchedProducts);
+      }, (err) => {
+        console.log('Firestore Product Sync notice:', err.message);
+      });
+
+      // 3. Sync Activity Log from Firestore
+      const actQuery = query(collection(db, 'merchant_activity'), orderBy('createdAt', 'desc'), limit(20));
+      const unsubActivity = onSnapshot(actQuery, (snapshot) => {
+        const fetchedActs: ActivityItem[] = [];
+        snapshot.forEach((doc) => {
+          const data = doc.data();
+          fetchedActs.push({
+            id: doc.id,
+            time: data.time || 'Just now',
+            type: data.type || 'order',
+            title: data.title || 'Customer Action',
+            detail: data.detail || '',
+            amount: data.amount,
+            badge: data.badge || 'Activity',
+            badgeColor: data.badgeColor || 'var(--cyan-glow)'
+          });
+        });
+        setFirebaseActivities(fetchedActs);
+      }, (err) => {
+        console.log('Firestore Activity Sync notice:', err.message);
+      });
+
+      return () => {
+        unsubBusinesses();
+        unsubProducts();
+        unsubActivity();
+      };
+    } catch (err) {
+      console.log('Firestore init notice:', err);
+    }
+  }, []);
+
+  // Activities (Sample demo vs Real live Firestore state)
   const sampleActivities: ActivityItem[] = [
     {
       id: 'a1',
@@ -47,21 +127,35 @@ export const MerchantDashboard: React.FC = () => {
     }
   ];
 
-  const liveActivities: ActivityItem[] = [];
+  const activities = isSampleMode ? sampleActivities : firebaseActivities;
 
-  const activities = isSampleMode ? sampleActivities : liveActivities;
-
-  const handleAddProduct = (e: React.FormEvent) => {
+  const handleAddProduct = async (e: React.FormEvent) => {
     e.preventDefault();
     if (!newTitle.trim() || !newPrice.trim()) return;
+    
+    const parsedPrice = parseFloat(newPrice) || 0;
     const item = {
-      id: Date.now().toString(),
       title: newTitle.trim(),
-      price: parseFloat(newPrice) || 0,
+      price: parsedPrice,
       category: newCategory,
-      status: 'In Stock'
+      status: 'In Stock',
+      businessName: selectedBusiness,
+      createdAt: serverTimestamp ? serverTimestamp() : new Date().toISOString()
     };
-    setProducts([item, ...products]);
+
+    // Save directly to Firebase Firestore
+    try {
+      if (db && db.type) {
+        await addDoc(collection(db, 'merchant_products'), item);
+      } else {
+        // Local state fallback
+        setProducts((prev) => [{ ...item, id: Date.now().toString() }, ...prev]);
+      }
+    } catch (err) {
+      console.log('Local product save fallback');
+      setProducts((prev) => [{ ...item, id: Date.now().toString() }, ...prev]);
+    }
+
     setNewTitle('');
     setNewPrice('');
     setIsAddProductOpen(false);
