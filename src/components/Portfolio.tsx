@@ -28,9 +28,10 @@ export const Portfolio: React.FC = () => {
   ];
 
   const filteredProjects = projects.filter(p => {
+    const cleanSearch = searchQuery.replace(/[^\w\s-]/gi, '').toLowerCase();
     const matchesCategory = activeCategory === 'all' || p.category === activeCategory;
-    const matchesSearch = p.title.toLowerCase().includes(searchQuery.toLowerCase()) || 
-                          p.tagline.toLowerCase().includes(searchQuery.toLowerCase());
+    const matchesSearch = p.title.toLowerCase().includes(cleanSearch) || 
+                          p.tagline.toLowerCase().includes(cleanSearch);
     return matchesCategory && matchesSearch;
   });
 

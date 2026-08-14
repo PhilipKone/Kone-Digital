@@ -80,7 +80,12 @@ export const OnboardingWizard: React.FC<OnboardingWizardProps> = ({ isOpen, onCl
     setStep(3);
   };
 
-  const formattedWhatsappLink = `https://wa.me/233${whatsappNumber.replace(/\D/g, '')}?text=Hi%20${encodeURIComponent(businessName)}%2C%20I'd%20like%20to%20order%20${encodeURIComponent(itemTitle)}%20(GH%E2%82%B5${itemPrice}).`;
+  const cleanPhone = encodeURIComponent(whatsappNumber.replace(/\D/g, ''));
+  const cleanBusiness = encodeURIComponent(businessName.trim());
+  const cleanTitle = encodeURIComponent(itemTitle.trim());
+  const cleanPrice = encodeURIComponent(itemPrice.trim());
+
+  const formattedWhatsappLink = `https://wa.me/233${cleanPhone}?text=Hi%20${cleanBusiness}%2C%20I'd%20like%20to%20order%20${cleanTitle}%20(GH%E2%82%B5${cleanPrice}).`;
 
   return (
     <div style={{
