@@ -25,12 +25,12 @@ function App() {
   const [currentRoute, setCurrentRoute] = useState<'home' | 'services' | 'service-detail' | 'work' | 'pricing' | 'tools' | 'crm' | 'dashboard'>(() => {
     const hash = typeof window !== 'undefined' ? window.location.hash : '';
     if (hash.startsWith('#services/')) return 'service-detail';
-    if (hash === '#services') return 'services';
-    if (hash === '#work') return 'work';
-    if (hash === '#pricing') return 'pricing';
-    if (hash === '#tools') return 'tools';
-    if (hash === '#crm') return 'crm';
-    if (hash === '#dashboard') return 'dashboard';
+    if (hash.startsWith('#services')) return 'services';
+    if (hash.startsWith('#work')) return 'work';
+    if (hash.startsWith('#pricing')) return 'pricing';
+    if (hash.startsWith('#tools')) return 'tools';
+    if (hash.startsWith('#crm')) return 'crm';
+    if (hash.startsWith('#dashboard')) return 'dashboard';
     return 'home';
   });
 
@@ -47,17 +47,17 @@ function App() {
         const slug = hash.replace('#services/', '');
         setActiveServiceSlug(slug);
         setCurrentRoute('service-detail');
-      } else if (hash === '#services') {
+      } else if (hash.startsWith('#services')) {
         setCurrentRoute('services');
-      } else if (hash === '#work') {
+      } else if (hash.startsWith('#work')) {
         setCurrentRoute('work');
-      } else if (hash === '#pricing') {
+      } else if (hash.startsWith('#pricing')) {
         setCurrentRoute('pricing');
-      } else if (hash === '#tools') {
+      } else if (hash.startsWith('#tools')) {
         setCurrentRoute('tools');
-      } else if (hash === '#crm') {
+      } else if (hash.startsWith('#crm')) {
         setCurrentRoute('crm');
-      } else if (hash === '#dashboard') {
+      } else if (hash.startsWith('#dashboard')) {
         setCurrentRoute('dashboard');
       } else {
         setCurrentRoute('home');
