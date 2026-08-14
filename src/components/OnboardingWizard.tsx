@@ -1,4 +1,6 @@
 import React, { useState, useEffect } from 'react';
+import { collection, addDoc, serverTimestamp } from 'firebase/firestore';
+import { db } from '../firebase/config';
 
 interface OnboardingWizardProps {
   isOpen: boolean;
@@ -71,12 +73,37 @@ export const OnboardingWizard: React.FC<OnboardingWizardProps> = ({ isOpen, onCl
     setStep(2);
   };
 
+  const saveFlyerSubmissionToFirestore = async () => {
+    try {
+      if (db) {
+        await addDoc(collection(db, 'onboarding_submissions'), {
+          businessName: businessName.trim(),
+          industry,
+          primaryColor,
+          whatsappNumber: whatsappNumber.trim(),
+          momoNetwork,
+          momoNumber: momoNumber.trim() || whatsappNumber.trim(),
+          itemTitle: itemTitle.trim(),
+          itemPrice: parseFloat(itemPrice) || 0,
+          status: 'pending_claim',
+          createdAt: serverTimestamp(),
+          url: typeof window !== 'undefined' ? window.location.href : '',
+          userAgent: typeof navigator !== 'undefined' ? navigator.userAgent : ''
+        });
+        console.log('✅ Merchant flyer lead successfully saved to Firestore (onboarding_submissions).');
+      }
+    } catch (err) {
+      console.warn('Firestore submission notice (running in offline/demo mode):', err);
+    }
+  };
+
   const handleNextStep2 = (e: React.FormEvent) => {
     e.preventDefault();
     if (!whatsappNumber.trim()) {
       alert('Please enter your WhatsApp phone number.');
       return;
     }
+    saveFlyerSubmissionToFirestore();
     setStep(3);
   };
 
