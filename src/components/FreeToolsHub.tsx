@@ -128,13 +128,13 @@ export const FreeToolsHub: React.FC<FreeToolsHubProps> = ({ onOpenWizard }) => {
       <div className="neon-border" style={{
         background: 'var(--bg-surface)',
         borderRadius: '20px',
-        padding: '2.5rem 2rem',
+        padding: 'clamp(1.4rem, 3vw, 2.5rem) clamp(1rem, 2.5vw, 2rem)',
         boxShadow: '0 20px 50px rgba(0,0,0,0.5)',
         minHeight: '400px'
       }}>
         {/* TOOL 1: WhatsApp Link & QR Generator */}
         {activeTool === 'whatsapp' && (
-          <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(300px, 1fr))', gap: '2.5rem', alignItems: 'center' }}>
+          <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(min(100%, 280px), 1fr))', gap: '2rem', alignItems: 'center' }}>
             <div>
               <h3 style={{ fontSize: '1.3rem', color: '#fff', fontWeight: 800, marginBottom: '0.5rem' }}>
                 WhatsApp Order Link Maker
@@ -144,10 +144,12 @@ export const FreeToolsHub: React.FC<FreeToolsHubProps> = ({ onOpenWizard }) => {
               </p>
 
               <div style={{ marginBottom: '1.2rem' }}>
-                <label style={{ display: 'block', fontSize: '0.85rem', fontWeight: 700, marginBottom: '0.4rem', color: 'var(--text-main)' }}>
+                <label htmlFor="wa-phone-input" style={{ display: 'block', fontSize: '0.85rem', fontWeight: 700, marginBottom: '0.4rem', color: 'var(--text-main)' }}>
                   WhatsApp Phone Number (Ghana)
                 </label>
                 <input
+                  id="wa-phone-input"
+                  aria-label="WhatsApp Phone Number"
                   type="text"
                   value={waPhone}
                   onChange={(e) => setWaPhone(e.target.value)}
@@ -166,10 +168,12 @@ export const FreeToolsHub: React.FC<FreeToolsHubProps> = ({ onOpenWizard }) => {
               </div>
 
               <div style={{ marginBottom: '1.5rem' }}>
-                <label style={{ display: 'block', fontSize: '0.85rem', fontWeight: 700, marginBottom: '0.4rem', color: 'var(--text-main)' }}>
+                <label htmlFor="wa-message-textarea" style={{ display: 'block', fontSize: '0.85rem', fontWeight: 700, marginBottom: '0.4rem', color: 'var(--text-main)' }}>
                   Pre-filled Greeting / Order Message
                 </label>
                 <textarea
+                  id="wa-message-textarea"
+                  aria-label="Pre-filled Greeting or Order Message"
                   value={waMessage}
                   onChange={(e) => setWaMessage(e.target.value)}
                   rows={3}
@@ -206,6 +210,27 @@ export const FreeToolsHub: React.FC<FreeToolsHubProps> = ({ onOpenWizard }) => {
                 >
                   {waCopied ? 'Link Copied to Clipboard' : 'Copy WhatsApp Link'}
                 </button>
+                <button
+                  onClick={() => {
+                    const clean = waPhone.replace(/\D/g, '');
+                    window.open(`https://wa.me/233${clean}?text=${encodeURIComponent(waMessage)}`, '_blank', 'noopener,noreferrer');
+                  }}
+                  style={{
+                    background: 'rgba(255, 255, 255, 0.05)',
+                    border: '1px solid rgba(255, 255, 255, 0.15)',
+                    color: 'var(--text-main)',
+                    padding: '0.65rem 1.4rem',
+                    borderRadius: '8px',
+                    fontWeight: 700,
+                    fontSize: '0.88rem',
+                    cursor: 'pointer',
+                    display: 'inline-flex',
+                    alignItems: 'center',
+                    gap: '0.4rem'
+                  }}
+                >
+                  Test Link ➔
+                </button>
               </div>
             </div>
 
@@ -214,7 +239,7 @@ export const FreeToolsHub: React.FC<FreeToolsHubProps> = ({ onOpenWizard }) => {
               background: 'rgba(0,0,0,0.35)',
               border: '1px solid rgba(255,255,255,0.1)',
               borderRadius: '16px',
-              padding: '1.8rem',
+              padding: '1.5rem 1.2rem',
               textAlign: 'center'
             }}>
               <div style={{ fontSize: '0.78rem', color: 'var(--text-muted)', fontWeight: 700, letterSpacing: '1px', marginBottom: '0.8rem' }}>
@@ -235,8 +260,8 @@ export const FreeToolsHub: React.FC<FreeToolsHubProps> = ({ onOpenWizard }) => {
 
               {/* High-Converting PLG Hook */}
               <div style={{
-                background: 'linear-gradient(135deg, rgba(0,255,255,0.08), rgba(229,192,123,0.08))',
-                border: '1px solid var(--cyan-glow)',
+                background: 'rgba(0, 255, 255, 0.05)',
+                border: '1px solid rgba(0, 255, 255, 0.2)',
                 borderRadius: '12px',
                 padding: '1.2rem',
                 marginTop: '1rem'
@@ -269,7 +294,7 @@ export const FreeToolsHub: React.FC<FreeToolsHubProps> = ({ onOpenWizard }) => {
 
         {/* TOOL 2: Ghana MoMo Invoice Generator */}
         {activeTool === 'invoice' && (
-          <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(300px, 1fr))', gap: '2.5rem' }}>
+          <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(min(100%, 280px), 1fr))', gap: '2rem' }}>
             <div>
               <h3 style={{ fontSize: '1.3rem', color: '#fff', fontWeight: 800, marginBottom: '0.5rem' }}>
                 MoMo Business Invoice Generator
@@ -278,10 +303,12 @@ export const FreeToolsHub: React.FC<FreeToolsHubProps> = ({ onOpenWizard }) => {
                 Generate clean, shareable digital receipts for clients with embedded Mobile Money payment prompts.
               </p>
 
-              <div style={{ display: 'grid', gridTemplateColumns: '1fr 1fr', gap: '1rem', marginBottom: '1rem' }}>
+              <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(130px, 1fr))', gap: '0.8rem', marginBottom: '1rem' }}>
                 <div>
-                  <label style={{ display: 'block', fontSize: '0.82rem', fontWeight: 700, marginBottom: '0.3rem', color: 'var(--text-main)' }}>Your Business</label>
+                  <label htmlFor="inv-biz-input" style={{ display: 'block', fontSize: '0.82rem', fontWeight: 700, marginBottom: '0.3rem', color: 'var(--text-main)' }}>Your Business</label>
                   <input
+                    id="inv-biz-input"
+                    aria-label="Your Business Name"
                     type="text"
                     value={invBusiness}
                     onChange={(e) => setInvBusiness(e.target.value)}
@@ -289,8 +316,10 @@ export const FreeToolsHub: React.FC<FreeToolsHubProps> = ({ onOpenWizard }) => {
                   />
                 </div>
                 <div>
-                  <label style={{ display: 'block', fontSize: '0.82rem', fontWeight: 700, marginBottom: '0.3rem', color: 'var(--text-main)' }}>Customer Name</label>
+                  <label htmlFor="inv-client-input" style={{ display: 'block', fontSize: '0.82rem', fontWeight: 700, marginBottom: '0.3rem', color: 'var(--text-main)' }}>Customer Name</label>
                   <input
+                    id="inv-client-input"
+                    aria-label="Customer Name"
                     type="text"
                     value={invClient}
                     onChange={(e) => setInvClient(e.target.value)}
@@ -299,10 +328,12 @@ export const FreeToolsHub: React.FC<FreeToolsHubProps> = ({ onOpenWizard }) => {
                 </div>
               </div>
 
-              <div style={{ display: 'grid', gridTemplateColumns: '2fr 1fr', gap: '1rem', marginBottom: '1rem' }}>
+              <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(130px, 1fr))', gap: '0.8rem', marginBottom: '1rem' }}>
                 <div>
-                  <label style={{ display: 'block', fontSize: '0.82rem', fontWeight: 700, marginBottom: '0.3rem', color: 'var(--text-main)' }}>Item / Service</label>
+                  <label htmlFor="inv-item-input" style={{ display: 'block', fontSize: '0.82rem', fontWeight: 700, marginBottom: '0.3rem', color: 'var(--text-main)' }}>Item / Service</label>
                   <input
+                    id="inv-item-input"
+                    aria-label="Item or Service"
                     type="text"
                     value={invItem}
                     onChange={(e) => setInvItem(e.target.value)}
@@ -310,8 +341,10 @@ export const FreeToolsHub: React.FC<FreeToolsHubProps> = ({ onOpenWizard }) => {
                   />
                 </div>
                 <div>
-                  <label style={{ display: 'block', fontSize: '0.82rem', fontWeight: 700, marginBottom: '0.3rem', color: 'var(--text-main)' }}>Amount (GH₵)</label>
+                  <label htmlFor="inv-amount-input" style={{ display: 'block', fontSize: '0.82rem', fontWeight: 700, marginBottom: '0.3rem', color: 'var(--text-main)' }}>Amount (GH₵)</label>
                   <input
+                    id="inv-amount-input"
+                    aria-label="Amount in Ghana Cedis"
                     type="number"
                     value={invAmount}
                     onChange={(e) => setInvAmount(e.target.value)}
@@ -321,8 +354,10 @@ export const FreeToolsHub: React.FC<FreeToolsHubProps> = ({ onOpenWizard }) => {
               </div>
 
               <div style={{ marginBottom: '1.5rem' }}>
-                <label style={{ display: 'block', fontSize: '0.82rem', fontWeight: 700, marginBottom: '0.3rem', color: 'var(--text-main)' }}>MoMo Payment Prompt</label>
+                <label htmlFor="inv-momo-input" style={{ display: 'block', fontSize: '0.82rem', fontWeight: 700, marginBottom: '0.3rem', color: 'var(--text-main)' }}>MoMo Payment Prompt</label>
                 <input
+                  id="inv-momo-input"
+                  aria-label="Mobile Money Payment Instructions"
                   type="text"
                   value={invMomo}
                   onChange={(e) => setInvMomo(e.target.value)}
@@ -409,6 +444,8 @@ export const FreeToolsHub: React.FC<FreeToolsHubProps> = ({ onOpenWizard }) => {
 
             <form onSubmit={handleRunAudit} style={{ display: 'flex', gap: '0.8rem', justifyContent: 'center', marginBottom: '2rem', flexWrap: 'wrap' }}>
               <input
+                id="speed-audit-url"
+                aria-label="Website domain or URL to audit"
                 type="text"
                 value={auditUrl}
                 onChange={(e) => setAuditUrl(e.target.value)}

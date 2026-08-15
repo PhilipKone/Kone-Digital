@@ -1,0 +1,18 @@
+# Kone Digital
+
+> High-Performance Website as a Service (WaaS), Cloud Systems, and Digital Engineering Agency.
+
+Kone Digital builds lightning-fast bespoke web applications, e-commerce storefronts, mobile apps, and automated WhatsApp CRM lead capture funnels for ambitious businesses in Ghana and worldwide.
+
+## Core Capabilities & Services
+
+- [Custom Web & SaaS Engineering](https://digital.koneacademy.io/#services/web-development) - React, Next.js, and bespoke enterprise web architectures.
+- [Mobile App Development](https://digital.koneacademy.io/#services/mobile-apps) - High-performance iOS and Android applications.
+- [Brand Design & UI/UX Systems](https://digital.koneacademy.io/#services/brand-design) - Identity systems, interactive design guidelines, and design tokens.
+- [Cloud & DevOps Infrastructure](https://digital.koneacademy.io/#services/cloud-devops) - Scalable cloud hosting, CI/CD pipelines, and microservices.
+- [Client Work & Case Studies](https://digital.koneacademy.io/#work) - Portfolio of live production apps and client transformations.
+- [Transparent Pricing](https://digital.koneacademy.io/#pricing) - Predictable fixed-price and subscription tiers for digital products.
+
+## Parent Ecosystem
+
+- [Kone Academy Main Hub](https://www.koneacademy.io/) - Multidisciplinary innovation and technology collective.

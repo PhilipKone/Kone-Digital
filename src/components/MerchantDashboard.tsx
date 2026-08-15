@@ -457,7 +457,7 @@ export const MerchantDashboard: React.FC = () => {
       {/* 2. Elevated Metric Cards */}
       <div style={{
         display: 'grid',
-        gridTemplateColumns: 'repeat(auto-fit, minmax(260px, 1fr))',
+        gridTemplateColumns: 'repeat(auto-fit, minmax(min(100%, 220px), 1fr))',
         gap: '1.2rem',
         marginBottom: '2rem'
       }}>
@@ -527,7 +527,7 @@ export const MerchantDashboard: React.FC = () => {
 
         <div style={{
           display: 'grid',
-          gridTemplateColumns: 'repeat(auto-fit, minmax(220px, 1fr))',
+          gridTemplateColumns: 'repeat(auto-fit, minmax(min(100%, 150px), 1fr))',
           gap: '1rem'
         }}>
           <button

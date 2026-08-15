@@ -7,6 +7,7 @@ interface PoweredByBadgeProps {
 export const PoweredByBadge: React.FC<PoweredByBadgeProps> = ({ onOpenWizard }) => {
   return (
     <div
+      className="powered-by-badge"
       onClick={onOpenWizard}
       style={{
         position: 'fixed',

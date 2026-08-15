@@ -61,33 +61,33 @@ export const LeadDashboardPreview: React.FC = () => {
       <div className="neon-border" style={{
         background: '#0d1117',
         borderRadius: '20px',
-        padding: '2rem',
+        padding: 'clamp(1.2rem, 3vw, 2rem) clamp(0.8rem, 2vw, 1.8rem)',
         boxShadow: '0 20px 50px rgba(0,0,0,0.6)'
       }}>
         {/* Top KPI Header */}
-        <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(200px, 1fr))', gap: '1.2rem', marginBottom: '2rem' }}>
-          <div style={{ background: 'rgba(255,255,255,0.03)', border: '1px solid rgba(255,255,255,0.08)', borderRadius: '12px', padding: '1.2rem' }}>
-            <span style={{ fontSize: '0.78rem', color: 'var(--text-muted)', fontWeight: 700 }}>TODAY'S WHATSAPP LEADS</span>
-            <div style={{ fontSize: '1.8rem', fontWeight: 900, color: '#10b981', marginTop: '0.3rem' }}>14 Leads</div>
+        <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(min(100%, 180px), 1fr))', gap: '1rem', marginBottom: '1.5rem' }}>
+          <div style={{ background: 'rgba(255,255,255,0.03)', border: '1px solid rgba(255,255,255,0.08)', borderRadius: '12px', padding: '1rem' }}>
+            <span style={{ fontSize: '0.75rem', color: 'var(--text-muted)', fontWeight: 700 }}>TODAY'S WHATSAPP LEADS</span>
+            <div style={{ fontSize: '1.6rem', fontWeight: 900, color: '#10b981', marginTop: '0.3rem' }}>14 Leads</div>
             <span style={{ fontSize: '0.72rem', color: '#10b981' }}>↑ +35% vs yesterday</span>
           </div>
 
-          <div style={{ background: 'rgba(255,255,255,0.03)', border: '1px solid rgba(255,255,255,0.08)', borderRadius: '12px', padding: '1.2rem' }}>
-            <span style={{ fontSize: '0.78rem', color: 'var(--text-muted)', fontWeight: 700 }}>MOMO REVENUE PIPELINE</span>
-            <div style={{ fontSize: '1.8rem', fontWeight: 900, color: 'var(--gold-accent)', marginTop: '0.3rem' }}>GH₵ 4,850</div>
+          <div style={{ background: 'rgba(255,255,255,0.03)', border: '1px solid rgba(255,255,255,0.08)', borderRadius: '12px', padding: '1rem' }}>
+            <span style={{ fontSize: '0.75rem', color: 'var(--text-muted)', fontWeight: 700 }}>MOMO REVENUE PIPELINE</span>
+            <div style={{ fontSize: '1.6rem', fontWeight: 900, color: 'var(--gold-accent)', marginTop: '0.3rem' }}>GH₵ 4,850</div>
             <span style={{ fontSize: '0.72rem', color: 'var(--gold-accent)' }}>Direct network settlement</span>
           </div>
 
-          <div style={{ background: 'rgba(255,255,255,0.03)', border: '1px solid rgba(255,255,255,0.08)', borderRadius: '12px', padding: '1.2rem' }}>
-            <span style={{ fontSize: '0.78rem', color: 'var(--text-muted)', fontWeight: 700 }}>MORNING DIGEST STATUS</span>
-            <div style={{ fontSize: '1.8rem', fontWeight: 900, color: 'var(--cyan-glow)', marginTop: '0.3rem' }}>Active</div>
+          <div style={{ background: 'rgba(255,255,255,0.03)', border: '1px solid rgba(255,255,255,0.08)', borderRadius: '12px', padding: '1rem' }}>
+            <span style={{ fontSize: '0.75rem', color: 'var(--text-muted)', fontWeight: 700 }}>MORNING DIGEST STATUS</span>
+            <div style={{ fontSize: '1.6rem', fontWeight: 900, color: 'var(--cyan-glow)', marginTop: '0.3rem' }}>Active</div>
             <span style={{ fontSize: '0.72rem', color: 'var(--text-muted)' }}>Delivered daily at 08:00 GMT</span>
           </div>
         </div>
 
         {/* Live Leads Table */}
-        <div style={{ overflowX: 'auto' }}>
-          <table style={{ width: '100%', borderCollapse: 'collapse', fontSize: '0.88rem' }}>
+        <div style={{ overflowX: 'auto', WebkitOverflowScrolling: 'touch', width: '100%' }}>
+          <table style={{ width: '100%', minWidth: '550px', borderCollapse: 'collapse', fontSize: '0.85rem' }}>
             <thead>
               <tr style={{ borderBottom: '1px solid rgba(255,255,255,0.1)', textAlign: 'left', color: 'var(--text-muted)', fontSize: '0.78rem' }}>
                 <th style={{ padding: '0.75rem 1rem' }}>TIME</th>

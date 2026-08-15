@@ -29,7 +29,7 @@ let db: Firestore;
 let analytics: Analytics | undefined;
 
 try {
-    if (firebaseConfig.apiKey === 'dummy_key') {
+    if (!firebaseConfig.apiKey) {
         console.warn('Firebase Hub: Missing VITE_FIREBASE_API_KEY. Initializing in offline simulation mode.');
     }
     app = initializeApp(firebaseConfig);

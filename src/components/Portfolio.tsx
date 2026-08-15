@@ -27,13 +27,17 @@ export const Portfolio: React.FC = () => {
     }
   ];
 
-  const filteredProjects = projects.filter(p => {
-    const cleanSearch = searchQuery.replace(/[^\w\s-]/gi, '').toLowerCase();
-    const matchesCategory = activeCategory === 'all' || p.category === activeCategory;
-    const matchesSearch = p.title.toLowerCase().includes(cleanSearch) || 
-                          p.tagline.toLowerCase().includes(cleanSearch);
-    return matchesCategory && matchesSearch;
-  });
+  const filteredProjects = React.useMemo(() => {
+    const cleanSearch = searchQuery.replace(/[^\w\s-]/gi, '').toLowerCase().trim();
+    if (!cleanSearch && activeCategory === 'all') return projects;
+    return projects.filter(p => {
+      const matchesCategory = activeCategory === 'all' || p.category === activeCategory;
+      const matchesSearch = !cleanSearch || 
+                            p.title.toLowerCase().includes(cleanSearch) || 
+                            p.tagline.toLowerCase().includes(cleanSearch);
+      return matchesCategory && matchesSearch;
+    });
+  }, [searchQuery, activeCategory]);
 
   return (
     <section className="portfolio-section" id="work" style={{ padding: '4rem 1rem' }}>
@@ -122,23 +126,23 @@ export const Portfolio: React.FC = () => {
               borderRadius: '30px',
               fontSize: '0.85rem',
               outline: 'none',
-              width: '200px'
+              width: 'min(100%, 220px)'
             }}
           />
         </div>
       </div>
       
-      <div className="carousel-container">
-        <div className="carousel-track" style={{ justifyContent: 'center', flexWrap: 'wrap', gap: '2.5rem', width: '100%', maxWidth: '1100px', margin: '0 auto' }}>
+      <div className="carousel-container" style={{ padding: '0 0.5rem' }}>
+        <div className="carousel-track" style={{ justifyContent: 'center', flexWrap: 'wrap', gap: '2rem', width: '100%', maxWidth: '1100px', margin: '0 auto' }}>
           {filteredProjects.map((proj) => (
             <div 
               key={proj.id} 
               className="portfolio-card neon-border fade-in-up" 
-              style={{ width: '380px', borderRadius: '16px', overflow: 'hidden', background: 'var(--bg-surface)' }}
+              style={{ width: '100%', maxWidth: '380px', borderRadius: '16px', overflow: 'hidden', background: 'var(--bg-surface)' }}
             >
               <div className="card-image-placeholder" style={{ padding: 0, height: '220px', overflow: 'hidden' }}>
                 <img 
-                  src={proj.image} 
+                  src={proj.id === 'sedemson-stone' ? '/sedemson_stone_hero.png' : '/emewear/emewear_hero.jpg'} 
                   alt={proj.title} 
                   style={{ width: '100%', height: '100%', objectFit: 'cover', objectPosition: 'center', transition: 'transform 0.5s ease' }} 
                 />

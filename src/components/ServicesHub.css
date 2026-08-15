@@ -23,14 +23,14 @@
 }
 
 .services-title {
-  font-size: 2.2rem;
+  font-size: clamp(1.6rem, 5vw, 2.2rem);
   font-weight: 900;
   color: #ffffff;
   margin-bottom: 0.8rem;
 }
 
 .services-subtitle {
-  font-size: 1.05rem;
+  font-size: 1rem;
   color: #94a3b8;
   max-width: 680px;
   margin: 0 auto;
@@ -39,8 +39,8 @@
 
 .services-hub-grid {
   display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
-  gap: 2rem;
+  grid-template-columns: repeat(auto-fit, minmax(min(100%, 260px), 1fr));
+  gap: 1.5rem;
 }
 
 .service-hub-card {
@@ -48,17 +48,17 @@
   backdrop-filter: blur(12px);
   border: 1px solid rgba(255, 255, 255, 0.1);
   border-radius: 20px;
-  padding: 2rem;
+  padding: 1.6rem 1.3rem;
   display: flex;
   flex-direction: column;
   justify-content: space-between;
-  transition: all 0.25 ease;
+  transition: all 0.25s ease;
   box-shadow: 0 10px 30px rgba(0, 0, 0, 0.3);
 }
 
 .service-hub-card:hover {
   border-color: var(--cyan-glow, #00ffff);
-  transform: translateY(-5px);
+  transform: translateY(-4px);
   box-shadow: 0 15px 40px rgba(0, 255, 255, 0.15);
 }
 

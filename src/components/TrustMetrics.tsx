@@ -35,24 +35,26 @@ export const TrustMetrics: React.FC = () => {
           background: 'rgba(0, 255, 255, 0.1)', 
           border: '1px solid var(--cyan-glow)', 
           color: 'var(--cyan-glow)',
-          padding: '0.4rem 1.2rem',
+          padding: '0.35rem 1rem',
           borderRadius: '50px',
-          fontSize: '0.8rem',
-          fontWeight: 700,
-          letterSpacing: '1.5px',
-          textTransform: 'uppercase'
+          fontSize: '0.72rem',
+          fontWeight: 750,
+          letterSpacing: '1px',
+          textTransform: 'uppercase',
+          display: 'inline-block',
+          maxWidth: '90%'
         }}>
           ENTERPRISE ARCHITECTURE • ZERO MAINTENANCE
         </span>
-        <h2 style={{ fontSize: '2.2rem', marginTop: '1rem', fontWeight: 800 }}>
+        <h2 style={{ fontSize: 'clamp(1.5rem, 5vw, 2.2rem)', marginTop: '0.8rem', fontWeight: 800 }}>
           Engineered for <span className="neon-text">Real Business Growth</span>
         </h2>
       </div>
 
       <div className="metrics-grid" style={{ 
         display: 'grid', 
-        gridTemplateColumns: 'repeat(auto-fit, minmax(220px, 1fr))', 
-        gap: '1.5rem',
+        gridTemplateColumns: 'repeat(auto-fit, minmax(min(100%, 220px), 1fr))', 
+        gap: '1.2rem',
         maxWidth: '1100px',
         margin: '0 auto',
         padding: '0 1rem'

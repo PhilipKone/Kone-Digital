@@ -76,6 +76,8 @@ export const Pricing: React.FC = () => {
           <span style={{ color: currency === 'GHS' ? 'var(--cyan-glow)' : 'var(--text-muted)', fontWeight: 700, fontSize: '0.9rem' }}>GHS (₵)</span>
           <button 
             onClick={() => setCurrency(currency === 'GHS' ? 'USD' : 'GHS')}
+            aria-label={`Switch pricing currency from ${currency} to ${currency === 'GHS' ? 'USD' : 'GHS'}`}
+            title={`Switch pricing currency from ${currency} to ${currency === 'GHS' ? 'USD' : 'GHS'}`}
             style={{
               background: 'rgba(0, 255, 255, 0.15)',
               border: '1px solid var(--cyan-glow)',
@@ -105,10 +107,12 @@ export const Pricing: React.FC = () => {
       {/* Interactive Package Slider Control */}
       <div style={{ maxWidth: '800px', margin: '0 auto 3rem', padding: '1.5rem', background: 'var(--bg-surface)', borderRadius: '16px', border: '1px solid rgba(255,255,255,0.08)' }}>
         <div style={{ display: 'flex', justifyContent: 'space-between', marginBottom: '1rem', color: 'var(--text-muted)', fontSize: '0.88rem', fontWeight: 700 }}>
-          <span>SLIDE TO COMPARE PACKAGES:</span>
+          <label htmlFor="pricing-plan-slider">SLIDE TO COMPARE PACKAGES:</label>
           <span style={{ color: 'var(--cyan-glow)' }}>{currentPlan.name} Plan Selected</span>
         </div>
         <input 
+          id="pricing-plan-slider"
+          aria-label="Select pricing package plan"
           type="range" 
           min="0" 
           max="3" 
@@ -134,7 +138,7 @@ export const Pricing: React.FC = () => {
       </div>
 
       {/* Grid of Cards */}
-      <div className="pricing-cards" style={{ display: 'flex', gap: '2rem', justifyContent: 'center', flexWrap: 'wrap', maxWidth: '1200px', margin: '0 auto' }}>
+      <div className="pricing-cards" style={{ display: 'flex', gap: '1.5rem', justifyContent: 'center', flexWrap: 'wrap', maxWidth: '1200px', margin: '0 auto', width: '100%' }}>
         {plans.map((plan, index) => {
           const isSelected = index === sliderIndex;
 
@@ -146,10 +150,11 @@ export const Pricing: React.FC = () => {
               style={{
                 background: isSelected ? 'rgba(0, 255, 255, 0.04)' : 'var(--bg-surface)',
                 borderColor: isSelected ? 'var(--cyan-glow)' : 'rgba(255, 255, 255, 0.08)',
-                transform: isSelected ? 'scale(1.05)' : 'scale(1)',
-                transition: 'all 0.35s ease',
+                boxShadow: isSelected ? '0 0 20px rgba(0, 240, 255, 0.25)' : 'none',
+                transition: 'all 0.3s ease',
                 cursor: 'pointer',
-                width: '270px',
+                width: '100%',
+                maxWidth: '280px',
                 position: 'relative'
               }}
             >

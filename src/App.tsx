@@ -189,7 +189,7 @@ function App() {
       <footer className="hub-footer" style={{
         marginTop: '2rem',
         paddingTop: '2.5rem',
-        paddingBottom: '4rem',
+        paddingBottom: '6.5rem',
         borderTop: '1px solid rgba(255, 255, 255, 0.08)',
         display: 'flex',
         flexDirection: 'column',
@@ -303,6 +303,7 @@ function App() {
           className={`mobile-tab ${currentRoute === 'home' ? 'active' : ''}`}
           onClick={() => setCurrentRoute('home')}
           title="Home"
+          aria-label="Home"
         >
           <div className="mobile-icon-pill">
             <svg viewBox="0 0 24 24" width="22" height="22" stroke="currentColor" strokeWidth="2.2" fill="none" strokeLinecap="round" strokeLinejoin="round">
@@ -316,6 +317,7 @@ function App() {
           className={`mobile-tab ${currentRoute === 'work' ? 'active' : ''}`}
           onClick={() => setCurrentRoute('work')}
           title="Our Work"
+          aria-label="Our Work"
         >
           <div className="mobile-icon-pill">
             <svg viewBox="0 0 24 24" width="22" height="22" stroke="currentColor" strokeWidth="2.2" fill="none" strokeLinecap="round" strokeLinejoin="round">
@@ -329,6 +331,7 @@ function App() {
           className={`mobile-tab ${currentRoute === 'pricing' ? 'active' : ''}`}
           onClick={() => setCurrentRoute('pricing')}
           title="Pricing"
+          aria-label="Pricing"
         >
           <div className="mobile-icon-pill">
             <svg viewBox="0 0 24 24" width="22" height="22" stroke="currentColor" strokeWidth="2.2" fill="none" strokeLinecap="round" strokeLinejoin="round">
@@ -343,6 +346,7 @@ function App() {
           rel="noopener noreferrer"
           className="mobile-tab"
           title="Contact"
+          aria-label="Contact via WhatsApp"
         >
           <div className="mobile-icon-pill">
             <svg viewBox="0 0 24 24" width="22" height="22" stroke="currentColor" strokeWidth="2.2" fill="none" strokeLinecap="round" strokeLinejoin="round">
