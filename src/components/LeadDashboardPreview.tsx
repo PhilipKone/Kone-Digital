@@ -36,13 +36,13 @@ export const LeadDashboardPreview: React.FC = () => {
       <div style={{ textAlign: 'center', marginBottom: '2.5rem' }}>
         <span className="badge-pill emerald" style={{ marginBottom: '1rem' }}>
           <span style={{ width: '6px', height: '6px', borderRadius: '50%', background: '#10B981' }} />
-          DEMO WORKFLOW PREVIEW • WHATSAPP LEAD CRM
+          INTEGRATED MERCHANT CRM • REAL-TIME NOTIFICATIONS
         </span>
         <h2 className="heading-luminance" style={{ fontSize: 'clamp(1.8rem, 4vw, 2.6rem)', fontWeight: 850, marginTop: '0.8rem' }}>
           Centralize Every WhatsApp <span className="emerald-luminance">Order & MoMo Lead</span>
         </h2>
         <p style={{ color: '#94A3B8', fontSize: '1.05rem', marginTop: '0.5rem', maxWidth: '650px', margin: '0.5rem auto 0', letterSpacing: '-0.01em' }}>
-          An interactive demonstration of how your merchant dashboard organizes customer inquiries, MoMo payment verifications, and automated WhatsApp notifications.
+          Real-time visibility into customer orders, instant Mobile Money reconciliations, and automated dispatch workflows.
         </p>
       </div>
 

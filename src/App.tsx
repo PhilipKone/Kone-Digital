@@ -123,9 +123,8 @@ function App() {
         <nav className="hub-nav">
           <a href="#" className={currentRoute === 'home' ? 'active-nav' : ''}>Overview</a>
           <a href="#services" className={currentRoute === 'services' || currentRoute === 'service-detail' ? 'active-nav' : ''}>Services</a>
-          <a href="#work" className={currentRoute === 'work' ? 'active-nav' : ''}>Our Work</a>
-          <a href="#tools" className={currentRoute === 'tools' ? 'active-nav' : ''}>Free Tools</a>
-          <a href="#dashboard" className={currentRoute === 'dashboard' ? 'active-nav' : ''} style={{ color: 'var(--cyan-glow)', fontWeight: 800 }}>Dashboard</a>
+          <a href="#work" className={currentRoute === 'work' ? 'active-nav' : ''}>Work</a>
+          <a href="#tools" className={currentRoute === 'tools' ? 'active-nav' : ''}>Tools</a>
           <a href="#pricing" className={currentRoute === 'pricing' ? 'active-nav' : ''}>Pricing</a>
           <a 
             href="https://wa.me/233551993820?text=Hi%20Kone%20Digital%2C%20I'd%20like%20to%20get%20in%20touch%20about%20your%20services." 
@@ -198,7 +197,7 @@ function App() {
               className={`mobile-drawer-link ${currentRoute === 'work' ? 'active-nav' : ''}`}
               onClick={() => setIsMobileMenuOpen(false)}
             >
-              <span>Our Work</span>
+              <span>Work</span>
               <span style={{ fontSize: '0.8rem', opacity: 0.6 }}>03</span>
             </a>
             <a 
@@ -206,16 +205,8 @@ function App() {
               className={`mobile-drawer-link ${currentRoute === 'tools' ? 'active-nav' : ''}`}
               onClick={() => setIsMobileMenuOpen(false)}
             >
-              <span>Free Tools</span>
+              <span>Tools</span>
               <span style={{ fontSize: '0.8rem', opacity: 0.6 }}>04</span>
-            </a>
-            <a 
-              href="#dashboard" 
-              className={`mobile-drawer-link ${currentRoute === 'dashboard' ? 'active-nav' : ''}`}
-              onClick={() => setIsMobileMenuOpen(false)}
-            >
-              <span style={{ color: 'var(--cyan-glow)' }}>Dashboard</span>
-              <span style={{ fontSize: '0.8rem', opacity: 0.6 }}>05</span>
             </a>
             <a 
               href="#pricing" 
@@ -223,7 +214,7 @@ function App() {
               onClick={() => setIsMobileMenuOpen(false)}
             >
               <span>Pricing</span>
-              <span style={{ fontSize: '0.8rem', opacity: 0.6 }}>06</span>
+              <span style={{ fontSize: '0.8rem', opacity: 0.6 }}>05</span>
             </a>
             <a 
               href="https://wa.me/233551993820?text=Hi%20Kone%20Digital%2C%20I'd%20like%20to%20get%20in%20touch%20about%20your%20services." 

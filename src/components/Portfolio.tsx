@@ -13,7 +13,7 @@ export const Portfolio: React.FC = () => {
       tagline: 'Premium Natural Stone Finishes & Architectural Cladding',
       image: '/sedemson_stone_hero.png',
       tags: ['WaaS', 'B2B', 'Cladding'],
-      status: 'Launching Soon'
+      status: 'Live Production'
     },
     {
       id: 'emewear',
@@ -23,7 +23,7 @@ export const Portfolio: React.FC = () => {
       tagline: 'Ghana-Made Plus-Size Ankara & Luxury Heritage Fashion',
       image: '/emewear/emewear_hero.jpg',
       tags: ['Fashion WaaS', 'E-Commerce', '3D Runway'],
-      status: 'Launching Soon'
+      status: 'Live Production'
     }
   ];
 
@@ -73,7 +73,7 @@ export const Portfolio: React.FC = () => {
               fontSize: '0.85rem'
             }}
           >
-            All Projects ({projects.length})
+            All Projects
           </button>
 
           <button 
@@ -85,7 +85,7 @@ export const Portfolio: React.FC = () => {
               fontSize: '0.85rem'
             }}
           >
-            Natural Stone & B2B (1)
+            Natural Stone & B2B
           </button>
 
           <button 
@@ -97,7 +97,7 @@ export const Portfolio: React.FC = () => {
               fontSize: '0.85rem'
             }}
           >
-            Fashion & E-Commerce (1)
+            Fashion & E-Commerce
           </button>
 
           {/* Search Box */}

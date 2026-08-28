@@ -58,26 +58,31 @@ export const HeroSection: React.FC<HeroSectionProps> = ({ onOpenWizard }) => {
       }}>
         <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', flexWrap: 'wrap', gap: '1rem', marginBottom: '1.5rem', borderBottom: '1px solid rgba(255,255,255,0.08)', paddingBottom: '1rem' }}>
           <div style={{ display: 'flex', gap: '0.5rem', alignItems: 'center' }}>
-            <span style={{ width: '10px', height: '10px', borderRadius: '50%', background: '#ff5f56' }}></span>
-            <span style={{ width: '10px', height: '10px', borderRadius: '50%', background: '#ffbd2e' }}></span>
-            <span style={{ width: '10px', height: '10px', borderRadius: '50%', background: '#27c93f' }}></span>
-            <span style={{ color: 'var(--text-muted)', fontSize: '0.78rem', marginLeft: '0.5rem', fontWeight: 700, letterSpacing: '0.5px' }}>INTERACTIVE PLATFORM PREVIEW</span>
+            <div style={{ 
+              display: 'inline-flex', 
+              alignItems: 'center', 
+              gap: '0.4rem', 
+              background: 'rgba(255,255,255,0.04)', 
+              border: '1px solid rgba(255,255,255,0.08)', 
+              padding: '0.25rem 0.75rem', 
+              borderRadius: '20px', 
+              fontSize: '0.75rem', 
+              color: '#94A3B8' 
+            }}>
+              <span style={{ width: '6px', height: '6px', borderRadius: '50%', background: '#10B981' }} />
+              <span>kone-showcase.io</span>
+            </div>
           </div>
 
           {/* Demo Tabs */}
           <div style={{ display: 'flex', gap: '0.5rem', flexWrap: 'wrap', justifyContent: 'center' }}>
             <button 
               onClick={() => setActiveTab('stone')}
+              className={activeTab === 'stone' ? 'btn-primary' : 'btn-secondary'}
               style={{
-                background: activeTab === 'stone' ? 'rgba(255,255,255,0.12)' : 'transparent',
-                color: activeTab === 'stone' ? '#fff' : 'var(--text-muted)',
-                border: '1px solid ' + (activeTab === 'stone' ? 'rgba(255,255,255,0.2)' : 'transparent'),
-                padding: '0.4rem 0.8rem',
-                borderRadius: '8px',
-                fontWeight: 700,
-                fontSize: '0.78rem',
-                cursor: 'pointer',
-                transition: 'all 0.2s'
+                padding: '0.35rem 0.9rem',
+                borderRadius: '50px',
+                fontSize: '0.78rem'
               }}
             >
               Stone Architecture
@@ -85,16 +90,11 @@ export const HeroSection: React.FC<HeroSectionProps> = ({ onOpenWizard }) => {
 
             <button 
               onClick={() => setActiveTab('fashion')}
+              className={activeTab === 'fashion' ? 'btn-primary' : 'btn-secondary'}
               style={{
-                background: activeTab === 'fashion' ? 'rgba(255,255,255,0.12)' : 'transparent',
-                color: activeTab === 'fashion' ? '#fff' : 'var(--text-muted)',
-                border: '1px solid ' + (activeTab === 'fashion' ? 'rgba(255,255,255,0.2)' : 'transparent'),
-                padding: '0.4rem 0.8rem',
-                borderRadius: '8px',
-                fontWeight: 700,
-                fontSize: '0.78rem',
-                cursor: 'pointer',
-                transition: 'all 0.2s'
+                padding: '0.35rem 0.9rem',
+                borderRadius: '50px',
+                fontSize: '0.78rem'
               }}
             >
               Fashion Retail
@@ -102,16 +102,11 @@ export const HeroSection: React.FC<HeroSectionProps> = ({ onOpenWizard }) => {
 
             <button 
               onClick={() => setActiveTab('momo')}
+              className={activeTab === 'momo' ? 'btn-primary' : 'btn-secondary'}
               style={{
-                background: activeTab === 'momo' ? 'rgba(255,255,255,0.12)' : 'transparent',
-                color: activeTab === 'momo' ? '#fff' : 'var(--text-muted)',
-                border: '1px solid ' + (activeTab === 'momo' ? 'rgba(255,255,255,0.2)' : 'transparent'),
-                padding: '0.4rem 0.8rem',
-                borderRadius: '8px',
-                fontWeight: 700,
-                fontSize: '0.78rem',
-                cursor: 'pointer',
-                transition: 'all 0.2s'
+                padding: '0.35rem 0.9rem',
+                borderRadius: '50px',
+                fontSize: '0.78rem'
               }}
             >
               Payment Engine
@@ -123,19 +118,25 @@ export const HeroSection: React.FC<HeroSectionProps> = ({ onOpenWizard }) => {
         <div style={{ borderRadius: '12px', overflow: 'hidden', minHeight: '340px', height: 'auto', position: 'relative', background: '#0d1117' }}>
           {activeTab === 'stone' && (
             <div style={{ minHeight: '340px', display: 'flex', flexDirection: 'column', justifyContent: 'center', alignItems: 'center', backgroundImage: 'linear-gradient(rgba(0,0,0,0.7), rgba(0,0,0,0.7)), url("/sedemson_stone_hero.png")', backgroundSize: 'cover', backgroundPosition: 'center', color: '#fff', padding: '2rem 1.2rem', textAlign: 'center' }}>
-              <span style={{ background: 'rgba(241, 196, 15, 0.2)', border: '1px solid #f1c40f', color: '#f1c40f', padding: '0.25rem 0.85rem', borderRadius: '20px', fontWeight: 700, fontSize: '0.75rem', marginBottom: '0.8rem' }}>B2B CASE STUDY</span>
+              <span className="badge-pill gold" style={{ marginBottom: '0.8rem' }}>FEATURED B2B CLIENT</span>
               <h2 style={{ fontSize: 'clamp(1.3rem, 5vw, 2rem)', fontFamily: 'serif', fontWeight: 900 }}>Sedemson Stone Craftsmanship</h2>
               <p style={{ maxWidth: '500px', fontSize: '0.9rem', opacity: 0.85, marginTop: '0.5rem' }}>Natural Stone Cladding & Architectural Finishes across Ghana.</p>
-              <span style={{ marginTop: '1.2rem', color: 'var(--cyan-glow)', fontWeight: 700, fontSize: '0.85rem' }}>Launching Soon</span>
+              <a href="#work" style={{ marginTop: '1.2rem', color: '#F8FAFC', background: 'rgba(255,255,255,0.1)', border: '1px solid rgba(255,255,255,0.2)', padding: '0.35rem 0.9rem', borderRadius: '50px', fontWeight: 650, fontSize: '0.8rem', textDecoration: 'none', display: 'inline-flex', alignItems: 'center', gap: '0.3rem' }}>
+                <span>Explore Client Showcase</span>
+                <span>➔</span>
+              </a>
             </div>
           )}
 
           {activeTab === 'fashion' && (
             <div style={{ minHeight: '340px', display: 'flex', flexDirection: 'column', justifyContent: 'center', alignItems: 'center', backgroundImage: 'linear-gradient(rgba(0,0,0,0.7), rgba(0,0,0,0.7)), url("/emewear/emewear_hero.jpg")', backgroundSize: 'cover', backgroundPosition: 'top', color: '#fff', padding: '2rem 1.2rem', textAlign: 'center' }}>
-              <span style={{ background: 'rgba(229, 184, 130, 0.2)', border: '1px solid #e5b882', color: '#e5b882', padding: '0.25rem 0.85rem', borderRadius: '20px', fontWeight: 700, fontSize: '0.75rem', marginBottom: '0.8rem' }}>E-COMMERCE CASE STUDY</span>
+              <span className="badge-pill gold" style={{ marginBottom: '0.8rem' }}>E-COMMERCE SHOWCASE</span>
               <h2 style={{ fontSize: 'clamp(1.3rem, 5vw, 2rem)', fontFamily: 'serif', fontWeight: 900 }}>Emewear Plus-Size Ankara</h2>
               <p style={{ maxWidth: '500px', fontSize: '0.9rem', opacity: 0.85, marginTop: '0.5rem' }}>Handcrafted Ankara wide-leg cargo trousers & royal batik palazzo sets.</p>
-              <span style={{ marginTop: '1.2rem', color: '#e5b882', fontWeight: 700, fontSize: '0.85rem' }}>Launching Soon</span>
+              <a href="#work" style={{ marginTop: '1.2rem', color: '#F8FAFC', background: 'rgba(255,255,255,0.1)', border: '1px solid rgba(255,255,255,0.2)', padding: '0.35rem 0.9rem', borderRadius: '50px', fontWeight: 650, fontSize: '0.8rem', textDecoration: 'none', display: 'inline-flex', alignItems: 'center', gap: '0.3rem' }}>
+                <span>Explore Client Showcase</span>
+                <span>➔</span>
+              </a>
             </div>
           )}
 
