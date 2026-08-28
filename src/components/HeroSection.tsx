@@ -10,63 +10,37 @@ export const HeroSection: React.FC<HeroSectionProps> = ({ onOpenWizard }) => {
   return (
     <section className="hub-hero" style={{ padding: '3rem 1rem 4rem', maxWidth: '1200px', margin: '0 auto' }}>
       <div style={{ textAlign: 'center', maxWidth: '850px', margin: '0 auto 3rem' }}>
-        <span style={{ 
-          background: 'rgba(229, 192, 123, 0.1)', 
-          border: '1px solid rgba(229, 192, 123, 0.25)', 
-          color: 'var(--gold-accent)',
-          padding: '0.35rem 1.2rem',
-          borderRadius: '50px',
-          fontSize: '0.78rem',
-          fontWeight: 700,
-          letterSpacing: '1.2px',
-          textTransform: 'uppercase',
-          display: 'inline-block',
-          marginBottom: '1.5rem'
-        }}>
+        <span className="badge-pill gold" style={{ marginBottom: '1.5rem' }}>
+          <span style={{ width: '6px', height: '6px', borderRadius: '50%', background: 'var(--gold-accent)' }} />
           48-HOUR MANAGED LAUNCH SLA
         </span>
 
-        <h1 style={{ fontSize: 'clamp(2.4rem, 6vw, 3.8rem)', fontWeight: 900, lineHeight: 1.15, marginBottom: '1.2rem' }}>
+        <h1 className="heading-luminance" style={{ fontSize: 'clamp(2.4rem, 6vw, 3.8rem)', fontWeight: 900, lineHeight: 1.12, marginBottom: '1.2rem', letterSpacing: '-0.035em' }}>
           Putting Ghana's Best<br />
-          <span className="gold-text">Businesses Online.</span>
+          <span className="gold-luminance">Businesses Online.</span>
         </h1>
 
-        <p style={{ color: 'var(--text-muted)', fontSize: '1.15rem', lineHeight: 1.7, marginBottom: '2.5rem', maxWidth: '720px', margin: '0 auto 2.5rem' }}>
-          Traditional marketing ends at the flyer. We engineer high-performance Website as a Service (WaaS) platforms with automated <strong style={{ color: '#ffcc00' }}>MoMo payments</strong> and direct <strong style={{ color: '#10b981' }}>WhatsApp lead routing</strong>.
+        <p style={{ color: '#94A3B8', fontSize: '1.12rem', lineHeight: 1.7, marginBottom: '2.5rem', maxWidth: '720px', margin: '0 auto 2.5rem', letterSpacing: '-0.01em' }}>
+          Traditional marketing ends at the flyer. We engineer high-performance Website as a Service (WaaS) platforms with automated <strong style={{ color: '#F8FAFC', fontWeight: 650 }}>MoMo payments</strong> and direct <strong style={{ color: '#F8FAFC', fontWeight: 650 }}>WhatsApp lead routing</strong>.
         </p>
 
         <div style={{ display: 'flex', gap: '1rem', justifyContent: 'center', flexWrap: 'wrap' }}>
           <button 
             onClick={onOpenWizard}
-            className="neon-btn"
-            style={{ 
-              display: 'inline-flex', 
-              alignItems: 'center', 
-              gap: '0.5rem',
-              padding: '0.85rem 2rem',
-              fontSize: '0.92rem',
-              cursor: 'pointer',
-              background: 'var(--cyan-glow)',
-              color: '#07090E',
-              fontWeight: 800
-            }}
+            className="btn-primary"
           >
-            <span>Generate Starter Website ➔</span>
+            <span>Generate Starter Website</span>
+            <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round">
+              <line x1="5" y1="12" x2="19" y2="12"></line>
+              <polyline points="12 5 19 12 12 19"></polyline>
+            </svg>
           </button>
 
           <a 
             href="https://wa.me/233551993820?text=Hi%20Kone%20Digital%2C%20I'd%20like%20to%20request%20a%20consultation%20for%20my%20business%20website." 
             target="_blank" 
             rel="noopener noreferrer" 
-            className="neon-btn"
-            style={{ 
-              textDecoration: 'none', 
-              background: 'rgba(255, 255, 255, 0.05)',
-              border: '1px solid rgba(255, 255, 255, 0.12)',
-              color: 'var(--text-main)',
-              padding: '0.85rem 2rem',
-              fontSize: '0.92rem'
-            }}
+            className="btn-secondary"
           >
             <span>Request Consultation</span>
           </a>

@@ -31,23 +31,12 @@ export const TrustMetrics: React.FC = () => {
   return (
     <section className="trust-metrics-section" style={{ padding: '3rem 0', margin: '2rem 0' }}>
       <div className="section-title" style={{ textAlign: 'center', marginBottom: '2.5rem' }}>
-        <span className="badge-pill" style={{ 
-          background: 'rgba(0, 255, 255, 0.1)', 
-          border: '1px solid var(--cyan-glow)', 
-          color: 'var(--cyan-glow)',
-          padding: '0.35rem 1rem',
-          borderRadius: '50px',
-          fontSize: '0.72rem',
-          fontWeight: 750,
-          letterSpacing: '1px',
-          textTransform: 'uppercase',
-          display: 'inline-block',
-          maxWidth: '90%'
-        }}>
+        <span className="badge-pill cyan">
+          <span style={{ width: '6px', height: '6px', borderRadius: '50%', background: 'var(--cyan-glow)' }} />
           ENTERPRISE ARCHITECTURE • ZERO MAINTENANCE
         </span>
-        <h2 style={{ fontSize: 'clamp(1.5rem, 5vw, 2.2rem)', marginTop: '0.8rem', fontWeight: 800 }}>
-          Engineered for <span className="neon-text">Real Business Growth</span>
+        <h2 className="heading-luminance" style={{ fontSize: 'clamp(1.7rem, 5vw, 2.4rem)', marginTop: '0.9rem', fontWeight: 850 }}>
+          Engineered for <span className="cyan-luminance">Real Business Growth</span>
         </h2>
       </div>
 

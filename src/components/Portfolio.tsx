@@ -42,8 +42,14 @@ export const Portfolio: React.FC = () => {
   return (
     <section className="portfolio-section" id="work" style={{ padding: '4rem 1rem' }}>
       <div className="portfolio-header fade-in-up" style={{ textAlign: 'center', marginBottom: '2.5rem' }}>
-        <h2>Our <span className="neon-text">Portfolio Showcase</span></h2>
-        <p style={{ color: 'var(--text-muted)', fontSize: '1.1rem', marginTop: '0.5rem' }}>
+        <span className="badge-pill" style={{ marginBottom: '1rem' }}>
+          <span style={{ width: '6px', height: '6px', borderRadius: '50%', background: '#F8FAFC' }} />
+          CLIENT CASE STUDIES
+        </span>
+        <h2 className="heading-luminance" style={{ fontSize: 'clamp(1.7rem, 5vw, 2.4rem)', fontWeight: 850, marginTop: '0.8rem' }}>
+          Our <span className="cyan-luminance">Portfolio Showcase</span>
+        </h2>
+        <p style={{ color: '#94A3B8', fontSize: '1.05rem', marginTop: '0.5rem', letterSpacing: '-0.01em' }}>
           Real-world WaaS implementations engineered for client growth.
         </p>
 
@@ -60,17 +66,11 @@ export const Portfolio: React.FC = () => {
         }}>
           <button 
             onClick={() => setActiveCategory('all')}
-            className="neon-border"
+            className={activeCategory === 'all' ? 'btn-primary' : 'btn-secondary'}
             style={{
-              background: activeCategory === 'all' ? 'var(--cyan-glow)' : 'var(--bg-surface)',
-              color: activeCategory === 'all' ? '#090B10' : 'var(--text-main)',
-              border: '1px solid var(--cyan-glow)',
-              padding: '0.5rem 1.4rem',
-              borderRadius: '30px',
-              fontWeight: 700,
-              fontSize: '0.85rem',
-              cursor: 'pointer',
-              transition: 'all 0.3s'
+              padding: '0.45rem 1.2rem',
+              borderRadius: '50px',
+              fontSize: '0.85rem'
             }}
           >
             All Projects ({projects.length})
@@ -78,17 +78,11 @@ export const Portfolio: React.FC = () => {
 
           <button 
             onClick={() => setActiveCategory('b2b')}
-            className="neon-border"
+            className={activeCategory === 'b2b' ? 'btn-primary' : 'btn-secondary'}
             style={{
-              background: activeCategory === 'b2b' ? 'var(--cyan-glow)' : 'var(--bg-surface)',
-              color: activeCategory === 'b2b' ? '#090B10' : 'var(--text-main)',
-              border: '1px solid var(--cyan-glow)',
-              padding: '0.5rem 1.4rem',
-              borderRadius: '30px',
-              fontWeight: 700,
-              fontSize: '0.85rem',
-              cursor: 'pointer',
-              transition: 'all 0.3s'
+              padding: '0.45rem 1.2rem',
+              borderRadius: '50px',
+              fontSize: '0.85rem'
             }}
           >
             Natural Stone & B2B (1)
@@ -96,17 +90,11 @@ export const Portfolio: React.FC = () => {
 
           <button 
             onClick={() => setActiveCategory('fashion')}
-            className="neon-border"
+            className={activeCategory === 'fashion' ? 'btn-primary' : 'btn-secondary'}
             style={{
-              background: activeCategory === 'fashion' ? 'var(--cyan-glow)' : 'var(--bg-surface)',
-              color: activeCategory === 'fashion' ? '#090B10' : 'var(--text-main)',
-              border: '1px solid var(--cyan-glow)',
-              padding: '0.5rem 1.4rem',
-              borderRadius: '30px',
-              fontWeight: 700,
-              fontSize: '0.85rem',
-              cursor: 'pointer',
-              transition: 'all 0.3s'
+              padding: '0.45rem 1.2rem',
+              borderRadius: '50px',
+              fontSize: '0.85rem'
             }}
           >
             Fashion & E-Commerce (1)
@@ -148,26 +136,27 @@ export const Portfolio: React.FC = () => {
                 />
               </div>
               <div className="card-content" style={{ padding: '1.8rem' }}>
-                <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', marginBottom: '0.4rem' }}>
-                  <h3 style={{ fontSize: '1.5rem', color: 'var(--text-main)' }}>{proj.title}</h3>
-                  <span style={{ fontSize: '0.72rem', background: 'rgba(0, 255, 255, 0.1)', color: 'var(--cyan-glow)', padding: '0.2rem 0.6rem', borderRadius: '6px', fontWeight: 700 }}>
+                <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', marginBottom: '0.5rem' }}>
+                  <h3 style={{ fontSize: '1.4rem', color: '#FFFFFF', fontWeight: 800 }}>{proj.title}</h3>
+                  <span className="badge-pill cyan" style={{ fontSize: '0.7rem', padding: '0.2rem 0.6rem' }}>
                     {proj.categoryLabel}
                   </span>
                 </div>
                 
-                <p className="tagline" style={{ color: 'var(--text-muted)', fontSize: '0.9rem', marginBottom: '1.2rem', lineHeight: 1.5 }}>
+                <p className="tagline" style={{ color: '#94A3B8', fontSize: '0.9rem', marginBottom: '1.2rem', lineHeight: 1.5, letterSpacing: '-0.01em' }}>
                   {proj.tagline}
                 </p>
                 
-                <div className="tags" style={{ display: 'flex', gap: '0.5rem', marginBottom: '1.5rem' }}>
+                <div className="tags" style={{ display: 'flex', gap: '0.5rem', marginBottom: '1.5rem', flexWrap: 'wrap' }}>
                   {proj.tags.map((t, idx) => (
-                    <span key={idx} className="tag" style={{ background: 'rgba(255, 255, 255, 0.08)', padding: '0.2rem 0.6rem', borderRadius: '4px', fontSize: '0.78rem' }}>
+                    <span key={idx} className="tag" style={{ background: 'rgba(255, 255, 255, 0.04)', border: '1px solid rgba(255, 255, 255, 0.08)', color: '#CBD5E1', padding: '0.25rem 0.6rem', borderRadius: '6px', fontSize: '0.76rem', fontWeight: 600 }}>
                       {t}
                     </span>
                   ))}
                 </div>
                 
-                <span className="view-link" style={{ color: '#8b949e', cursor: 'not-allowed', display: 'inline-flex', alignItems: 'center', gap: '0.25rem', fontWeight: 700 }}>
+                <span className="view-link" style={{ color: '#94A3B8', cursor: 'default', display: 'inline-flex', alignItems: 'center', gap: '0.35rem', fontWeight: 700, fontSize: '0.85rem' }}>
+                  <span style={{ width: '6px', height: '6px', borderRadius: '50%', background: 'var(--gold-accent)' }} />
                   {proj.status}
                 </span>
               </div>

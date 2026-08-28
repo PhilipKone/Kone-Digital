@@ -15,6 +15,7 @@ import ServiceDetail from './components/ServiceDetail';
 function App() {
   const containerRef = useRef<HTMLDivElement>(null);
   const [isWizardOpen, setIsWizardOpen] = useState<boolean>(false);
+  const [isMobileMenuOpen, setIsMobileMenuOpen] = useState<boolean>(false);
   const [wizardPrefill, setWizardPrefill] = useState<{ phone?: string; businessName?: string }>({});
 
   const handleOpenWizardWithPrefill = (data?: { phone?: string; businessName?: string }) => {
@@ -115,9 +116,11 @@ function App() {
     <div className="hub-container" ref={containerRef}>
       <header className="hub-header">
         <div className="logo" style={{ display: 'flex', alignItems: 'center', gap: '0.75rem' }}>
-          <img src="/kone-digital-logo.svg" alt="Kone Digital Logo" className="logo-icon neon-logo" width="40" height="40" />
-          <span className="logo-text">KONE <span className="neon-text">DIGITAL</span></span>
+          <img src="/kone-digital-logo.svg" alt="Kone Digital Logo" className="logo-icon neon-logo" width="36" height="36" />
+          <span className="logo-text" style={{ fontWeight: 850, letterSpacing: '-0.02em' }}>KONE <span className="neon-text">DIGITAL</span></span>
         </div>
+
+        {/* Desktop Navbar */}
         <nav className="hub-nav">
           <a href="#" className={currentRoute === 'home' ? 'active-nav' : ''}>Overview</a>
           <a href="#services" className={currentRoute === 'services' || currentRoute === 'service-detail' ? 'active-nav' : ''}>Services</a>
@@ -134,7 +137,129 @@ function App() {
           </a>
           <CurrencyToggle />
         </nav>
+
+        {/* Mobile Header Right Controls */}
+        <div style={{ display: 'flex', alignItems: 'center', gap: '0.6rem' }} className="mobile-header-controls">
+          <div className="mobile-currency-wrapper" style={{ display: 'none' }}>
+            <CurrencyToggle />
+          </div>
+          <button 
+            className="mobile-nav-toggle"
+            onClick={() => setIsMobileMenuOpen(!isMobileMenuOpen)}
+            aria-label="Toggle navigation menu"
+          >
+            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
+              <line x1="3" y1="12" x2="21" y2="12"></line>
+              <line x1="3" y1="6" x2="21" y2="6"></line>
+              <line x1="3" y1="18" x2="21" y2="18"></line>
+            </svg>
+          </button>
+        </div>
       </header>
+
+      {/* Mobile Drawer Menu */}
+      {isMobileMenuOpen && (
+        <div className="mobile-menu-drawer">
+          <div className="mobile-drawer-header">
+            <div style={{ display: 'flex', alignItems: 'center', gap: '0.6rem' }}>
+              <img src="/kone-digital-logo.svg" alt="Kone Digital Logo" width="30" height="30" />
+              <span style={{ fontWeight: 850, fontSize: '1.1rem', letterSpacing: '-0.02em' }}>KONE <span className="neon-text">DIGITAL</span></span>
+            </div>
+            <button 
+              className="mobile-drawer-close"
+              onClick={() => setIsMobileMenuOpen(false)}
+              aria-label="Close navigation menu"
+            >
+              <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round">
+                <line x1="18" y1="6" x2="6" y2="18"></line>
+                <line x1="6" y1="6" x2="18" y2="18"></line>
+              </svg>
+            </button>
+          </div>
+
+          <div className="mobile-drawer-links">
+            <a 
+              href="#" 
+              className={`mobile-drawer-link ${currentRoute === 'home' ? 'active-nav' : ''}`}
+              onClick={() => setIsMobileMenuOpen(false)}
+            >
+              <span>Overview</span>
+              <span style={{ fontSize: '0.8rem', opacity: 0.6 }}>01</span>
+            </a>
+            <a 
+              href="#services" 
+              className={`mobile-drawer-link ${currentRoute === 'services' || currentRoute === 'service-detail' ? 'active-nav' : ''}`}
+              onClick={() => setIsMobileMenuOpen(false)}
+            >
+              <span>Services</span>
+              <span style={{ fontSize: '0.8rem', opacity: 0.6 }}>02</span>
+            </a>
+            <a 
+              href="#work" 
+              className={`mobile-drawer-link ${currentRoute === 'work' ? 'active-nav' : ''}`}
+              onClick={() => setIsMobileMenuOpen(false)}
+            >
+              <span>Our Work</span>
+              <span style={{ fontSize: '0.8rem', opacity: 0.6 }}>03</span>
+            </a>
+            <a 
+              href="#tools" 
+              className={`mobile-drawer-link ${currentRoute === 'tools' ? 'active-nav' : ''}`}
+              onClick={() => setIsMobileMenuOpen(false)}
+            >
+              <span>Free Tools</span>
+              <span style={{ fontSize: '0.8rem', opacity: 0.6 }}>04</span>
+            </a>
+            <a 
+              href="#dashboard" 
+              className={`mobile-drawer-link ${currentRoute === 'dashboard' ? 'active-nav' : ''}`}
+              onClick={() => setIsMobileMenuOpen(false)}
+            >
+              <span style={{ color: 'var(--cyan-glow)' }}>Dashboard</span>
+              <span style={{ fontSize: '0.8rem', opacity: 0.6 }}>05</span>
+            </a>
+            <a 
+              href="#pricing" 
+              className={`mobile-drawer-link ${currentRoute === 'pricing' ? 'active-nav' : ''}`}
+              onClick={() => setIsMobileMenuOpen(false)}
+            >
+              <span>Pricing</span>
+              <span style={{ fontSize: '0.8rem', opacity: 0.6 }}>06</span>
+            </a>
+            <a 
+              href="https://wa.me/233551993820?text=Hi%20Kone%20Digital%2C%20I'd%20like%20to%20get%20in%20touch%20about%20your%20services." 
+              target="_blank" 
+              rel="noopener noreferrer"
+              className="mobile-drawer-link"
+              onClick={() => setIsMobileMenuOpen(false)}
+            >
+              <span>Contact via WhatsApp</span>
+              <span style={{ fontSize: '0.8rem', opacity: 0.6 }}>➔</span>
+            </a>
+          </div>
+
+          <div className="mobile-drawer-footer">
+            <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center' }}>
+              <span style={{ fontSize: '0.85rem', color: '#94A3B8' }}>Select Currency:</span>
+              <CurrencyToggle />
+            </div>
+            <button 
+              onClick={() => {
+                setIsMobileMenuOpen(false);
+                handleOpenWizardWithPrefill();
+              }}
+              className="btn-primary"
+              style={{ width: '100%', padding: '0.85rem', fontSize: '0.95rem' }}
+            >
+              <span>Generate Starter Website</span>
+              <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round">
+                <line x1="5" y1="12" x2="19" y2="12"></line>
+                <polyline points="12 5 19 12 12 19"></polyline>
+              </svg>
+            </button>
+          </div>
+        </div>
+      )}
 
       {/* Main Content Area */}
       <main id="main-content" style={{ flex: '1 0 auto', display: 'flex', flexDirection: 'column', width: '100%', gap: '3rem' }}>

@@ -280,16 +280,18 @@ export const OnboardingWizard: React.FC<OnboardingWizardProps> = ({
 
             <button 
               type="submit"
-              className="neon-btn neon-border"
+              className="btn-primary"
               style={{
                 width: '100%',
-                padding: '0.95rem',
-                fontSize: '1rem',
-                fontWeight: 800,
-                cursor: 'pointer'
+                padding: '0.85rem',
+                fontSize: '0.95rem'
               }}
             >
-              Continue to Step 2 ➔
+              <span>Continue to Step 2</span>
+              <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round">
+                <line x1="5" y1="12" x2="19" y2="12"></line>
+                <polyline points="12 5 19 12 12 19"></polyline>
+              </svg>
             </button>
           </form>
         )}
@@ -423,31 +425,29 @@ export const OnboardingWizard: React.FC<OnboardingWizardProps> = ({
               <button 
                 type="button"
                 onClick={() => setStep(1)}
+                className="btn-secondary"
                 style={{
-                  background: 'rgba(255,255,255,0.08)',
-                  color: 'var(--text-main)',
-                  border: 'none',
-                  padding: '0.95rem 1.5rem',
-                  borderRadius: '100px',
-                  fontWeight: 700,
-                  cursor: 'pointer'
+                  padding: '0.85rem 1.4rem',
+                  fontSize: '0.92rem'
                 }}
               >
-                ◀ Back
+                <span>← Back</span>
               </button>
 
               <button 
                 type="submit"
-                className="neon-btn neon-border"
+                className="btn-primary"
                 style={{
                   flexGrow: 1,
-                  padding: '0.95rem',
-                  fontSize: '1rem',
-                  fontWeight: 800,
-                  cursor: 'pointer'
+                  padding: '0.85rem 1.6rem',
+                  fontSize: '0.95rem'
                 }}
               >
-                Generate Website in 30 Seconds ➔
+                <span>Generate Website in 30 Seconds</span>
+                <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round">
+                  <line x1="5" y1="12" x2="19" y2="12"></line>
+                  <polyline points="12 5 19 12 12 19"></polyline>
+                </svg>
               </button>
             </div>
           </form>
@@ -546,22 +546,22 @@ export const OnboardingWizard: React.FC<OnboardingWizardProps> = ({
                     href={`https://wa.me/233551993820?text=Hi%20Kone%20Digital%2C%20I%20just%20generated%20a%20starter%20website%20for%20"${encodeURIComponent(businessName)}"%20and%20I'd%20like%20to%20claim%20it.`}
                     target="_blank"
                     rel="noopener noreferrer"
-                    className="neon-btn"
-                    style={{ textDecoration: 'none', padding: '0.85rem 1.8rem', fontSize: '0.9rem', fontWeight: 800, background: 'var(--cyan-glow)', color: '#07090E' }}
+                    className="btn-primary"
+                    style={{ textDecoration: 'none', padding: '0.85rem 1.8rem', fontSize: '0.92rem' }}
                   >
-                    Claim My Website on Kone Digital ➔
+                    <span>Claim My Website on Kone Digital</span>
+                    <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round">
+                      <line x1="5" y1="12" x2="19" y2="12"></line>
+                      <polyline points="12 5 19 12 12 19"></polyline>
+                    </svg>
                   </a>
 
                   <button
                     onClick={() => setStep(1)}
+                    className="btn-secondary"
                     style={{
-                      background: 'rgba(255,255,255,0.06)',
-                      color: 'var(--text-muted)',
-                      border: '1px solid rgba(255,255,255,0.1)',
                       padding: '0.85rem 1.5rem',
-                      borderRadius: '8px',
-                      fontWeight: 600,
-                      cursor: 'pointer'
+                      fontSize: '0.92rem'
                     }}
                   >
                     Create Another Flyer

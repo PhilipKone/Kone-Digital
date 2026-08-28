@@ -47,25 +47,14 @@ export const FreeToolsHub: React.FC<FreeToolsHubProps> = ({ onOpenWizard }) => {
   return (
     <section className="free-tools-section" id="tools" style={{ padding: '4rem 1rem', maxWidth: '1100px', margin: '0 auto' }}>
       <div style={{ textAlign: 'center', marginBottom: '2.5rem' }}>
-        <span style={{
-          background: 'rgba(0, 255, 255, 0.08)',
-          border: '1px solid var(--border-cyan)',
-          color: 'var(--cyan-glow)',
-          padding: '0.35rem 1.2rem',
-          borderRadius: '50px',
-          fontSize: '0.78rem',
-          fontWeight: 700,
-          letterSpacing: '1.2px',
-          textTransform: 'uppercase',
-          display: 'inline-block',
-          marginBottom: '1rem'
-        }}>
+        <span className="badge-pill cyan" style={{ marginBottom: '1rem' }}>
+          <span style={{ width: '6px', height: '6px', borderRadius: '50%', background: 'var(--cyan-glow)' }} />
           FREE UTILITY TOOLS
         </span>
-        <h2 style={{ fontSize: 'clamp(1.8rem, 4vw, 2.6rem)', fontWeight: 900 }}>
-          Digital Commerce Tools for <span className="neon-text">African Merchants</span>
+        <h2 className="heading-luminance" style={{ fontSize: 'clamp(1.8rem, 4vw, 2.6rem)', fontWeight: 850, marginTop: '0.8rem' }}>
+          Digital Commerce Tools for <span className="cyan-luminance">African Merchants</span>
         </h2>
-        <p style={{ color: 'var(--text-muted)', fontSize: '1.05rem', marginTop: '0.5rem', maxWidth: '650px', margin: '0.5rem auto 0' }}>
+        <p style={{ color: '#94A3B8', fontSize: '1.05rem', marginTop: '0.5rem', maxWidth: '650px', margin: '0.5rem auto 0', letterSpacing: '-0.01em' }}>
           Free standalone utilities to streamline your WhatsApp customer communications and Mobile Money payment records.
         </p>
 
@@ -274,18 +263,18 @@ export const FreeToolsHub: React.FC<FreeToolsHubProps> = ({ onOpenWizard }) => {
                 </p>
                 <button
                   onClick={() => onOpenWizard({ phone: waPhone })}
-                  className="neon-btn"
+                  className="btn-primary"
                   style={{
-                    padding: '0.65rem 1.4rem',
-                    fontSize: '0.85rem',
-                    fontWeight: 800,
-                    cursor: 'pointer',
-                    background: 'var(--cyan-glow)',
-                    color: '#07090E',
-                    width: '100%'
+                    width: '100%',
+                    padding: '0.75rem 1.4rem',
+                    fontSize: '0.88rem'
                   }}
                 >
-                  Generate Storefront ➔
+                  <span>Generate Storefront</span>
+                  <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round">
+                    <line x1="5" y1="12" x2="19" y2="12"></line>
+                    <polyline points="12 5 19 12 12 19"></polyline>
+                  </svg>
                 </button>
               </div>
             </div>
@@ -465,18 +454,22 @@ export const FreeToolsHub: React.FC<FreeToolsHubProps> = ({ onOpenWizard }) => {
               />
               <button
                 type="submit"
-                className="neon-btn"
+                className="btn-primary"
                 style={{
                   padding: '0.75rem 1.8rem',
-                  fontSize: '0.88rem',
-                  fontWeight: 800,
-                  cursor: 'pointer',
-                  background: 'var(--cyan-glow)',
-                  color: '#07090E'
+                  fontSize: '0.88rem'
                 }}
                 disabled={isAuditing}
               >
-                {isAuditing ? 'Testing Speed...' : 'Audit Speed ➔'}
+                {isAuditing ? 'Testing Speed...' : (
+                  <>
+                    <span>Audit Speed</span>
+                    <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round">
+                      <line x1="5" y1="12" x2="19" y2="12"></line>
+                      <polyline points="12 5 19 12 12 19"></polyline>
+                    </svg>
+                  </>
+                )}
               </button>
             </form>
 
@@ -512,17 +505,17 @@ export const FreeToolsHub: React.FC<FreeToolsHubProps> = ({ onOpenWizard }) => {
                 <div style={{ textAlign: 'center' }}>
                   <button
                     onClick={() => onOpenWizard({ businessName: auditUrl.replace(/\..+/, '') })}
-                    className="neon-btn"
+                    className="btn-primary"
                     style={{
                       padding: '0.85rem 2rem',
-                      fontSize: '0.92rem',
-                      fontWeight: 800,
-                      background: 'var(--cyan-glow)',
-                      color: '#07090E',
-                      cursor: 'pointer'
+                      fontSize: '0.92rem'
                     }}
                   >
-                    Migrate to Managed WaaS ➔
+                    <span>Migrate to Managed WaaS</span>
+                    <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round">
+                      <line x1="5" y1="12" x2="19" y2="12"></line>
+                      <polyline points="12 5 19 12 12 19"></polyline>
+                    </svg>
                   </button>
                 </div>
               </div>

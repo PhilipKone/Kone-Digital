@@ -34,25 +34,14 @@ export const LeadDashboardPreview: React.FC = () => {
   return (
     <section className="crm-preview-section" id="crm" style={{ padding: '4rem 1rem', maxWidth: '1100px', margin: '0 auto' }}>
       <div style={{ textAlign: 'center', marginBottom: '2.5rem' }}>
-        <span style={{
-          background: 'rgba(16, 185, 129, 0.1)',
-          border: '1px solid #10b981',
-          color: '#10b981',
-          padding: '0.35rem 1.2rem',
-          borderRadius: '50px',
-          fontSize: '0.78rem',
-          fontWeight: 800,
-          letterSpacing: '1.5px',
-          textTransform: 'uppercase',
-          display: 'inline-block',
-          marginBottom: '1rem'
-        }}>
+        <span className="badge-pill emerald" style={{ marginBottom: '1rem' }}>
+          <span style={{ width: '6px', height: '6px', borderRadius: '50%', background: '#10B981' }} />
           DEMO WORKFLOW PREVIEW • WHATSAPP LEAD CRM
         </span>
-        <h2 style={{ fontSize: 'clamp(1.8rem, 4vw, 2.6rem)', fontWeight: 900 }}>
-          Centralize Every WhatsApp <span style={{ color: '#10b981' }}>Order & MoMo Lead</span>
+        <h2 className="heading-luminance" style={{ fontSize: 'clamp(1.8rem, 4vw, 2.6rem)', fontWeight: 850, marginTop: '0.8rem' }}>
+          Centralize Every WhatsApp <span className="emerald-luminance">Order & MoMo Lead</span>
         </h2>
-        <p style={{ color: 'var(--text-muted)', fontSize: '1.05rem', marginTop: '0.5rem', maxWidth: '650px', margin: '0.5rem auto 0' }}>
+        <p style={{ color: '#94A3B8', fontSize: '1.05rem', marginTop: '0.5rem', maxWidth: '650px', margin: '0.5rem auto 0', letterSpacing: '-0.01em' }}>
           An interactive demonstration of how your merchant dashboard organizes customer inquiries, MoMo payment verifications, and automated WhatsApp notifications.
         </p>
       </div>

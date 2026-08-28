@@ -122,21 +122,28 @@
 }
 
 .view-service-btn {
-  background: rgba(0, 255, 255, 0.1);
-  border: 1px solid rgba(0, 255, 255, 0.3);
-  color: var(--cyan-glow, #00ffff);
-  padding: 0.75rem 1rem;
+  background: rgba(255, 255, 255, 0.04);
+  border: 1px solid rgba(255, 255, 255, 0.12);
+  color: #F8FAFC;
+  padding: 0.72rem 1rem;
   border-radius: 12px;
-  font-size: 0.88rem;
-  font-weight: 800;
+  font-size: 0.85rem;
+  font-weight: 650;
   text-decoration: none;
   display: flex;
   align-items: center;
   justify-content: space-between;
-  transition: all 0.2s ease;
+  transition: all 0.2s cubic-bezier(0.16, 1, 0.3, 1);
+  letter-spacing: -0.01em;
 }
 
 .view-service-btn:hover {
-  background: var(--cyan-glow, #00ffff);
-  color: #060d16;
+  background: rgba(255, 255, 255, 0.09);
+  border-color: rgba(255, 255, 255, 0.24);
+  color: #FFFFFF;
+  transform: translateY(-1px);
+}
+
+.view-service-btn:active {
+  transform: translateY(0) scale(0.98);
 }

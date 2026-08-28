@@ -66,8 +66,14 @@ export const Pricing: React.FC = () => {
   return (
     <section className="pricing-section" id="pricing" style={{ padding: '4rem 1rem' }}>
       <div className="pricing-header fade-in-up" style={{ textAlign: 'center', marginBottom: '2.5rem' }}>
-        <h2>Transparent <span className="neon-text">WaaS Pricing</span></h2>
-        <p style={{ color: 'var(--text-muted)', fontSize: '1.1rem', marginTop: '0.5rem' }}>
+        <span className="badge-pill" style={{ marginBottom: '1rem' }}>
+          <span style={{ width: '6px', height: '6px', borderRadius: '50%', background: '#F8FAFC' }} />
+          MANAGED TIERS & SLA
+        </span>
+        <h2 className="heading-luminance" style={{ fontSize: 'clamp(1.7rem, 5vw, 2.4rem)', fontWeight: 850, marginTop: '0.8rem' }}>
+          Transparent <span className="cyan-luminance">WaaS Pricing</span>
+        </h2>
+        <p style={{ color: '#94A3B8', fontSize: '1.05rem', marginTop: '0.5rem', letterSpacing: '-0.01em' }}>
           Simple, predictable Website as a Service plans tailored for African enterprises.
         </p>
 
@@ -191,17 +197,15 @@ export const Pricing: React.FC = () => {
                 href={`https://wa.me/233551993820?text=${plan.whatsappMsg}`}
                 target="_blank"
                 rel="noopener noreferrer"
-                className="neon-btn neon-border flex-center"
+                className={isSelected ? "btn-primary" : "btn-secondary"}
                 style={{ 
                   textDecoration: 'none', 
                   display: 'flex',
                   justifyContent: 'center',
                   alignItems: 'center',
-                  background: isSelected ? 'var(--cyan-glow)' : 'transparent',
-                  color: isSelected ? '#090B10' : 'var(--cyan-glow)',
-                  padding: '0.75rem 1.2rem',
-                  fontSize: '0.85rem',
-                  fontWeight: 800
+                  width: '100%',
+                  padding: '0.8rem 1.2rem',
+                  fontSize: '0.88rem'
                 }}
               >
                 Get Started via WhatsApp
