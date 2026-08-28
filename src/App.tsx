@@ -5,7 +5,6 @@ import { OnboardingWizard } from './components/OnboardingWizard';
 import { FreeToolsHub } from './components/FreeToolsHub';
 import { LeadDashboardPreview } from './components/LeadDashboardPreview';
 import { MerchantDashboard } from './components/MerchantDashboard';
-import { PoweredByBadge } from './components/PoweredByBadge';
 import { CurrencyToggle } from './components/CurrencyToggle/CurrencyToggle';
 import { Portfolio } from './components/Portfolio';
 import { Pricing } from './components/Pricing';
@@ -301,8 +300,6 @@ function App() {
         )}
       </main>
 
-      <PoweredByBadge onOpenWizard={() => handleOpenWizardWithPrefill()} />
-
       <OnboardingWizard 
         isOpen={isWizardOpen} 
         onClose={() => setIsWizardOpen(false)} 
@@ -314,7 +311,7 @@ function App() {
       <footer className="hub-footer" style={{
         marginTop: '2rem',
         paddingTop: '2.5rem',
-        paddingBottom: '6.5rem',
+        paddingBottom: '3.5rem',
         borderTop: '1px solid rgba(255, 255, 255, 0.08)',
         display: 'flex',
         flexDirection: 'column',
