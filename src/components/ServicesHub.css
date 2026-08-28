@@ -10,31 +10,38 @@
 }
 
 .services-badge {
-  display: inline-block;
-  background: rgba(0, 255, 255, 0.08);
-  border: 1px solid rgba(0, 255, 255, 0.3);
-  color: var(--cyan-glow, #00ffff);
+  display: inline-flex;
+  align-items: center;
+  gap: 0.5rem;
+  background: rgba(0, 240, 255, 0.08);
+  border: 1px solid rgba(0, 240, 255, 0.25);
+  color: var(--cyan-glow, #00F0FF);
   font-size: 0.75rem;
-  font-weight: 800;
-  padding: 0.35rem 0.9rem;
-  border-radius: 20px;
-  letter-spacing: 0.06em;
+  font-weight: 750;
+  padding: 0.35rem 1rem;
+  border-radius: 50px;
+  letter-spacing: 0.08em;
   margin-bottom: 1rem;
+  backdrop-filter: blur(8px);
 }
 
 .services-title {
-  font-size: clamp(1.6rem, 5vw, 2.2rem);
-  font-weight: 900;
-  color: #ffffff;
+  font-size: clamp(1.6rem, 5vw, 2.3rem);
+  font-weight: 850;
+  background: linear-gradient(180deg, #FFFFFF 20%, #94A3B8 100%);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  letter-spacing: -0.03em;
   margin-bottom: 0.8rem;
 }
 
 .services-subtitle {
-  font-size: 1rem;
-  color: #94a3b8;
+  font-size: 1.05rem;
+  color: #94A3B8;
   max-width: 680px;
   margin: 0 auto;
-  line-height: 1.6;
+  line-height: 1.65;
+  letter-spacing: -0.01em;
 }
 
 .services-hub-grid {
@@ -44,22 +51,23 @@
 }
 
 .service-hub-card {
-  background: rgba(15, 23, 42, 0.7);
-  backdrop-filter: blur(12px);
-  border: 1px solid rgba(255, 255, 255, 0.1);
+  background: rgba(13, 18, 29, 0.7);
+  backdrop-filter: blur(16px);
+  -webkit-backdrop-filter: blur(16px);
+  border: 1px solid rgba(255, 255, 255, 0.08);
   border-radius: 20px;
-  padding: 1.6rem 1.3rem;
+  padding: 1.8rem 1.4rem;
   display: flex;
   flex-direction: column;
   justify-content: space-between;
-  transition: all 0.25s ease;
-  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.3);
+  transition: all 0.25s cubic-bezier(0.16, 1, 0.3, 1);
+  box-shadow: 0 10px 30px -10px rgba(0, 0, 0, 0.5), inset 0 1px 0 rgba(255, 255, 255, 0.06);
 }
 
 .service-hub-card:hover {
-  border-color: var(--cyan-glow, #00ffff);
-  transform: translateY(-4px);
-  box-shadow: 0 15px 40px rgba(0, 255, 255, 0.15);
+  border-color: rgba(255, 255, 255, 0.2);
+  transform: translateY(-3px);
+  box-shadow: 0 15px 40px -10px rgba(0, 0, 0, 0.6), inset 0 1px 0 rgba(255, 255, 255, 0.12);
 }
 
 .card-top-row {
