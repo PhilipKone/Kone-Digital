@@ -62,6 +62,7 @@ function App() {
       } else {
         setCurrentRoute('home');
       }
+      window.scrollTo({ top: 0, behavior: 'instant' });
     };
     window.addEventListener('hashchange', handleHashChange);
     handleHashChange();
