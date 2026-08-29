@@ -130,7 +130,7 @@ export const Portfolio: React.FC = () => {
             >
               <div className="card-image-placeholder" style={{ padding: 0, height: '220px', overflow: 'hidden' }}>
                 <img 
-                  src={proj.id === 'sedemson-stone' ? '/sedemson_stone_hero.png' : '/emewear/emewear_hero.jpg'} 
+                  src={proj.image} 
                   alt={proj.title} 
                   style={{ width: '100%', height: '100%', objectFit: 'cover', objectPosition: 'center', transition: 'transform 0.5s ease' }} 
                 />
