@@ -130,74 +130,83 @@ export const OnboardingWizard: React.FC<OnboardingWizardProps> = ({
       height: '100vh',
       background: 'rgba(9, 11, 16, 0.88)',
       backdropFilter: 'blur(16px)',
+      WebkitBackdropFilter: 'blur(16px)',
       zIndex: 9999,
       display: 'flex',
       alignItems: 'center',
       justifyContent: 'center',
       padding: '1rem'
     }}>
-      <div className="neon-border" style={{
-        background: 'var(--bg-surface)',
+      <div style={{
+        background: 'rgba(13, 18, 29, 0.95)',
+        backdropFilter: 'blur(20px)',
+        WebkitBackdropFilter: 'blur(20px)',
+        border: '1px solid rgba(255, 255, 255, 0.1)',
         borderRadius: '24px',
-        maxWidth: '680px',
+        maxWidth: '640px',
         width: '100%',
         maxHeight: '90vh',
         overflowY: 'auto',
-        padding: '2.5rem 2rem',
+        padding: 'clamp(1.6rem, 4vw, 2.5rem) clamp(1.2rem, 3vw, 2rem)',
         position: 'relative',
-        boxShadow: '0 25px 60px rgba(0,0,0,0.8)'
+        boxShadow: '0 25px 60px rgba(0, 0, 0, 0.8), inset 0 1px 0 rgba(255, 255, 255, 0.08)'
       }}>
         {/* Close Button */}
         <button 
           onClick={onClose}
+          aria-label="Close dialog"
           style={{
             position: 'absolute',
             top: '1.2rem',
-            right: '1.5rem',
-            background: 'rgba(255,255,255,0.08)',
-            border: 'none',
-            color: 'var(--text-main)',
-            fontSize: '1.2rem',
-            width: '36px',
-            height: '36px',
+            right: '1.2rem',
+            background: 'rgba(255, 255, 255, 0.08)',
+            border: '1px solid rgba(255, 255, 255, 0.1)',
+            color: '#FFFFFF',
+            fontSize: '1rem',
+            width: '34px',
+            height: '34px',
             borderRadius: '50%',
             cursor: 'pointer',
             display: 'flex',
             alignItems: 'center',
-            justifyContent: 'center'
+            justifyContent: 'center',
+            transition: 'all 0.2s ease',
+            zIndex: 10
           }}
         >
           ✕
         </button>
 
         {/* Wizard Header Progress */}
-        <div style={{ textAlign: 'center', marginBottom: '2rem' }}>
+        <div style={{ textAlign: 'center', marginBottom: '2rem', paddingRight: '2rem', paddingLeft: '2rem' }}>
           <span style={{ 
-            background: 'rgba(0, 255, 255, 0.1)', 
-            border: '1px solid var(--cyan-glow)', 
-            color: 'var(--cyan-glow)',
-            padding: '0.35rem 1.2rem',
+            background: 'rgba(0, 240, 255, 0.08)', 
+            border: '1px solid rgba(0, 240, 255, 0.25)', 
+            color: '#00F0FF',
+            padding: '0.35rem 1rem',
             borderRadius: '50px',
-            fontSize: '0.78rem',
+            fontSize: '0.72rem',
             fontWeight: 800,
-            letterSpacing: '1.5px',
-            textTransform: 'uppercase'
+            letterSpacing: '0.08em',
+            textTransform: 'uppercase',
+            display: 'inline-block',
+            lineHeight: 1.4
           }}>
-            INSTANT DIGITAL FLYER BUILDER • STEP {step} OF 3
+            STOREFRONT BUILDER • STEP {step} OF 3
           </span>
 
           <div style={{ display: 'flex', gap: '0.5rem', justifyContent: 'center', marginTop: '1.2rem' }}>
-            <div style={{ height: '6px', width: '30%', borderRadius: '4px', background: step >= 1 ? 'var(--cyan-glow)' : 'rgba(255,255,255,0.1)' }}></div>
-            <div style={{ height: '6px', width: '30%', borderRadius: '4px', background: step >= 2 ? 'var(--cyan-glow)' : 'rgba(255,255,255,0.1)' }}></div>
-            <div style={{ height: '6px', width: '30%', borderRadius: '4px', background: step >= 3 ? 'var(--cyan-glow)' : 'rgba(255,255,255,0.1)' }}></div>
+            <div style={{ height: '5px', width: '30%', borderRadius: '4px', background: step >= 1 ? '#00F0FF' : 'rgba(255, 255, 255, 0.1)', transition: 'all 0.3s ease' }}></div>
+            <div style={{ height: '5px', width: '30%', borderRadius: '4px', background: step >= 2 ? '#00F0FF' : 'rgba(255, 255, 255, 0.1)', transition: 'all 0.3s ease' }}></div>
+            <div style={{ height: '5px', width: '30%', borderRadius: '4px', background: step >= 3 ? '#00F0FF' : 'rgba(255, 255, 255, 0.1)', transition: 'all 0.3s ease' }}></div>
           </div>
         </div>
 
         {/* STEP 1: Business Identity */}
         {step === 1 && (
           <form onSubmit={handleNextStep1}>
-            <h2 style={{ fontSize: '1.8rem', fontWeight: 800, marginBottom: '0.5rem' }}>
-              Tell Us About Your <span className="neon-text">Business</span>
+            <h2 className="heading-luminance" style={{ fontSize: '1.6rem', fontWeight: 850, marginBottom: '0.4rem', letterSpacing: '-0.02em', textAlign: 'center' }}>
+              Tell Us About Your <span className="cyan-luminance">Business</span>
             </h2>
             <p style={{ color: 'var(--text-muted)', fontSize: '0.95rem', marginBottom: '1.8rem' }}>
               No technical or design skills needed. Fill in 3 simple details.
