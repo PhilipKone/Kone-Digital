@@ -112,46 +112,48 @@ function App() {
   }, []);
 
   return (
-    <div className="hub-container" ref={containerRef}>
+    <div className="digital-app-root">
       <header className="hub-header">
-        <div className="logo" style={{ display: 'flex', alignItems: 'center', gap: '0.75rem' }}>
-          <img src="/kone-digital-logo.svg" alt="Kone Digital Logo" className="logo-icon neon-logo" width="36" height="36" />
-          <span className="logo-text" style={{ fontWeight: 850, letterSpacing: '-0.02em' }}>KONE <span className="neon-text">DIGITAL</span></span>
-        </div>
-
-        {/* Desktop Navbar */}
-        <nav className="hub-nav">
-          <a href="#" className={currentRoute === 'home' ? 'active-nav' : ''}>Overview</a>
-          <a href="#services" className={currentRoute === 'services' || currentRoute === 'service-detail' ? 'active-nav' : ''}>Services</a>
-          <a href="#work" className={currentRoute === 'work' ? 'active-nav' : ''}>Work</a>
-          <a href="#tools" className={currentRoute === 'tools' ? 'active-nav' : ''}>Tools</a>
-          <a href="#pricing" className={currentRoute === 'pricing' ? 'active-nav' : ''}>Pricing</a>
-          <a 
-            href="https://wa.me/233551993820?text=Hi%20Kone%20Digital%2C%20I'd%20like%20to%20get%20in%20touch%20about%20your%20services." 
-            target="_blank" 
-            rel="noopener noreferrer"
-          >
-            Contact
-          </a>
-          <CurrencyToggle />
-        </nav>
-
-        {/* Mobile Header Right Controls */}
-        <div style={{ display: 'flex', alignItems: 'center', gap: '0.6rem' }} className="mobile-header-controls">
-          <div className="mobile-currency-wrapper" style={{ display: 'none' }}>
-            <CurrencyToggle />
+        <div className="hub-header-inner">
+          <div className="logo" style={{ display: 'flex', alignItems: 'center', gap: '0.75rem' }}>
+            <img src="/kone-digital-logo.svg" alt="Kone Digital Logo" className="logo-icon neon-logo" width="34" height="34" />
+            <span className="logo-text" style={{ fontWeight: 850, letterSpacing: '-0.02em' }}>KONE <span className="neon-text">DIGITAL</span></span>
           </div>
-          <button 
-            className="mobile-nav-toggle"
-            onClick={() => setIsMobileMenuOpen(!isMobileMenuOpen)}
-            aria-label="Toggle navigation menu"
-          >
-            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
-              <line x1="3" y1="12" x2="21" y2="12"></line>
-              <line x1="3" y1="6" x2="21" y2="6"></line>
-              <line x1="3" y1="18" x2="21" y2="18"></line>
-            </svg>
-          </button>
+
+          {/* Desktop Navbar */}
+          <nav className="hub-nav">
+            <a href="#" className={currentRoute === 'home' ? 'active-nav' : ''}>Overview</a>
+            <a href="#services" className={currentRoute === 'services' || currentRoute === 'service-detail' ? 'active-nav' : ''}>Services</a>
+            <a href="#work" className={currentRoute === 'work' ? 'active-nav' : ''}>Work</a>
+            <a href="#tools" className={currentRoute === 'tools' ? 'active-nav' : ''}>Tools</a>
+            <a href="#pricing" className={currentRoute === 'pricing' ? 'active-nav' : ''}>Pricing</a>
+            <a 
+              href="https://wa.me/233551993820?text=Hi%20Kone%20Digital%2C%20I'd%20like%20to%20get%20in%20touch%20about%20your%20services." 
+              target="_blank" 
+              rel="noopener noreferrer"
+            >
+              Contact
+            </a>
+            <CurrencyToggle />
+          </nav>
+
+          {/* Mobile Header Right Controls */}
+          <div style={{ display: 'flex', alignItems: 'center', gap: '0.6rem' }} className="mobile-header-controls">
+            <div className="mobile-currency-wrapper" style={{ display: 'none' }}>
+              <CurrencyToggle />
+            </div>
+            <button 
+              className="mobile-nav-toggle"
+              onClick={() => setIsMobileMenuOpen(!isMobileMenuOpen)}
+              aria-label="Toggle navigation menu"
+            >
+              <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
+                <line x1="3" y1="12" x2="21" y2="12"></line>
+                <line x1="3" y1="6" x2="21" y2="6"></line>
+                <line x1="3" y1="18" x2="21" y2="18"></line>
+              </svg>
+            </button>
+          </div>
         </div>
       </header>
 
