@@ -3,9 +3,7 @@ import { HeroSection } from './components/HeroSection';
 import { TrustMetrics } from './components/TrustMetrics';
 import { OnboardingWizard } from './components/OnboardingWizard';
 import { FreeToolsHub } from './components/FreeToolsHub';
-import { LeadDashboardPreview } from './components/LeadDashboardPreview';
 import { MerchantDashboard } from './components/MerchantDashboard';
-import { CurrencyToggle } from './components/CurrencyToggle/CurrencyToggle';
 import { Portfolio } from './components/Portfolio';
 import { Pricing } from './components/Pricing';
 import ServicesHub from './components/ServicesHub';
@@ -22,14 +20,13 @@ function App() {
     setIsWizardOpen(true);
   };
   
-  const [currentRoute, setCurrentRoute] = useState<'home' | 'services' | 'service-detail' | 'work' | 'pricing' | 'tools' | 'crm' | 'dashboard'>(() => {
+  const [currentRoute, setCurrentRoute] = useState<'home' | 'services' | 'service-detail' | 'work' | 'pricing' | 'tools' | 'dashboard'>(() => {
     const hash = typeof window !== 'undefined' ? window.location.hash : '';
     if (hash.startsWith('#services/')) return 'service-detail';
     if (hash.startsWith('#services')) return 'services';
     if (hash.startsWith('#work')) return 'work';
     if (hash.startsWith('#pricing')) return 'pricing';
     if (hash.startsWith('#tools')) return 'tools';
-    if (hash.startsWith('#crm')) return 'crm';
     if (hash.startsWith('#dashboard')) return 'dashboard';
     return 'home';
   });
@@ -55,8 +52,6 @@ function App() {
         setCurrentRoute('pricing');
       } else if (hash.startsWith('#tools')) {
         setCurrentRoute('tools');
-      } else if (hash.startsWith('#crm')) {
-        setCurrentRoute('crm');
       } else if (hash.startsWith('#dashboard')) {
         setCurrentRoute('dashboard');
       } else {
@@ -117,8 +112,10 @@ function App() {
       <header className="hub-header">
         <div className="hub-header-inner">
           <div className="logo" style={{ display: 'flex', alignItems: 'center', gap: '0.75rem' }}>
-            <img src="/kone-digital-logo.svg" alt="Kone Digital Logo" className="logo-icon neon-logo" width="34" height="34" />
-            <span className="logo-text" style={{ fontWeight: 850, letterSpacing: '-0.02em' }}>KONE <span className="neon-text">DIGITAL</span></span>
+            <a href="#" style={{ display: 'flex', alignItems: 'center', gap: '0.75rem', textDecoration: 'none', color: 'inherit' }}>
+              <img src="/kone-digital-logo.svg" alt="Kone Digital Logo" className="logo-icon neon-logo" width="34" height="34" />
+              <span className="logo-text" style={{ fontWeight: 850, letterSpacing: '-0.02em' }}>KONE <span className="neon-text">DIGITAL</span></span>
+            </a>
           </div>
 
           {/* Desktop Navbar */}
@@ -126,7 +123,6 @@ function App() {
             <a href="#" className={currentRoute === 'home' ? 'active-nav' : ''}>Overview</a>
             <a href="#services" className={currentRoute === 'services' || currentRoute === 'service-detail' ? 'active-nav' : ''}>Services</a>
             <a href="#work" className={currentRoute === 'work' ? 'active-nav' : ''}>Work</a>
-            <a href="#tools" className={currentRoute === 'tools' ? 'active-nav' : ''}>Tools</a>
             <a href="#pricing" className={currentRoute === 'pricing' ? 'active-nav' : ''}>Pricing</a>
             <a 
               href="https://wa.me/233551993820?text=Hi%20Kone%20Digital%2C%20I'd%20like%20to%20get%20in%20touch%20about%20your%20services." 
@@ -135,14 +131,26 @@ function App() {
             >
               Contact
             </a>
-            <CurrencyToggle />
+            <button 
+              onClick={() => handleOpenWizardWithPrefill()}
+              className="btn-primary"
+              style={{
+                padding: '0.45rem 1.1rem',
+                fontSize: '0.82rem',
+                marginLeft: '0.4rem',
+                borderRadius: '50px'
+              }}
+            >
+              <span>Start Project</span>
+              <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round">
+                <line x1="5" y1="12" x2="19" y2="12"></line>
+                <polyline points="12 5 19 12 12 19"></polyline>
+              </svg>
+            </button>
           </nav>
 
-          {/* Mobile Header Right Controls */}
+          {/* Mobile Header Controls */}
           <div style={{ display: 'flex', alignItems: 'center', gap: '0.6rem' }} className="mobile-header-controls">
-            <div className="mobile-currency-wrapper" style={{ display: 'none' }}>
-              <CurrencyToggle />
-            </div>
             <button 
               className="mobile-nav-toggle"
               onClick={() => setIsMobileMenuOpen(!isMobileMenuOpen)}
@@ -204,20 +212,12 @@ function App() {
               <span style={{ fontSize: '0.8rem', opacity: 0.6 }}>03</span>
             </a>
             <a 
-              href="#tools" 
-              className={`mobile-drawer-link ${currentRoute === 'tools' ? 'active-nav' : ''}`}
-              onClick={() => setIsMobileMenuOpen(false)}
-            >
-              <span>Tools</span>
-              <span style={{ fontSize: '0.8rem', opacity: 0.6 }}>04</span>
-            </a>
-            <a 
               href="#pricing" 
               className={`mobile-drawer-link ${currentRoute === 'pricing' ? 'active-nav' : ''}`}
               onClick={() => setIsMobileMenuOpen(false)}
             >
               <span>Pricing</span>
-              <span style={{ fontSize: '0.8rem', opacity: 0.6 }}>05</span>
+              <span style={{ fontSize: '0.8rem', opacity: 0.6 }}>04</span>
             </a>
             <a 
               href="https://wa.me/233551993820?text=Hi%20Kone%20Digital%2C%20I'd%20like%20to%20get%20in%20touch%20about%20your%20services." 
@@ -232,10 +232,6 @@ function App() {
           </div>
 
           <div className="mobile-drawer-footer">
-            <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center' }}>
-              <span style={{ fontSize: '0.85rem', color: '#94A3B8' }}>Select Currency:</span>
-              <CurrencyToggle />
-            </div>
             <button 
               onClick={() => {
                 setIsMobileMenuOpen(false);
@@ -244,7 +240,7 @@ function App() {
               className="btn-primary"
               style={{ width: '100%', padding: '0.85rem', fontSize: '0.95rem' }}
             >
-              <span>Generate Starter Website</span>
+              <span>Start Fast-Track Project</span>
               <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round">
                 <line x1="5" y1="12" x2="19" y2="12"></line>
                 <polyline points="12 5 19 12 12 19"></polyline>
@@ -287,8 +283,6 @@ function App() {
               }} 
             />
             <Portfolio />
-            <FreeToolsHub onOpenWizard={handleOpenWizardWithPrefill} />
-            <LeadDashboardPreview />
             <Pricing />
           </>
         )}
@@ -320,6 +314,15 @@ function App() {
         <p style={{ color: 'var(--text-muted)', fontSize: '0.88rem', maxWidth: '520px', margin: '0 auto', lineHeight: '1.6' }}>
           Ghana's premier digital studio for high-performance business websites, web apps, & automated WhatsApp lead engines.
         </p>
+
+        {/* Footer Navigation & Utilities */}
+        <div style={{ display: 'flex', gap: '1.2rem', flexWrap: 'wrap', justifyContent: 'center', fontSize: '0.88rem', fontWeight: 600 }}>
+          <a href="#" style={{ color: 'var(--text-muted)', textDecoration: 'none' }}>Overview</a>
+          <a href="#services" style={{ color: 'var(--text-muted)', textDecoration: 'none' }}>Services</a>
+          <a href="#work" style={{ color: 'var(--text-muted)', textDecoration: 'none' }}>Work</a>
+          <a href="#pricing" style={{ color: 'var(--text-muted)', textDecoration: 'none' }}>Pricing</a>
+          <a href="#tools" style={{ color: '#00F0FF', textDecoration: 'none' }}>Free Merchant Tools ➔</a>
+        </div>
 
         {/* Social / Channel Buttons */}
         <div style={{ display: 'flex', gap: '0.75rem', flexWrap: 'wrap', justifyContent: 'center' }}>

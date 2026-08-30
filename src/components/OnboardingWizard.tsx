@@ -19,28 +19,26 @@ export const OnboardingWizard: React.FC<OnboardingWizardProps> = ({
 
   // Step 1 State
   const [businessName, setBusinessName] = useState<string>(initialBusinessName);
-  const [industry, setIndustry] = useState<string>('Fashion & Apparel');
-  const [primaryColor, setPrimaryColor] = useState<string>('#f59e0b');
+  const [industry, setIndustry] = useState<string>('Custom Web & SaaS Application');
+  const [primaryColor, setPrimaryColor] = useState<string>('#00F0FF');
 
   // Step 2 State
   const [whatsappNumber, setWhatsappNumber] = useState<string>(initialPhone);
-  const [momoNetwork, setMomoNetwork] = useState<string>('MTN MoMo');
-  const [momoNumber, setMomoNumber] = useState<string>('');
-  const [itemTitle, setItemTitle] = useState<string>('Signature Collection Item');
-  const [itemPrice, setItemPrice] = useState<string>('150');
+  const [selectedPlan, setSelectedPlan] = useState<string>('Professional WaaS (GH₵ 999/mo)');
+  const [projectRequirement, setProjectRequirement] = useState<string>('High-speed platform with MoMo checkout and automated WhatsApp lead engine');
 
   // Step 3 Generation State
   const [generationProgress, setGenerationProgress] = useState<number>(0);
-  const [generationStatus, setGenerationStatus] = useState<string>('Initializing WaaS template...');
+  const [generationStatus, setGenerationStatus] = useState<string>('Analyzing architectural requirements...');
   const [isGenerated, setIsGenerated] = useState<boolean>(false);
 
-  // Colors list
+  // Brand Accent Colors
   const colorOptions = [
-    { name: 'Luxe Gold', hex: '#f59e0b' },
-    { name: 'Cyan Glow', hex: '#00ffff' },
-    { name: 'Emerald Green', hex: '#10b981' },
-    { name: 'Velvet Burgundy', hex: '#9f1239' },
-    { name: 'Royal Blue', hex: '#2563eb' }
+    { name: 'Cyan Glow', hex: '#00F0FF' },
+    { name: 'Luxe Gold', hex: '#E5C07B' },
+    { name: 'Emerald Green', hex: '#10B981' },
+    { name: 'Royal Blue', hex: '#3B82F6' },
+    { name: 'Velvet Rose', hex: '#F43F5E' }
   ];
 
   // Generation Progress Timer when reaching Step 3
@@ -57,69 +55,67 @@ export const OnboardingWizard: React.FC<OnboardingWizardProps> = ({
             return 100;
           }
           const next = prev + 5;
-          if (next < 30) setGenerationStatus('Configuring SSL domain & mobile layout...');
-          else if (next < 65) setGenerationStatus(`Wiring ${momoNetwork} payment links...`);
-          else if (next < 90) setGenerationStatus('Connecting automated WhatsApp lead engine...');
-          else setGenerationStatus('Website Generated Successfully');
+          if (next < 30) setGenerationStatus('Synthesizing technical scope & deliverable roadmap...');
+          else if (next < 65) setGenerationStatus(`Mapping ${selectedPlan.split('(')[0].trim()} SLA stack...`);
+          else if (next < 90) setGenerationStatus('Connecting direct WhatsApp consultation gateway...');
+          else setGenerationStatus('Proposal Blueprint Generated Successfully');
           return next;
         });
-      }, 150);
+      }, 100);
 
       return () => clearInterval(interval);
     }
-  }, [step, isGenerated, momoNetwork]);
+  }, [step, isGenerated, selectedPlan]);
 
   if (!isOpen) return null;
 
   const handleNextStep1 = (e: React.FormEvent) => {
     e.preventDefault();
     if (!businessName.trim()) {
-      alert('Please enter your business name.');
+      alert('Please enter your business or project name.');
       return;
     }
     setStep(2);
   };
 
-  const saveFlyerSubmissionToFirestore = async () => {
+  const saveSubmissionToFirestore = async () => {
     try {
       if (db) {
         await addDoc(collection(db, 'onboarding_submissions'), {
           businessName: businessName.trim(),
-          industry,
+          serviceArea: industry,
           primaryColor,
           whatsappNumber: whatsappNumber.trim(),
-          momoNetwork,
-          momoNumber: momoNumber.trim() || whatsappNumber.trim(),
-          itemTitle: itemTitle.trim(),
-          itemPrice: parseFloat(itemPrice) || 0,
-          status: 'pending_claim',
+          selectedPlan,
+          projectRequirement: projectRequirement.trim(),
+          status: 'pending_consultation',
           createdAt: serverTimestamp(),
           url: typeof window !== 'undefined' ? window.location.href : '',
           userAgent: typeof navigator !== 'undefined' ? navigator.userAgent : ''
         });
-        console.log('✅ Merchant flyer lead successfully saved to Firestore (onboarding_submissions).');
+        console.log('✅ Lead project brief successfully saved to Firestore.');
       }
     } catch (err) {
-      console.warn('Firestore submission notice (running in offline/demo mode):', err);
+      console.warn('Firestore submission notice (demo mode):', err);
     }
   };
 
   const handleNextStep2 = (e: React.FormEvent) => {
     e.preventDefault();
     if (!whatsappNumber.trim()) {
-      alert('Please enter your WhatsApp phone number.');
+      alert('Please enter your WhatsApp contact number.');
       return;
     }
-    saveFlyerSubmissionToFirestore();
+    saveSubmissionToFirestore();
     setStep(3);
   };
 
-  const cleanPhone = encodeURIComponent(whatsappNumber.replace(/\D/g, ''));
   const cleanBusiness = encodeURIComponent(businessName.trim());
-  const cleanTitle = encodeURIComponent(itemTitle.trim());
-  const cleanPrice = encodeURIComponent(itemPrice.trim());
+  const cleanIndustry = encodeURIComponent(industry.trim());
+  const cleanPlan = encodeURIComponent(selectedPlan.trim());
+  const cleanReq = encodeURIComponent(projectRequirement.trim());
 
-  const formattedWhatsappLink = `https://wa.me/233${cleanPhone}?text=Hi%20${cleanBusiness}%2C%20I'd%20like%20to%20order%20${cleanTitle}%20(GH%E2%82%B5${cleanPrice}).`;
+  const directConsultationWhatsappUrl = `https://wa.me/233551993820?text=Hi%20Kone%20Digital%2C%20I'd%20like%20to%20start%20a%20project%20for%20"${cleanBusiness}".%0A%0A•%20Service%3A%20${cleanIndustry}%0A•%20Preferred%20Tier%3A%20${cleanPlan}%0A•%20Requirement%3A%20${cleanReq}%0A•%20My%20Phone%3A%20${encodeURIComponent(whatsappNumber.trim())}`;
 
   return (
     <div style={{
@@ -135,7 +131,8 @@ export const OnboardingWizard: React.FC<OnboardingWizardProps> = ({
       display: 'flex',
       alignItems: 'center',
       justifyContent: 'center',
-      padding: '1rem'
+      padding: '1rem',
+      boxSizing: 'border-box'
     }}>
       <div style={{
         background: 'rgba(13, 18, 29, 0.95)',
@@ -149,7 +146,8 @@ export const OnboardingWizard: React.FC<OnboardingWizardProps> = ({
         overflowY: 'auto',
         padding: 'clamp(1.6rem, 4vw, 2.5rem) clamp(1.2rem, 3vw, 2rem)',
         position: 'relative',
-        boxShadow: '0 25px 60px rgba(0, 0, 0, 0.8), inset 0 1px 0 rgba(255, 255, 255, 0.08)'
+        boxShadow: '0 25px 60px rgba(0, 0, 0, 0.8), inset 0 1px 0 rgba(255, 255, 255, 0.08)',
+        boxSizing: 'border-box'
       }}>
         {/* Close Button */}
         <button 
@@ -192,7 +190,7 @@ export const OnboardingWizard: React.FC<OnboardingWizardProps> = ({
             display: 'inline-block',
             lineHeight: 1.4
           }}>
-            STOREFRONT BUILDER • STEP {step} OF 3
+            PROJECT BRIEF • STEP {step} OF 3
           </span>
 
           <div style={{ display: 'flex', gap: '0.5rem', justifyContent: 'center', marginTop: '1.2rem' }}>
@@ -202,23 +200,23 @@ export const OnboardingWizard: React.FC<OnboardingWizardProps> = ({
           </div>
         </div>
 
-        {/* STEP 1: Business Identity */}
+        {/* STEP 1: Project Identity */}
         {step === 1 && (
           <form onSubmit={handleNextStep1}>
             <h2 className="heading-luminance" style={{ fontSize: '1.6rem', fontWeight: 850, marginBottom: '0.4rem', letterSpacing: '-0.02em', textAlign: 'center' }}>
-              Tell Us About Your <span className="cyan-luminance">Business</span>
+              Tell Us About Your <span className="cyan-luminance">Project</span>
             </h2>
-            <p style={{ color: 'var(--text-muted)', fontSize: '0.95rem', marginBottom: '1.8rem' }}>
-              No technical or design skills needed. Fill in 3 simple details.
+            <p style={{ color: 'var(--text-muted)', fontSize: '0.92rem', marginBottom: '1.8rem', textAlign: 'center' }}>
+              Fast-track your development roadmap with high-performance Ghanaian engineering.
             </p>
 
             <div style={{ marginBottom: '1.4rem' }}>
-              <label style={{ display: 'block', color: 'var(--text-main)', fontSize: '0.9rem', fontWeight: 700, marginBottom: '0.5rem' }}>
-                Business Name <span style={{ color: '#ef4444' }}>*</span>
+              <label style={{ display: 'block', color: 'var(--text-main)', fontSize: '0.88rem', fontWeight: 700, marginBottom: '0.5rem' }}>
+                Business or Organization Name <span style={{ color: '#ef4444' }}>*</span>
               </label>
               <input 
                 type="text" 
-                placeholder="e.g. Ama's Kente Boutique, Accra Stone Crafts..."
+                placeholder="e.g. Sedemson Group, Ama's Luxury, Apex Logistics..."
                 value={businessName}
                 onChange={(e) => setBusinessName(e.target.value)}
                 style={{
@@ -229,15 +227,16 @@ export const OnboardingWizard: React.FC<OnboardingWizardProps> = ({
                   padding: '0.85rem 1.2rem',
                   borderRadius: '10px',
                   fontSize: '0.95rem',
-                  outline: 'none'
+                  outline: 'none',
+                  boxSizing: 'border-box'
                 }}
                 required
               />
             </div>
 
             <div style={{ marginBottom: '1.4rem' }}>
-              <label style={{ display: 'block', color: 'var(--text-main)', fontSize: '0.9rem', fontWeight: 700, marginBottom: '0.5rem' }}>
-                Industry Category
+              <label style={{ display: 'block', color: 'var(--text-main)', fontSize: '0.88rem', fontWeight: 700, marginBottom: '0.5rem' }}>
+                Primary Specialization Needed
               </label>
               <select
                 value={industry}
@@ -250,20 +249,20 @@ export const OnboardingWizard: React.FC<OnboardingWizardProps> = ({
                   padding: '0.85rem 1.2rem',
                   borderRadius: '10px',
                   fontSize: '0.95rem',
-                  outline: 'none'
+                  outline: 'none',
+                  boxSizing: 'border-box'
                 }}
               >
-                <option value="Fashion & Apparel">Fashion & Apparel</option>
-                <option value="Stone Cladding & Construction">Stone Cladding & Construction</option>
-                <option value="Food, Spices & Agriculture">Food, Spices & Agriculture</option>
-                <option value="Beauty, Hair & Cosmetics">Beauty, Hair & Cosmetics</option>
-                <option value="Artisan Services & Susu">Artisan Services & Susu</option>
+                <option value="Custom Web & SaaS Application">Custom Web & SaaS Application</option>
+                <option value="iOS & Android Mobile App Development">iOS & Android Mobile App Development</option>
+                <option value="Brand Identity & UI/UX Design System">Brand Identity & UI/UX Design System</option>
+                <option value="Cloud Infrastructure & DevOps Automation">Cloud Infrastructure & DevOps Automation</option>
               </select>
             </div>
 
             <div style={{ marginBottom: '2rem' }}>
-              <label style={{ display: 'block', color: 'var(--text-main)', fontSize: '0.9rem', fontWeight: 700, marginBottom: '0.8rem' }}>
-                Pick Primary Brand Color
+              <label style={{ display: 'block', color: 'var(--text-main)', fontSize: '0.88rem', fontWeight: 700, marginBottom: '0.8rem' }}>
+                Brand Accent Palette
               </label>
               <div style={{ display: 'flex', gap: '0.8rem', flexWrap: 'wrap' }}>
                 {colorOptions.map(c => (
@@ -274,8 +273,8 @@ export const OnboardingWizard: React.FC<OnboardingWizardProps> = ({
                     style={{
                       background: c.hex,
                       border: primaryColor === c.hex ? '3px solid #ffffff' : '1px solid transparent',
-                      width: '42px',
-                      height: '42px',
+                      width: '40px',
+                      height: '40px',
                       borderRadius: '50%',
                       cursor: 'pointer',
                       boxShadow: primaryColor === c.hex ? `0 0 15px ${c.hex}` : 'none',
@@ -296,7 +295,7 @@ export const OnboardingWizard: React.FC<OnboardingWizardProps> = ({
                 fontSize: '0.95rem'
               }}
             >
-              <span>Continue to Step 2</span>
+              <span>Continue to Project Scope</span>
               <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round">
                 <line x1="5" y1="12" x2="19" y2="12"></line>
                 <polyline points="12 5 19 12 12 19"></polyline>
@@ -305,23 +304,23 @@ export const OnboardingWizard: React.FC<OnboardingWizardProps> = ({
           </form>
         )}
 
-        {/* STEP 2: WhatsApp & MoMo Lead Engine */}
+        {/* STEP 2: Project Scope & Budget */}
         {step === 2 && (
           <form onSubmit={handleNextStep2}>
-            <h2 style={{ fontSize: '1.8rem', fontWeight: 800, marginBottom: '0.5rem' }}>
-              Connect <span className="neon-text">WhatsApp & MoMo</span>
+            <h2 className="heading-luminance" style={{ fontSize: '1.6rem', fontWeight: 850, marginBottom: '0.4rem', letterSpacing: '-0.02em', textAlign: 'center' }}>
+              Project Scope & <span className="cyan-luminance">Routing</span>
             </h2>
-            <p style={{ color: 'var(--text-muted)', fontSize: '0.95rem', marginBottom: '1.8rem' }}>
-              Where should customer orders and Mobile Money payments be routed?
+            <p style={{ color: 'var(--text-muted)', fontSize: '0.92rem', marginBottom: '1.8rem', textAlign: 'center' }}>
+              Define your preferred service tier and primary feature requirements.
             </p>
 
             <div style={{ marginBottom: '1.4rem' }}>
-              <label style={{ display: 'block', color: 'var(--text-main)', fontSize: '0.9rem', fontWeight: 700, marginBottom: '0.5rem' }}>
-                WhatsApp Business Phone Number <span style={{ color: '#ef4444' }}>*</span>
+              <label style={{ display: 'block', color: 'var(--text-main)', fontSize: '0.88rem', fontWeight: 700, marginBottom: '0.5rem' }}>
+                WhatsApp Direct Contact Number <span style={{ color: '#ef4444' }}>*</span>
               </label>
               <input 
                 type="text" 
-                placeholder="e.g. 024 123 4567 or 054 000 1122"
+                placeholder="e.g. 024 123 4567 or 055 000 1122"
                 value={whatsappNumber}
                 onChange={(e) => setWhatsappNumber(e.target.value)}
                 style={{
@@ -332,102 +331,59 @@ export const OnboardingWizard: React.FC<OnboardingWizardProps> = ({
                   padding: '0.85rem 1.2rem',
                   borderRadius: '10px',
                   fontSize: '0.95rem',
-                  outline: 'none'
+                  outline: 'none',
+                  boxSizing: 'border-box'
                 }}
                 required
               />
             </div>
 
-            <div style={{ display: 'grid', gridTemplateColumns: '1fr 2fr', gap: '1rem', marginBottom: '1.4rem' }}>
-              <div>
-                <label style={{ display: 'block', color: 'var(--text-main)', fontSize: '0.85rem', fontWeight: 700, marginBottom: '0.5rem' }}>
-                  MoMo Network
-                </label>
-                <select
-                  value={momoNetwork}
-                  onChange={(e) => setMomoNetwork(e.target.value)}
-                  style={{
-                    width: '100%',
-                    background: '#10151C',
-                    border: '1px solid rgba(255,255,255,0.15)',
-                    color: 'var(--text-main)',
-                    padding: '0.85rem 0.8rem',
-                    borderRadius: '10px',
-                    fontSize: '0.85rem',
-                    outline: 'none'
-                  }}
-                >
-                  <option value="MTN MoMo">MTN MoMo</option>
-                  <option value="Telecel Cash">Telecel Cash</option>
-                  <option value="AT Money">AT Money</option>
-                </select>
-              </div>
-
-              <div>
-                <label style={{ display: 'block', color: 'var(--text-main)', fontSize: '0.85rem', fontWeight: 700, marginBottom: '0.5rem' }}>
-                  MoMo Payment Phone Number
-                </label>
-                <input 
-                  type="text" 
-                  placeholder="e.g. 054 000 1122"
-                  value={momoNumber}
-                  onChange={(e) => setMomoNumber(e.target.value)}
-                  style={{
-                    width: '100%',
-                    background: 'rgba(255,255,255,0.05)',
-                    border: '1px solid rgba(255,255,255,0.15)',
-                    color: 'var(--text-main)',
-                    padding: '0.85rem 1.2rem',
-                    borderRadius: '10px',
-                    fontSize: '0.95rem',
-                    outline: 'none'
-                  }}
-                />
-              </div>
+            <div style={{ marginBottom: '1.4rem' }}>
+              <label style={{ display: 'block', color: 'var(--text-main)', fontSize: '0.88rem', fontWeight: 700, marginBottom: '0.5rem' }}>
+                Preferred Subscription / Service Tier
+              </label>
+              <select
+                value={selectedPlan}
+                onChange={(e) => setSelectedPlan(e.target.value)}
+                style={{
+                  width: '100%',
+                  background: '#10151C',
+                  border: '1px solid rgba(255,255,255,0.15)',
+                  color: 'var(--text-main)',
+                  padding: '0.85rem 1.2rem',
+                  borderRadius: '10px',
+                  fontSize: '0.95rem',
+                  outline: 'none',
+                  boxSizing: 'border-box'
+                }}
+              >
+                <option value="Lite Tier (GH₵ 49/mo)">Lite Tier (GH₵ 49/mo - Micro Catalog & Lead Link)</option>
+                <option value="Starter Tier (GH₵ 499/mo)">Starter Tier (GH₵ 499/mo - High-Converting WaaS)</option>
+                <option value="Professional Tier (GH₵ 999/mo)">Professional Tier (GH₵ 999/mo - Corporate Multi-Page)</option>
+                <option value="Enterprise Custom (GH₵ 2,499/mo)">Enterprise Custom (GH₵ 2,499/mo - Custom SaaS & APIs)</option>
+              </select>
             </div>
 
-            <div style={{ display: 'grid', gridTemplateColumns: '2fr 1fr', gap: '1rem', marginBottom: '2rem' }}>
-              <div>
-                <label style={{ display: 'block', color: 'var(--text-main)', fontSize: '0.85rem', fontWeight: 700, marginBottom: '0.5rem' }}>
-                  Sample Item / Service Name
-                </label>
-                <input 
-                  type="text" 
-                  value={itemTitle}
-                  onChange={(e) => setItemTitle(e.target.value)}
-                  style={{
-                    width: '100%',
-                    background: 'rgba(255,255,255,0.05)',
-                    border: '1px solid rgba(255,255,255,0.15)',
-                    color: 'var(--text-main)',
-                    padding: '0.85rem 1.2rem',
-                    borderRadius: '10px',
-                    fontSize: '0.95rem',
-                    outline: 'none'
-                  }}
-                />
-              </div>
-
-              <div>
-                <label style={{ display: 'block', color: 'var(--text-main)', fontSize: '0.85rem', fontWeight: 700, marginBottom: '0.5rem' }}>
-                  Price (GH₵)
-                </label>
-                <input 
-                  type="number" 
-                  value={itemPrice}
-                  onChange={(e) => setItemPrice(e.target.value)}
-                  style={{
-                    width: '100%',
-                    background: 'rgba(255,255,255,0.05)',
-                    border: '1px solid rgba(255,255,255,0.15)',
-                    color: 'var(--text-main)',
-                    padding: '0.85rem 1.2rem',
-                    borderRadius: '10px',
-                    fontSize: '0.95rem',
-                    outline: 'none'
-                  }}
-                />
-              </div>
+            <div style={{ marginBottom: '2rem' }}>
+              <label style={{ display: 'block', color: 'var(--text-main)', fontSize: '0.88rem', fontWeight: 700, marginBottom: '0.5rem' }}>
+                Key Technical Objective / Deliverable
+              </label>
+              <input 
+                type="text" 
+                value={projectRequirement}
+                onChange={(e) => setProjectRequirement(e.target.value)}
+                style={{
+                  width: '100%',
+                  background: 'rgba(255,255,255,0.05)',
+                  border: '1px solid rgba(255,255,255,0.15)',
+                  color: 'var(--text-main)',
+                  padding: '0.85rem 1.2rem',
+                  borderRadius: '10px',
+                  fontSize: '0.95rem',
+                  outline: 'none',
+                  boxSizing: 'border-box'
+                }}
+              />
             </div>
 
             <div style={{ display: 'flex', gap: '1rem' }}>
@@ -452,7 +408,7 @@ export const OnboardingWizard: React.FC<OnboardingWizardProps> = ({
                   fontSize: '0.95rem'
                 }}
               >
-                <span>Generate Website in 30 Seconds</span>
+                <span>Generate Fast-Track Proposal</span>
                 <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round">
                   <line x1="5" y1="12" x2="19" y2="12"></line>
                   <polyline points="12 5 19 12 12 19"></polyline>
@@ -462,103 +418,87 @@ export const OnboardingWizard: React.FC<OnboardingWizardProps> = ({
           </form>
         )}
 
-        {/* STEP 3: Instant Generation & Live Preview */}
+        {/* STEP 3: Proposal Blueprint Preview & WhatsApp Action */}
         {step === 3 && (
           <div>
             {!isGenerated ? (
               <div style={{ textAlign: 'center', padding: '2rem 1rem' }}>
-                <div style={{ width: '48px', height: '48px', margin: '0 auto 1.5rem', borderRadius: '50%', border: '3px solid rgba(0,255,255,0.2)', borderTopColor: 'var(--cyan-glow)', animation: 'spin 1s linear infinite' }} />
-                <h2 style={{ fontSize: '1.8rem', fontWeight: 800, marginBottom: '0.8rem' }}>
-                  Generating <span className="neon-text">{businessName}</span>
+                <div style={{ width: '44px', height: '44px', margin: '0 auto 1.5rem', borderRadius: '50%', border: '3px solid rgba(0,240,255,0.2)', borderTopColor: '#00F0FF', animation: 'spin 1s linear infinite' }} />
+                <h2 className="heading-luminance" style={{ fontSize: '1.6rem', fontWeight: 850, marginBottom: '0.6rem' }}>
+                  Synthesizing Blueprint for <span className="cyan-luminance">{businessName}</span>
                 </h2>
-                <p style={{ color: 'var(--cyan-glow)', fontSize: '1rem', fontWeight: 700, marginBottom: '1.5rem' }}>
+                <p style={{ color: '#00F0FF', fontSize: '0.95rem', fontWeight: 700, marginBottom: '1.5rem' }}>
                   {generationStatus}
                 </p>
 
-                <div style={{ background: 'rgba(255,255,255,0.08)', height: '12px', borderRadius: '10px', overflow: 'hidden', maxWidth: '450px', margin: '0 auto 1rem' }}>
+                <div style={{ background: 'rgba(255,255,255,0.08)', height: '8px', borderRadius: '10px', overflow: 'hidden', maxWidth: '420px', margin: '0 auto 1rem' }}>
                   <div style={{
                     width: `${generationProgress}%`,
                     height: '100%',
-                    background: 'linear-gradient(90deg, var(--cyan-glow), var(--gold-accent))',
+                    background: 'linear-gradient(90deg, #00F0FF, #E5C07B)',
                     transition: 'width 0.2s ease'
                   }} />
                 </div>
-                <span style={{ color: 'var(--text-muted)', fontSize: '0.85rem' }}>{generationProgress}% Completed</span>
+                <span style={{ color: 'var(--text-muted)', fontSize: '0.82rem' }}>{generationProgress}% Prepared</span>
               </div>
             ) : (
               <div>
                 <div style={{ textAlign: 'center', marginBottom: '1.5rem' }}>
-                  <span style={{ background: 'rgba(16, 185, 129, 0.15)', border: '1px solid #10b981', color: '#10b981', padding: '0.35rem 1.2rem', borderRadius: '20px', fontWeight: 700, fontSize: '0.78rem', letterSpacing: '0.5px' }}>
-                    WEBSITE GENERATED SUCCESSFULLY
+                  <span style={{ background: 'rgba(16, 185, 129, 0.15)', border: '1px solid #10B981', color: '#10B981', padding: '0.35rem 1.2rem', borderRadius: '20px', fontWeight: 750, fontSize: '0.75rem', letterSpacing: '0.05em' }}>
+                    PROPOSAL BLUEPRINT READY
                   </span>
-                  <h2 style={{ fontSize: '1.8rem', fontWeight: 900, marginTop: '0.8rem', color: '#fff' }}>
+                  <h2 className="heading-luminance" style={{ fontSize: '1.6rem', fontWeight: 850, marginTop: '0.8rem' }}>
                     {businessName}
                   </h2>
-                  <p style={{ color: 'var(--text-muted)', fontSize: '0.9rem' }}>
-                    Mobile-optimized starter website ready for instant WhatsApp lead routing.
+                  <p style={{ color: 'var(--text-muted)', fontSize: '0.88rem' }}>
+                    48-Hour SLA managed launch architecture prepared for your review.
                   </p>
                 </div>
 
-                {/* Simulated Generated Mobile Phone Mockup */}
+                {/* Scope Proposal Card */}
                 <div style={{
-                  border: `2px solid ${primaryColor}`,
-                  borderRadius: '20px',
-                  background: '#0d1117',
-                  padding: '1.5rem',
-                  maxWidth: '380px',
-                  margin: '0 auto 2rem',
-                  boxShadow: `0 10px 30px ${primaryColor}33`,
-                  textAlign: 'center'
+                  border: `1px solid ${primaryColor}55`,
+                  borderRadius: '16px',
+                  background: 'rgba(255, 255, 255, 0.03)',
+                  padding: '1.4rem',
+                  maxWidth: '480px',
+                  margin: '0 auto 1.8rem',
+                  boxShadow: `0 10px 30px ${primaryColor}22`,
+                  textAlign: 'left'
                 }}>
-                  <div style={{ borderBottom: '1px solid rgba(255,255,255,0.1)', paddingBottom: '1rem', marginBottom: '1rem' }}>
-                    <div style={{ fontSize: '1.3rem', fontWeight: 900, color: primaryColor, textTransform: 'uppercase' }}>
-                      {businessName}
+                  <div style={{ borderBottom: '1px solid rgba(255,255,255,0.08)', paddingBottom: '0.8rem', marginBottom: '0.8rem', display: 'flex', justifyContent: 'space-between', alignItems: 'center' }}>
+                    <div>
+                      <div style={{ fontSize: '1.05rem', fontWeight: 850, color: '#FFFFFF' }}>
+                        {businessName}
+                      </div>
+                      <span style={{ fontSize: '0.76rem', color: primaryColor, fontWeight: 700 }}>
+                        {industry}
+                      </span>
                     </div>
-                    <span style={{ fontSize: '0.72rem', color: 'var(--text-muted)', letterSpacing: '1px' }}>
-                      {industry}
+                    <span style={{ background: 'rgba(255,255,255,0.08)', padding: '0.2rem 0.6rem', borderRadius: '8px', fontSize: '0.75rem', color: '#E5C07B', fontWeight: 750 }}>
+                      {selectedPlan.split('(')[0].trim()}
                     </span>
                   </div>
 
-                  <div style={{ background: 'rgba(255,255,255,0.04)', borderRadius: '12px', padding: '1rem', marginBottom: '1rem' }}>
-                    <div style={{ fontSize: '1.1rem', fontWeight: 800, color: '#fff' }}>{itemTitle}</div>
-                    <div style={{ fontSize: '1.4rem', fontWeight: 900, color: primaryColor, margin: '0.4rem 0' }}>
-                      GH₵ {itemPrice}
+                  <div style={{ fontSize: '0.85rem', color: '#94A3B8', lineHeight: 1.6 }}>
+                    <div style={{ marginBottom: '0.4rem' }}>
+                      <strong style={{ color: '#FFFFFF' }}>Primary Deliverable:</strong> {projectRequirement}
                     </div>
-                    <div style={{ fontSize: '0.78rem', color: '#ffcc00' }}>
-                      Pay via {momoNetwork} ({momoNumber || whatsappNumber})
+                    <div>
+                      <strong style={{ color: '#FFFFFF' }}>Contact WhatsApp:</strong> {whatsappNumber}
                     </div>
                   </div>
-
-                  <a
-                    href={formattedWhatsappLink}
-                    target="_blank"
-                    rel="noopener noreferrer"
-                    style={{
-                      background: '#10b981',
-                      color: '#07090E',
-                      textDecoration: 'none',
-                      display: 'inline-flex',
-                      alignItems: 'center',
-                      gap: '0.4rem',
-                      padding: '0.75rem 1.4rem',
-                      borderRadius: '8px',
-                      fontWeight: 800,
-                      fontSize: '0.88rem'
-                    }}
-                  >
-                    <span>Order via WhatsApp</span>
-                  </a>
                 </div>
 
                 <div style={{ display: 'flex', gap: '1rem', justifyContent: 'center', flexWrap: 'wrap' }}>
                   <a
-                    href={`https://wa.me/233551993820?text=Hi%20Kone%20Digital%2C%20I%20just%20generated%20a%20starter%20website%20for%20"${encodeURIComponent(businessName)}"%20and%20I'd%20like%20to%20claim%20it.`}
+                    href={directConsultationWhatsappUrl}
                     target="_blank"
                     rel="noopener noreferrer"
                     className="btn-primary"
                     style={{ textDecoration: 'none', padding: '0.85rem 1.8rem', fontSize: '0.92rem' }}
                   >
-                    <span>Claim My Website on Kone Digital</span>
+                    <span>Submit & Open WhatsApp Brief</span>
                     <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round">
                       <line x1="5" y1="12" x2="19" y2="12"></line>
                       <polyline points="12 5 19 12 12 19"></polyline>
@@ -569,11 +509,11 @@ export const OnboardingWizard: React.FC<OnboardingWizardProps> = ({
                     onClick={() => setStep(1)}
                     className="btn-secondary"
                     style={{
-                      padding: '0.85rem 1.5rem',
+                      padding: '0.85rem 1.4rem',
                       fontSize: '0.92rem'
                     }}
                   >
-                    Create Another Flyer
+                    Modify Details
                   </button>
                 </div>
               </div>
