@@ -68,11 +68,11 @@ export const Pricing: React.FC = () => {
   const currentPlan = plans[sliderIndex];
 
   return (
-    <section className="pricing-section" id="pricing" style={{ padding: '3.5rem 1rem', maxWidth: '1200px', margin: '0 auto' }}>
-      <div className="pricing-header fade-in-up" style={{ textAlign: 'center', marginBottom: '3rem' }}>
-        <span className="badge-pill" style={{ marginBottom: '1rem' }}>
-          <span style={{ width: '6px', height: '6px', borderRadius: '50%', background: '#00F0FF' }} />
-          MANAGED TIERS & SERVICE LEVEL AGREEMENTS
+    <section className="pricing-section" id="pricing" style={{ padding: '3.5rem 1rem', maxWidth: '1200px', margin: '0 auto', width: '100%', boxSizing: 'border-box', overflowX: 'hidden' }}>
+      <div className="pricing-header fade-in-up" style={{ textAlign: 'center', marginBottom: '3rem', width: '100%', boxSizing: 'border-box' }}>
+        <span className="badge-pill" style={{ marginBottom: '1rem', whiteSpace: 'normal', lineHeight: 1.4 }}>
+          <span style={{ width: '6px', height: '6px', borderRadius: '50%', background: '#00F0FF', flexShrink: 0 }} />
+          MANAGED TIERS & SLA
         </span>
         <h2 className="heading-luminance" style={{ fontSize: 'clamp(1.8rem, 5vw, 2.5rem)', fontWeight: 850, marginTop: '0.8rem', letterSpacing: '-0.03em' }}>
           Transparent <span className="cyan-luminance">WaaS Pricing</span>
@@ -119,8 +119,10 @@ export const Pricing: React.FC = () => {
       {/* Interactive Package Slider Control */}
       <div style={{ 
         maxWidth: '750px', 
+        width: '100%',
+        boxSizing: 'border-box',
         margin: '0 auto 3rem', 
-        padding: '1.4rem 1.8rem', 
+        padding: '1.4rem clamp(1rem, 3vw, 1.8rem)', 
         background: 'rgba(13, 18, 29, 0.75)', 
         backdropFilter: 'blur(16px)',
         WebkitBackdropFilter: 'blur(16px)',
@@ -128,7 +130,7 @@ export const Pricing: React.FC = () => {
         border: '1px solid rgba(255, 255, 255, 0.08)',
         boxShadow: '0 10px 30px -10px rgba(0, 0, 0, 0.5)'
       }}>
-        <div style={{ display: 'flex', justifyContent: 'space-between', marginBottom: '0.8rem', color: '#94A3B8', fontSize: '0.82rem', fontWeight: 750, letterSpacing: '0.04em' }}>
+        <div style={{ display: 'flex', justifyContent: 'space-between', marginBottom: '0.8rem', color: '#94A3B8', fontSize: '0.82rem', fontWeight: 750, letterSpacing: '0.04em', flexWrap: 'wrap', gap: '0.3rem' }}>
           <label htmlFor="pricing-plan-slider">INTERACTIVE PLAN NAVIGATOR</label>
           <span style={{ color: '#00F0FF' }}>{currentPlan.name} Selected</span>
         </div>
@@ -151,7 +153,7 @@ export const Pricing: React.FC = () => {
             accentColor: '#00F0FF'
           }}
         />
-        <div style={{ display: 'flex', justifyContent: 'space-between', marginTop: '0.6rem', fontSize: '0.78rem', color: '#94A3B8', fontWeight: 650 }}>
+        <div style={{ display: 'flex', justifyContent: 'space-between', marginTop: '0.6rem', fontSize: '0.76rem', color: '#94A3B8', fontWeight: 650, flexWrap: 'wrap', gap: '0.3rem' }}>
           <span>Lite (₵49)</span>
           <span>Starter (₵499)</span>
           <span>Professional (₵999)</span>
@@ -162,11 +164,12 @@ export const Pricing: React.FC = () => {
       {/* Grid of Cards */}
       <div className="pricing-cards" style={{ 
         display: 'grid', 
-        gridTemplateColumns: 'repeat(auto-fit, minmax(min(100%, 260px), 1fr))', 
+        gridTemplateColumns: 'repeat(auto-fit, minmax(min(100%, 250px), 1fr))', 
         gap: '1.5rem', 
         maxWidth: '1200px', 
         margin: '0 auto', 
-        width: '100%' 
+        width: '100%',
+        boxSizing: 'border-box'
       }}>
         {plans.map((plan, index) => {
           const isSelected = index === sliderIndex;

@@ -32,29 +32,36 @@ export const LeadDashboardPreview: React.FC = () => {
   ];
 
   return (
-    <section className="crm-preview-section" id="crm" style={{ padding: '4rem 1rem', maxWidth: '1100px', margin: '0 auto' }}>
-      <div style={{ textAlign: 'center', marginBottom: '2.5rem' }}>
-        <span className="badge-pill emerald" style={{ marginBottom: '1rem' }}>
-          <span style={{ width: '6px', height: '6px', borderRadius: '50%', background: '#10B981' }} />
-          INTEGRATED MERCHANT CRM • REAL-TIME NOTIFICATIONS
+    <section className="crm-preview-section" id="crm" style={{ padding: '3.5rem 1rem', maxWidth: '1100px', margin: '0 auto', width: '100%', boxSizing: 'border-box', overflowX: 'hidden' }}>
+      <div style={{ textAlign: 'center', marginBottom: '2.5rem', width: '100%', boxSizing: 'border-box' }}>
+        <span className="badge-pill emerald" style={{ marginBottom: '1rem', whiteSpace: 'normal', lineHeight: 1.4 }}>
+          <span style={{ width: '6px', height: '6px', borderRadius: '50%', background: '#10B981', flexShrink: 0 }} />
+          MERCHANT CRM & REAL-TIME ALERTS
         </span>
-        <h2 className="heading-luminance" style={{ fontSize: 'clamp(1.8rem, 4vw, 2.6rem)', fontWeight: 850, marginTop: '0.8rem' }}>
+        <h2 className="heading-luminance" style={{ fontSize: 'clamp(1.8rem, 4vw, 2.6rem)', fontWeight: 850, marginTop: '0.8rem', letterSpacing: '-0.02em' }}>
           Centralize Every WhatsApp <span className="emerald-luminance">Order & MoMo Lead</span>
         </h2>
-        <p style={{ color: '#94A3B8', fontSize: '1.05rem', marginTop: '0.5rem', maxWidth: '650px', margin: '0.5rem auto 0', letterSpacing: '-0.01em' }}>
+        <p style={{ color: '#94A3B8', fontSize: '1.05rem', marginTop: '0.5rem', maxWidth: '650px', margin: '0.5rem auto 0', letterSpacing: '-0.01em', lineHeight: 1.6 }}>
           Real-time visibility into customer orders, instant Mobile Money reconciliations, and automated dispatch workflows.
         </p>
       </div>
 
       {/* CRM Dashboard Frame Mockup */}
-      <div className="neon-border" style={{
-        background: '#0d1117',
+      <div style={{
+        background: 'rgba(13, 18, 29, 0.75)',
+        backdropFilter: 'blur(16px)',
+        WebkitBackdropFilter: 'blur(16px)',
+        border: '1px solid rgba(255, 255, 255, 0.08)',
         borderRadius: '20px',
         padding: 'clamp(1.2rem, 3vw, 2rem) clamp(0.8rem, 2vw, 1.8rem)',
-        boxShadow: '0 20px 50px rgba(0,0,0,0.6)'
+        boxShadow: '0 20px 50px rgba(0,0,0,0.6)',
+        width: '100%',
+        maxWidth: '100%',
+        boxSizing: 'border-box',
+        overflow: 'hidden'
       }}>
         {/* Top KPI Header */}
-        <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(min(100%, 180px), 1fr))', gap: '1rem', marginBottom: '1.5rem' }}>
+        <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(min(100%, 180px), 1fr))', gap: '1rem', marginBottom: '1.5rem', width: '100%', boxSizing: 'border-box' }}>
           <div style={{ background: 'rgba(255,255,255,0.03)', border: '1px solid rgba(255,255,255,0.08)', borderRadius: '12px', padding: '1rem' }}>
             <span style={{ fontSize: '0.75rem', color: 'var(--text-muted)', fontWeight: 700 }}>TODAY'S WHATSAPP LEADS</span>
             <div style={{ fontSize: '1.6rem', fontWeight: 900, color: '#10b981', marginTop: '0.3rem' }}>14 Leads</div>
@@ -75,8 +82,8 @@ export const LeadDashboardPreview: React.FC = () => {
         </div>
 
         {/* Live Leads Table */}
-        <div style={{ overflowX: 'auto', WebkitOverflowScrolling: 'touch', width: '100%' }}>
-          <table style={{ width: '100%', minWidth: '550px', borderCollapse: 'collapse', fontSize: '0.85rem' }}>
+        <div style={{ overflowX: 'auto', WebkitOverflowScrolling: 'touch', width: '100%', maxWidth: '100%', boxSizing: 'border-box' }}>
+          <table style={{ width: '100%', minWidth: '480px', borderCollapse: 'collapse', fontSize: '0.85rem' }}>
             <thead>
               <tr style={{ borderBottom: '1px solid rgba(255,255,255,0.1)', textAlign: 'left', color: 'var(--text-muted)', fontSize: '0.78rem' }}>
                 <th style={{ padding: '0.75rem 1rem' }}>TIME</th>
