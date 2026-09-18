@@ -5,7 +5,7 @@ interface HeroSectionProps {
 }
 
 export const HeroSection: React.FC<HeroSectionProps> = ({ onOpenWizard }) => {
-  const [activeTab, setActiveTab] = useState<'stone' | 'fashion' | 'foundation' | 'momo'>('stone');
+  const [activeTab, setActiveTab] = useState<'stone' | 'fashion' | 'foundation'>('stone');
 
   return (
     <section className="hub-hero" style={{ padding: '3rem 1rem 4rem', maxWidth: '1200px', margin: '0 auto' }}>
@@ -56,74 +56,43 @@ export const HeroSection: React.FC<HeroSectionProps> = ({ onOpenWizard }) => {
         margin: '0 auto',
         boxShadow: '0 20px 50px rgba(0,0,0,0.6)'
       }}>
-        <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', flexWrap: 'wrap', gap: '1rem', marginBottom: '1.5rem', borderBottom: '1px solid rgba(255,255,255,0.08)', paddingBottom: '1rem' }}>
-          <div style={{ display: 'flex', gap: '0.5rem', alignItems: 'center' }}>
-            <div style={{ 
-              display: 'inline-flex', 
-              alignItems: 'center', 
-              gap: '0.4rem', 
-              background: 'rgba(255,255,255,0.04)', 
-              border: '1px solid rgba(255,255,255,0.08)', 
-              padding: '0.25rem 0.75rem', 
-              borderRadius: '20px', 
-              fontSize: '0.75rem', 
-              color: '#94A3B8' 
-            }}>
-              <span style={{ width: '6px', height: '6px', borderRadius: '50%', background: '#10B981' }} />
-              <span>kone-showcase.io</span>
-            </div>
-          </div>
-
+        <div style={{ display: 'flex', justifyContent: 'center', alignItems: 'center', flexWrap: 'wrap', gap: '0.6rem', marginBottom: '1.5rem', borderBottom: '1px solid rgba(255,255,255,0.08)', paddingBottom: '1rem' }}>
           {/* Demo Tabs */}
-          <div style={{ display: 'flex', gap: '0.5rem', flexWrap: 'wrap', justifyContent: 'center' }}>
-            <button 
-              onClick={() => setActiveTab('stone')}
-              className={activeTab === 'stone' ? 'btn-primary' : 'btn-secondary'}
-              style={{
-                padding: '0.35rem 0.9rem',
-                borderRadius: '50px',
-                fontSize: '0.78rem'
-              }}
-            >
-              Stone Architecture
-            </button>
+          <button 
+            onClick={() => setActiveTab('stone')}
+            className={activeTab === 'stone' ? 'btn-primary' : 'btn-secondary'}
+            style={{
+              padding: '0.35rem 0.95rem',
+              borderRadius: '50px',
+              fontSize: '0.8rem'
+            }}
+          >
+            Stone Architecture
+          </button>
 
-            <button 
-              onClick={() => setActiveTab('fashion')}
-              className={activeTab === 'fashion' ? 'btn-primary' : 'btn-secondary'}
-              style={{
-                padding: '0.35rem 0.9rem',
-                borderRadius: '50px',
-                fontSize: '0.78rem'
-              }}
-            >
-              Fashion Retail
-            </button>
+          <button 
+            onClick={() => setActiveTab('fashion')}
+            className={activeTab === 'fashion' ? 'btn-primary' : 'btn-secondary'}
+            style={{
+              padding: '0.35rem 0.95rem',
+              borderRadius: '50px',
+              fontSize: '0.8rem'
+            }}
+          >
+            Fashion Retail
+          </button>
 
-            <button 
-              onClick={() => setActiveTab('foundation')}
-              className={activeTab === 'foundation' ? 'btn-primary' : 'btn-secondary'}
-              style={{
-                padding: '0.35rem 0.9rem',
-                borderRadius: '50px',
-                fontSize: '0.78rem'
-              }}
-            >
-              Social Impact NGO
-            </button>
-
-            <button 
-              onClick={() => setActiveTab('momo')}
-              className={activeTab === 'momo' ? 'btn-primary' : 'btn-secondary'}
-              style={{
-                padding: '0.35rem 0.9rem',
-                borderRadius: '50px',
-                fontSize: '0.78rem'
-              }}
-            >
-              Payment Engine
-            </button>
-          </div>
+          <button 
+            onClick={() => setActiveTab('foundation')}
+            className={activeTab === 'foundation' ? 'btn-primary' : 'btn-secondary'}
+            style={{
+              padding: '0.35rem 0.95rem',
+              borderRadius: '50px',
+              fontSize: '0.8rem'
+            }}
+          >
+            Social Impact NGO
+          </button>
         </div>
 
         {/* Demo Content Mockup Display */}
@@ -161,28 +130,6 @@ export const HeroSection: React.FC<HeroSectionProps> = ({ onOpenWizard }) => {
                 <span>Explore Foundation Portal</span>
                 <span>➔</span>
               </a>
-            </div>
-          )}
-
-          {activeTab === 'momo' && (
-            <div style={{ height: '100%', display: 'flex', flexDirection: 'column', justifyContent: 'center', alignItems: 'center', background: 'radial-gradient(circle, #121826 0%, #07090E 100%)', color: '#fff', padding: '2rem', textAlign: 'center' }}>
-              <div style={{ width: '48px', height: '48px', borderRadius: '12px', background: 'rgba(16, 185, 129, 0.1)', border: '1px solid rgba(16, 185, 129, 0.3)', display: 'flex', alignItems: 'center', justifyContent: 'center', marginBottom: '1rem', color: '#10b981' }}>
-                <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
-                  <path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z" />
-                </svg>
-              </div>
-              <h2 style={{ fontSize: '1.6rem', color: '#fff', fontWeight: 800 }}>Automated WhatsApp Order Engine</h2>
-              <p style={{ maxWidth: '520px', color: 'var(--text-muted)', fontSize: '0.92rem', marginTop: '0.5rem', lineHeight: 1.6 }}>
-                When customers select products on your storefront, orders automatically compile into structured WhatsApp messages with instant Mobile Money payment prompts.
-              </p>
-              <div style={{ marginTop: '1.2rem', display: 'flex', gap: '0.8rem', flexWrap: 'wrap', justifyContent: 'center' }}>
-                <span style={{ background: 'rgba(16, 185, 129, 0.1)', border: '1px solid rgba(16, 185, 129, 0.3)', color: '#10b981', padding: '0.35rem 0.9rem', borderRadius: '20px', fontSize: '0.78rem', fontWeight: 700 }}>
-                  Direct WhatsApp Routing
-                </span>
-                <span style={{ background: 'rgba(255, 204, 0, 0.1)', border: '1px solid rgba(255, 204, 0, 0.3)', color: '#ffcc00', padding: '0.35rem 0.9rem', borderRadius: '20px', fontSize: '0.78rem', fontWeight: 700 }}>
-                  MTN & Telecel Settlement
-                </span>
-              </div>
             </div>
           )}
         </div>
