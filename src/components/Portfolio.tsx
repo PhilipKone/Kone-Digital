@@ -27,7 +27,8 @@ export const Portfolio: React.FC = () => {
       image: '/sedemson_stone_hero.png',
       tags: ['WaaS Architecture', 'Catalog Engine', 'Direct WhatsApp RFQs'],
       metric: '+340% Inbound WhatsApp RFQs',
-      status: 'Live Production'
+      status: 'Live Production',
+      link: '/sedemson-stone/index.html'
     },
     {
       id: 'emewear',
