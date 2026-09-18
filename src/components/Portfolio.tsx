@@ -47,7 +47,7 @@ export const Portfolio: React.FC = () => {
       category: 'nonprofit',
       categoryLabel: 'Non-Profit & Social Impact',
       tagline: 'Empowering Ghanaian tertiary students and underserved youth through mentorship, education & digital skills.',
-      image: '/ansah-delali/ADF110.jpg',
+      image: '/ansah-delali/cohort-group.jpg',
       tags: ['Education WaaS', 'SkillUp 1.0 Outreach', 'Student Mentorship Network'],
       metric: 'SkillUp 1.0 Community Impact',
       status: 'Live Production',
