@@ -3,7 +3,7 @@ import React, { useState } from 'react';
 interface ProjectItem {
   id: string;
   title: string;
-  category: 'all' | 'b2b' | 'ecommerce' | 'saas';
+  category: 'all' | 'b2b' | 'ecommerce';
   categoryLabel: string;
   tagline: string;
   image: string;
@@ -39,30 +39,6 @@ export const Portfolio: React.FC = () => {
       tags: ['Fashion WaaS', 'MoMo Automated Checkout', 'Automated Dispatch'],
       metric: 'Zero-Friction MoMo Checkout',
       status: 'Live Production'
-    },
-    {
-      id: 'kone-farms',
-      title: 'Kone Farms & Agritech',
-      category: 'saas',
-      categoryLabel: 'Agritech & IoT Systems',
-      tagline: 'Precision IoT Soil Telemetry, Yield Analytics & Agritech Operations Platform.',
-      image: '/sedemson_stone_hero.png',
-      tags: ['IoT Data Relay', 'React 18 Dashboard', 'Real-Time Telemetry'],
-      metric: '+85.7% Yield Telemetry Accuracy',
-      status: 'Live Production',
-      link: 'https://farms.koneacademy.io'
-    },
-    {
-      id: 'kone-consult',
-      title: 'Kone Consult',
-      category: 'saas',
-      categoryLabel: 'Enterprise & Design Systems',
-      tagline: 'Corporate Technology Advisory, Multi-Subdomain Architecture & Brand Systems.',
-      image: '/emewear/emewear_hero.jpg',
-      tags: ['Design Tokens', 'Cloud CI/CD', 'Multi-Subdomain Hub'],
-      metric: '99.98% Multi-Subdomain Uptime',
-      status: 'Live Production',
-      link: 'https://consult.koneacademy.io'
     }
   ];
 
@@ -136,18 +112,6 @@ export const Portfolio: React.FC = () => {
             }}
           >
             Fashion & Retail
-          </button>
-
-          <button 
-            onClick={() => setActiveCategory('saas')}
-            className={activeCategory === 'saas' ? 'btn-primary' : 'btn-secondary'}
-            style={{
-              padding: '0.45rem 1.15rem',
-              borderRadius: '50px',
-              fontSize: '0.84rem'
-            }}
-          >
-            SaaS & IoT Systems
           </button>
 
           {/* Search Box */}

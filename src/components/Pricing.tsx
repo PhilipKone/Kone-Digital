@@ -3,7 +3,7 @@ import { useCurrency } from '../context/CurrencyContext';
 
 export const Pricing: React.FC = () => {
   const { currency, setCurrency, formatPrice } = useCurrency();
-  const [sliderIndex, setSliderIndex] = useState(2); // Default to Professional
+  const [selectedPlanIndex, setSelectedPlanIndex] = useState(2); // Default to Professional
 
   const plans = [
     {
@@ -65,8 +65,6 @@ export const Pricing: React.FC = () => {
     }
   ];
 
-  const currentPlan = plans[sliderIndex];
-
   return (
     <section className="pricing-section" id="pricing" style={{ padding: '3.5rem 1rem', maxWidth: '1200px', margin: '0 auto', width: '100%', boxSizing: 'border-box', overflowX: 'hidden' }}>
       <div className="pricing-header fade-in-up" style={{ textAlign: 'center', marginBottom: '3rem', width: '100%', boxSizing: 'border-box' }}>
@@ -116,51 +114,6 @@ export const Pricing: React.FC = () => {
         </div>
       </div>
 
-      {/* Interactive Package Slider Control */}
-      <div style={{ 
-        maxWidth: '750px', 
-        width: '100%',
-        boxSizing: 'border-box',
-        margin: '0 auto 3rem', 
-        padding: '1.4rem clamp(1rem, 3vw, 1.8rem)', 
-        background: 'rgba(13, 18, 29, 0.75)', 
-        backdropFilter: 'blur(16px)',
-        WebkitBackdropFilter: 'blur(16px)',
-        borderRadius: '16px', 
-        border: '1px solid rgba(255, 255, 255, 0.08)',
-        boxShadow: '0 10px 30px -10px rgba(0, 0, 0, 0.5)'
-      }}>
-        <div style={{ display: 'flex', justifyContent: 'space-between', marginBottom: '0.8rem', color: '#94A3B8', fontSize: '0.82rem', fontWeight: 750, letterSpacing: '0.04em', flexWrap: 'wrap', gap: '0.3rem' }}>
-          <label htmlFor="pricing-plan-slider">INTERACTIVE PLAN NAVIGATOR</label>
-          <span style={{ color: '#00F0FF' }}>{currentPlan.name} Selected</span>
-        </div>
-        <input 
-          id="pricing-plan-slider"
-          aria-label="Select pricing package plan"
-          type="range" 
-          min="0" 
-          max="3" 
-          step="1" 
-          value={sliderIndex}
-          onChange={(e) => setSliderIndex(parseInt(e.target.value))}
-          style={{
-            width: '100%',
-            height: '6px',
-            borderRadius: '4px',
-            background: 'rgba(255, 255, 255, 0.1)',
-            outline: 'none',
-            cursor: 'pointer',
-            accentColor: '#00F0FF'
-          }}
-        />
-        <div style={{ display: 'flex', justifyContent: 'space-between', marginTop: '0.6rem', fontSize: '0.76rem', color: '#94A3B8', fontWeight: 650, flexWrap: 'wrap', gap: '0.3rem' }}>
-          <span>Lite (₵49)</span>
-          <span>Starter (₵499)</span>
-          <span>Professional (₵999)</span>
-          <span>Enterprise (₵2,499)</span>
-        </div>
-      </div>
-
       {/* Grid of Cards */}
       <div className="pricing-cards" style={{ 
         display: 'grid', 
@@ -172,12 +125,12 @@ export const Pricing: React.FC = () => {
         boxSizing: 'border-box'
       }}>
         {plans.map((plan, index) => {
-          const isSelected = index === sliderIndex;
+          const isSelected = index === selectedPlanIndex;
 
           return (
             <div 
               key={plan.id}
-              onClick={() => setSliderIndex(index)}
+              onClick={() => setSelectedPlanIndex(index)}
               className="price-card fade-in-up"
               style={{
                 background: isSelected ? 'rgba(0, 240, 255, 0.04)' : 'rgba(13, 18, 29, 0.75)',

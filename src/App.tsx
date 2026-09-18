@@ -2,8 +2,6 @@ import { useEffect, useRef, useState } from 'react';
 import { HeroSection } from './components/HeroSection';
 import { TrustMetrics } from './components/TrustMetrics';
 import { OnboardingWizard } from './components/OnboardingWizard';
-import { FreeToolsHub } from './components/FreeToolsHub';
-import { MerchantDashboard } from './components/MerchantDashboard';
 import { Portfolio } from './components/Portfolio';
 import { Pricing } from './components/Pricing';
 import ServicesHub from './components/ServicesHub';
@@ -20,14 +18,12 @@ function App() {
     setIsWizardOpen(true);
   };
   
-  const [currentRoute, setCurrentRoute] = useState<'home' | 'services' | 'service-detail' | 'work' | 'pricing' | 'tools' | 'dashboard'>(() => {
+  const [currentRoute, setCurrentRoute] = useState<'home' | 'services' | 'service-detail' | 'work' | 'pricing'>(() => {
     const hash = typeof window !== 'undefined' ? window.location.hash : '';
     if (hash.startsWith('#services/')) return 'service-detail';
     if (hash.startsWith('#services')) return 'services';
     if (hash.startsWith('#work')) return 'work';
     if (hash.startsWith('#pricing')) return 'pricing';
-    if (hash.startsWith('#tools')) return 'tools';
-    if (hash.startsWith('#dashboard')) return 'dashboard';
     return 'home';
   });
 
@@ -50,10 +46,6 @@ function App() {
         setCurrentRoute('work');
       } else if (hash.startsWith('#pricing')) {
         setCurrentRoute('pricing');
-      } else if (hash.startsWith('#tools')) {
-        setCurrentRoute('tools');
-      } else if (hash.startsWith('#dashboard')) {
-        setCurrentRoute('dashboard');
       } else {
         setCurrentRoute('home');
       }
@@ -266,10 +258,6 @@ function App() {
           />
         ) : currentRoute === 'work' ? (
           <Portfolio />
-        ) : currentRoute === 'tools' ? (
-          <FreeToolsHub onOpenWizard={handleOpenWizardWithPrefill} />
-        ) : currentRoute === 'dashboard' ? (
-          <MerchantDashboard />
         ) : currentRoute === 'pricing' ? (
           <Pricing />
         ) : (
@@ -315,13 +303,12 @@ function App() {
           Ghana's premier digital studio for high-performance business websites, web apps, & automated WhatsApp lead engines.
         </p>
 
-        {/* Footer Navigation & Utilities */}
+        {/* Footer Navigation */}
         <div style={{ display: 'flex', gap: '1.2rem', flexWrap: 'wrap', justifyContent: 'center', fontSize: '0.88rem', fontWeight: 600 }}>
           <a href="#" style={{ color: 'var(--text-muted)', textDecoration: 'none' }}>Overview</a>
           <a href="#services" style={{ color: 'var(--text-muted)', textDecoration: 'none' }}>Services</a>
           <a href="#work" style={{ color: 'var(--text-muted)', textDecoration: 'none' }}>Work</a>
           <a href="#pricing" style={{ color: 'var(--text-muted)', textDecoration: 'none' }}>Pricing</a>
-          <a href="#tools" style={{ color: '#00F0FF', textDecoration: 'none' }}>Free Merchant Tools ➔</a>
         </div>
 
         {/* Social / Channel Buttons */}
