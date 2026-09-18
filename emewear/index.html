@@ -3,10 +3,36 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Emewear | Ghana-Made Plus-Size Ankara & Luxury Fashion</title>
+    <title>Emewear | Ghana-Made Plus-Size Ankara & Luxury Heritage Fashion</title>
     <meta name="description" content="Emewear: Handcrafted Ghanaian Ankara print wide-leg trousers, tailored jumpsuits, and luxury African heritage wear designed for curvy & plus-size Ghanaian women." />
+    <link rel="canonical" href="https://digital.koneacademy.io/emewear/" />
     <link rel="icon" type="image/jpeg" href="./emewear_hero.jpg" />
-    
+    <link rel="image_src" href="https://digital.koneacademy.io/emewear/og-preview.jpg" />
+
+    <!-- Open Graph / WhatsApp / LinkedIn / Facebook / iMessage -->
+    <meta property="og:type" content="website" />
+    <meta property="og:url" content="https://digital.koneacademy.io/emewear/" />
+    <meta property="og:site_name" content="Emewear Luxury Ghana" />
+    <meta property="og:title" content="Emewear | Ghana-Made Plus-Size Ankara & Luxury Fashion" />
+    <meta property="og:description" content="Handcrafted Ghanaian Ankara print wide-leg trousers, tailored jumpsuits, and luxury African heritage wear designed for curvy & plus-size women (UK 16 – 30)." />
+    <meta property="og:image" content="https://digital.koneacademy.io/emewear/og-preview.jpg" />
+    <meta property="og:image:secure_url" content="https://digital.koneacademy.io/emewear/og-preview.jpg" />
+    <meta property="og:image:type" content="image/jpeg" />
+    <meta property="og:image:width" content="1200" />
+    <meta property="og:image:height" content="630" />
+    <meta property="og:image:alt" content="Emewear Luxury - Plus-Size African Heritage Fashion" />
+    <meta property="og:locale" content="en_GH" />
+
+    <!-- Twitter / X Cards -->
+    <meta name="twitter:card" content="summary_large_image" />
+    <meta name="twitter:url" content="https://digital.koneacademy.io/emewear/" />
+    <meta name="twitter:title" content="Emewear | Ghana-Made Plus-Size Ankara & Luxury Fashion" />
+    <meta name="twitter:description" content="Handcrafted Ghanaian Ankara print wide-leg trousers, tailored jumpsuits, and luxury African heritage wear designed for curvy & plus-size women (UK 16 – 30)." />
+    <meta name="twitter:image" content="https://digital.koneacademy.io/emewear/og-preview.jpg" />
+    <meta name="twitter:image:alt" content="Emewear Luxury - Plus-Size African Heritage Fashion" />
+
+    <meta name="theme-color" content="#120508" />
+
     <!-- Google Typography -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -23,6 +49,9 @@
             --text-dark: #221215;
             --text-muted: #9c8a8e;
             --glass-bg: rgba(31, 11, 16, 0.85);
+            --radius-sm: 6px;
+            --radius-md: 12px;
+            --radius-lg: 20px;
         }
 
         * {
@@ -30,6 +59,7 @@
             padding: 0;
             box-sizing: border-box;
             font-family: 'Outfit', sans-serif;
+            -webkit-font-smoothing: antialiased;
         }
 
         body {
@@ -39,16 +69,53 @@
             overflow-x: hidden;
         }
 
-        /* --- Header Navigation --- */
-        nav {
-            padding: 1.5rem 6%;
+        a {
+            color: inherit;
+            text-decoration: none;
+            transition: all 0.2s ease;
+        }
+
+        img {
+            max-width: 100%;
+            height: auto;
+            display: block;
+        }
+
+        /* --- Top Utility Bar --- */
+        .top-bar {
+            background-color: #0c0305;
+            border-bottom: 1px solid rgba(229, 184, 130, 0.15);
+            font-size: 0.8rem;
+            padding: 0.45rem 6%;
+            color: #d1b8bc;
+        }
+        .top-bar-inner {
+            max-width: 1280px;
+            margin: 0 auto;
             display: flex;
             justify-content: space-between;
             align-items: center;
-            position: absolute;
+        }
+        .top-bar a {
+            display: inline-flex;
+            align-items: center;
+            gap: 0.4rem;
+            color: var(--gold-glow);
+        }
+
+        /* --- Header Navigation --- */
+        nav {
+            padding: 1.2rem 6%;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            position: sticky;
+            top: 0;
             width: 100%;
-            z-index: 100;
-            background: linear-gradient(to bottom, rgba(18, 5, 8, 0.9) 0%, transparent 100%);
+            z-index: 1000;
+            background: rgba(18, 5, 8, 0.94);
+            backdrop-filter: blur(12px);
+            border-bottom: 1px solid rgba(229, 184, 130, 0.15);
         }
 
         .brand-logo {
@@ -59,19 +126,20 @@
 
         .brand-title {
             font-family: 'Cinzel', serif;
-            font-size: 1.8rem;
+            font-size: 1.7rem;
             font-weight: 900;
             color: var(--gold-glow);
             letter-spacing: 3px;
             text-transform: uppercase;
+            line-height: 1.1;
         }
 
         .brand-tagline {
-            font-size: 0.68rem;
+            font-size: 0.65rem;
             color: var(--rose-gold);
-            letter-spacing: 4px;
+            letter-spacing: 3.5px;
             text-transform: uppercase;
-            font-weight: 600;
+            font-weight: 700;
         }
 
         .nav-links {
@@ -85,33 +153,163 @@
             text-decoration: none;
             font-weight: 600;
             font-size: 0.9rem;
-            letter-spacing: 1px;
-            transition: color 0.3s ease;
+            letter-spacing: 0.5px;
+            transition: color 0.2s ease;
         }
 
         .nav-links a:hover {
             color: var(--gold-glow);
         }
 
-        .contact-pill {
+        .nav-actions-right {
+            display: flex;
+            align-items: center;
+            gap: 0.8rem;
+        }
+
+        .nav-wa-btn {
             background: linear-gradient(135deg, var(--rose-gold) 0%, #b8864e 100%);
             color: #120508 !important;
             padding: 0.6rem 1.4rem;
             border-radius: 50px;
             font-weight: 800 !important;
+            font-size: 0.86rem;
             box-shadow: 0 4px 15px rgba(229, 184, 130, 0.3);
+            display: inline-flex;
+            align-items: center;
+            gap: 0.45rem;
+            transition: transform 0.2s ease, box-shadow 0.2s ease;
+        }
+        .nav-wa-btn:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 6px 20px rgba(229, 184, 130, 0.45);
+        }
+
+        .mobile-hamburger-btn {
+            display: none;
+            background: transparent;
+            border: 1px solid rgba(229, 184, 130, 0.4);
+            cursor: pointer;
+            padding: 0.5rem;
+            border-radius: var(--radius-sm);
+            width: 40px;
+            height: 40px;
+            align-items: center;
+            justify-content: center;
+            flex-direction: column;
+            gap: 4px;
+        }
+        .mobile-hamburger-btn span {
+            display: block;
+            width: 20px;
+            height: 2px;
+            background-color: var(--gold-glow);
+            border-radius: 2px;
+            transition: all 0.3s ease;
+        }
+
+        /* --- Mobile Slide-Over Drawer --- */
+        .mobile-drawer-overlay {
+            position: fixed;
+            inset: 0;
+            background: rgba(0, 0, 0, 0.8);
+            backdrop-filter: blur(6px);
+            z-index: 2998;
+            opacity: 0;
+            visibility: hidden;
+            transition: opacity 0.3s ease, visibility 0.3s ease;
+        }
+        .mobile-drawer-overlay.active {
+            opacity: 1;
+            visibility: visible;
+        }
+        .mobile-drawer {
+            position: fixed;
+            top: 0;
+            right: -320px;
+            width: 300px;
+            max-width: 86vw;
+            height: 100vh;
+            background: #1B070C;
+            border-left: 1px solid rgba(229, 184, 130, 0.3);
+            z-index: 2999;
+            box-shadow: -10px 0 30px rgba(0,0,0,0.7);
+            display: flex;
+            flex-direction: column;
+            transition: right 0.35s cubic-bezier(0.16, 1, 0.3, 1);
+            overflow-y: auto;
+        }
+        .mobile-drawer.active {
+            right: 0;
+        }
+        .mobile-drawer-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 1.4rem 1.4rem;
+            border-bottom: 1px solid rgba(229, 184, 130, 0.15);
+        }
+        .mobile-drawer-close {
+            background: transparent;
+            border: none;
+            font-size: 1.8rem;
+            line-height: 1;
+            color: var(--gold-glow);
+            cursor: pointer;
+            padding: 0.2rem 0.5rem;
+        }
+        .mobile-drawer-body {
+            padding: 1.5rem 1.4rem;
+            display: flex;
+            flex-direction: column;
+            flex-grow: 1;
+            justify-content: space-between;
+        }
+        .mobile-nav-list {
+            list-style: none;
+            display: flex;
+            flex-direction: column;
+            gap: 0.5rem;
+        }
+        .mobile-nav-link {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            padding: 0.85rem 1rem;
+            color: #FFFFFF;
+            font-weight: 700;
+            font-size: 0.98rem;
+            border-radius: var(--radius-sm);
+            transition: all 0.2s ease;
+        }
+        .mobile-nav-link:active, .mobile-nav-link:hover {
+            background: rgba(229, 184, 130, 0.12);
+            color: var(--gold-glow);
+        }
+        .mobile-drawer-footer {
+            margin-top: 2rem;
+            padding-top: 1.5rem;
+            border-top: 1px solid rgba(229, 184, 130, 0.15);
+        }
+        .mobile-drawer-contact {
+            display: flex;
+            flex-direction: column;
+            gap: 0.7rem;
+            font-size: 0.82rem;
+            color: #d1b8bc;
+            margin-top: 1.2rem;
         }
 
         /* --- Hero Section --- */
         .hero {
-            min-height: 95vh;
-            background: linear-gradient(rgba(18, 5, 8, 0.65), rgba(18, 5, 8, 0.85)), url('./emewear_hero.jpg') center/cover no-repeat;
+            min-height: 90vh;
+            background: linear-gradient(rgba(18, 5, 8, 0.65), rgba(18, 5, 8, 0.88)), url('./emewear_hero.jpg') center/cover no-repeat;
             display: flex;
             flex-direction: column;
             justify-content: center;
             align-items: center;
             text-align: center;
-            padding: 7rem 5% 4rem;
+            padding: 5rem 6% 4rem;
             position: relative;
         }
 
@@ -124,19 +322,21 @@
             border-radius: 50px;
             margin-bottom: 1.8rem;
             text-transform: uppercase;
-            font-size: 0.8rem;
-            letter-spacing: 2px;
+            font-size: 0.78rem;
+            letter-spacing: 2.5px;
             backdrop-filter: blur(10px);
+            display: inline-flex;
+            align-items: center;
+            gap: 0.5rem;
         }
 
         .hero h1 {
             font-family: 'Playfair Display', serif;
-            font-size: clamp(2.8rem, 7vw, 5rem);
-            font-weight: 900;
-            margin-bottom: 1.5rem;
-            line-height: 1.1;
-            color: #ffffff;
-            max-width: 950px;
+            font-size: clamp(2.4rem, 5.2vw, 4.4rem);
+            font-weight: 800;
+            line-height: 1.15;
+            margin-bottom: 1.4rem;
+            max-width: 900px;
         }
 
         .hero h1 span {
@@ -145,168 +345,160 @@
         }
 
         .hero p {
-            font-size: 1.25rem;
-            max-width: 720px;
-            margin-bottom: 2.8rem;
-            color: #e2d7d9;
-            font-weight: 400;
-            line-height: 1.7;
+            font-size: 1.15rem;
+            max-width: 680px;
+            margin-bottom: 2.5rem;
+            color: #e5d3d6;
+            line-height: 1.75;
         }
 
         .hero-actions {
             display: flex;
-            gap: 1.5rem;
+            gap: 1.2rem;
             flex-wrap: wrap;
             justify-content: center;
         }
 
         .btn-luxury {
-            padding: 1.1rem 2.8rem;
+            padding: 0.95rem 2.2rem;
             border-radius: 50px;
-            font-weight: 800;
-            text-decoration: none;
-            text-transform: uppercase;
-            font-size: 0.88rem;
-            letter-spacing: 1px;
-            transition: all 0.3s ease;
+            font-weight: 700;
+            font-size: 0.95rem;
             display: inline-flex;
             align-items: center;
-            gap: 0.6rem;
+            gap: 0.5rem;
+            cursor: pointer;
+            transition: all 0.3s ease;
         }
 
         .btn-gold {
-            background: linear-gradient(135deg, var(--gold-glow) 0%, var(--rose-gold) 100%);
+            background: linear-gradient(135deg, var(--rose-gold) 0%, #c48b48 100%);
             color: #120508;
-            box-shadow: 0 10px 25px rgba(229, 184, 130, 0.3);
+            box-shadow: 0 6px 20px rgba(229, 184, 130, 0.35);
         }
 
         .btn-gold:hover {
-            transform: translateY(-3px);
-            box-shadow: 0 15px 35px rgba(229, 184, 130, 0.5);
+            transform: translateY(-2px);
+            box-shadow: 0 8px 25px rgba(229, 184, 130, 0.5);
         }
 
         .btn-outline {
             background: rgba(255, 255, 255, 0.05);
-            border: 1px solid rgba(255, 255, 255, 0.3);
-            color: #ffffff;
-            backdrop-filter: blur(10px);
+            border: 1.5px solid var(--rose-gold);
+            color: var(--gold-glow);
+            backdrop-filter: blur(5px);
         }
 
         .btn-outline:hover {
-            background: rgba(255, 255, 255, 0.15);
-            border-color: var(--gold-glow);
+            background: rgba(229, 184, 130, 0.15);
+            color: #fff;
+            transform: translateY(-2px);
         }
 
         /* --- 3D PERSPECTIVE CAROUSEL SECTION --- */
         .carousel-section {
-            padding: 100px 4% 120px;
-            background: #18080c;
-            overflow: hidden;
+            padding: 6rem 5%;
+            background: radial-gradient(circle at 50% 30%, #300a12 0%, #120508 70%);
             position: relative;
+            overflow: hidden;
         }
 
         .section-header {
             text-align: center;
-            margin-bottom: 60px;
+            margin-bottom: 3.5rem;
         }
 
         .section-header .sub {
             color: var(--rose-gold);
-            font-size: 0.85rem;
-            font-weight: 800;
             letter-spacing: 4px;
             text-transform: uppercase;
-            margin-bottom: 0.8rem;
+            font-size: 0.78rem;
+            font-weight: 800;
             display: block;
+            margin-bottom: 0.6rem;
         }
 
         .section-header h2 {
             font-family: 'Playfair Display', serif;
-            font-size: clamp(2.2rem, 5vw, 3.6rem);
-            color: #ffffff;
-            font-weight: 800;
+            font-size: clamp(2rem, 3.6vw, 3rem);
+            color: var(--silk-cream);
         }
 
-        /* 3D Carousel Stage */
         .carousel-3d-stage {
-            perspective: 1400px;
             width: 100%;
-            max-width: 1200px;
-            margin: 0 auto;
+            height: 600px;
             position: relative;
-            min-height: 640px;
+            perspective: 1200px;
             display: flex;
-            align-items: center;
             justify-content: center;
+            align-items: center;
         }
 
         .carousel-3d-track {
             position: relative;
             width: 100%;
-            height: 580px;
-            transform-style: preserve-3d;
+            height: 100%;
             display: flex;
             justify-content: center;
             align-items: center;
+            transform-style: preserve-3d;
         }
 
         .carousel-3d-card {
             position: absolute;
-            width: 360px;
+            width: 340px;
             height: 560px;
             background: var(--dark-card);
-            border: 1px solid rgba(229, 184, 130, 0.2);
-            border-radius: 28px;
+            border-radius: var(--radius-lg);
+            border: 1px solid rgba(229, 184, 130, 0.25);
             overflow: hidden;
-            box-shadow: 0 25px 50px rgba(0, 0, 0, 0.7);
+            box-shadow: 0 20px 40px rgba(0, 0, 0, 0.7);
             transition: all 0.6s cubic-bezier(0.25, 1, 0.5, 1);
             cursor: pointer;
-            user-select: none;
             display: flex;
             flex-direction: column;
-            backdrop-filter: blur(10px);
+            user-select: none;
         }
 
-        /* 3D Positional Classes */
         .carousel-3d-card.active {
-            transform: translateX(0) translateZ(80px) rotateY(0deg) scale(1.05);
+            transform: translateX(0) translateZ(100px) rotateY(0deg);
             z-index: 10;
-            opacity: 1;
             border-color: var(--rose-gold);
-            box-shadow: 0 30px 60px rgba(229, 184, 130, 0.25), 0 0 40px rgba(229, 184, 130, 0.15);
+            box-shadow: 0 25px 50px rgba(229, 184, 130, 0.25), 0 0 0 1.5px var(--rose-gold);
+            opacity: 1;
         }
 
         .carousel-3d-card.prev {
-            transform: translateX(-68%) translateZ(-160px) rotateY(22deg) scale(0.85);
+            transform: translateX(-340px) translateZ(-80px) rotateY(25deg);
             z-index: 5;
             opacity: 0.65;
-            filter: brightness(0.7);
+            filter: brightness(0.65);
         }
 
         .carousel-3d-card.next {
-            transform: translateX(68%) translateZ(-160px) rotateY(-22deg) scale(0.85);
+            transform: translateX(340px) translateZ(-80px) rotateY(-25deg);
             z-index: 5;
             opacity: 0.65;
-            filter: brightness(0.7);
+            filter: brightness(0.65);
         }
 
         .carousel-3d-card.far-left {
-            transform: translateX(-120%) translateZ(-350px) rotateY(35deg) scale(0.7);
+            transform: translateX(-560px) translateZ(-200px) rotateY(40deg);
             z-index: 1;
-            opacity: 0.25;
-            filter: brightness(0.4);
+            opacity: 0;
+            pointer-events: none;
         }
 
         .carousel-3d-card.far-right {
-            transform: translateX(120%) translateZ(-350px) rotateY(-35deg) scale(0.7);
+            transform: translateX(560px) translateZ(-200px) rotateY(-40deg);
             z-index: 1;
-            opacity: 0.25;
-            filter: brightness(0.4);
+            opacity: 0;
+            pointer-events: none;
         }
 
         .card-img-wrapper {
-            height: 360px;
             width: 100%;
+            height: 310px;
             overflow: hidden;
             position: relative;
         }
@@ -315,146 +507,164 @@
             width: 100%;
             height: 100%;
             object-fit: cover;
-            object-position: top;
             transition: transform 0.6s ease;
         }
 
-        .carousel-3d-card.active:hover .card-img-wrapper img {
-            transform: scale(1.08);
+        .carousel-3d-card:hover .card-img-wrapper img {
+            transform: scale(1.05);
         }
 
         .card-body {
-            padding: 1.5rem 1.6rem;
+            padding: 1.3rem;
             display: flex;
             flex-direction: column;
-            flex-grow: 1;
             justify-content: space-between;
+            flex-grow: 1;
+            background: linear-gradient(to top, #140508 0%, #1f0b10 100%);
         }
 
         .card-body h3 {
             font-family: 'Playfair Display', serif;
-            font-size: 1.35rem;
+            font-size: 1.15rem;
             color: var(--gold-glow);
-            margin-bottom: 0.4rem;
-            line-height: 1.2;
+            margin-bottom: 0.35rem;
+            font-weight: 700;
         }
 
         .card-body p {
-            font-size: 0.86rem;
-            color: #c4b5b8;
-            line-height: 1.5;
-            margin-bottom: 0.8rem;
+            font-size: 0.8rem;
+            color: #d1b8bc;
+            line-height: 1.45;
+            margin-bottom: 0.75rem;
         }
 
         .size-tags {
             display: flex;
             gap: 0.4rem;
-            flex-wrap: wrap;
             margin-bottom: 0.8rem;
+            flex-wrap: wrap;
         }
 
         .size-badge {
             background: rgba(229, 184, 130, 0.12);
             border: 1px solid rgba(229, 184, 130, 0.3);
-            color: var(--gold-glow);
-            padding: 0.2rem 0.6rem;
-            border-radius: 6px;
-            font-size: 0.72rem;
+            color: var(--rose-gold);
+            font-size: 0.68rem;
             font-weight: 700;
+            padding: 0.2rem 0.55rem;
+            border-radius: 4px;
         }
 
         .card-footer {
             display: flex;
             justify-content: space-between;
             align-items: center;
-            padding-top: 0.6rem;
-            border-top: 1px solid rgba(255, 255, 255, 0.08);
+            border-top: 1px solid rgba(229, 184, 130, 0.15);
+            padding-top: 0.75rem;
+            margin-bottom: 0.6rem;
         }
 
         .status-launching {
+            font-size: 0.74rem;
+            font-weight: 700;
             color: var(--rose-gold);
-            font-weight: 800;
-            font-size: 0.82rem;
+            letter-spacing: 0.5px;
             display: inline-flex;
             align-items: center;
-            gap: 0.3rem;
+            gap: 0.35rem;
         }
 
-        /* 3D Carousel Controls */
-        .carousel-controls {
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            gap: 2rem;
-            margin-top: 2.5rem;
-        }
-
-        .carousel-btn {
-            width: 54px;
-            height: 54px;
-            border-radius: 50%;
+        .btn-card-wa {
             background: rgba(229, 184, 130, 0.12);
             border: 1px solid var(--rose-gold);
             color: var(--gold-glow);
-            font-size: 1.4rem;
+            padding: 0.5rem 1rem;
+            border-radius: var(--radius-sm);
+            font-size: 0.78rem;
+            font-weight: 700;
             display: flex;
             align-items: center;
             justify-content: center;
+            gap: 0.4rem;
+            width: 100%;
+            transition: all 0.2s ease;
+        }
+        .btn-card-wa:hover {
+            background: var(--rose-gold);
+            color: #120508;
+        }
+
+        /* --- Controls --- */
+        .carousel-controls {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            gap: 2rem;
+            margin-top: 2rem;
+        }
+
+        .carousel-btn {
+            background: rgba(31, 11, 16, 0.9);
+            border: 1.5px solid var(--rose-gold);
+            color: var(--gold-glow);
+            width: 44px;
+            height: 44px;
+            border-radius: 50%;
+            display: flex;
+            justify-content: center;
+            align-items: center;
             cursor: pointer;
             transition: all 0.3s ease;
-            backdrop-filter: blur(8px);
         }
 
         .carousel-btn:hover {
-            background: var(--gold-glow);
+            background: var(--rose-gold);
             color: #120508;
             transform: scale(1.1);
-            box-shadow: 0 0 20px rgba(229, 184, 130, 0.4);
         }
 
         .carousel-dots {
             display: flex;
-            gap: 0.6rem;
+            gap: 0.7rem;
         }
 
         .dot {
-            width: 12px;
-            height: 12px;
+            width: 9px;
+            height: 9px;
             border-radius: 50%;
-            background: rgba(255, 255, 255, 0.2);
+            background: rgba(229, 184, 130, 0.25);
             cursor: pointer;
             transition: all 0.3s ease;
         }
 
         .dot.active {
             background: var(--gold-glow);
-            width: 28px;
-            border-radius: 10px;
-            box-shadow: 0 0 10px rgba(229, 184, 130, 0.5);
+            transform: scale(1.35);
         }
 
-        /* --- Brand Philosophy --- */
+        /* --- Brand Philosophy Section --- */
         .philosophy-section {
-            padding: 90px 6%;
-            background: linear-gradient(135deg, var(--burgundy-deep) 0%, #120508 100%);
+            padding: 6rem 8%;
             display: grid;
-            grid-template-columns: 1fr 1fr;
+            grid-template-columns: 1.2fr 1fr;
             gap: 4rem;
             align-items: center;
+            background: #140508;
+            border-top: 1px solid rgba(229, 184, 130, 0.15);
         }
 
         .phil-content h2 {
             font-family: 'Playfair Display', serif;
-            font-size: 2.8rem;
-            color: #ffffff;
-            margin-bottom: 1.5rem;
+            font-size: clamp(2rem, 3.5vw, 2.8rem);
+            color: var(--gold-glow);
+            margin-bottom: 1.2rem;
         }
 
         .phil-content p {
+            color: #e5d3d6;
             font-size: 1.05rem;
-            color: #d1c2c5;
-            line-height: 1.8;
-            margin-bottom: 1.5rem;
+            line-height: 1.7;
+            margin-bottom: 2rem;
         }
 
         .feature-bullets {
@@ -465,34 +675,27 @@
         }
 
         .feature-bullets li {
-            font-size: 1rem;
-            color: var(--gold-glow);
             display: flex;
             align-items: center;
             gap: 0.75rem;
             font-weight: 600;
-        }
-
-        .phil-image {
-            border-radius: 28px;
-            overflow: hidden;
-            box-shadow: 0 20px 40px rgba(0, 0, 0, 0.6);
-            border: 1px solid rgba(229, 184, 130, 0.25);
+            color: var(--silk-cream);
+            font-size: 0.95rem;
         }
 
         .phil-image img {
             width: 100%;
-            height: 100%;
-            object-fit: cover;
-            display: block;
+            border-radius: var(--radius-lg);
+            box-shadow: 0 20px 40px rgba(0, 0, 0, 0.6);
+            border: 1.5px solid rgba(229, 184, 130, 0.3);
         }
 
         /* --- Footer --- */
         footer {
-            padding: 4rem 6% 3rem;
-            background: #0d0305;
-            border-top: 1px solid rgba(255, 255, 255, 0.08);
+            background: #090204;
+            padding: 4rem 6% 2.5rem;
             text-align: center;
+            border-top: 1px solid rgba(229, 184, 130, 0.15);
         }
 
         .footer-brand {
@@ -507,26 +710,109 @@
             color: var(--text-muted);
             font-size: 0.9rem;
             max-width: 500px;
-            margin: 0 auto 2rem;
+            margin: 0 auto 1.5rem;
         }
 
+        /* --- Responsive Styles (Mobbin 390px Standard) --- */
         @media (max-width: 850px) {
             .carousel-3d-card {
-                width: 290px;
+                width: 285px;
                 height: 520px;
+            }
+
+            .carousel-3d-card.prev {
+                transform: translateX(-180px) translateZ(-100px) rotateY(25deg);
+                opacity: 0.35;
+            }
+
+            .carousel-3d-card.next {
+                transform: translateX(180px) translateZ(-100px) rotateY(-25deg);
+                opacity: 0.35;
             }
 
             .philosophy-section {
                 grid-template-columns: 1fr;
+                gap: 2.5rem;
+                padding: 4rem 5%;
             }
 
             .nav-links {
+                display: none;
+            }
+
+            .mobile-hamburger-btn {
+                display: flex;
+            }
+        }
+
+        @media (max-width: 480px) {
+            .top-bar {
+                padding: 0.4rem 4%;
+            }
+            .brand-title {
+                font-size: 1.35rem;
+            }
+            .brand-tagline {
+                font-size: 0.58rem;
+            }
+            nav .nav-wa-btn span {
+                display: none;
+            }
+            nav .nav-wa-btn {
+                padding: 0.5rem;
+                border-radius: 50%;
+                width: 36px;
+                height: 36px;
+                justify-content: center;
+            }
+            .hero {
+                padding: 3rem 4% 2.5rem;
+            }
+            .hero h1 {
+                font-size: 2.05rem;
+                line-height: 1.2;
+            }
+            .hero p {
+                font-size: 0.98rem;
+                margin-bottom: 1.8rem;
+            }
+            .hero-actions {
+                flex-direction: column;
+                width: 100%;
+            }
+            .hero-actions a {
+                width: 100%;
+                justify-content: center;
+                text-align: center;
+            }
+            .carousel-section {
+                padding: 4rem 4% 3rem;
+            }
+            .carousel-3d-stage {
+                height: 550px;
+            }
+            .carousel-3d-card {
+                width: 275px;
+                height: 510px;
+            }
+            .carousel-3d-card.prev, .carousel-3d-card.next {
                 display: none;
             }
         }
     </style>
 </head>
 <body>
+
+    <!-- Top Utility Bar -->
+    <div class="top-bar">
+        <div class="top-bar-inner">
+            <span>Accra, Ghana • UK Sizes 16 – 30</span>
+            <a href="tel:0552912010">
+                <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72 12.84 12.84 0 0 0 .7 2.81 2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45 12.84 12.84 0 0 0 2.81.7A2 2 0 0 1 22 16.92z"/></svg>
+                <span>055 291 2010</span>
+            </a>
+        </div>
+    </div>
 
     <!-- Header Navigation -->
     <nav>
@@ -537,24 +823,79 @@
         <div class="nav-links">
             <a href="#collections">3D Collections</a>
             <a href="#about">About Us</a>
-            <a href="https://digital.koneacademy.io" target="_blank" class="contact-pill">Kone Digital Studio</a>
+            <a href="https://digital.koneacademy.io" target="_blank">Kone Digital Studio</a>
+        </div>
+        <div class="nav-actions-right">
+            <a href="https://wa.me/233552912010" target="_blank" rel="noopener" class="nav-wa-btn" aria-label="Order on WhatsApp">
+                <svg width="15" height="15" viewBox="0 0 24 24" fill="currentColor"><path d="M12.04 2c-5.46 0-9.91 4.45-9.91 9.91 0 1.75.46 3.45 1.32 4.95L2.05 22l5.25-1.38c1.45.79 3.08 1.21 4.74 1.21 5.46 0 9.91-4.45 9.91-9.91 0-2.65-1.03-5.14-2.9-7.01A9.816 9.816 0 0 0 12.04 2m.01 1.67c2.2 0 4.26.86 5.82 2.42a8.225 8.225 0 0 1 2.41 5.83c0 4.54-3.7 8.24-8.24 8.24-1.48 0-2.93-.4-4.2-1.15l-.3-.18-3.12.82.83-3.04-.2-.31a8.19 8.19 0 0 1-1.26-4.38c0-4.54 3.7-8.24 8.24-8.24M8.53 7.33c-.16 0-.42.06-.64.3-.22.24-.85.83-.85 2.02 0 1.19.87 2.34.99 2.5.12.16 1.7 2.6 4.12 3.65.58.25 1.03.4 1.38.51.58.18 1.11.16 1.53.1.47-.07 1.44-.59 1.64-1.16.2-.57.2-1.06.14-1.16-.06-.1-.22-.16-.46-.28s-1.44-.71-1.66-.79-.38-.12-.54.12c-.16.24-.63.79-.77.95-.14.16-.28.18-.52.06s-1.02-.38-1.94-1.2c-.72-.64-1.2-1.43-1.34-1.67-.14-.24-.02-.37.1-.49.11-.11.24-.28.36-.42.12-.14.16-.24.24-.4.08-.16.04-.3-.02-.42s-.54-1.31-.74-1.79c-.2-.48-.4-.41-.55-.42l-.47-.01z"/></svg>
+                <span>WhatsApp Order</span>
+            </a>
+            <button class="mobile-hamburger-btn" onclick="openMobileMenu()" aria-label="Open Navigation Menu">
+                <span></span>
+                <span></span>
+                <span></span>
+            </button>
         </div>
     </nav>
 
+    <!-- Mobile Navigation Drawer -->
+    <div class="mobile-drawer-overlay" id="mobileDrawerOverlay" onclick="closeMobileMenu()"></div>
+    <div class="mobile-drawer" id="mobileDrawer" aria-hidden="true">
+        <div class="mobile-drawer-header">
+            <div class="brand-logo">
+                <span class="brand-title" style="font-size: 1.3rem;">EMEWEAR</span>
+                <span class="brand-tagline" style="font-size: 0.58rem;">HERITAGE FASHION</span>
+            </div>
+            <button class="mobile-drawer-close" onclick="closeMobileMenu()" aria-label="Close menu">&times;</button>
+        </div>
+        <div class="mobile-drawer-body">
+            <ul class="mobile-nav-list">
+                <li><a href="#collections" class="mobile-nav-link" onclick="closeMobileMenu()"><span>3D Collections</span> <svg viewBox="0 0 24 24" width="16" height="16" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" style="opacity:0.5;"><polyline points="9 18 15 12 9 6"></polyline></svg></a></li>
+                <li><a href="#about" class="mobile-nav-link" onclick="closeMobileMenu()"><span>Brand Story</span> <svg viewBox="0 0 24 24" width="16" height="16" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" style="opacity:0.5;"><polyline points="9 18 15 12 9 6"></polyline></svg></a></li>
+                <li><a href="https://digital.koneacademy.io" target="_blank" class="mobile-nav-link" onclick="closeMobileMenu()"><span>Kone Digital Studio</span> <svg viewBox="0 0 24 24" width="16" height="16" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" style="opacity:0.5;"><polyline points="9 18 15 12 9 6"></polyline></svg></a></li>
+            </ul>
+
+            <div class="mobile-drawer-footer">
+                <a href="https://wa.me/233552912010" target="_blank" rel="noopener" class="btn-luxury btn-gold" style="width: 100%; justify-content: center; font-size: 0.88rem; padding: 0.75rem 1.2rem;">
+                    <svg width="17" height="17" viewBox="0 0 24 24" fill="currentColor"><path d="M12.04 2c-5.46 0-9.91 4.45-9.91 9.91 0 1.75.46 3.45 1.32 4.95L2.05 22l5.25-1.38c1.45.79 3.08 1.21 4.74 1.21 5.46 0 9.91-4.45 9.91-9.91 0-2.65-1.03-5.14-2.9-7.01A9.816 9.816 0 0 0 12.04 2m.01 1.67c2.2 0 4.26.86 5.82 2.42a8.225 8.225 0 0 1 2.41 5.83c0 4.54-3.7 8.24-8.24 8.24-1.48 0-2.93-.4-4.2-1.15l-.3-.18-3.12.82.83-3.04-.2-.31a8.19 8.19 0 0 1-1.26-4.38c0-4.54 3.7-8.24 8.24-8.24M8.53 7.33c-.16 0-.42.06-.64.3-.22.24-.85.83-.85 2.02 0 1.19.87 2.34.99 2.5.12.16 1.7 2.6 4.12 3.65.58.25 1.03.4 1.38.51.58.18 1.11.16 1.53.1.47-.07 1.44-.59 1.64-1.16.2-.57.2-1.06.14-1.16-.06-.1-.22-.16-.46-.28s-1.44-.71-1.66-.79-.38-.12-.54.12c-.16.24-.63.79-.77.95-.14.16-.28.18-.52.06s-1.02-.38-1.94-1.2c-.72-.64-1.2-1.43-1.34-1.67-.14-.24-.02-.37.1-.49.11-.11.24-.28.36-.42.12-.14.16-.24.24-.4.08-.16.04-.3-.02-.42s-.54-1.31-.74-1.79c-.2-.48-.4-.41-.55-.42l-.47-.01z"/></svg>
+                    <span>Direct WhatsApp Order</span>
+                </a>
+                <div class="mobile-drawer-contact">
+                    <div style="display: flex; align-items: center; gap: 8px;">
+                        <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" style="color: var(--rose-gold); flex-shrink: 0;"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"></path><circle cx="12" cy="10" r="3"></circle></svg>
+                        <span>Accra &amp; Kumasi, Ghana</span>
+                    </div>
+                    <div style="display: flex; align-items: center; gap: 8px;">
+                        <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" style="color: var(--rose-gold); flex-shrink: 0;"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72 12.84 12.84 0 0 0 .7 2.81 2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45 12.84 12.84 0 0 0 2.81.7A2 2 0 0 1 22 16.92z"></path></svg>
+                        <a href="tel:0552912010" style="color: var(--gold-glow); font-weight: 600;">055 291 2010</a>
+                    </div>
+                    <div style="display: flex; align-items: center; gap: 8px;">
+                        <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" style="color: var(--rose-gold); flex-shrink: 0;"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"></polygon></svg>
+                        <span>UK Sizes 16 – 30 Curvy Tailoring</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
     <!-- Hero Section -->
     <section class="hero">
-        <span class="hero-badge">✨ LAUNCHING SOON • GHANA HERITAGE FASHION</span>
+        <span class="hero-badge">
+            <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"></polygon></svg>
+            Ghana Luxury Heritage Fashion
+        </span>
         <h1>Elegance Tailored for <span>Every Curve</span></h1>
         <p>
-            Handcrafted Ghanaian Ankara print wide-leg trousers, tailored jumpsuits, and contemporary African luxury apparel designed specifically for curvy & plus-size Ghanaian women.
+            Handcrafted Ghanaian Ankara print wide-leg trousers, tailored jumpsuits, and contemporary African luxury apparel designed specifically for curvy &amp; plus-size Ghanaian women.
         </p>
         <div class="hero-actions">
             <a href="#collections" class="btn-luxury btn-gold">
                 <span>Explore 3D Runway</span>
-                <span>✨</span>
+                <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><line x1="5" y1="12" x2="19" y2="12"></line><polyline points="12 5 19 12 12 19"></polyline></svg>
             </a>
-            <a href="https://digital.koneacademy.io/#work" class="btn-luxury btn-outline">
-                <span>Powered by Kone Digital WaaS</span>
+            <a href="https://wa.me/233552912010" target="_blank" rel="noopener" class="btn-luxury btn-outline">
+                <svg width="15" height="15" viewBox="0 0 24 24" fill="currentColor"><path d="M12.04 2c-5.46 0-9.91 4.45-9.91 9.91 0 1.75.46 3.45 1.32 4.95L2.05 22l5.25-1.38c1.45.79 3.08 1.21 4.74 1.21 5.46 0 9.91-4.45 9.91-9.91 0-2.65-1.03-5.14-2.9-7.01A9.816 9.816 0 0 0 12.04 2m.01 1.67c2.2 0 4.26.86 5.82 2.42a8.225 8.225 0 0 1 2.41 5.83c0 4.54-3.7 8.24-8.24 8.24-1.48 0-2.93-.4-4.2-1.15l-.3-.18-3.12.82.83-3.04-.2-.31a8.19 8.19 0 0 1-1.26-4.38c0-4.54 3.7-8.24 8.24-8.24M8.53 7.33c-.16 0-.42.06-.64.3-.22.24-.85.83-.85 2.02 0 1.19.87 2.34.99 2.5.12.16 1.7 2.6 4.12 3.65.58.25 1.03.4 1.38.51.58.18 1.11.16 1.53.1.47-.07 1.44-.59 1.64-1.16.2-.57.2-1.06.14-1.16-.06-.1-.22-.16-.46-.28s-1.44-.71-1.66-.79-.38-.12-.54.12c-.16.24-.63.79-.77.95-.14.16-.28.18-.52.06s-1.02-.38-1.94-1.2c-.72-.64-1.2-1.43-1.34-1.67-.14-.24-.02-.37.1-.49.11-.11.24-.28.36-.42.12-.14.16-.24.24-.4.08-.16.04-.3-.02-.42s-.54-1.31-.74-1.79c-.2-.48-.4-.41-.55-.42l-.47-.01z"/></svg>
+                <span>Direct WhatsApp Inquiries</span>
             </a>
         </div>
     </section>
@@ -586,9 +927,16 @@
                                 <span class="size-badge">UK 24/26/28</span>
                             </div>
                             <div class="card-footer">
-                                <span class="status-launching">🚀 Launching Soon</span>
+                                <span class="status-launching">
+                                    <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"></polygon></svg>
+                                    Exclusive Pre-Order
+                                </span>
                                 <span style="color: var(--gold-glow); font-weight: 800; font-size: 1.1rem;">GH₵ 190</span>
                             </div>
+                            <a href="https://wa.me/233552912010?text=Hello%20Emewear,%20I%20would%20like%20to%20order%20the%20Ankara%20Wide-Leg%20Cargo%20Trousers%20(GH%E2%82%B5%20190)" target="_blank" rel="noopener" class="btn-card-wa">
+                                <svg width="14" height="14" viewBox="0 0 24 24" fill="currentColor"><path d="M12.04 2c-5.46 0-9.91 4.45-9.91 9.91 0 1.75.46 3.45 1.32 4.95L2.05 22l5.25-1.38c1.45.79 3.08 1.21 4.74 1.21 5.46 0 9.91-4.45 9.91-9.91 0-2.65-1.03-5.14-2.9-7.01A9.816 9.816 0 0 0 12.04 2m.01 1.67c2.2 0 4.26.86 5.82 2.42a8.225 8.225 0 0 1 2.41 5.83c0 4.54-3.7 8.24-8.24 8.24-1.48 0-2.93-.4-4.2-1.15l-.3-.18-3.12.82.83-3.04-.2-.31a8.19 8.19 0 0 1-1.26-4.38c0-4.54 3.7-8.24 8.24-8.24M8.53 7.33c-.16 0-.42.06-.64.3-.22.24-.85.83-.85 2.02 0 1.19.87 2.34.99 2.5.12.16 1.7 2.6 4.12 3.65.58.25 1.03.4 1.38.51.58.18 1.11.16 1.53.1.47-.07 1.44-.59 1.64-1.16.2-.57.2-1.06.14-1.16-.06-.1-.22-.16-.46-.28s-1.44-.71-1.66-.79-.38-.12-.54.12c-.16.24-.63.79-.77.95-.14.16-.28.18-.52.06s-1.02-.38-1.94-1.2c-.72-.64-1.2-1.43-1.34-1.67-.14-.24-.02-.37.1-.49.11-.11.24-.28.36-.42.12-.14.16-.24.24-.4.08-.16.04-.3-.02-.42s-.54-1.31-.74-1.79c-.2-.48-.4-.41-.55-.42l-.47-.01z"/></svg>
+                                <span>Order via WhatsApp</span>
+                            </a>
                         </div>
                     </div>
                 </div>
@@ -600,7 +948,7 @@
                     </div>
                     <div class="card-body">
                         <div>
-                            <h3>Royal Batik Palazzo & Top Set</h3>
+                            <h3>Royal Batik Palazzo &amp; Top Set</h3>
                             <p>Vibrant hand-dyed Ghanaian indigo batik wide-leg trousers with gold Adinkra motifs paired with a fitted top.</p>
                         </div>
                         <div>
@@ -610,9 +958,16 @@
                                 <span class="size-badge">UK 26</span>
                             </div>
                             <div class="card-footer">
-                                <span class="status-launching">🚀 Launching Soon</span>
+                                <span class="status-launching">
+                                    <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"></polygon></svg>
+                                    Exclusive Pre-Order
+                                </span>
                                 <span style="color: var(--gold-glow); font-weight: 800; font-size: 1.1rem;">GH₵ 240</span>
                             </div>
+                            <a href="https://wa.me/233552912010?text=Hello%20Emewear,%20I%20would%20like%20to%20order%20the%20Royal%20Batik%20Palazzo%20Set%20(GH%E2%82%B5%20240)" target="_blank" rel="noopener" class="btn-card-wa">
+                                <svg width="14" height="14" viewBox="0 0 24 24" fill="currentColor"><path d="M12.04 2c-5.46 0-9.91 4.45-9.91 9.91 0 1.75.46 3.45 1.32 4.95L2.05 22l5.25-1.38c1.45.79 3.08 1.21 4.74 1.21 5.46 0 9.91-4.45 9.91-9.91 0-2.65-1.03-5.14-2.9-7.01A9.816 9.816 0 0 0 12.04 2m.01 1.67c2.2 0 4.26.86 5.82 2.42a8.225 8.225 0 0 1 2.41 5.83c0 4.54-3.7 8.24-8.24 8.24-1.48 0-2.93-.4-4.2-1.15l-.3-.18-3.12.82.83-3.04-.2-.31a8.19 8.19 0 0 1-1.26-4.38c0-4.54 3.7-8.24 8.24-8.24M8.53 7.33c-.16 0-.42.06-.64.3-.22.24-.85.83-.85 2.02 0 1.19.87 2.34.99 2.5.12.16 1.7 2.6 4.12 3.65.58.25 1.03.4 1.38.51.58.18 1.11.16 1.53.1.47-.07 1.44-.59 1.64-1.16.2-.57.2-1.06.14-1.16-.06-.1-.22-.16-.46-.28s-1.44-.71-1.66-.79-.38-.12-.54.12c-.16.24-.63.79-.77.95-.14.16-.28.18-.52.06s-1.02-.38-1.94-1.2c-.72-.64-1.2-1.43-1.34-1.67-.14-.24-.02-.37.1-.49.11-.11.24-.28.36-.42.12-.14.16-.24.24-.4.08-.16.04-.3-.02-.42s-.54-1.31-.74-1.79c-.2-.48-.4-.41-.55-.42l-.47-.01z"/></svg>
+                                <span>Order via WhatsApp</span>
+                            </a>
                         </div>
                     </div>
                 </div>
@@ -624,7 +979,7 @@
                     </div>
                     <div class="card-body">
                         <div>
-                            <h3>Heritage Duster Coat & Trouser Duo</h3>
+                            <h3>Heritage Duster Coat &amp; Trouser Duo</h3>
                             <p>Floor-length lightweight rich burgundy and gold Ghanaian wax print duster coat tailored for full silhouettes.</p>
                         </div>
                         <div>
@@ -634,9 +989,16 @@
                                 <span class="size-badge">UK 28/30</span>
                             </div>
                             <div class="card-footer">
-                                <span class="status-launching">🚀 Launching Soon</span>
+                                <span class="status-launching">
+                                    <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"></polygon></svg>
+                                    Exclusive Pre-Order
+                                </span>
                                 <span style="color: var(--gold-glow); font-weight: 800; font-size: 1.1rem;">GH₵ 290</span>
                             </div>
+                            <a href="https://wa.me/233552912010?text=Hello%20Emewear,%20I%20would%20like%20to%20order%20the%20Heritage%20Duster%20Coat%20(GH%E2%82%B5%20290)" target="_blank" rel="noopener" class="btn-card-wa">
+                                <svg width="14" height="14" viewBox="0 0 24 24" fill="currentColor"><path d="M12.04 2c-5.46 0-9.91 4.45-9.91 9.91 0 1.75.46 3.45 1.32 4.95L2.05 22l5.25-1.38c1.45.79 3.08 1.21 4.74 1.21 5.46 0 9.91-4.45 9.91-9.91 0-2.65-1.03-5.14-2.9-7.01A9.816 9.816 0 0 0 12.04 2m.01 1.67c2.2 0 4.26.86 5.82 2.42a8.225 8.225 0 0 1 2.41 5.83c0 4.54-3.7 8.24-8.24 8.24-1.48 0-2.93-.4-4.2-1.15l-.3-.18-3.12.82.83-3.04-.2-.31a8.19 8.19 0 0 1-1.26-4.38c0-4.54 3.7-8.24 8.24-8.24M8.53 7.33c-.16 0-.42.06-.64.3-.22.24-.85.83-.85 2.02 0 1.19.87 2.34.99 2.5.12.16 1.7 2.6 4.12 3.65.58.25 1.03.4 1.38.51.58.18 1.11.16 1.53.1.47-.07 1.44-.59 1.64-1.16.2-.57.2-1.06.14-1.16-.06-.1-.22-.16-.46-.28s-1.44-.71-1.66-.79-.38-.12-.54.12c-.16.24-.63.79-.77.95-.14.16-.28.18-.52.06s-1.02-.38-1.94-1.2c-.72-.64-1.2-1.43-1.34-1.67-.14-.24-.02-.37.1-.49.11-.11.24-.28.36-.42.12-.14.16-.24.24-.4.08-.16.04-.3-.02-.42s-.54-1.31-.74-1.79c-.2-.48-.4-.41-.55-.42l-.47-.01z"/></svg>
+                                <span>Order via WhatsApp</span>
+                            </a>
                         </div>
                     </div>
                 </div>
@@ -658,9 +1020,16 @@
                                 <span class="size-badge">UK 24</span>
                             </div>
                             <div class="card-footer">
-                                <span class="status-launching">🚀 Launching Soon</span>
+                                <span class="status-launching">
+                                    <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"></polygon></svg>
+                                    Exclusive Pre-Order
+                                </span>
                                 <span style="color: var(--gold-glow); font-weight: 800; font-size: 1.1rem;">GH₵ 210</span>
                             </div>
+                            <a href="https://wa.me/233552912010?text=Hello%20Emewear,%20I%20would%20like%20to%20order%20the%20Signature%20Ankara%20Palazzo%20Trousers%20(GH%E2%82%B5%20210)" target="_blank" rel="noopener" class="btn-card-wa">
+                                <svg width="14" height="14" viewBox="0 0 24 24" fill="currentColor"><path d="M12.04 2c-5.46 0-9.91 4.45-9.91 9.91 0 1.75.46 3.45 1.32 4.95L2.05 22l5.25-1.38c1.45.79 3.08 1.21 4.74 1.21 5.46 0 9.91-4.45 9.91-9.91 0-2.65-1.03-5.14-2.9-7.01A9.816 9.816 0 0 0 12.04 2m.01 1.67c2.2 0 4.26.86 5.82 2.42a8.225 8.225 0 0 1 2.41 5.83c0 4.54-3.7 8.24-8.24 8.24-1.48 0-2.93-.4-4.2-1.15l-.3-.18-3.12.82.83-3.04-.2-.31a8.19 8.19 0 0 1-1.26-4.38c0-4.54 3.7-8.24 8.24-8.24M8.53 7.33c-.16 0-.42.06-.64.3-.22.24-.85.83-.85 2.02 0 1.19.87 2.34.99 2.5.12.16 1.7 2.6 4.12 3.65.58.25 1.03.4 1.38.51.58.18 1.11.16 1.53.1.47-.07 1.44-.59 1.64-1.16.2-.57.2-1.06.14-1.16-.06-.1-.22-.16-.46-.28s-1.44-.71-1.66-.79-.38-.12-.54.12c-.16.24-.63.79-.77.95-.14.16-.28.18-.52.06s-1.02-.38-1.94-1.2c-.72-.64-1.2-1.43-1.34-1.67-.14-.24-.02-.37.1-.49.11-.11.24-.28.36-.42.12-.14.16-.24.24-.4.08-.16.04-.3-.02-.42s-.54-1.31-.74-1.79c-.2-.48-.4-.41-.55-.42l-.47-.01z"/></svg>
+                                <span>Order via WhatsApp</span>
+                            </a>
                         </div>
                     </div>
                 </div>
@@ -670,47 +1039,89 @@
 
         <!-- Carousel Controls -->
         <div class="carousel-controls">
-            <button class="carousel-btn" id="prevBtn" aria-label="Previous Slide">◀</button>
+            <button class="carousel-btn" id="prevBtn" aria-label="Previous Slide">
+                <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="15 18 9 12 15 6"></polyline></svg>
+            </button>
             <div class="carousel-dots" id="carouselDots">
                 <span class="dot active" data-slide="0"></span>
                 <span class="dot" data-slide="1"></span>
                 <span class="dot" data-slide="2"></span>
                 <span class="dot" data-slide="3"></span>
             </div>
-            <button class="carousel-btn" id="nextBtn" aria-label="Next Slide">▶</button>
+            <button class="carousel-btn" id="nextBtn" aria-label="Next Slide">
+                <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="9 18 15 12 9 6"></polyline></svg>
+            </button>
         </div>
     </section>
 
     <!-- Brand Philosophy Section -->
     <section id="about" class="philosophy-section">
-        <div className="phil-content">
+        <div class="phil-content">
             <h2>Designed for Ghanaian Royalty</h2>
             <p>
                 Emewear was born out of a passion to celebrate the rich, authentic beauty of full-figured Ghanaian women. We believe plus-size fashion should never mean compromising on style, tailoring, or quality.
             </p>
-            <ul className="feature-bullets">
-                <li>✨ 100% Authentic Ghanaian Sourced Ankara & Batik Fabrics</li>
-                <li>✨ Precision Plus-Size Pattern Drafting (UK Sizes 16 – 30)</li>
-                <li>✨ Stretch Drawstrings & High-Rise Comfort Waistbands</li>
-                <li>✨ Handcrafted by Veteran Seamstresses in Accra & Kumasi</li>
+            <ul class="feature-bullets">
+                <li>
+                    <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" style="color: var(--rose-gold); flex-shrink: 0;"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"></polygon></svg>
+                    <span>100% Authentic Ghanaian Sourced Ankara &amp; Batik Fabrics</span>
+                </li>
+                <li>
+                    <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" style="color: var(--rose-gold); flex-shrink: 0;"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"></polygon></svg>
+                    <span>Precision Plus-Size Pattern Drafting (UK Sizes 16 – 30)</span>
+                </li>
+                <li>
+                    <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" style="color: var(--rose-gold); flex-shrink: 0;"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"></polygon></svg>
+                    <span>Stretch Drawstrings &amp; High-Rise Comfort Waistbands</span>
+                </li>
+                <li>
+                    <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" style="color: var(--rose-gold); flex-shrink: 0;"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"></polygon></svg>
+                    <span>Handcrafted by Veteran Seamstresses in Accra &amp; Kumasi</span>
+                </li>
             </ul>
         </div>
-        <div className="phil-image">
+        <div class="phil-image">
             <img src="./emewear_hero.jpg" alt="Emewear Fashion Boutique Studio" />
         </div>
     </section>
 
     <!-- Footer -->
     <footer>
-        <div className="footer-brand">EMEWEAR</div>
-        <p className="footer-text">Ghana-Made Plus-Size Fashion & Contemporary African Apparel.</p>
+        <div class="footer-brand">EMEWEAR</div>
+        <p class="footer-text">Ghana-Made Plus-Size Fashion &amp; Contemporary African Apparel.</p>
         <p style="color: var(--rose-gold); font-size: 0.82rem; margin-top: 1rem;">
-            © 2026 Emewear. All rights reserved. Designed & Engineered by <a href="https://digital.koneacademy.io" target="_blank" style="color: var(--gold-glow); font-weight: 700; text-decoration: none;">Kone Digital WaaS</a>.
+            &copy; 2026 Emewear. All rights reserved. Designed &amp; Engineered by <a href="https://digital.koneacademy.io" target="_blank" style="color: var(--gold-glow); font-weight: 700; text-decoration: none;">Kone Digital WaaS</a>.
         </p>
     </footer>
 
-    <!-- 3D Carousel Perspective Logic -->
+    <!-- Mobile Drawer & 3D Carousel Logic -->
     <script>
+        function openMobileMenu() {
+            const drawer = document.getElementById('mobileDrawer');
+            const overlay = document.getElementById('mobileDrawerOverlay');
+            if (drawer && overlay) {
+                drawer.classList.add('active');
+                overlay.classList.add('active');
+                document.body.style.overflow = 'hidden';
+            }
+        }
+
+        function closeMobileMenu() {
+            const drawer = document.getElementById('mobileDrawer');
+            const overlay = document.getElementById('mobileDrawerOverlay');
+            if (drawer && overlay) {
+                drawer.classList.remove('active');
+                overlay.classList.remove('active');
+                document.body.style.overflow = '';
+            }
+        }
+
+        document.addEventListener('keydown', (e) => {
+            if (e.key === 'Escape') {
+                closeMobileMenu();
+            }
+        });
+
         document.addEventListener('DOMContentLoaded', () => {
             const cards = Array.from(document.querySelectorAll('.carousel-3d-card'));
             const dots = Array.from(document.querySelectorAll('.dot'));
@@ -757,19 +1168,26 @@
             }
 
             // Button Click Events
-            nextBtn.addEventListener('click', () => {
-                nextSlide();
-                resetAutoplay();
-            });
+            if (nextBtn) {
+                nextBtn.addEventListener('click', () => {
+                    nextSlide();
+                    resetAutoplay();
+                });
+            }
 
-            prevBtn.addEventListener('click', () => {
-                prevSlide();
-                resetAutoplay();
-            });
+            if (prevBtn) {
+                prevBtn.addEventListener('click', () => {
+                    prevSlide();
+                    resetAutoplay();
+                });
+            }
 
             // Card Click Event
             cards.forEach(card => {
-                card.addEventListener('click', () => {
+                card.addEventListener('click', (e) => {
+                    // Don't trigger slide change if user clicked the WhatsApp order button
+                    if (e.target.closest('.btn-card-wa')) return;
+
                     const idx = parseInt(card.dataset.index);
                     if (idx !== currentIndex) {
                         currentIndex = idx;
@@ -790,7 +1208,7 @@
 
             // Autoplay Functionality
             function startAutoplay() {
-                autoTimer = setInterval(nextSlide, 4000);
+                autoTimer = setInterval(nextSlide, 4500);
             }
 
             function stopAutoplay() {
@@ -802,8 +1220,26 @@
                 startAutoplay();
             }
 
-            stage.addEventListener('mouseenter', stopAutoplay);
-            stage.addEventListener('mouseleave', startAutoplay);
+            if (stage) {
+                stage.addEventListener('mouseenter', stopAutoplay);
+                stage.addEventListener('mouseleave', startAutoplay);
+
+                // Touch Swipe Support
+                let touchStartX = 0;
+                stage.addEventListener('touchstart', (e) => {
+                    touchStartX = e.touches[0].clientX;
+                }, { passive: true });
+
+                stage.addEventListener('touchend', (e) => {
+                    const touchEndX = e.changedTouches[0].clientX;
+                    const diff = touchStartX - touchEndX;
+                    if (Math.abs(diff) > 40) {
+                        if (diff > 0) nextSlide();
+                        else prevSlide();
+                        resetAutoplay();
+                    }
+                }, { passive: true });
+            }
 
             // Keyboard Navigation
             document.addEventListener('keydown', (e) => {
@@ -815,22 +1251,6 @@
                     resetAutoplay();
                 }
             });
-
-            // Touch Swipe Support
-            let touchStartX = 0;
-            stage.addEventListener('touchstart', (e) => {
-                touchStartX = e.touches[0].clientX;
-            }, { passive: true });
-
-            stage.addEventListener('touchend', (e) => {
-                const touchEndX = e.changedTouches[0].clientX;
-                const diff = touchStartX - touchEndX;
-                if (Math.abs(diff) > 40) {
-                    if (diff > 0) nextSlide();
-                    else prevSlide();
-                    resetAutoplay();
-                }
-            }, { passive: true });
 
             // Initialize
             updateCarousel();
