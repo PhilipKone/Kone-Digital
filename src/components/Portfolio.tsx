@@ -3,7 +3,7 @@ import React, { useState } from 'react';
 interface ProjectItem {
   id: string;
   title: string;
-  category: 'all' | 'b2b' | 'ecommerce';
+  category: 'all' | 'b2b' | 'ecommerce' | 'nonprofit';
   categoryLabel: string;
   tagline: string;
   image: string;
@@ -38,7 +38,20 @@ export const Portfolio: React.FC = () => {
       image: '/emewear/emewear_hero.jpg',
       tags: ['Fashion WaaS', 'MoMo Automated Checkout', 'Automated Dispatch'],
       metric: 'Zero-Friction MoMo Checkout',
-      status: 'Live Production'
+      status: 'Live Production',
+      link: '/emewear/index.html'
+    },
+    {
+      id: 'ansah-delali',
+      title: 'Ansah Delali Foundation',
+      category: 'nonprofit',
+      categoryLabel: 'Non-Profit & Social Impact',
+      tagline: 'Empowering Ghanaian tertiary students and underserved youth through mentorship, education & digital skills.',
+      image: '/ansah-delali/ADF110.jpg',
+      tags: ['Education WaaS', 'SkillUp 1.0 Outreach', 'Student Mentorship Network'],
+      metric: 'SkillUp 1.0 Community Impact',
+      status: 'Live Production',
+      link: '/ansah-delali/index.html'
     }
   ];
 
@@ -65,7 +78,7 @@ export const Portfolio: React.FC = () => {
         <h2 className="heading-luminance" style={{ fontSize: 'clamp(1.8rem, 5vw, 2.5rem)', fontWeight: 850, marginTop: '0.8rem', letterSpacing: '-0.03em' }}>
           Featured <span className="cyan-luminance">Client Work</span>
         </h2>
-        <p style={{ color: '#94A3B8', fontSize: '1.05rem', marginTop: '0.6rem', letterSpacing: '-0.01em', maxWidth: '640px', margin: '0.6rem auto 0', lineHeight: 1.6 }}>
+        <p style={{ color: 'var(--text-muted)', fontSize: '1.05rem', marginTop: '0.6rem', letterSpacing: '-0.01em', maxWidth: '640px', margin: '0.6rem auto 0', lineHeight: 1.6 }}>
           Real-world platforms and Website-as-a-Service solutions engineered for revenue growth and operational excellence.
         </p>
 
@@ -112,6 +125,18 @@ export const Portfolio: React.FC = () => {
             }}
           >
             Fashion & Retail
+          </button>
+
+          <button 
+            onClick={() => setActiveCategory('nonprofit')}
+            className={activeCategory === 'nonprofit' ? 'btn-primary' : 'btn-secondary'}
+            style={{
+              padding: '0.45rem 1.15rem',
+              borderRadius: '50px',
+              fontSize: '0.84rem'
+            }}
+          >
+            Social Impact / NGO
           </button>
 
           {/* Search Box */}
@@ -181,7 +206,7 @@ export const Portfolio: React.FC = () => {
               <div className="card-content" style={{ padding: '1.6rem' }}>
                 <h3 style={{ fontSize: '1.35rem', color: '#FFFFFF', fontWeight: 850, marginBottom: '0.4rem', letterSpacing: '-0.02em' }}>{proj.title}</h3>
                 
-                <p className="tagline" style={{ color: '#94A3B8', fontSize: '0.9rem', marginBottom: '1.2rem', lineHeight: 1.5, letterSpacing: '-0.01em' }}>
+                <p className="tagline" style={{ color: 'var(--text-muted)', fontSize: '0.9rem', marginBottom: '1.2rem', lineHeight: 1.5, letterSpacing: '-0.01em' }}>
                   {proj.tagline}
                 </p>
 
@@ -216,7 +241,7 @@ export const Portfolio: React.FC = () => {
             </div>
 
             <div style={{ padding: '0 1.6rem 1.6rem', display: 'flex', justifyContent: 'space-between', alignItems: 'center', borderTop: '1px solid rgba(255, 255, 255, 0.05)', paddingTop: '1rem' }}>
-              <span className="view-link" style={{ color: '#94A3B8', cursor: 'default', display: 'inline-flex', alignItems: 'center', gap: '0.4rem', fontWeight: 700, fontSize: '0.82rem' }}>
+              <span className="view-link" style={{ color: 'var(--text-muted)', cursor: 'default', display: 'inline-flex', alignItems: 'center', gap: '0.4rem', fontWeight: 700, fontSize: '0.82rem' }}>
                 <span style={{ width: '6px', height: '6px', borderRadius: '50%', background: '#4ADE80' }} />
                 {proj.status}
               </span>

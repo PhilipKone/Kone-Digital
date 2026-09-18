@@ -1,0 +1,1083 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Ansah Delali Foundation | Giving Back, Rising Together</title>
+    <meta name="description" content="Ansah Delali Foundation (ADF) empowers Ghanaian students, tertiary youth, and underserved communities through education, mentorship, digital skills, and community support." />
+    <link rel="icon" type="image/jpeg" href="./SM-Icon-Main-on-White.jpg.jpeg" />
+    
+    <!-- Google Typography -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@300;400;500;600;700;800;900&family=Outfit:wght@400;600;700;800;900&family=JetBrains+Mono:wght@400;600;700&display=swap" rel="stylesheet">
+    
+    <style>
+        :root {
+            --bg-canvas: #06080D;
+            --bg-surface: #0B0F19;
+            --bg-card: rgba(15, 22, 36, 0.72);
+            --bg-card-hover: rgba(20, 29, 48, 0.88);
+            
+            --rust-primary: #E25822;
+            --rust-glow: rgba(226, 88, 34, 0.3);
+            --mustard-accent: #EAB308;
+            --mustard-glow: rgba(234, 179, 8, 0.22);
+            
+            --text-primary: #F8FAFC;
+            --text-secondary: #94A3B8;
+            --text-tertiary: #64748B;
+            
+            --border-hairline: rgba(255, 255, 255, 0.07);
+            --border-focus: rgba(226, 88, 34, 0.45);
+            --glass-blur: blur(20px) saturate(180%);
+            
+            --radius-pill: 50px;
+            --radius-lg: 20px;
+            --radius-md: 14px;
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Plus Jakarta Sans', -apple-system, BlinkMacSystemFont, sans-serif;
+            -webkit-font-smoothing: antialiased;
+        }
+
+        html {
+            scroll-behavior: smooth;
+        }
+
+        body {
+            background-color: var(--bg-canvas);
+            color: var(--text-primary);
+            line-height: 1.6;
+            overflow-x: hidden;
+            position: relative;
+        }
+
+        /* Ambient Glow Spheres */
+        .ambient-glow {
+            position: absolute;
+            width: 600px;
+            height: 600px;
+            border-radius: 50%;
+            pointer-events: none;
+            z-index: 0;
+            filter: blur(140px);
+            opacity: 0.15;
+        }
+
+        .glow-top-right {
+            top: -100px;
+            right: -100px;
+            background: radial-gradient(circle, var(--rust-primary), transparent 70%);
+        }
+
+        .glow-mid-left {
+            top: 40%;
+            left: -150px;
+            background: radial-gradient(circle, var(--mustard-accent), transparent 70%);
+            opacity: 0.1;
+        }
+
+        /* --- Floating Pill Navigation --- */
+        .nav-wrapper {
+            position: fixed;
+            top: 1.5rem;
+            left: 0;
+            width: 100%;
+            display: flex;
+            justify-content: center;
+            z-index: 1000;
+            padding: 0 1.2rem;
+        }
+
+        nav {
+            width: min(100%, 1080px);
+            background: rgba(11, 15, 25, 0.85);
+            backdrop-filter: var(--glass-blur);
+            -webkit-backdrop-filter: var(--glass-blur);
+            border: 1px solid var(--border-hairline);
+            box-shadow: 0 20px 40px -15px rgba(0, 0, 0, 0.7), inset 0 1px 0 rgba(255, 255, 255, 0.1);
+            border-radius: var(--radius-pill);
+            padding: 0.6rem 1rem 0.6rem 1.4rem;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            transition: all 0.3s cubic-bezier(0.16, 1, 0.3, 1);
+        }
+
+        .brand {
+            display: flex;
+            align-items: center;
+            gap: 0.85rem;
+            text-decoration: none;
+            color: inherit;
+        }
+
+        .brand img {
+            width: 38px;
+            height: 38px;
+            border-radius: 10px;
+            object-fit: cover;
+            border: 1px solid rgba(255, 255, 255, 0.12);
+        }
+
+        .brand-text {
+            display: flex;
+            flex-direction: column;
+        }
+
+        .brand-name {
+            font-family: 'Outfit', sans-serif;
+            font-weight: 800;
+            font-size: 1.02rem;
+            letter-spacing: -0.02em;
+            line-height: 1.1;
+        }
+
+        .brand-tag {
+            font-family: 'JetBrains Mono', monospace;
+            font-size: 0.65rem;
+            font-weight: 700;
+            color: var(--mustard-accent);
+            letter-spacing: 0.08em;
+            text-transform: uppercase;
+        }
+
+        .nav-items {
+            display: flex;
+            gap: 1.8rem;
+            list-style: none;
+            align-items: center;
+        }
+
+        .nav-items a {
+            color: var(--text-secondary);
+            text-decoration: none;
+            font-size: 0.85rem;
+            font-weight: 600;
+            transition: color 0.2s ease;
+        }
+
+        .nav-items a:hover {
+            color: var(--text-primary);
+        }
+
+        .btn-nav {
+            background: linear-gradient(135deg, var(--rust-primary), #B9380F);
+            color: #fff;
+            padding: 0.45rem 1.1rem;
+            border-radius: var(--radius-pill);
+            text-decoration: none;
+            font-size: 0.82rem;
+            font-weight: 700;
+            display: inline-flex;
+            align-items: center;
+            gap: 0.4rem;
+            box-shadow: 0 4px 14px var(--rust-glow);
+            transition: transform 0.2s ease, box-shadow 0.2s ease;
+        }
+
+        .btn-nav:hover {
+            transform: translateY(-1px);
+            box-shadow: 0 6px 20px var(--rust-glow);
+        }
+
+        /* --- Hero Section --- */
+        .hero {
+            padding: 10rem 6% 5rem;
+            min-height: 92vh;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            text-align: center;
+            position: relative;
+            z-index: 1;
+        }
+
+        .meta-pill {
+            display: inline-flex;
+            align-items: center;
+            gap: 0.5rem;
+            background: rgba(234, 179, 8, 0.08);
+            border: 1px solid rgba(234, 179, 8, 0.25);
+            color: var(--mustard-accent);
+            padding: 0.35rem 0.9rem;
+            border-radius: var(--radius-pill);
+            font-family: 'JetBrains Mono', monospace;
+            font-size: 0.72rem;
+            font-weight: 700;
+            letter-spacing: 0.08em;
+            text-transform: uppercase;
+            margin-bottom: 1.8rem;
+        }
+
+        .pulse-dot {
+            width: 6px;
+            height: 6px;
+            border-radius: 50%;
+            background: var(--mustard-accent);
+            box-shadow: 0 0 8px var(--mustard-accent);
+            animation: pulse 2s infinite ease-in-out;
+        }
+
+        @keyframes pulse {
+            0%, 100% { opacity: 1; transform: scale(1); }
+            50% { opacity: 0.4; transform: scale(1.4); }
+        }
+
+        .hero h1 {
+            font-family: 'Outfit', sans-serif;
+            font-size: clamp(2.6rem, 6.5vw, 5rem);
+            font-weight: 900;
+            line-height: 1.08;
+            letter-spacing: -0.04em;
+            max-width: 920px;
+            margin-bottom: 1.5rem;
+        }
+
+        .hero h1 .gradient-text {
+            background: linear-gradient(135deg, #FFF 20%, #FFA875 60%, var(--mustard-accent) 100%);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+        }
+
+        .hero-lead {
+            font-size: clamp(1.05rem, 2vw, 1.25rem);
+            color: var(--text-secondary);
+            max-width: 680px;
+            line-height: 1.65;
+            margin-bottom: 2.8rem;
+        }
+
+        .hero-cta-group {
+            display: flex;
+            gap: 1rem;
+            flex-wrap: wrap;
+            justify-content: center;
+            margin-bottom: 4rem;
+        }
+
+        .btn-primary {
+            background: linear-gradient(135deg, var(--rust-primary), #B9380F);
+            color: #fff;
+            padding: 0.75rem 1.8rem;
+            border-radius: var(--radius-pill);
+            text-decoration: none;
+            font-weight: 700;
+            font-size: 0.92rem;
+            box-shadow: 0 10px 30px var(--rust-glow);
+            transition: transform 0.2s ease, box-shadow 0.2s ease;
+            display: inline-flex;
+            align-items: center;
+            gap: 0.5rem;
+        }
+
+        .btn-primary:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 14px 40px var(--rust-glow);
+        }
+
+        .btn-ghost {
+            background: rgba(255, 255, 255, 0.04);
+            border: 1px solid var(--border-hairline);
+            color: var(--text-primary);
+            padding: 0.75rem 1.8rem;
+            border-radius: var(--radius-pill);
+            text-decoration: none;
+            font-weight: 600;
+            font-size: 0.92rem;
+            backdrop-filter: blur(10px);
+            transition: background 0.2s ease, border-color 0.2s ease;
+        }
+
+        .btn-ghost:hover {
+            background: rgba(255, 255, 255, 0.08);
+            border-color: rgba(255, 255, 255, 0.2);
+        }
+
+        /* Live Metrics Ticker Bar */
+        .metrics-strip {
+            width: min(100%, 960px);
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
+            gap: 1rem;
+            background: rgba(15, 22, 36, 0.5);
+            border: 1px solid var(--border-hairline);
+            border-radius: var(--radius-lg);
+            padding: 1.5rem 2rem;
+            backdrop-filter: blur(12px);
+        }
+
+        .metric-cell {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+        }
+
+        .metric-cell .num {
+            font-family: 'Outfit', sans-serif;
+            font-size: 2.2rem;
+            font-weight: 900;
+            color: var(--text-primary);
+            letter-spacing: -0.02em;
+            line-height: 1.1;
+        }
+
+        .metric-cell .num span {
+            color: var(--rust-primary);
+        }
+
+        .metric-cell .label {
+            font-family: 'JetBrains Mono', monospace;
+            font-size: 0.7rem;
+            color: var(--text-tertiary);
+            text-transform: uppercase;
+            letter-spacing: 0.06em;
+            margin-top: 0.3rem;
+            font-weight: 600;
+        }
+
+        /* --- Section Container --- */
+        section {
+            padding: 6rem 6%;
+            position: relative;
+            z-index: 1;
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+
+        .section-intro {
+            margin-bottom: 3.5rem;
+            display: flex;
+            flex-direction: column;
+            align-items: flex-start;
+        }
+
+        .section-intro.centered {
+            align-items: center;
+            text-align: center;
+        }
+
+        .section-intro h2 {
+            font-family: 'Outfit', sans-serif;
+            font-size: clamp(2rem, 4vw, 2.8rem);
+            font-weight: 850;
+            letter-spacing: -0.03em;
+            line-height: 1.15;
+            margin-top: 0.4rem;
+            margin-bottom: 0.6rem;
+        }
+
+        .section-intro p {
+            color: var(--text-secondary);
+            font-size: 1.05rem;
+            max-width: 600px;
+        }
+
+        /* --- Bento-Grid System for Programs --- */
+        .bento-grid {
+            display: grid;
+            grid-template-columns: repeat(12, 1fr);
+            gap: 1.4rem;
+        }
+
+        .bento-cell {
+            background: var(--bg-card);
+            border: 1px solid var(--border-hairline);
+            border-radius: var(--radius-lg);
+            padding: 2rem;
+            backdrop-filter: var(--glass-blur);
+            position: relative;
+            overflow: hidden;
+            transition: transform 0.3s cubic-bezier(0.16, 1, 0.3, 1), border-color 0.3s ease, background 0.3s ease;
+        }
+
+        .bento-cell:hover {
+            transform: translateY(-3px);
+            border-color: rgba(255, 255, 255, 0.16);
+            background: var(--bg-card-hover);
+        }
+
+        /* Col Spans */
+        .col-span-8 { grid-column: span 8; }
+        .col-span-4 { grid-column: span 4; }
+        .col-span-6 { grid-column: span 6; }
+        .col-span-12 { grid-column: span 12; }
+
+        /* Anchor Hero Cell */
+        .bento-cell.hero-cell {
+            min-height: 380px;
+            display: flex;
+            flex-direction: column;
+            justify-content: space-between;
+            background: linear-gradient(135deg, rgba(226, 88, 34, 0.12) 0%, rgba(15, 22, 36, 0.95) 70%);
+            border: 1px solid rgba(226, 88, 34, 0.25);
+        }
+
+        .cell-tag {
+            font-family: 'JetBrains Mono', monospace;
+            font-size: 0.68rem;
+            font-weight: 700;
+            color: var(--mustard-accent);
+            text-transform: uppercase;
+            letter-spacing: 0.1em;
+            margin-bottom: 0.6rem;
+            display: inline-block;
+        }
+
+        .bento-cell h3 {
+            font-family: 'Outfit', sans-serif;
+            font-size: 1.55rem;
+            font-weight: 800;
+            letter-spacing: -0.02em;
+            margin-bottom: 0.8rem;
+        }
+
+        .bento-cell p {
+            color: var(--text-secondary);
+            font-size: 0.92rem;
+            line-height: 1.65;
+        }
+
+        .cell-pills {
+            display: flex;
+            gap: 0.4rem;
+            flex-wrap: wrap;
+            margin-top: 1.4rem;
+        }
+
+        .cell-pills span {
+            background: rgba(255, 255, 255, 0.05);
+            border: 1px solid rgba(255, 255, 255, 0.08);
+            color: #CBD5E1;
+            padding: 0.25rem 0.65rem;
+            border-radius: 6px;
+            font-size: 0.74rem;
+            font-weight: 600;
+        }
+
+        /* --- SkillUp 1.0 Staggered Gallery --- */
+        .gallery-matrix {
+            display: grid;
+            grid-template-columns: repeat(12, 1fr);
+            gap: 1.4rem;
+        }
+
+        .gallery-card {
+            position: relative;
+            border-radius: var(--radius-lg);
+            overflow: hidden;
+            background: #0B0E14;
+            border: 1px solid var(--border-hairline);
+            cursor: pointer;
+            transition: border-color 0.3s ease, transform 0.3s cubic-bezier(0.16, 1, 0.3, 1);
+        }
+
+        .gallery-card:hover {
+            transform: translateY(-4px);
+            border-color: rgba(234, 179, 8, 0.4);
+        }
+
+        .gallery-card img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            display: block;
+            transition: transform 0.6s cubic-bezier(0.16, 1, 0.3, 1);
+        }
+
+        .gallery-card:hover img {
+            transform: scale(1.06);
+        }
+
+        .gallery-info {
+            position: absolute;
+            inset: 0;
+            background: linear-gradient(to top, rgba(6, 8, 13, 0.92) 0%, rgba(6, 8, 13, 0.2) 60%, transparent 100%);
+            display: flex;
+            flex-direction: column;
+            justify-content: flex-end;
+            padding: 1.4rem;
+            opacity: 0.95;
+        }
+
+        .gallery-info h4 {
+            font-size: 1.05rem;
+            font-weight: 800;
+            color: #fff;
+            margin-bottom: 0.2rem;
+            font-family: 'Outfit', sans-serif;
+        }
+
+        .gallery-info span {
+            font-family: 'JetBrains Mono', monospace;
+            font-size: 0.7rem;
+            color: var(--mustard-accent);
+            font-weight: 600;
+            letter-spacing: 0.05em;
+        }
+
+        .g-span-7 { grid-column: span 7; min-height: 380px; }
+        .g-span-5 { grid-column: span 5; min-height: 380px; }
+        .g-span-4 { grid-column: span 4; min-height: 300px; }
+
+        /* --- Founder Editorial Showcase --- */
+        .founder-bento {
+            background: radial-gradient(circle at 10% 20%, rgba(226, 88, 34, 0.08) 0%, var(--bg-surface) 60%);
+            border: 1px solid var(--border-hairline);
+            border-radius: 24px;
+            padding: 3.5rem;
+            display: grid;
+            grid-template-columns: 1.2fr 1fr;
+            gap: 4rem;
+            align-items: center;
+        }
+
+        .founder-story h3 {
+            font-family: 'Outfit', sans-serif;
+            font-size: 2.3rem;
+            font-weight: 850;
+            margin-bottom: 0.4rem;
+            letter-spacing: -0.03em;
+        }
+
+        .founder-designation {
+            font-family: 'JetBrains Mono', monospace;
+            font-size: 0.78rem;
+            color: var(--rust-primary);
+            font-weight: 700;
+            letter-spacing: 0.08em;
+            text-transform: uppercase;
+            margin-bottom: 1.6rem;
+            display: block;
+        }
+
+        .founder-quote-box {
+            background: rgba(255, 255, 255, 0.03);
+            border-left: 3px solid var(--mustard-accent);
+            padding: 1.2rem 1.6rem;
+            border-radius: 0 12px 12px 0;
+            margin-bottom: 1.6rem;
+        }
+
+        .founder-quote-box p {
+            font-size: 1.15rem;
+            font-weight: 600;
+            color: #E2E8F0;
+            line-height: 1.5;
+            font-style: italic;
+        }
+
+        .founder-narrative {
+            color: var(--text-secondary);
+            font-size: 0.95rem;
+            line-height: 1.7;
+            margin-bottom: 2rem;
+        }
+
+        .founder-visual {
+            position: relative;
+            border-radius: var(--radius-lg);
+            overflow: hidden;
+            box-shadow: 0 20px 50px rgba(0, 0, 0, 0.8);
+            border: 1px solid var(--border-hairline);
+        }
+
+        .founder-visual img {
+            width: 100%;
+            height: 100%;
+            max-height: 480px;
+            object-fit: cover;
+            display: block;
+        }
+
+        /* --- Interactive Lightbox --- */
+        .lightbox-modal {
+            position: fixed;
+            inset: 0;
+            background: rgba(4, 6, 10, 0.95);
+            backdrop-filter: blur(24px);
+            -webkit-backdrop-filter: blur(24px);
+            z-index: 9999;
+            display: none;
+            align-items: center;
+            justify-content: center;
+            padding: 2rem;
+        }
+
+        .lightbox-modal.active {
+            display: flex;
+        }
+
+        .lightbox-content {
+            max-width: 90vw;
+            max-height: 85vh;
+            position: relative;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+        }
+
+        .lightbox-content img {
+            max-width: 100%;
+            max-height: 75vh;
+            border-radius: 12px;
+            box-shadow: 0 20px 60px rgba(0, 0, 0, 0.9);
+            border: 1px solid rgba(255, 255, 255, 0.15);
+            object-fit: contain;
+        }
+
+        .lightbox-caption {
+            margin-top: 1rem;
+            color: #F8FAFC;
+            font-size: 1.05rem;
+            font-weight: 700;
+            text-align: center;
+        }
+
+        .lightbox-close {
+            position: absolute;
+            top: 2rem;
+            right: 2rem;
+            background: rgba(255, 255, 255, 0.1);
+            border: 1px solid rgba(255, 255, 255, 0.15);
+            color: #fff;
+            width: 40px;
+            height: 40px;
+            border-radius: 50%;
+            cursor: pointer;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 1.2rem;
+            transition: background 0.2s;
+        }
+
+        .lightbox-close:hover {
+            background: rgba(255, 255, 255, 0.2);
+        }
+
+        /* --- Footer & Final Action --- */
+        .cta-banner {
+            background: radial-gradient(circle at center, rgba(226, 88, 34, 0.15) 0%, rgba(11, 15, 25, 0.9) 100%);
+            border: 1px solid rgba(226, 88, 34, 0.35);
+            border-radius: 24px;
+            padding: 4.5rem 2rem;
+            text-align: center;
+            box-shadow: 0 30px 70px rgba(0, 0, 0, 0.7);
+        }
+
+        .cta-banner h2 {
+            font-family: 'Outfit', sans-serif;
+            font-size: clamp(2rem, 5vw, 3.2rem);
+            font-weight: 900;
+            letter-spacing: -0.03em;
+            margin-bottom: 0.8rem;
+        }
+
+        .cta-banner p {
+            color: var(--text-secondary);
+            font-size: 1.08rem;
+            max-width: 600px;
+            margin: 0 auto 2.5rem;
+        }
+
+        .social-pill-row {
+            display: flex;
+            justify-content: center;
+            gap: 0.8rem;
+            flex-wrap: wrap;
+            margin-top: 2.5rem;
+            padding-top: 2rem;
+            border-top: 1px solid var(--border-hairline);
+        }
+
+        .social-pill {
+            background: rgba(255, 255, 255, 0.04);
+            border: 1px solid var(--border-hairline);
+            color: var(--text-secondary);
+            padding: 0.45rem 1rem;
+            border-radius: var(--radius-pill);
+            text-decoration: none;
+            font-size: 0.8rem;
+            font-weight: 600;
+            transition: all 0.2s ease;
+        }
+
+        .social-pill:hover {
+            background: rgba(255, 255, 255, 0.08);
+            color: #fff;
+            border-color: rgba(255, 255, 255, 0.2);
+        }
+
+        footer {
+            padding: 3rem 6% 4rem;
+            text-align: center;
+            border-top: 1px solid var(--border-hairline);
+            color: var(--text-tertiary);
+            font-size: 0.85rem;
+        }
+
+        footer a {
+            color: var(--mustard-accent);
+            text-decoration: none;
+            font-weight: 700;
+        }
+
+        /* --- Responsive Media Queries --- */
+        @media (max-width: 960px) {
+            .col-span-8, .col-span-4, .col-span-6 { grid-column: span 12; }
+            .g-span-7, .g-span-5, .g-span-4 { grid-column: span 12; min-height: 280px; }
+            .founder-bento { grid-template-columns: 1fr; gap: 2.5rem; padding: 2rem; }
+            .nav-items { display: none; }
+        }
+    </style>
+</head>
+<body>
+
+    <!-- Ambient Glows -->
+    <div class="ambient-glow glow-top-right"></div>
+    <div class="ambient-glow glow-mid-left"></div>
+
+    <!-- Floating Pill Navigation -->
+    <div class="nav-wrapper">
+        <nav>
+            <a href="#top" class="brand">
+                <img src="./SM-Icon-Main-on-White.jpg.jpeg" alt="Ansah Delali Foundation" />
+                <div class="brand-text">
+                    <span class="brand-name">Ansah Delali Foundation</span>
+                    <span class="brand-tag">Giving Back, Rising Together</span>
+                </div>
+            </a>
+
+            <ul class="nav-items">
+                <li><a href="#about">Mission</a></li>
+                <li><a href="#pillars">Bento Pillars</a></li>
+                <li><a href="#skillup">SkillUp 1.0</a></li>
+                <li><a href="#founder">Founder</a></li>
+                <li><a href="#engage">Partner</a></li>
+            </ul>
+
+            <a href="https://wa.me/233552912010" target="_blank" class="btn-nav">
+                <span>💬 WhatsApp</span>
+            </a>
+        </nav>
+    </div>
+
+    <!-- Hero Section -->
+    <header class="hero" id="top">
+        <div class="meta-pill">
+            <span class="pulse-dot"></span>
+            <span>Social Impact Initiative • Ghana</span>
+        </div>
+
+        <h1>
+            Giving Back, <br />
+            <span class="gradient-text">Rising Together.</span>
+        </h1>
+
+        <p class="hero-lead">
+            Empowering Ghanaian tertiary students and underserved communities through structured education, hands-on digital skills, career mentorship, and direct student assistance.
+        </p>
+
+        <div class="hero-cta-group">
+            <a href="#skillup" class="btn-primary">
+                <span>Explore SkillUp 1.0 Gallery</span>
+                <span>➔</span>
+            </a>
+            <a href="https://wa.me/233552912010" target="_blank" class="btn-ghost">
+                <span>Collaborate with ADF</span>
+            </a>
+        </div>
+
+        <!-- Metrics Strip -->
+        <div class="metrics-strip">
+            <div class="metric-cell">
+                <div class="num">100<span>+</span></div>
+                <div class="label">Students Empowered</div>
+            </div>
+            <div class="metric-cell">
+                <div class="num">5<span> Pillars</span></div>
+                <div class="label">Strategic Programs</div>
+            </div>
+            <div class="metric-cell">
+                <div class="num">2026</div>
+                <div class="label">Founded in Ghana</div>
+            </div>
+            <div class="metric-cell">
+                <div class="num">100<span>%</span></div>
+                <div class="label">Community Focused</div>
+            </div>
+        </div>
+    </header>
+
+    <!-- Strategic Mission Section -->
+    <section id="about">
+        <div class="section-intro centered">
+            <span class="cell-tag">Our Mandate</span>
+            <h2>Closing the Opportunity Divide</h2>
+            <p>Access to mentorship, digital tools, and career guidance remains uneven across Ghana. ADF exists to democratize that access.</p>
+        </div>
+
+        <div class="bento-grid">
+            <div class="bento-cell col-span-6">
+                <span class="cell-tag">Vision Statement</span>
+                <h3>Universal Access to Opportunity</h3>
+                <p>To cultivate a society where every student, irrespective of socio-economic background, is equipped with the resources, leadership training, and networks necessary to achieve self-reliance and give back to others.</p>
+            </div>
+
+            <div class="bento-cell col-span-6">
+                <span class="cell-tag">Mission Statement</span>
+                <h3>Empowerment Through Action</h3>
+                <p>To uplift tertiary students, JHS youth, and marginalized groups through actionable educational workshops, career coaching, digital literacy, and community-driven safety nets.</p>
+            </div>
+        </div>
+    </section>
+
+    <!-- Bento Grid Pillars -->
+    <section id="pillars">
+        <div class="section-intro">
+            <span class="cell-tag">Core Architecture</span>
+            <h2>Strategic Program Pillars</h2>
+            <p>Targeted interventions engineered to tackle systemic hurdles faced by Ghanaian youth.</p>
+        </div>
+
+        <div class="bento-grid">
+            <!-- Anchor Cell (Digital Skills) -->
+            <div class="bento-cell col-span-8 hero-cell">
+                <div>
+                    <span class="cell-tag">Featured Anchor Program</span>
+                    <h3>Digital Skills & Rural Tech Outreach</h3>
+                    <p>Practical workshops teaching essential productivity and design software (Excel, Canva, digital workflow tools) paired with a long-term strategy to expand tech literacy into rural Ghanaian classrooms.</p>
+                </div>
+
+                <div class="cell-pills">
+                    <span>Digital Literacy</span>
+                    <span>Canva & Design</span>
+                    <span>Excel & Data</span>
+                    <span>Rural Outreach Roadmap</span>
+                </div>
+            </div>
+
+            <!-- Career & Mentorship -->
+            <div class="bento-cell col-span-4">
+                <span class="cell-tag">Professional Track</span>
+                <h3>Career & Mentorship</h3>
+                <p>Bridging university lecture halls with corporate Ghana through 1-on-1 industry mentorship, interview preparation, and CV tailoring.</p>
+                <div class="cell-pills">
+                    <span>CV Training</span>
+                    <span>Industry Talks</span>
+                </div>
+            </div>
+
+            <!-- Academic Support -->
+            <div class="bento-cell col-span-4">
+                <span class="cell-tag">Scholarly Excellence</span>
+                <h3>Academic Support</h3>
+                <p>Study skills frameworks, peer-to-peer cohorts, and exam preparation sessions to ensure tertiary students excel in rigorous coursework.</p>
+                <div class="cell-pills">
+                    <span>Peer Circles</span>
+                    <span>Exam Strategy</span>
+                </div>
+            </div>
+
+            <!-- Mental Health & Well-being -->
+            <div class="bento-cell col-span-4">
+                <span class="cell-tag">Resilience & Care</span>
+                <h3>Mental Health & Wellness</h3>
+                <p>Safe counseling spaces and mental health workshops equipping students with psychological resilience through high-stress transitions.</p>
+                <div class="cell-pills">
+                    <span>Counseling</span>
+                    <span>Safe Spaces</span>
+                </div>
+            </div>
+
+            <!-- Student Support Initiative -->
+            <div class="bento-cell col-span-4">
+                <span class="cell-tag">Direct Relief</span>
+                <h3>Student Support Fund</h3>
+                <p>Direct micro-grants and educational supplies for students confronting acute financial hardship.</p>
+                <div class="cell-pills">
+                    <span>Academic Aid</span>
+                    <span>Supplies Fund</span>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- SkillUp 1.0 Gallery Section with Lightbox -->
+    <section id="skillup">
+        <div class="section-intro">
+            <span class="cell-tag">Milestone Gathering • August 2026</span>
+            <h2>SkillUp 1.0 Photo Album</h2>
+            <p>Real-world moments from our inaugural youth empowerment and mentorship event.</p>
+            <p style="margin-top: 0.3rem; font-size: 0.85rem; color: var(--mustard-accent); font-weight: 600;">
+                Official Photography by Zigimo Photography • Click any photo to inspect in high resolution
+            </p>
+        </div>
+
+        <div class="gallery-matrix">
+            <div class="gallery-card g-span-7" onclick="openLightbox('./ADF110.jpg', 'Collaborative Student Learning — SkillUp 1.0 Interactive Session')">
+                <img src="./ADF110.jpg" alt="Collaborative Student Learning" loading="lazy" />
+                <div class="gallery-info">
+                    <h4>Collaborative Learning</h4>
+                    <span>SkillUp 1.0 Interactive Workshop</span>
+                </div>
+            </div>
+
+            <div class="gallery-card g-span-5" onclick="openLightbox('./ADF138.jpg', 'Peer Mentorship & Dialogue — Small Group Problem Solving')">
+                <img src="./ADF138.jpg" alt="Peer Mentorship & Dialogue" loading="lazy" />
+                <div class="gallery-info">
+                    <h4>Peer Mentorship & Dialogue</h4>
+                    <span>Breakout Ideation Session</span>
+                </div>
+            </div>
+
+            <div class="gallery-card g-span-4" onclick="openLightbox('./ADF191.jpg', 'Practical Skills Training — Hands-on Tech Guidance')">
+                <img src="./ADF191.jpg" alt="Practical Skills Training" loading="lazy" />
+                <div class="gallery-info">
+                    <h4>Practical Skills Guidance</h4>
+                    <span>Tech Workshop</span>
+                </div>
+            </div>
+
+            <div class="gallery-card g-span-4" onclick="openLightbox('./ADF211.jpg', 'Inspiring Community Spirit — Giving Back, Rising Together')">
+                <img src="./ADF211.jpg" alt="Community Engagement" loading="lazy" />
+                <div class="gallery-info">
+                    <h4>Community Fellowship</h4>
+                    <span>Student Connection</span>
+                </div>
+            </div>
+
+            <div class="gallery-card g-span-4" onclick="openLightbox('./ADF055.jpg', 'Future Leaders & Mentors — SkillUp 1.0 Cohort')">
+                <img src="./ADF055.jpg" alt="Future Leaders & Mentors" loading="lazy" />
+                <div class="gallery-info">
+                    <h4>Future Leaders Cohort</h4>
+                    <span>SkillUp 1.0 Attendees</span>
+                </div>
+            </div>
+        </div>
+
+        <div style="text-align: center; margin-top: 2.5rem;">
+            <a href="https://zigimophotography.pixieset.com/ansahdelalifoundation/" target="_blank" class="btn-ghost" style="display: inline-flex; align-items: center; gap: 0.5rem; font-size: 0.85rem;">
+                <span>View Full Photo Archive on Pixieset</span>
+                <span>↗</span>
+            </a>
+        </div>
+    </section>
+
+    <!-- Founder Profile Section -->
+    <section id="founder">
+        <div class="founder-bento">
+            <div class="founder-story">
+                <span class="cell-tag">Leadership & Vision</span>
+                <h3>Gabriel Ansah Delali</h3>
+                <span class="founder-designation">Founder & Executive Director</span>
+
+                <div class="founder-quote-box">
+                    <p>“As time goes on, everyone will be fine — if we lift each other up along the way.”</p>
+                </div>
+
+                <p class="founder-narrative">
+                    Gabriel’s journey is anchored in the conviction that lived experience and community support are the greatest catalysts for growth. A seasoned creative and event photographer, Gabriel is pursuing advanced studies in educational technology to bridge Ghana's digital divide from tertiary institutions into rural schools.
+                </p>
+
+                <div style="display: flex; gap: 0.8rem; flex-wrap: wrap;">
+                    <a href="https://www.linkedin.com/company/ansah-delali-foundation/" target="_blank" class="btn-ghost" style="padding: 0.5rem 1.1rem; font-size: 0.82rem;">
+                        LinkedIn Profile ↗
+                    </a>
+                    <a href="mailto:ansahdelalifoundation@gmail.com" class="btn-ghost" style="padding: 0.5rem 1.1rem; font-size: 0.82rem;">
+                        Send Direct Email
+                    </a>
+                </div>
+            </div>
+
+            <div class="founder-visual">
+                <img src="./ADF055.jpg" alt="Gabriel Ansah Delali" />
+            </div>
+        </div>
+    </section>
+
+    <!-- Call to Action & Partner Engagement -->
+    <section id="engage">
+        <div class="cta-banner">
+            <div class="meta-pill" style="margin-bottom: 1.2rem;">
+                <span>Collaborate & Support</span>
+            </div>
+            <h2>Partner with Ansah Delali Foundation</h2>
+            <p>Join hands with us as a university, corporate CSR sponsor, mentor, or donor to transform student outcomes across Ghana.</p>
+
+            <div style="display: flex; gap: 1rem; justify-content: center; flex-wrap: wrap;">
+                <a href="https://wa.me/233552912010" target="_blank" class="btn-primary" style="padding: 0.85rem 2rem;">
+                    <span>Direct WhatsApp: 0552912010</span>
+                </a>
+                <a href="mailto:ansahdelalifoundation@gmail.com" class="btn-ghost" style="padding: 0.85rem 2rem;">
+                    <span>Email: ansahdelalifoundation@gmail.com</span>
+                </a>
+            </div>
+
+            <div class="social-pill-row">
+                <a href="https://www.instagram.com/ansah_delali_foundation" target="_blank" class="social-pill">Instagram</a>
+                <a href="https://www.linkedin.com/company/ansah-delali-foundation/" target="_blank" class="social-pill">LinkedIn</a>
+                <a href="https://www.facebook.com/share/1C52ofJYuc/" target="_blank" class="social-pill">Facebook</a>
+                <a href="https://www.tiktok.com/@ansahdf" target="_blank" class="social-pill">TikTok</a>
+                <a href="https://whatsapp.com/channel/0029VbBxtRLIyPtaeNKS831O" target="_blank" class="social-pill">WhatsApp Channel</a>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer>
+        <p>© 2026 Ansah Delali Foundation (ADF). Registered Social Impact Initiative in Ghana.</p>
+        <p style="margin-top: 0.4rem;">
+            Engineered & Managed by <a href="https://digital.koneacademy.io" target="_blank">Kone Digital WaaS</a>.
+        </p>
+    </footer>
+
+    <!-- Interactive Lightbox Modal -->
+    <div class="lightbox-modal" id="lightbox" onclick="closeLightbox(event)">
+        <button class="lightbox-close" onclick="closeLightbox(event)">✕</button>
+        <div class="lightbox-content">
+            <img id="lightbox-img" src="" alt="SkillUp 1.0 Photo" />
+            <div class="lightbox-caption" id="lightbox-caption"></div>
+        </div>
+    </div>
+
+    <!-- Script for Lightbox & Interaction -->
+    <script>
+        function openLightbox(src, caption) {
+            const modal = document.getElementById('lightbox');
+            const img = document.getElementById('lightbox-img');
+            const cap = document.getElementById('lightbox-caption');
+            img.src = src;
+            cap.innerText = caption;
+            modal.classList.add('active');
+            document.body.style.overflow = 'hidden';
+        }
+
+        function closeLightbox(e) {
+            if (e.target.id === 'lightbox' || e.target.classList.contains('lightbox-close')) {
+                const modal = document.getElementById('lightbox');
+                modal.classList.remove('active');
+                document.body.style.overflow = 'auto';
+            }
+        }
+
+        document.addEventListener('keydown', (e) => {
+            if (e.key === 'Escape') {
+                const modal = document.getElementById('lightbox');
+                if (modal.classList.contains('active')) {
+                    modal.classList.remove('active');
+                    document.body.style.overflow = 'auto';
+                }
+            }
+        });
+    </script>
+
+</body>
+</html>

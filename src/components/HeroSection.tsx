@@ -5,7 +5,7 @@ interface HeroSectionProps {
 }
 
 export const HeroSection: React.FC<HeroSectionProps> = ({ onOpenWizard }) => {
-  const [activeTab, setActiveTab] = useState<'stone' | 'fashion' | 'momo'>('stone');
+  const [activeTab, setActiveTab] = useState<'stone' | 'fashion' | 'foundation' | 'momo'>('stone');
 
   return (
     <section className="hub-hero" style={{ padding: '3rem 1rem 4rem', maxWidth: '1200px', margin: '0 auto' }}>
@@ -20,8 +20,8 @@ export const HeroSection: React.FC<HeroSectionProps> = ({ onOpenWizard }) => {
           <span className="gold-luminance">Businesses Online.</span>
         </h1>
 
-        <p style={{ color: '#94A3B8', fontSize: '1.12rem', lineHeight: 1.7, marginBottom: '2.5rem', maxWidth: '720px', margin: '0 auto 2.5rem', letterSpacing: '-0.01em' }}>
-          Traditional marketing ends at the flyer. We engineer high-performance Website as a Service (WaaS) platforms with automated <strong style={{ color: '#F8FAFC', fontWeight: 650 }}>MoMo payments</strong> and direct <strong style={{ color: '#F8FAFC', fontWeight: 650 }}>WhatsApp lead routing</strong>.
+        <p style={{ color: 'var(--text-muted)', fontSize: '1.12rem', lineHeight: 1.7, marginBottom: '2.5rem', maxWidth: '720px', margin: '0 auto 2.5rem', letterSpacing: '-0.01em' }}>
+          Traditional marketing ends at the flyer. We engineer high-performance Website as a Service (WaaS) platforms with automated <strong style={{ color: '#FFFFFF', fontWeight: 700 }}>MoMo payments</strong> and direct <strong style={{ color: '#FFFFFF', fontWeight: 700 }}>WhatsApp lead routing</strong>.
         </p>
 
         <div style={{ display: 'flex', gap: '1rem', justifyContent: 'center', flexWrap: 'wrap' }}>
@@ -101,6 +101,18 @@ export const HeroSection: React.FC<HeroSectionProps> = ({ onOpenWizard }) => {
             </button>
 
             <button 
+              onClick={() => setActiveTab('foundation')}
+              className={activeTab === 'foundation' ? 'btn-primary' : 'btn-secondary'}
+              style={{
+                padding: '0.35rem 0.9rem',
+                borderRadius: '50px',
+                fontSize: '0.78rem'
+              }}
+            >
+              Social Impact NGO
+            </button>
+
+            <button 
               onClick={() => setActiveTab('momo')}
               className={activeTab === 'momo' ? 'btn-primary' : 'btn-secondary'}
               style={{
@@ -133,8 +145,20 @@ export const HeroSection: React.FC<HeroSectionProps> = ({ onOpenWizard }) => {
               <span className="badge-pill gold" style={{ marginBottom: '0.8rem' }}>E-COMMERCE SHOWCASE</span>
               <h2 style={{ fontSize: 'clamp(1.3rem, 5vw, 2rem)', fontFamily: 'var(--font-heading)', fontWeight: 800 }}>Emewear Plus-Size Ankara</h2>
               <p style={{ maxWidth: '500px', fontSize: '0.9rem', opacity: 0.85, marginTop: '0.5rem' }}>Handcrafted Ankara wide-leg cargo trousers & royal batik palazzo sets.</p>
-              <a href="#work" style={{ marginTop: '1.2rem', color: '#F8FAFC', background: 'rgba(255,255,255,0.1)', border: '1px solid rgba(255,255,255,0.2)', padding: '0.35rem 0.9rem', borderRadius: '50px', fontWeight: 650, fontSize: '0.8rem', textDecoration: 'none', display: 'inline-flex', alignItems: 'center', gap: '0.3rem' }}>
+              <a href="/emewear/index.html" target="_blank" rel="noopener noreferrer" style={{ marginTop: '1.2rem', color: '#F8FAFC', background: 'rgba(255,255,255,0.1)', border: '1px solid rgba(255,255,255,0.2)', padding: '0.35rem 0.9rem', borderRadius: '50px', fontWeight: 650, fontSize: '0.8rem', textDecoration: 'none', display: 'inline-flex', alignItems: 'center', gap: '0.3rem' }}>
                 <span>Explore Client Showcase</span>
+                <span>➔</span>
+              </a>
+            </div>
+          )}
+
+          {activeTab === 'foundation' && (
+            <div style={{ minHeight: '340px', display: 'flex', flexDirection: 'column', justifyContent: 'center', alignItems: 'center', backgroundImage: 'linear-gradient(rgba(0,0,0,0.75), rgba(0,0,0,0.75)), url("/ansah-delali/ADF110.jpg")', backgroundSize: 'cover', backgroundPosition: 'center', color: '#fff', padding: '2rem 1.2rem', textAlign: 'center' }}>
+              <span className="badge-pill gold" style={{ marginBottom: '0.8rem' }}>FEATURED NON-PROFIT INITIATIVE</span>
+              <h2 style={{ fontSize: 'clamp(1.3rem, 5vw, 2rem)', fontFamily: 'var(--font-heading)', fontWeight: 800 }}>Ansah Delali Foundation</h2>
+              <p style={{ maxWidth: '520px', fontSize: '0.9rem', opacity: 0.88, marginTop: '0.5rem' }}>Giving Back, Rising Together — Educational mentorship, SkillUp 1.0 outreach, and digital empowerment across Ghana.</p>
+              <a href="/ansah-delali/index.html" target="_blank" rel="noopener noreferrer" style={{ marginTop: '1.2rem', color: '#F8FAFC', background: 'rgba(255,255,255,0.1)', border: '1px solid rgba(255,255,255,0.2)', padding: '0.35rem 0.9rem', borderRadius: '50px', fontWeight: 650, fontSize: '0.8rem', textDecoration: 'none', display: 'inline-flex', alignItems: 'center', gap: '0.3rem' }}>
+                <span>Explore Foundation Portal</span>
                 <span>➔</span>
               </a>
             </div>

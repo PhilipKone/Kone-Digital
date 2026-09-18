@@ -75,13 +75,13 @@ export const Pricing: React.FC = () => {
         <h2 className="heading-luminance" style={{ fontSize: 'clamp(1.8rem, 5vw, 2.5rem)', fontWeight: 850, marginTop: '0.8rem', letterSpacing: '-0.03em' }}>
           Transparent <span className="cyan-luminance">WaaS Pricing</span>
         </h2>
-        <p style={{ color: '#94A3B8', fontSize: '1.05rem', marginTop: '0.6rem', letterSpacing: '-0.01em', maxWidth: '640px', margin: '0.6rem auto 0', lineHeight: 1.6 }}>
+        <p style={{ color: 'var(--text-muted)', fontSize: '1.05rem', marginTop: '0.6rem', letterSpacing: '-0.01em', maxWidth: '640px', margin: '0.6rem auto 0', lineHeight: 1.6 }}>
           Predictable, high-ROI Website as a Service subscription tiers with zero hidden setup fees or surprise maintenance costs.
         </p>
 
         {/* Currency Switcher Toggle */}
         <div style={{ display: 'flex', justifyContent: 'center', alignItems: 'center', gap: '0.8rem', marginTop: '1.8rem' }}>
-          <span style={{ color: currency === 'GHS' ? '#00F0FF' : '#94A3B8', fontWeight: 750, fontSize: '0.85rem', letterSpacing: '0.04em' }}>GHS (₵)</span>
+          <span style={{ color: currency === 'GHS' ? '#00F0FF' : 'var(--text-muted)', fontWeight: 750, fontSize: '0.85rem', letterSpacing: '0.04em' }}>GHS (₵)</span>
           <button 
             onClick={() => setCurrency(currency === 'GHS' ? 'USD' : 'GHS')}
             aria-label={`Switch pricing currency from ${currency} to ${currency === 'GHS' ? 'USD' : 'GHS'}`}
@@ -110,7 +110,7 @@ export const Pricing: React.FC = () => {
               boxShadow: '0 2px 6px rgba(0, 240, 255, 0.4)'
             }} />
           </button>
-          <span style={{ color: currency === 'USD' ? '#00F0FF' : '#94A3B8', fontWeight: 750, fontSize: '0.85rem', letterSpacing: '0.04em' }}>USD ($)</span>
+          <span style={{ color: currency === 'USD' ? '#00F0FF' : 'var(--text-muted)', fontWeight: 750, fontSize: '0.85rem', letterSpacing: '0.04em' }}>USD ($)</span>
         </div>
       </div>
 
@@ -144,7 +144,9 @@ export const Pricing: React.FC = () => {
                 display: 'flex',
                 flexDirection: 'column',
                 justifyContent: 'space-between',
-                boxShadow: isSelected ? '0 15px 40px -10px rgba(0, 240, 255, 0.18), inset 0 1px 0 rgba(255, 255, 255, 0.12)' : '0 10px 30px -10px rgba(0, 0, 0, 0.5), inset 0 1px 0 rgba(255, 255, 255, 0.06)',
+                boxShadow: isSelected 
+                  ? '0 15px 40px -10px rgba(0, 240, 255, 0.18), inset 0 1px 0 rgba(255, 255, 255, 0.12)' 
+                  : '0 10px 30px -10px rgba(0, 0, 0, 0.5), inset 0 1px 0 rgba(255, 255, 255, 0.06)',
                 transition: 'all 0.25s cubic-bezier(0.16, 1, 0.3, 1)',
                 cursor: 'pointer',
                 position: 'relative'
@@ -173,20 +175,20 @@ export const Pricing: React.FC = () => {
                   <span className="amount" style={{ fontSize: '2.1rem', fontWeight: 850, color: '#FFFFFF', letterSpacing: '-0.03em' }}>
                     {formatPrice(plan.priceGhs)}
                   </span>
-                  <span className="period" style={{ fontSize: '0.85rem', color: '#94A3B8', marginLeft: '0.2rem' }}>/month</span>
+                  <span className="period" style={{ fontSize: '0.85rem', color: 'var(--text-muted)', marginLeft: '0.2rem' }}>/month</span>
                 </div>
 
-                <p className="card-desc" style={{ fontSize: '0.86rem', color: '#94A3B8', lineHeight: 1.5, marginBottom: '1.4rem' }}>
+                <p className="card-desc" style={{ fontSize: '0.86rem', color: 'var(--text-muted)', lineHeight: 1.5, marginBottom: '1.4rem' }}>
                   {plan.desc}
                 </p>
 
                 <div style={{ borderTop: '1px solid rgba(255, 255, 255, 0.06)', paddingTop: '1.2rem', marginBottom: '1.6rem' }}>
-                  <span style={{ display: 'block', fontSize: '0.72rem', fontWeight: 800, textTransform: 'uppercase', letterSpacing: '0.06em', color: '#94A3B8', marginBottom: '0.8rem' }}>
+                  <span style={{ display: 'block', fontSize: '0.72rem', fontWeight: 800, textTransform: 'uppercase', letterSpacing: '0.06em', color: 'var(--text-muted)', marginBottom: '0.8rem' }}>
                     Included Features
                   </span>
                   <ul style={{ listStyle: 'none', padding: 0, margin: 0, display: 'flex', flexDirection: 'column', gap: '0.6rem' }}>
                     {plan.features.map((feat, idx) => (
-                      <li key={idx} style={{ fontSize: '0.83rem', color: '#E2E8F0', display: 'flex', alignItems: 'flex-start', gap: '0.5rem', lineHeight: 1.4 }}>
+                      <li key={idx} style={{ fontSize: '0.83rem', color: '#F1F5F9', display: 'flex', alignItems: 'flex-start', gap: '0.5rem', lineHeight: 1.4 }}>
                         <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="#00F0FF" strokeWidth="3" strokeLinecap="round" strokeLinejoin="round" style={{ flexShrink: 0, marginTop: '2px' }}>
                           <polyline points="20 6 9 17 4 12"></polyline>
                         </svg>

@@ -1,4 +1,6 @@
 :root {
+  color-scheme: dark;
+
   /* Kone Brand Custom Typography System */
   --font-heading: 'Baloo 2', 'Nunito', -apple-system, BlinkMacSystemFont, sans-serif;
   --font-sans: 'Nunito', system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
@@ -10,9 +12,9 @@
   --bg-surface-elevated: #131A29;
   --bg-surface-hover: #1A2438;
   
-  --text-main: #F8FAFC;
-  --text-muted: #94A3B8;
-  --text-subtle: #64748B;
+  --text-main: #FFFFFF;
+  --text-muted: #CBD5E1;
+  --text-subtle: #94A3B8;
   
   --cyan-glow: #00F0FF;
   --cyan-glow-dim: rgba(0, 240, 255, 0.12);
@@ -38,6 +40,7 @@
 }
 
 html {
+  color-scheme: dark;
   max-width: 100vw;
   overflow-x: hidden;
   position: relative;
@@ -83,37 +86,45 @@ h1, h2, h3, h4, h5, h6 {
   box-shadow: 0 15px 35px -10px rgba(0, 240, 255, 0.18), inset 0 1px 0 rgba(255, 255, 255, 0.15);
 }
 
-/* Mobbin Standard Vertical Luminance Typography */
+/* High-Visibility Clean Headings & Luminance Typography */
 .heading-luminance {
   font-family: var(--font-heading);
-  background: linear-gradient(180deg, #FFFFFF 20%, #94A3B8 100%);
-  -webkit-background-clip: text;
-  -webkit-text-fill-color: transparent;
+  color: #FFFFFF;
   letter-spacing: -0.025em;
+  text-shadow: 0 2px 20px rgba(255, 255, 255, 0.08);
 }
 
 .gold-luminance, .gold-text {
   font-family: var(--font-heading);
-  background: linear-gradient(180deg, #FFF6E5 20%, #E5C07B 100%);
+  color: var(--gold-accent);
+  background: linear-gradient(180deg, #FFF6E5 15%, #E5C07B 100%);
   -webkit-background-clip: text;
+  background-clip: text;
   -webkit-text-fill-color: transparent;
   letter-spacing: -0.02em;
+  display: inline-block;
 }
 
 .cyan-luminance, .neon-text {
   font-family: var(--font-heading);
-  background: linear-gradient(180deg, #E0F7FA 20%, #00F0FF 100%);
+  color: var(--cyan-glow);
+  background: linear-gradient(180deg, #E0F7FA 15%, #00F0FF 100%);
   -webkit-background-clip: text;
+  background-clip: text;
   -webkit-text-fill-color: transparent;
   letter-spacing: -0.02em;
+  display: inline-block;
 }
 
 .emerald-luminance {
   font-family: var(--font-heading);
-  background: linear-gradient(180deg, #E8F5E9 20%, #10B981 100%);
+  color: var(--emerald-accent);
+  background: linear-gradient(180deg, #E8F5E9 15%, #10B981 100%);
   -webkit-background-clip: text;
+  background-clip: text;
   -webkit-text-fill-color: transparent;
   letter-spacing: -0.02em;
+  display: inline-block;
 }
 
 .badge-pill {
@@ -121,9 +132,9 @@ h1, h2, h3, h4, h5, h6 {
   display: inline-flex;
   align-items: center;
   gap: 0.5rem;
-  background: rgba(255, 255, 255, 0.04);
-  border: 1px solid rgba(255, 255, 255, 0.12);
-  color: var(--text-muted);
+  background: rgba(255, 255, 255, 0.06);
+  border: 1px solid rgba(255, 255, 255, 0.16);
+  color: #E2E8F0;
   padding: 0.35rem 1rem;
   border-radius: 50px;
   font-size: 0.78rem;
@@ -131,27 +142,28 @@ h1, h2, h3, h4, h5, h6 {
   letter-spacing: 0.06em;
   text-transform: uppercase;
   backdrop-filter: blur(8px);
+  -webkit-backdrop-filter: blur(8px);
   max-width: 100%;
   text-align: center;
   line-height: 1.4;
 }
 
 .badge-pill.gold {
-  background: rgba(229, 192, 123, 0.08);
-  border-color: rgba(229, 192, 123, 0.25);
-  color: #E5C07B;
+  background: rgba(229, 192, 123, 0.12);
+  border-color: rgba(229, 192, 123, 0.35);
+  color: #F8D898;
 }
 
 .badge-pill.cyan {
-  background: rgba(0, 240, 255, 0.08);
-  border-color: rgba(0, 240, 255, 0.25);
-  color: #00F0FF;
+  background: rgba(0, 240, 255, 0.1);
+  border-color: rgba(0, 240, 255, 0.35);
+  color: #7DF9FF;
 }
 
 .badge-pill.emerald {
-  background: rgba(16, 185, 129, 0.08);
-  border-color: rgba(16, 185, 129, 0.25);
-  color: #10B981;
+  background: rgba(16, 185, 129, 0.1);
+  border-color: rgba(16, 185, 129, 0.35);
+  color: #6EE7B7;
 }
 
 .neon-logo {
@@ -393,28 +405,28 @@ h1, h2, h3, h4, h5, h6 {
 /* Mobbin & Linear Standard Button Architecture */
 .btn-primary {
   font-family: var(--font-heading);
-  background: #F8FAFC;
+  background: #FFFFFF;
   color: #07090E;
-  font-weight: 750;
+  font-weight: 800;
   font-size: 0.92rem;
   padding: 0.82rem 1.8rem;
   border-radius: 100px;
-  border: 1px solid rgba(255, 255, 255, 0.9);
+  border: 1px solid #FFFFFF;
   display: inline-flex;
   align-items: center;
   justify-content: center;
   gap: 0.5rem;
   cursor: pointer;
   text-decoration: none;
-  box-shadow: 0 1px 2px rgba(0, 0, 0, 0.15), 0 0 0 1px rgba(255, 255, 255, 0.15), 0 4px 16px rgba(255, 255, 255, 0.08);
+  box-shadow: 0 1px 2px rgba(0, 0, 0, 0.2), 0 0 20px rgba(255, 255, 255, 0.18);
   transition: all 0.2s cubic-bezier(0.16, 1, 0.3, 1);
   letter-spacing: -0.01em;
 }
 
 .btn-primary:hover {
-  background: #FFFFFF;
+  background: #F1F5F9;
   color: #000000;
-  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.25), 0 0 20px rgba(255, 255, 255, 0.2);
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.25), 0 0 25px rgba(255, 255, 255, 0.3);
   transform: translateY(-1px);
 }
 
@@ -424,14 +436,15 @@ h1, h2, h3, h4, h5, h6 {
 
 .btn-secondary {
   font-family: var(--font-heading);
-  background: rgba(255, 255, 255, 0.05);
-  color: var(--text-main);
-  font-weight: 650;
+  background: rgba(255, 255, 255, 0.08);
+  color: #FFFFFF;
+  font-weight: 700;
   font-size: 0.92rem;
   padding: 0.82rem 1.8rem;
   border-radius: 100px;
-  border: 1px solid rgba(255, 255, 255, 0.12);
+  border: 1px solid rgba(255, 255, 255, 0.25);
   backdrop-filter: blur(12px);
+  -webkit-backdrop-filter: blur(12px);
   display: inline-flex;
   align-items: center;
   justify-content: center;
@@ -443,8 +456,8 @@ h1, h2, h3, h4, h5, h6 {
 }
 
 .btn-secondary:hover {
-  background: rgba(255, 255, 255, 0.09);
-  border-color: rgba(255, 255, 255, 0.24);
+  background: rgba(255, 255, 255, 0.15);
+  border-color: rgba(255, 255, 255, 0.4);
   color: #FFFFFF;
   transform: translateY(-1px);
 }

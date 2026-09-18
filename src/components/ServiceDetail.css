@@ -61,27 +61,29 @@
 .service-main-title {
   font-size: clamp(2rem, 5vw, 2.8rem);
   font-weight: 850;
-  background: linear-gradient(180deg, #FFFFFF 20%, #94A3B8 100%);
-  -webkit-background-clip: text;
-  -webkit-text-fill-color: transparent;
+  color: #FFFFFF;
   line-height: 1.15;
   letter-spacing: -0.035em;
   margin-bottom: 0.8rem;
+  text-shadow: 0 2px 20px rgba(255, 255, 255, 0.08);
 }
 
 .service-headline {
   font-size: 1.2rem;
   font-weight: 750;
+  color: var(--cyan-glow);
   background: linear-gradient(180deg, #E0F7FA 20%, #00F0FF 100%);
   -webkit-background-clip: text;
+  background-clip: text;
   -webkit-text-fill-color: transparent;
   letter-spacing: -0.02em;
   margin-bottom: 1rem;
+  display: inline-block;
 }
 
 .service-summary {
   font-size: 1.05rem;
-  color: #94A3B8;
+  color: #CBD5E1;
   line-height: 1.7;
   max-width: 820px;
   letter-spacing: -0.01em;
@@ -152,11 +154,10 @@
 .section-title {
   font-size: 1.5rem;
   font-weight: 850;
-  background: linear-gradient(180deg, #FFFFFF 20%, #94A3B8 100%);
-  -webkit-background-clip: text;
-  -webkit-text-fill-color: transparent;
+  color: #FFFFFF;
   letter-spacing: -0.025em;
   margin-bottom: 1.8rem;
+  text-shadow: 0 2px 20px rgba(255, 255, 255, 0.08);
 }
 
 .service-deliverables-section,
