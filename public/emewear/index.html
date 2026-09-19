@@ -800,13 +800,17 @@
             }
         }
 
+        section {
+            scroll-margin-top: 85px;
+        }
+
         /* --- Mobile Sticky Bottom Action Bar (Mobbin Standard) --- */
         .mobile-bottom-bar {
             display: none;
         }
         @media (max-width: 768px) {
             body {
-                padding-bottom: 74px;
+                padding-bottom: calc(75px + env(safe-area-inset-bottom, 0px));
             }
             .mobile-bottom-bar {
                 display: flex;
@@ -818,7 +822,7 @@
                 background: rgba(18, 5, 8, 0.96);
                 backdrop-filter: blur(14px);
                 border-top: 1px solid rgba(229, 184, 130, 0.35);
-                padding: 0.65rem 1rem;
+                padding: 0.65rem 1rem calc(0.65rem + env(safe-area-inset-bottom, 0px));
                 gap: 0.75rem;
                 align-items: center;
                 box-shadow: 0 -8px 25px rgba(0, 0, 0, 0.7);
