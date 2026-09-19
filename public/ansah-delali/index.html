@@ -391,36 +391,197 @@
 
         .hero-visual {
             position: relative;
+            width: 100%;
         }
 
-        .hero-image-card {
+        .hero-slideshow-container {
             background: #FFFFFF;
             padding: 0.6rem;
             border-radius: var(--radius-lg);
             border: 1px solid var(--border-light);
             box-shadow: var(--shadow-xl);
-            overflow: hidden;
+            position: relative;
         }
 
-        .hero-image-card img {
+        .hero-slideshow {
+            position: relative;
             width: 100%;
-            height: 380px;
-            object-fit: cover;
+            height: 400px;
             border-radius: calc(var(--radius-lg) - 4px);
+            overflow: hidden;
+            background: var(--adf-blue-deep);
+            user-select: none;
         }
 
-        .hero-image-caption {
-            padding: 0.8rem 0.6rem 0.2rem;
+        .hero-slide {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            opacity: 0;
+            visibility: hidden;
+            transition: opacity 0.8s cubic-bezier(0.4, 0, 0.2, 1), visibility 0.8s;
+            z-index: 1;
+        }
+
+        .hero-slide.active {
+            opacity: 1;
+            visibility: visible;
+            z-index: 2;
+        }
+
+        .hero-slide img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            transform: scale(1);
+            transition: transform 6s cubic-bezier(0.25, 1, 0.5, 1);
+        }
+
+        .hero-slide.active img {
+            transform: scale(1.05);
+        }
+
+        .hero-slide::after {
+            content: '';
+            position: absolute;
+            inset: 0;
+            background: linear-gradient(180deg, rgba(7, 30, 74, 0.1) 0%, rgba(7, 30, 74, 0.25) 50%, rgba(7, 30, 74, 0.88) 100%);
+            pointer-events: none;
+        }
+
+        .slideshow-live-badge {
+            position: absolute;
+            top: 1rem;
+            left: 1rem;
+            z-index: 4;
+            background: rgba(7, 30, 74, 0.78);
+            backdrop-filter: blur(8px);
+            border: 1px solid rgba(255, 255, 255, 0.2);
+            color: #FFFFFF;
+            padding: 0.35rem 0.75rem;
+            border-radius: var(--radius-full);
+            font-size: 0.72rem;
+            font-weight: 700;
+            display: inline-flex;
+            align-items: center;
+            gap: 0.45rem;
+            letter-spacing: 0.04em;
+        }
+
+        .slideshow-live-badge .pulse-dot {
+            width: 7px;
+            height: 7px;
+            border-radius: 50%;
+            background: #52c41a;
+            box-shadow: 0 0 0 2px rgba(82, 196, 26, 0.35);
+            animation: pulse-live 2s infinite;
+        }
+
+        @keyframes pulse-live {
+            0% { box-shadow: 0 0 0 0 rgba(82, 196, 26, 0.7); }
+            70% { box-shadow: 0 0 0 6px rgba(82, 196, 26, 0); }
+            100% { box-shadow: 0 0 0 0 rgba(82, 196, 26, 0); }
+        }
+
+        .slideshow-caption-bar {
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            right: 0;
+            padding: 1.1rem 1.25rem 1.4rem;
+            z-index: 4;
             display: flex;
             justify-content: space-between;
-            align-items: center;
-            font-size: 0.82rem;
-            color: var(--text-muted);
-            font-weight: 600;
+            align-items: flex-end;
+            gap: 1rem;
+            pointer-events: none;
         }
 
-        .hero-image-caption span:first-child {
-            color: var(--adf-blue-primary);
+        .slideshow-caption-content {
+            max-width: 78%;
+            pointer-events: auto;
+        }
+
+        .slideshow-caption-tag {
+            display: inline-block;
+            font-size: 0.72rem;
+            font-weight: 800;
+            text-transform: uppercase;
+            letter-spacing: 0.08em;
+            color: var(--adf-orange-primary);
+            margin-bottom: 0.25rem;
+        }
+
+        .slideshow-caption-desc {
+            color: #FFFFFF;
+            font-size: 0.92rem;
+            font-weight: 600;
+            line-height: 1.35;
+            margin: 0;
+            text-shadow: 0 2px 4px rgba(0, 0, 0, 0.6);
+        }
+
+        .slideshow-nav-arrows {
+            display: flex;
+            gap: 0.4rem;
+            pointer-events: auto;
+        }
+
+        .slide-nav-btn {
+            width: 32px;
+            height: 32px;
+            border-radius: 50%;
+            background: rgba(255, 255, 255, 0.18);
+            backdrop-filter: blur(8px);
+            border: 1px solid rgba(255, 255, 255, 0.3);
+            color: #FFFFFF;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            cursor: pointer;
+            transition: all 0.2s ease;
+        }
+
+        .slide-nav-btn:hover {
+            background: rgba(255, 255, 255, 0.35);
+            transform: scale(1.08);
+        }
+
+        .slideshow-indicators {
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            right: 0;
+            height: 4px;
+            display: flex;
+            gap: 2px;
+            z-index: 5;
+            background: rgba(0, 0, 0, 0.25);
+        }
+
+        .slide-dot {
+            flex: 1;
+            height: 100%;
+            background: rgba(255, 255, 255, 0.25);
+            border: none;
+            padding: 0;
+            cursor: pointer;
+            position: relative;
+            overflow: hidden;
+            transition: background 0.3s ease;
+        }
+
+        .slide-dot.active {
+            background: rgba(255, 255, 255, 0.4);
+        }
+
+        .slide-progress {
+            display: block;
+            height: 100%;
+            width: 0%;
+            background: var(--adf-orange-primary);
         }
 
         .floating-stat-badge {
@@ -435,7 +596,7 @@
             display: flex;
             align-items: center;
             gap: 0.9rem;
-            z-index: 5;
+            z-index: 6;
         }
 
         .floating-stat-num {
@@ -558,16 +719,67 @@
         /* --- About & Problem Statement --- */
         .about-grid {
             display: grid;
-            grid-template-columns: 1fr 1fr;
+            grid-template-columns: 1.15fr 0.85fr;
             gap: 2.5rem;
             margin-bottom: 3.5rem;
+            align-items: stretch;
+        }
+
+        .about-statements-col {
+            display: flex;
+            flex-direction: column;
+            gap: 1.5rem;
+        }
+
+        .about-visual-col {
+            position: relative;
+            border-radius: var(--radius-lg);
+            overflow: hidden;
+            box-shadow: var(--shadow-lg);
+            border: 1px solid var(--border-light);
+            min-height: 380px;
+        }
+
+        .about-visual-col img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+        }
+
+        .about-visual-overlay {
+            position: absolute;
+            inset: 0;
+            background: linear-gradient(180deg, rgba(7, 30, 74, 0.1) 0%, rgba(7, 30, 74, 0.4) 40%, rgba(7, 30, 74, 0.92) 100%);
+            display: flex;
+            flex-direction: column;
+            justify-content: flex-end;
+            padding: 1.8rem;
+            color: #FFFFFF;
+        }
+
+        .about-visual-overlay .quote-text {
+            font-family: 'Merriweather', serif;
+            font-style: italic;
+            font-size: 1.08rem;
+            line-height: 1.55;
+            margin-bottom: 0.5rem;
+            color: #FFFFFF;
+        }
+
+        .about-visual-overlay .quote-author {
+            font-size: 0.75rem;
+            font-weight: 800;
+            color: var(--adf-orange-primary);
+            text-transform: uppercase;
+            letter-spacing: 0.08em;
+            margin-bottom: 0.4rem;
         }
 
         .statement-card {
             background: #FFFFFF;
             border: 1px solid var(--border-light);
             border-radius: var(--radius-lg);
-            padding: 2.5rem;
+            padding: 2.2rem;
             box-shadow: var(--shadow-sm);
             position: relative;
             transition: transform 0.2s ease, box-shadow 0.2s ease;
@@ -587,15 +799,16 @@
         }
 
         .statement-card h3 {
-            font-size: 1.4rem;
+            font-size: 1.35rem;
             font-weight: 800;
             color: var(--text-heading);
-            margin-bottom: 1rem;
+            margin-bottom: 0.85rem;
         }
 
         .statement-card p {
             color: var(--text-body);
-            line-height: 1.7;
+            line-height: 1.65;
+            font-size: 0.95rem;
         }
 
         .problem-statement-box {
@@ -675,6 +888,49 @@
             grid-column: span 2;
             background: linear-gradient(135deg, #FFFFFF 0%, var(--adf-blue-subtle) 100%);
             border: 1.5px solid rgba(0, 82, 204, 0.25);
+            display: grid;
+            grid-template-columns: 1.15fr 0.85fr;
+            gap: 1.8rem;
+            align-items: stretch;
+            padding: 1.8rem;
+        }
+
+        .featured-pillar-content {
+            display: flex;
+            flex-direction: column;
+            justify-content: space-between;
+            height: 100%;
+        }
+
+        .featured-pillar-media {
+            border-radius: var(--radius-md);
+            overflow: hidden;
+            box-shadow: var(--shadow-md);
+            border: 1px solid var(--border-light);
+            position: relative;
+            height: 100%;
+            min-height: 220px;
+        }
+
+        .featured-pillar-media img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+        }
+
+        .pillar-media-caption {
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            right: 0;
+            background: rgba(7, 30, 74, 0.88);
+            backdrop-filter: blur(4px);
+            color: #FFFFFF;
+            font-size: 0.74rem;
+            font-weight: 700;
+            padding: 0.5rem 0.85rem;
+            text-transform: uppercase;
+            letter-spacing: 0.04em;
         }
 
         .pillar-header {
@@ -1500,54 +1756,73 @@
 
             /* Hero */
             .hero-section {
-                padding: 2.2rem 4% 2rem;
+                padding: 1.8rem 4% 1.8rem;
             }
             .hero-container {
                 grid-template-columns: 1fr;
-                gap: 2rem;
+                gap: 1.4rem;
+            }
+            .hero-badge {
+                margin-bottom: 0.8rem;
+                padding: 0.25rem 0.75rem;
+                font-size: 0.7rem;
             }
             .hero-title {
-                font-size: 1.95rem;
+                font-size: 1.65rem;
                 line-height: 1.22;
                 letter-spacing: -0.02em;
+                margin-bottom: 0.7rem;
             }
             .hero-title br {
                 display: none;
             }
             .hero-description {
-                font-size: 0.95rem;
-                line-height: 1.6;
-                margin-bottom: 1.4rem;
+                font-size: 0.88rem;
+                line-height: 1.5;
+                margin-bottom: 1.1rem;
             }
             .hero-actions {
-                flex-direction: column;
-                gap: 0.75rem;
+                display: flex;
+                flex-direction: row;
+                gap: 0.6rem;
                 width: 100%;
+                margin-bottom: 1.2rem;
             }
             .hero-actions a {
-                width: 100%;
+                flex: 1;
                 justify-content: center;
                 text-align: center;
-                padding: 0.85rem 1.2rem;
-                font-size: 0.9rem;
+                padding: 0.72rem 0.8rem;
+                font-size: 0.82rem;
+                white-space: nowrap;
             }
-            .hero-image-card img {
+            .hero-slideshow {
                 height: 250px;
-                object-fit: cover;
+            }
+            .slideshow-live-badge {
+                top: 0.6rem;
+                left: 0.6rem;
+                font-size: 0.65rem;
+                padding: 0.25rem 0.6rem;
+            }
+            .slideshow-caption-bar {
+                padding: 0.8rem 1rem 1rem;
+            }
+            .slideshow-caption-content {
+                max-width: 95%;
+            }
+            .slideshow-caption-tag {
+                font-size: 0.68rem;
+            }
+            .slideshow-caption-desc {
+                font-size: 0.8rem;
+                line-height: 1.3;
+            }
+            .slideshow-nav-arrows {
+                display: none;
             }
             .floating-stat-badge {
-                position: absolute;
-                top: auto;
-                bottom: 1rem;
-                right: 1rem;
-                padding: 0.55rem 0.9rem;
-                box-shadow: 0 8px 20px rgba(0, 0, 0, 0.28);
-            }
-            .floating-stat-num {
-                font-size: 1.35rem;
-            }
-            .floating-stat-text {
-                font-size: 0.68rem;
+                display: none;
             }
 
             /* Metric Ticker */
@@ -1588,7 +1863,10 @@
             }
             .about-grid {
                 grid-template-columns: 1fr;
-                gap: 1.2rem;
+                gap: 1.5rem;
+            }
+            .about-visual-col {
+                min-height: 260px;
             }
             .statement-card {
                 padding: 1.6rem 1.3rem;
@@ -1607,6 +1885,17 @@
             }
             .program-card {
                 padding: 1.6rem 1.3rem;
+            }
+            .program-card.featured-pillar {
+                grid-column: 1 / -1;
+                grid-template-columns: 1fr;
+                gap: 1.5rem;
+                padding: 1.6rem 1.3rem;
+            }
+            .featured-pillar-media {
+                order: -1;
+                min-height: 175px;
+                height: 175px;
             }
             .pillar-header h3 {
                 font-size: 1.3rem;
@@ -1901,17 +2190,63 @@
             </div>
 
             <div class="hero-visual">
-                <div class="hero-image-card">
-                    <img src="./lecture-hall.jpg" alt="SkillUp 1.0 Workshop Hall Filled With Ghanaian Students" />
-                    <div class="hero-image-caption">
-                        <span>SkillUp 1.0 Milestone Workshop</span>
-                        <span>Official Event Photography</span>
-                    </div>
-                </div>
+                <div class="hero-slideshow-container">
+                    <div class="hero-slideshow" id="heroSlideshow">
+                        <!-- Live Pulse Badge -->
+                        <div class="slideshow-live-badge">
+                            <span class="pulse-dot"></span>
+                            <span>LIVE EVENT ARCHIVE • SKILLUP 1.0</span>
+                        </div>
 
-                <div class="floating-stat-badge">
-                    <div class="floating-stat-num">100+</div>
-                    <div class="floating-stat-text">Students<br>Empowered</div>
+                        <!-- Slides -->
+                        <div class="hero-slides-track">
+                            <div class="hero-slide active" data-tag="SkillUp 1.0 Milestone" data-desc="Over 100 Ghanaian tertiary students empowered with hands-on digital skills.">
+                                <img src="./lecture-hall.jpg" alt="SkillUp 1.0 Workshop Hall Filled With Ghanaian Students" />
+                            </div>
+                            <div class="hero-slide" data-tag="Leadership in Action" data-desc="Founder Gabriel Ansah Delali addressing students on ethical leadership & career vision.">
+                                <img src="./founder-speaking.jpg" alt="Founder Gabriel Ansah Delali addressing youth from the podium" loading="lazy" />
+                            </div>
+                            <div class="hero-slide" data-tag="Celebrating Cohort 1.0" data-desc="Empowering the next generation of changemakers across tertiary campuses in Ghana.">
+                                <img src="./cohort-group.jpg" alt="SkillUp 1.0 Full Cohort Group Photo" loading="lazy" />
+                            </div>
+                            <div class="hero-slide" data-tag="Practical Software Skills" data-desc="Hands-on training in Excel data modeling, creative design, and digital workflows.">
+                                <img src="./student-collaboration.jpg" alt="Students Collaborating on Laptops" loading="lazy" />
+                            </div>
+                            <div class="hero-slide" data-tag="Peer-to-Peer Mentorship" data-desc="Interactive learning clinics fostering real-world problem solving and collaboration.">
+                                <img src="./classroom-learning.jpg" alt="Students focused in lecture hall session" loading="lazy" />
+                            </div>
+                        </div>
+
+                        <!-- Dynamic Caption Bar -->
+                        <div class="slideshow-caption-bar">
+                            <div class="slideshow-caption-content">
+                                <span class="slideshow-caption-tag" id="slideTag">SkillUp 1.0 Milestone</span>
+                                <p class="slideshow-caption-desc" id="slideDesc">Over 100 Ghanaian tertiary students empowered with hands-on digital skills.</p>
+                            </div>
+                            <div class="slideshow-nav-arrows">
+                                <button type="button" class="slide-nav-btn" id="slidePrevBtn" aria-label="Previous Photo">
+                                    <svg viewBox="0 0 24 24" width="14" height="14" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="15 18 9 12 15 6"></polyline></svg>
+                                </button>
+                                <button type="button" class="slide-nav-btn" id="slideNextBtn" aria-label="Next Photo">
+                                    <svg viewBox="0 0 24 24" width="14" height="14" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="9 18 15 12 9 6"></polyline></svg>
+                                </button>
+                            </div>
+                        </div>
+
+                        <!-- Progress Indicators -->
+                        <div class="slideshow-indicators" id="slideIndicators">
+                            <button class="slide-dot active" data-index="0" aria-label="Slide 1"><span class="slide-progress"></span></button>
+                            <button class="slide-dot" data-index="1" aria-label="Slide 2"><span class="slide-progress"></span></button>
+                            <button class="slide-dot" data-index="2" aria-label="Slide 3"><span class="slide-progress"></span></button>
+                            <button class="slide-dot" data-index="3" aria-label="Slide 4"><span class="slide-progress"></span></button>
+                            <button class="slide-dot" data-index="4" aria-label="Slide 5"><span class="slide-progress"></span></button>
+                        </div>
+                    </div>
+
+                    <div class="floating-stat-badge">
+                        <div class="floating-stat-num">100+</div>
+                        <div class="floating-stat-text">Students<br>Empowered</div>
+                    </div>
                 </div>
             </div>
         </div>
@@ -1951,20 +2286,31 @@
             </div>
 
             <div class="about-grid">
-                <div class="statement-card vision-card">
-                    <span class="section-tag">Vision Statement</span>
-                    <h3>Universal Access to Opportunity</h3>
-                    <p>
-                        To create a society where every student, regardless of socio-economic background, has access to the support, resources, leadership training, and networks needed to succeed and give back to others.
-                    </p>
+                <div class="about-statements-col">
+                    <div class="statement-card vision-card">
+                        <span class="section-tag">Vision Statement</span>
+                        <h3>Universal Access to Opportunity</h3>
+                        <p>
+                            To create a society where every student, regardless of socio-economic background, has access to the support, resources, leadership training, and networks needed to succeed and give back to others.
+                        </p>
+                    </div>
+
+                    <div class="statement-card mission-card">
+                        <span class="section-tag">Mission Statement</span>
+                        <h3>Empowerment Through Action</h3>
+                        <p>
+                            To empower students and marginalized groups through actionable educational support, mentorship, digital skills development, and community-driven initiatives that promote sustainable growth and self-reliance.
+                        </p>
+                    </div>
                 </div>
 
-                <div class="statement-card mission-card">
-                    <span class="section-tag">Mission Statement</span>
-                    <h3>Empowerment Through Action</h3>
-                    <p>
-                        To empower students and marginalized groups through actionable educational support, mentorship, digital skills development, and community-driven initiatives that promote sustainable growth and self-reliance.
-                    </p>
+                <div class="about-visual-col">
+                    <img src="./cohort-group.jpg" alt="ADF Cohort 1.0 Rising Together in Ghana" loading="lazy" />
+                    <div class="about-visual-overlay">
+                        <span class="quote-author">Community in Action</span>
+                        <p class="quote-text">"We don't just speak about change — we build it hands-on with students across Ghanaian classrooms."</p>
+                        <span style="font-size: 0.78rem; color: #CBD5E1; font-weight: 500;">Ansah Delali Foundation • SkillUp 1.0 Milestone</span>
+                    </div>
                 </div>
             </div>
 
@@ -2012,18 +2358,24 @@
             <div class="programs-grid">
                 <!-- Anchor Featured Pillar: Digital Skills -->
                 <div class="program-card featured-pillar">
-                    <div class="pillar-header">
-                        <span class="pillar-tag">Anchor Initiative</span>
-                        <h3>Digital Skills & Rural Technology Outreach</h3>
-                        <p>
-                            Hands-on, practical software workshops teaching industry-standard productivity tools (Excel, Canva, cloud workflow systems) coupled with a strategic long-term vision to distribute tech access and digital literacy to rural Ghanaian communities.
-                        </p>
+                    <div class="featured-pillar-content">
+                        <div class="pillar-header">
+                            <span class="pillar-tag">Anchor Initiative</span>
+                            <h3>Digital Skills &amp; Rural Technology Outreach</h3>
+                            <p>
+                                Hands-on, practical software workshops teaching industry-standard productivity tools (Excel, Canva, cloud workflow systems) coupled with a strategic long-term vision to distribute tech access and digital literacy to rural Ghanaian communities.
+                            </p>
+                        </div>
+                        <ul class="pillar-activities">
+                            <li>Data productivity (Microsoft Excel &amp; Google Sheets)</li>
+                            <li>Visual communication &amp; design (Canva &amp; creative software)</li>
+                            <li>Long-term rural computer literacy outreach</li>
+                        </ul>
                     </div>
-                    <ul class="pillar-activities">
-                        <li>Data productivity (Microsoft Excel & Google Sheets)</li>
-                        <li>Visual communication & design (Canva & creative software)</li>
-                        <li>Long-term rural computer literacy outreach</li>
-                    </ul>
+                    <div class="featured-pillar-media">
+                        <img src="./tech-workshop.jpg" alt="ADF Hands-on Tech Workshop" loading="lazy" />
+                        <span class="pillar-media-caption">Practical Digital Literacy in Action</span>
+                    </div>
                 </div>
 
                 <!-- Academic Support -->
@@ -2442,6 +2794,128 @@
                 closeLightbox();
                 closeMobileMenu();
             }
+        });
+
+        /* --- Hero Automated Impact Slideshow --- */
+        document.addEventListener('DOMContentLoaded', function() {
+            const slideshow = document.getElementById('heroSlideshow');
+            if (!slideshow) return;
+
+            const slides = Array.from(slideshow.querySelectorAll('.hero-slide'));
+            const dots = Array.from(slideshow.querySelectorAll('.slide-dot'));
+            const prevBtn = document.getElementById('slidePrevBtn');
+            const nextBtn = document.getElementById('slideNextBtn');
+            const slideTag = document.getElementById('slideTag');
+            const slideDesc = document.getElementById('slideDesc');
+
+            if (!slides.length) return;
+
+            let currentSlide = 0;
+            let slideInterval = null;
+            const duration = 4500; // 4.5s per slide
+
+            function showSlide(index) {
+                currentSlide = (index + slides.length) % slides.length;
+
+                slides.forEach((slide, i) => {
+                    const isActive = i === currentSlide;
+                    slide.classList.toggle('active', isActive);
+                    
+                    if (isActive) {
+                        if (slideTag) slideTag.textContent = slide.dataset.tag || 'SkillUp 1.0 Milestone';
+                        if (slideDesc) slideDesc.textContent = slide.dataset.desc || '';
+                    }
+                });
+
+                dots.forEach((dot, i) => {
+                    const isActive = i === currentSlide;
+                    dot.classList.toggle('active', isActive);
+                    const progress = dot.querySelector('.slide-progress');
+                    if (progress) {
+                        progress.style.transition = 'none';
+                        progress.style.width = '0%';
+                        if (isActive) {
+                            void progress.offsetWidth; // force reflow
+                            progress.style.transition = `width ${duration}ms linear`;
+                            progress.style.width = '100%';
+                        }
+                    }
+                });
+            }
+
+            function next() {
+                showSlide(currentSlide + 1);
+            }
+
+            function prev() {
+                showSlide(currentSlide - 1);
+            }
+
+            function startTimer() {
+                stopTimer();
+                const activeDot = dots[currentSlide];
+                if (activeDot) {
+                    const progress = activeDot.querySelector('.slide-progress');
+                    if (progress) {
+                        progress.style.transition = `width ${duration}ms linear`;
+                        progress.style.width = '100%';
+                    }
+                }
+                slideInterval = setInterval(next, duration);
+            }
+
+            function stopTimer() {
+                if (slideInterval) {
+                    clearInterval(slideInterval);
+                    slideInterval = null;
+                }
+            }
+
+            if (nextBtn) {
+                nextBtn.addEventListener('click', function(e) {
+                    e.stopPropagation();
+                    next();
+                    startTimer();
+                });
+            }
+
+            if (prevBtn) {
+                prevBtn.addEventListener('click', function(e) {
+                    e.stopPropagation();
+                    prev();
+                    startTimer();
+                });
+            }
+
+            dots.forEach(function(dot, i) {
+                dot.addEventListener('click', function(e) {
+                    e.stopPropagation();
+                    showSlide(i);
+                    startTimer();
+                });
+            });
+
+            slideshow.addEventListener('mouseenter', stopTimer);
+            slideshow.addEventListener('mouseleave', startTimer);
+
+            let touchStartX = 0;
+            slideshow.addEventListener('touchstart', function(e) {
+                touchStartX = e.touches[0].clientX;
+                stopTimer();
+            }, { passive: true });
+
+            slideshow.addEventListener('touchend', function(e) {
+                const touchEndX = e.changedTouches[0].clientX;
+                const diff = touchStartX - touchEndX;
+                if (Math.abs(diff) > 40) {
+                    if (diff > 0) next();
+                    else prev();
+                }
+                startTimer();
+            }, { passive: true });
+
+            showSlide(0);
+            startTimer();
         });
     </script>
 </body>
