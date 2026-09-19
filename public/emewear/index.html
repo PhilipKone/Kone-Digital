@@ -434,6 +434,29 @@
             align-items: center;
         }
 
+        .carousel-3d-stage::after {
+            content: '';
+            position: absolute;
+            bottom: 8px;
+            width: 320px;
+            height: 35px;
+            background: radial-gradient(ellipse at center, rgba(229, 184, 130, 0.35) 0%, rgba(92, 18, 30, 0.2) 45%, transparent 72%);
+            border-radius: 50%;
+            filter: blur(10px);
+            pointer-events: none;
+            z-index: 1;
+        }
+
+        .runway-hint {
+            color: var(--rose-gold);
+            font-size: 0.78rem;
+            letter-spacing: 1.5px;
+            text-transform: uppercase;
+            margin-top: 0.6rem;
+            opacity: 0.85;
+            font-weight: 600;
+        }
+
         .carousel-3d-track {
             position: relative;
             width: 100%;
@@ -786,17 +809,84 @@
                 text-align: center;
             }
             .carousel-section {
-                padding: 4rem 4% 3rem;
+                padding: 2.5rem 2% 2rem;
+                overflow: hidden;
+            }
+            .carousel-section .section-header {
+                margin-bottom: 1.8rem;
             }
             .carousel-3d-stage {
-                height: 550px;
+                height: 495px;
+                perspective: 850px;
+            }
+            .carousel-3d-stage::after {
+                width: 220px;
+                height: 22px;
+                bottom: 4px;
             }
             .carousel-3d-card {
-                width: 275px;
-                height: 510px;
+                width: 250px;
+                height: 465px;
             }
-            .carousel-3d-card.prev, .carousel-3d-card.next {
-                display: none;
+            .carousel-3d-card .card-img-wrapper {
+                height: 245px;
+            }
+            .carousel-3d-card .card-body {
+                padding: 0.95rem 1rem;
+            }
+            .carousel-3d-card .card-body h3 {
+                font-size: 1.05rem;
+                margin-bottom: 0.25rem;
+            }
+            .carousel-3d-card .card-body p {
+                font-size: 0.76rem;
+                line-height: 1.4;
+                margin-bottom: 0.5rem;
+            }
+            .carousel-3d-card .size-tags {
+                margin-bottom: 0.55rem;
+                gap: 0.35rem;
+            }
+            .carousel-3d-card .card-footer {
+                padding-top: 0.55rem;
+                margin-bottom: 0.5rem;
+            }
+            .carousel-3d-card.active {
+                transform: translateX(0) translateZ(55px) rotateY(0deg) scale(1);
+                z-index: 10;
+                opacity: 1;
+                border-color: var(--rose-gold);
+                box-shadow: 0 18px 40px rgba(0, 0, 0, 0.85), 0 0 25px rgba(229, 184, 130, 0.3), 0 0 0 1.5px var(--rose-gold);
+            }
+            .carousel-3d-card.prev {
+                display: flex;
+                transform: translateX(-140px) translateZ(-65px) rotateY(26deg) scale(0.85);
+                z-index: 5;
+                opacity: 0.42;
+                filter: brightness(0.5);
+                pointer-events: auto;
+            }
+            .carousel-3d-card.next {
+                display: flex;
+                transform: translateX(140px) translateZ(-65px) rotateY(-26deg) scale(0.85);
+                z-index: 5;
+                opacity: 0.42;
+                filter: brightness(0.5);
+                pointer-events: auto;
+            }
+            .carousel-3d-card.far-left {
+                transform: translateX(-230px) translateZ(-150px) rotateY(38deg) scale(0.7);
+                opacity: 0;
+                pointer-events: none;
+            }
+            .carousel-3d-card.far-right {
+                transform: translateX(230px) translateZ(-150px) rotateY(-38deg) scale(0.7);
+                opacity: 0;
+                pointer-events: none;
+            }
+            .carousel-controls {
+                gap: 1.5rem;
+                margin-top: 1rem;
             }
         }
 
@@ -1001,6 +1091,7 @@
         <div class="section-header">
             <span class="sub">3D INTERACTIVE RUNWAY</span>
             <h2>Ghana-Made Plus-Size Showcase</h2>
+            <p class="runway-hint">✦ Swipe or tap cards to rotate 3D runway ✦</p>
         </div>
 
         <div class="carousel-3d-stage" id="carouselStage">
