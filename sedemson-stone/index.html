@@ -304,9 +304,13 @@
             margin-top: 1.2rem;
         }
 
+        section {
+            scroll-margin-top: 85px;
+        }
+
         /* --- Hero Section --- */
         .hero {
-            min-height: 88vh;
+            min-height: calc(100vh - 72px);
             background: linear-gradient(rgba(20, 10, 8, 0.65), rgba(20, 10, 8, 0.75)),
                         url('assets/exterior_stone_cladding_hero_1777414375118.png') center/cover no-repeat;
             display: flex;
@@ -595,7 +599,7 @@
         /* --- Responsive Styles (Mobbin 390px Standard) --- */
         @media (max-width: 768px) {
             body {
-                padding-bottom: 74px;
+                padding-bottom: calc(75px + env(safe-area-inset-bottom, 0px));
             }
 
             nav {
@@ -628,7 +632,7 @@
 
             .hero {
                 padding: 3.5rem 4% 3rem;
-                min-height: auto;
+                min-height: calc(100vh - 65px);
             }
 
             .hero h1 {
@@ -692,7 +696,7 @@
                 background: rgba(30, 18, 14, 0.96);
                 backdrop-filter: blur(14px);
                 border-top: 1px solid rgba(241, 196, 15, 0.35);
-                padding: 0.65rem 1rem;
+                padding: 0.65rem 1rem calc(0.65rem + env(safe-area-inset-bottom, 0px));
                 gap: 0.75rem;
                 align-items: center;
                 box-shadow: 0 -8px 25px rgba(0, 0, 0, 0.6);
