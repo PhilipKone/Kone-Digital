@@ -2,7 +2,7 @@ import React from 'react';
 import momoIcon from '../assets/integrations/momo.png';
 import telecelIcon from '../assets/integrations/telecel.png';
 import atIcon from '../assets/integrations/at_money.png';
-import whatsappIcon from '../assets/integrations/whatsapp.svg';
+import whatsappIcon from '../assets/integrations/whatsapp_business.png';
 
 interface GatewayItem {
   id: string;
@@ -44,8 +44,9 @@ const GATEWAYS: GatewayItem[] = [
     icon: whatsappIcon,
     className: 'whatsapp',
     title: 'WhatsApp Business Automated Order & Lead Routing',
-    imgStyle: {}
+    imgStyle: { borderRadius: '6px' }
   }
+
 ];
 
 export const TrustMetrics: React.FC = () => {
