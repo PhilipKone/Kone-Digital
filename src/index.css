@@ -678,3 +678,45 @@ h1, h2, h3, h4, h5, h6 {
   height: 28px;
 }
 
+/* Hero Showcase Carousel Transitions & Progress Indicator */
+@keyframes tabProgressBar {
+  0% {
+    width: 0%;
+  }
+  100% {
+    width: 100%;
+  }
+}
+
+@keyframes heroSlideFadeIn {
+  0% {
+    opacity: 0;
+    transform: scale(0.99) translateY(4px);
+  }
+  100% {
+    opacity: 1;
+    transform: scale(1) translateY(0);
+  }
+}
+
+.hero-slide-enter {
+  animation: heroSlideFadeIn 0.38s cubic-bezier(0.16, 1, 0.3, 1) forwards;
+  will-change: transform, opacity;
+}
+
+.showcase-nav-btn {
+  transition: all 0.2s cubic-bezier(0.16, 1, 0.3, 1);
+  opacity: 0.75;
+}
+
+.showcase-nav-btn:hover {
+  opacity: 1;
+  background: rgba(13, 18, 29, 0.92) !important;
+  border-color: rgba(255, 255, 255, 0.45) !important;
+  transform: translateY(-50%) scale(1.08) !important;
+}
+
+.showcase-nav-btn:active {
+  transform: translateY(-50%) scale(0.95) !important;
+}
+
