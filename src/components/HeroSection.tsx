@@ -246,11 +246,11 @@ export const HeroSection: React.FC<HeroSectionProps> = ({ onOpenWizard }) => {
             <div 
               key="slide-stone"
               className="hero-slide-enter"
-              style={{ minHeight: '340px', display: 'flex', flexDirection: 'column', justifyContent: 'center', alignItems: 'center', backgroundImage: 'linear-gradient(rgba(0,0,0,0.7), rgba(0,0,0,0.7)), url("/sedemson_stone_hero.png")', backgroundSize: 'cover', backgroundPosition: 'center', color: '#fff', padding: '2rem 1.2rem', textAlign: 'center' }}
+              style={{ minHeight: '340px', display: 'flex', flexDirection: 'column', justifyContent: 'center', alignItems: 'center', backgroundImage: 'linear-gradient(rgba(0,0,0,0.7), rgba(0,0,0,0.7)), url("/sedemson_stone_hero.png")', backgroundSize: 'cover', backgroundPosition: 'center', color: '#fff', padding: '2rem 2.8rem', textAlign: 'center' }}
             >
               <span className="badge-pill gold" style={{ marginBottom: '0.8rem' }}>FEATURED B2B CLIENT</span>
-              <h2 style={{ fontSize: 'clamp(1.3rem, 5vw, 2rem)', fontFamily: 'var(--font-heading)', fontWeight: 800 }}>Sedemson Stone Craftsmanship</h2>
-              <p style={{ maxWidth: '500px', fontSize: '0.9rem', opacity: 0.85, marginTop: '0.5rem' }}>Natural Stone Cladding & Architectural Finishes across Ghana.</p>
+              <h2 style={{ fontSize: 'clamp(1.25rem, 4.5vw, 2rem)', fontFamily: 'var(--font-heading)', fontWeight: 800 }}>Sedemson Stone Craftsmanship</h2>
+              <p style={{ maxWidth: '500px', fontSize: '0.88rem', opacity: 0.85, marginTop: '0.5rem' }}>Natural Stone Cladding & Architectural Finishes across Ghana.</p>
               <a href="#work" style={{ marginTop: '1.2rem', color: '#F8FAFC', background: 'rgba(255,255,255,0.1)', border: '1px solid rgba(255,255,255,0.2)', padding: '0.35rem 0.9rem', borderRadius: '50px', fontWeight: 650, fontSize: '0.8rem', textDecoration: 'none', display: 'inline-flex', alignItems: 'center', gap: '0.3rem' }}>
                 <span>Explore Client Showcase</span>
                 <span>➔</span>
@@ -262,11 +262,11 @@ export const HeroSection: React.FC<HeroSectionProps> = ({ onOpenWizard }) => {
             <div 
               key="slide-fashion"
               className="hero-slide-enter"
-              style={{ minHeight: '340px', display: 'flex', flexDirection: 'column', justifyContent: 'center', alignItems: 'center', backgroundImage: 'linear-gradient(rgba(0,0,0,0.7), rgba(0,0,0,0.7)), url("/emewear/emewear_hero.jpg")', backgroundSize: 'cover', backgroundPosition: 'top', color: '#fff', padding: '2rem 1.2rem', textAlign: 'center' }}
+              style={{ minHeight: '340px', display: 'flex', flexDirection: 'column', justifyContent: 'center', alignItems: 'center', backgroundImage: 'linear-gradient(rgba(0,0,0,0.7), rgba(0,0,0,0.7)), url("/emewear/emewear_hero.jpg")', backgroundSize: 'cover', backgroundPosition: 'top', color: '#fff', padding: '2rem 2.8rem', textAlign: 'center' }}
             >
               <span className="badge-pill gold" style={{ marginBottom: '0.8rem' }}>E-COMMERCE SHOWCASE</span>
-              <h2 style={{ fontSize: 'clamp(1.3rem, 5vw, 2rem)', fontFamily: 'var(--font-heading)', fontWeight: 800 }}>Emewear Plus-Size Ankara</h2>
-              <p style={{ maxWidth: '500px', fontSize: '0.9rem', opacity: 0.85, marginTop: '0.5rem' }}>Handcrafted Ankara wide-leg cargo trousers & royal batik palazzo sets.</p>
+              <h2 style={{ fontSize: 'clamp(1.25rem, 4.5vw, 2rem)', fontFamily: 'var(--font-heading)', fontWeight: 800 }}>Emewear Plus-Size Ankara</h2>
+              <p style={{ maxWidth: '500px', fontSize: '0.88rem', opacity: 0.85, marginTop: '0.5rem' }}>Handcrafted Ankara wide-leg cargo trousers & royal batik palazzo sets.</p>
               <a href="/emewear/index.html" target="_blank" rel="noopener noreferrer" style={{ marginTop: '1.2rem', color: '#F8FAFC', background: 'rgba(255,255,255,0.1)', border: '1px solid rgba(255,255,255,0.2)', padding: '0.35rem 0.9rem', borderRadius: '50px', fontWeight: 650, fontSize: '0.8rem', textDecoration: 'none', display: 'inline-flex', alignItems: 'center', gap: '0.3rem' }}>
                 <span>Explore Client Showcase</span>
                 <span>➔</span>
@@ -278,11 +278,11 @@ export const HeroSection: React.FC<HeroSectionProps> = ({ onOpenWizard }) => {
             <div 
               key="slide-foundation"
               className="hero-slide-enter"
-              style={{ minHeight: '340px', display: 'flex', flexDirection: 'column', justifyContent: 'center', alignItems: 'center', backgroundImage: 'linear-gradient(rgba(7, 30, 74, 0.78), rgba(0, 59, 153, 0.82)), url("/ansah-delali/cohort-group.jpg")', backgroundSize: 'cover', backgroundPosition: 'center', color: '#fff', padding: '2rem 1.2rem', textAlign: 'center' }}
+              style={{ minHeight: '340px', display: 'flex', flexDirection: 'column', justifyContent: 'center', alignItems: 'center', backgroundImage: 'linear-gradient(rgba(7, 30, 74, 0.78), rgba(0, 59, 153, 0.82)), url("/ansah-delali/cohort-group.jpg")', backgroundSize: 'cover', backgroundPosition: 'center', color: '#fff', padding: '2rem 2.8rem', textAlign: 'center' }}
             >
               <span className="badge-pill gold" style={{ marginBottom: '0.8rem', background: '#FA8C16', color: '#fff' }}>FEATURED SOCIAL IMPACT INITIATIVE</span>
-              <h2 style={{ fontSize: 'clamp(1.3rem, 5vw, 2rem)', fontFamily: 'var(--font-heading)', fontWeight: 800 }}>Ansah Delali Foundation</h2>
-              <p style={{ maxWidth: '520px', fontSize: '0.9rem', opacity: 0.92, marginTop: '0.5rem' }}>Giving Back, Rising Together — Educational mentorship, SkillUp 1.0 outreach, and digital skills empowerment across Ghana.</p>
+              <h2 style={{ fontSize: 'clamp(1.25rem, 4.5vw, 2rem)', fontFamily: 'var(--font-heading)', fontWeight: 800 }}>Ansah Delali Foundation</h2>
+              <p style={{ maxWidth: '520px', fontSize: '0.88rem', opacity: 0.92, marginTop: '0.5rem' }}>Giving Back, Rising Together — Educational mentorship, SkillUp 1.0 outreach, and digital skills empowerment across Ghana.</p>
               <a href="/ansah-delali/index.html" target="_blank" rel="noopener noreferrer" style={{ marginTop: '1.2rem', color: '#FFFFFF', background: '#0052CC', border: '1px solid rgba(255,255,255,0.3)', padding: '0.45rem 1.1rem', borderRadius: '50px', fontWeight: 700, fontSize: '0.84rem', textDecoration: 'none', display: 'inline-flex', alignItems: 'center', gap: '0.4rem', boxShadow: '0 4px 12px rgba(0,0,0,0.2)' }}>
                 <span>Explore Foundation Portal</span>
                 <span>➔</span>

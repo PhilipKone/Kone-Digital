@@ -620,6 +620,21 @@ h1, h2, h3, h4, h5, h6 {
     width: 26px;
     height: 26px;
   }
+
+  .hero-demo-stage {
+    padding: 1rem 0.75rem !important;
+    border-radius: 16px !important;
+  }
+
+  .showcase-nav-btn {
+    width: 32px !important;
+    height: 32px !important;
+  }
+
+  .gateway-marquee-wrapper {
+    mask-image: linear-gradient(to right, transparent 0%, rgba(0, 0, 0, 1) 6%, rgba(0, 0, 0, 1) 94%, transparent 100%) !important;
+    -webkit-mask-image: linear-gradient(to right, transparent 0%, rgba(0, 0, 0, 1) 6%, rgba(0, 0, 0, 1) 94%, transparent 100%) !important;
+  }
 }
 
 /* Integration Brand Badges */
