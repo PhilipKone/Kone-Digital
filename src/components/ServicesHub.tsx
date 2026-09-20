@@ -34,7 +34,7 @@ export default function ServicesHub({ onSelectService }: { onSelectService: (slu
 
   return (
     <section className="services-hub-section" id="services">
-      <div className="services-hero-header">
+      <div className="services-hero-header fade-in-up">
         <span className="services-badge">AGENCY SPECIALIZATIONS</span>
         <h2 className="services-title">Digital Engineering & Design Services</h2>
         <p className="services-subtitle">
@@ -43,8 +43,8 @@ export default function ServicesHub({ onSelectService }: { onSelectService: (slu
       </div>
 
       <div className="services-hub-grid">
-        {servicesList.map((service) => (
-          <div key={service.id} className="service-hub-card">
+        {servicesList.map((service, idx) => (
+          <div key={service.id} className={`service-hub-card fade-in-up stagger-${(idx % 4) + 1}`}>
             <div className="card-top-row">
               <div className="hub-card-icon-wrapper">
                 {serviceIcons[service.id]}

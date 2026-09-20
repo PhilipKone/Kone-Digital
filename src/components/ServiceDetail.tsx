@@ -174,11 +174,11 @@ export default function ServiceDetail({ slug, onBack }: { slug: string; onBack?:
       </header>
 
       {/* Main Deliverables Grid */}
-      <section className="service-deliverables-section">
+      <section className="service-deliverables-section fade-in-up">
         <h2 className="section-title">Key Technical Deliverables & Features</h2>
         <div className="deliverables-grid">
           {service.deliverables.map((item, idx) => (
-            <div key={idx} className="deliverable-card">
+            <div key={idx} className={`deliverable-card fade-in-up stagger-${(idx % 4) + 1}`}>
               <span className="del-num">0{idx + 1}</span>
               <h3 className="del-title">{item.title}</h3>
               <p className="del-spec">{item.spec}</p>
@@ -188,7 +188,7 @@ export default function ServiceDetail({ slug, onBack }: { slug: string; onBack?:
       </section>
 
       {/* Tech Stack Pills */}
-      <section className="service-tech-section">
+      <section className="service-tech-section fade-in-up">
         <h2 className="section-title">Engineering Tech Stack</h2>
         <div className="tech-pills-row">
           {service.techStack.map((tech) => (
@@ -198,7 +198,7 @@ export default function ServiceDetail({ slug, onBack }: { slug: string; onBack?:
       </section>
 
       {/* Case Study Highlight Box */}
-      <section className="service-case-section">
+      <section className="service-case-section fade-in-up">
         <div className="case-highlight-card">
           <div className="case-meta-header">
             <span className="case-label">FEATURED CASE STUDY</span>
@@ -225,11 +225,11 @@ export default function ServiceDetail({ slug, onBack }: { slug: string; onBack?:
       </section>
 
       {/* FAQ Section */}
-      <section className="service-faq-section">
+      <section className="service-faq-section fade-in-up">
         <h2 className="section-title">❓ Frequently Asked Questions</h2>
         <div className="faq-grid">
           {service.faq.map((item, idx) => (
-            <div key={idx} className="faq-card">
+            <div key={idx} className={`faq-card fade-in-up stagger-${(idx % 4) + 1}`}>
               <h3 className="faq-q">Q: {item.q}</h3>
               <p className="faq-a">{item.a}</p>
             </div>

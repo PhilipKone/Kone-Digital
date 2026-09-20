@@ -79,7 +79,7 @@ export const TrustMetrics: React.FC = () => {
 
   return (
     <section className="trust-metrics-section" style={{ padding: '3rem 0', margin: '2rem 0' }}>
-      <div className="section-title" style={{ textAlign: 'center', marginBottom: '2.5rem' }}>
+      <div className="section-title fade-in-up" style={{ textAlign: 'center', marginBottom: '2.5rem' }}>
         <span className="badge-pill cyan">
           <span style={{ width: '6px', height: '6px', borderRadius: '50%', background: 'var(--cyan-glow)' }} />
           ENTERPRISE ARCHITECTURE • ZERO MAINTENANCE
@@ -92,13 +92,13 @@ export const TrustMetrics: React.FC = () => {
       <div className="metrics-grid" style={{ 
         display: 'grid', 
         gridTemplateColumns: 'repeat(auto-fit, minmax(min(100%, 220px), 1fr))', 
-        gap: '1.2rem',
+        gap: '1.2rem', 
         maxWidth: '1100px',
         margin: '0 auto',
         padding: '0 1rem'
       }}>
         {capabilities.map((cap, idx) => (
-          <div key={idx} className="metric-card neon-border" style={{ 
+          <div key={idx} className={`metric-card neon-border fade-in-up stagger-${idx + 1}`} style={{ 
             background: 'var(--bg-surface)', 
             padding: '2rem 1.5rem', 
             borderRadius: '16px', 
@@ -119,7 +119,7 @@ export const TrustMetrics: React.FC = () => {
       </div>
 
       {/* Integration Partner Logos with Authentic Brand Marks - Continuous Apple / Stripe Glide */}
-      <div style={{ 
+      <div className="fade-in-up" style={{ 
         display: 'flex', 
         flexDirection: 'column',
         alignItems: 'center', 

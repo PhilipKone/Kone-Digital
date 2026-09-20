@@ -24,3 +24,4 @@ dist-ssr
 *.sw?
 Logo-Creation/node_modules/
 node_modules
+scratch/

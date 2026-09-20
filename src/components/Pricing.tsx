@@ -131,7 +131,7 @@ export const Pricing: React.FC = () => {
             <div 
               key={plan.id}
               onClick={() => setSelectedPlanIndex(index)}
-              className="price-card fade-in-up"
+              className={`price-card fade-in-up stagger-${(index % 4) + 1}`}
               style={{
                 background: isSelected ? 'rgba(0, 240, 255, 0.04)' : 'rgba(13, 18, 29, 0.75)',
                 backdropFilter: 'blur(16px)',

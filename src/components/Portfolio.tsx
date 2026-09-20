@@ -173,10 +173,10 @@ export const Portfolio: React.FC = () => {
         gap: '2rem', 
         width: '100%' 
       }}>
-        {filteredProjects.map((proj) => (
+        {filteredProjects.map((proj, idx) => (
           <div 
             key={proj.id} 
-            className="portfolio-card neon-border fade-in-up" 
+            className={`portfolio-card neon-border fade-in-up stagger-${(idx % 4) + 1}`} 
             style={{ 
               borderRadius: '20px', 
               overflow: 'hidden', 

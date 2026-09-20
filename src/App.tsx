@@ -60,23 +60,28 @@ function App() {
     const isReactSnap = navigator.userAgent === 'ReactSnap';
 
     if (isReactSnap) {
-      const elements = containerRef.current?.querySelectorAll('.fade-in-up') || [];
+      const elements = document.querySelectorAll('.fade-in-up');
       elements.forEach(el => {
         el.classList.add('visible');
       });
       return;
     }
 
-    const observer = new IntersectionObserver((entries) => {
+    const observer = new IntersectionObserver((entries, obs) => {
       entries.forEach(entry => {
         if (entry.isIntersecting) {
           entry.target.classList.add('visible');
+          obs.unobserve(entry.target);
         }
       });
-    }, { threshold: 0.1 });
+    }, { 
+      rootMargin: '0px 0px -40px 0px',
+      threshold: 0.08 
+    });
 
     const observeElements = () => {
-      const elements = containerRef.current?.querySelectorAll('.fade-in-up:not(.observed)') || [];
+      const root = containerRef.current || document;
+      const elements = root.querySelectorAll('.fade-in-up:not(.observed)');
       elements.forEach(el => {
         observer.observe(el);
         el.classList.add('observed');
@@ -89,8 +94,9 @@ function App() {
       observeElements();
     });
 
-    if (containerRef.current) {
-      mutationObserver.observe(containerRef.current, { childList: true, subtree: true });
+    const targetNode = containerRef.current || document.body;
+    if (targetNode) {
+      mutationObserver.observe(targetNode, { childList: true, subtree: true });
     }
 
     return () => {
@@ -100,7 +106,7 @@ function App() {
   }, []);
 
   return (
-    <div className="digital-app-root">
+    <div ref={containerRef} className="digital-app-root">
       <header className="hub-header">
         <div className="hub-header-inner">
           <div className="logo" style={{ display: 'flex', alignItems: 'center', gap: '0.75rem' }}>
@@ -284,7 +290,7 @@ function App() {
       />
 
       {/* Footer */}
-      <footer className="hub-footer" style={{
+      <footer className="hub-footer fade-in-up" style={{
         marginTop: '2rem',
         paddingTop: '2.5rem',
         paddingBottom: '3.5rem',
