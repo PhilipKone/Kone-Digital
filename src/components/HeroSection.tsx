@@ -123,62 +123,45 @@ export const HeroSection: React.FC<HeroSectionProps> = ({ onOpenWizard }) => {
           position: 'relative'
         }}
       >
-        <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', flexWrap: 'wrap', gap: '0.8rem', marginBottom: '1.2rem', borderBottom: '1px solid rgba(255,255,255,0.08)', paddingBottom: '1rem' }}>
+        <div style={{ display: 'flex', justifyContent: 'center', alignItems: 'center', flexWrap: 'wrap', gap: '0.6rem', marginBottom: '1.2rem', borderBottom: '1px solid rgba(255,255,255,0.08)', paddingBottom: '1rem' }}>
           {/* Demo Tabs */}
-          <div style={{ display: 'flex', alignItems: 'center', flexWrap: 'wrap', gap: '0.6rem' }}>
-            {TABS.map((tab) => {
-              const isActive = activeTab === tab.id;
-              return (
-                <button
-                  key={tab.id}
-                  onClick={() => handleTabClick(tab.id)}
-                  className={isActive ? 'btn-primary' : 'btn-secondary'}
-                  style={{
-                    padding: '0.38rem 1rem',
-                    borderRadius: '50px',
-                    fontSize: '0.82rem',
-                    position: 'relative',
-                    overflow: 'hidden',
-                    transition: 'all 0.25s ease',
-                  }}
-                >
-                  <span style={{ position: 'relative', zIndex: 2 }}>{tab.label}</span>
-                  {isActive && (
-                    <span
-                      key={`progress-${tab.id}-${progressKey}`}
-                      className="hero-tab-progress-bar"
-                      style={{
-                        position: 'absolute',
-                        bottom: 0,
-                        left: 0,
-                        height: '3px',
-                        background: '#07090E',
-                        borderRadius: '2px',
-                        animation: `tabProgressBar ${AUTO_CYCLE_INTERVAL}ms linear forwards`,
-                        animationPlayState: isPaused ? 'paused' : 'running',
-                        zIndex: 1,
-                      }}
-                    />
-                  )}
-                </button>
-              );
-            })}
-          </div>
-
-          {/* Auto-cycle indicator badge */}
-          <div style={{ display: 'flex', alignItems: 'center', gap: '0.5rem', fontSize: '0.74rem', color: 'var(--text-subtle)' }}>
-            <span 
-              style={{ 
-                width: '6px', 
-                height: '6px', 
-                borderRadius: '50%', 
-                background: isPaused ? 'var(--gold-accent)' : '#10B981',
-                boxShadow: isPaused ? '0 0 8px var(--gold-accent)' : '0 0 8px #10B981',
-                transition: 'background 0.3s ease'
-              }} 
-            />
-            <span>{isPaused ? 'Paused on hover' : 'Auto-cycling (5s)'}</span>
-          </div>
+          {TABS.map((tab) => {
+            const isActive = activeTab === tab.id;
+            return (
+              <button
+                key={tab.id}
+                onClick={() => handleTabClick(tab.id)}
+                className={isActive ? 'btn-primary' : 'btn-secondary'}
+                style={{
+                  padding: '0.38rem 1rem',
+                  borderRadius: '50px',
+                  fontSize: '0.82rem',
+                  position: 'relative',
+                  overflow: 'hidden',
+                  transition: 'all 0.25s ease',
+                }}
+              >
+                <span style={{ position: 'relative', zIndex: 2 }}>{tab.label}</span>
+                {isActive && (
+                  <span
+                    key={`progress-${tab.id}-${progressKey}`}
+                    className="hero-tab-progress-bar"
+                    style={{
+                      position: 'absolute',
+                      bottom: 0,
+                      left: 0,
+                      height: '3px',
+                      background: '#07090E',
+                      borderRadius: '2px',
+                      animation: `tabProgressBar ${AUTO_CYCLE_INTERVAL}ms linear forwards`,
+                      animationPlayState: isPaused ? 'paused' : 'running',
+                      zIndex: 1,
+                    }}
+                  />
+                )}
+              </button>
+            );
+          })}
         </div>
 
         {/* Demo Content Mockup Display with Smooth Cross-Fade */}
