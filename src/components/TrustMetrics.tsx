@@ -4,6 +4,50 @@ import telecelIcon from '../assets/integrations/telecel.png';
 import atIcon from '../assets/integrations/at_money.png';
 import whatsappIcon from '../assets/integrations/whatsapp.svg';
 
+interface GatewayItem {
+  id: string;
+  name: string;
+  icon: string;
+  className: string;
+  title: string;
+  imgStyle: React.CSSProperties;
+}
+
+const GATEWAYS: GatewayItem[] = [
+  {
+    id: 'mtn',
+    name: 'MTN MoMo',
+    icon: momoIcon,
+    className: 'mtn',
+    title: 'MTN Mobile Money (MoMo) API Integration',
+    imgStyle: { borderRadius: '6px' }
+  },
+  {
+    id: 'telecel',
+    name: 'Telecel Cash',
+    icon: telecelIcon,
+    className: 'telecel',
+    title: 'Telecel Cash Automated Payment Gateway',
+    imgStyle: { borderRadius: '50%' }
+  },
+  {
+    id: 'at',
+    name: 'AT Money',
+    icon: atIcon,
+    className: 'at',
+    title: 'AT Money (AirtelTigo) Automated Gateway',
+    imgStyle: { borderRadius: '50%' }
+  },
+  {
+    id: 'whatsapp',
+    name: 'WhatsApp Business',
+    icon: whatsappIcon,
+    className: 'whatsapp',
+    title: 'WhatsApp Business Automated Order & Lead Routing',
+    imgStyle: {}
+  }
+];
+
 export const TrustMetrics: React.FC = () => {
   const capabilities = [
     {
@@ -73,7 +117,7 @@ export const TrustMetrics: React.FC = () => {
         ))}
       </div>
 
-      {/* Integration Partner Logos with Authentic Brand Marks */}
+      {/* Integration Partner Logos with Authentic Brand Marks - Continuous Apple / Stripe Glide */}
       <div style={{ 
         display: 'flex', 
         flexDirection: 'column',
@@ -81,7 +125,8 @@ export const TrustMetrics: React.FC = () => {
         gap: '1.2rem', 
         marginTop: '3.5rem',
         width: '100%',
-        boxSizing: 'border-box'
+        boxSizing: 'border-box',
+        overflow: 'hidden'
       }}>
         <div style={{ 
           color: 'var(--text-subtle)', 
@@ -98,38 +143,37 @@ export const TrustMetrics: React.FC = () => {
           <span style={{ width: '28px', height: '1px', background: 'rgba(255, 255, 255, 0.12)' }} />
         </div>
 
-        <div style={{
-          display: 'flex',
-          justifyContent: 'center',
-          alignItems: 'center',
-          gap: '0.85rem',
-          flexWrap: 'wrap',
-          maxWidth: '1100px',
-          margin: '0 auto',
-          padding: '0 1rem'
-        }}>
-          {/* MTN MoMo */}
-          <div className="integration-badge mtn" title="MTN Mobile Money (MoMo) API Integration">
-            <img src={momoIcon} alt="MTN MoMo" style={{ borderRadius: '6px' }} />
-            <span>MTN MoMo</span>
+        {/* Apple & Stripe Standard Horizontal Gliding Marquee */}
+        <div 
+          className="gateway-marquee-wrapper" 
+          aria-label="Supported Payment and Lead Gateways marquee"
+        >
+          {/* Track 1 */}
+          <div className="gateway-marquee-track">
+            {[...GATEWAYS, ...GATEWAYS].map((gw, idx) => (
+              <div 
+                key={`gw-t1-${gw.id}-${idx}`} 
+                className={`integration-badge ${gw.className}`} 
+                title={gw.title}
+              >
+                <img src={gw.icon} alt={gw.name} style={gw.imgStyle} />
+                <span>{gw.name}</span>
+              </div>
+            ))}
           </div>
 
-          {/* Telecel Cash */}
-          <div className="integration-badge telecel" title="Telecel Cash Automated Payment Gateway">
-            <img src={telecelIcon} alt="Telecel Cash" style={{ borderRadius: '50%' }} />
-            <span>Telecel Cash</span>
-          </div>
-
-          {/* AT Money */}
-          <div className="integration-badge at" title="AT Money (AirtelTigo) Automated Gateway">
-            <img src={atIcon} alt="AT Money" style={{ borderRadius: '50%' }} />
-            <span>AT Money</span>
-          </div>
-
-          {/* WhatsApp Business */}
-          <div className="integration-badge whatsapp" title="WhatsApp Business Automated Order & Lead Routing">
-            <img src={whatsappIcon} alt="WhatsApp Business" />
-            <span>WhatsApp Business</span>
+          {/* Track 2 (Seamless Mirror for Infinite Loop) */}
+          <div className="gateway-marquee-track" aria-hidden="true">
+            {[...GATEWAYS, ...GATEWAYS].map((gw, idx) => (
+              <div 
+                key={`gw-t2-${gw.id}-${idx}`} 
+                className={`integration-badge ${gw.className}`} 
+                title={gw.title}
+              >
+                <img src={gw.icon} alt={gw.name} style={gw.imgStyle} />
+                <span>{gw.name}</span>
+              </div>
+            ))}
           </div>
         </div>
       </div>
