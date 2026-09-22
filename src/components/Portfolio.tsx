@@ -53,6 +53,18 @@ export const Portfolio: React.FC = () => {
       metric: 'SkillUp 1.0 Community Impact',
       status: 'Live Production',
       link: '/ansah-delali/index.html'
+    },
+    {
+      id: 'susans-pastries',
+      title: "Susan's Pastries",
+      category: 'ecommerce',
+      categoryLabel: 'Food & Beverage',
+      tagline: "Artisanal Ghanaian pastries, custom celebration cakes & fresh fruit juices — order via WhatsApp.",
+      image: '/susans-pastries/hero-banner.jpg',
+      tags: ['Food WaaS', 'WhatsApp Ordering', 'Menu Showcase'],
+      metric: 'Direct WhatsApp Orders',
+      status: 'Live Production',
+      link: '/susans-pastries/index.html'
     }
   ];
 

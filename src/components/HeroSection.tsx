@@ -4,7 +4,7 @@ interface HeroSectionProps {
   onOpenWizard: () => void;
 }
 
-type TabType = 'stone' | 'fashion' | 'foundation';
+type TabType = 'stone' | 'fashion' | 'foundation' | 'pastries';
 
 interface TabItem {
   id: TabType;
@@ -15,6 +15,7 @@ const TABS: TabItem[] = [
   { id: 'stone', label: 'Stone Architecture' },
   { id: 'fashion', label: 'Fashion Retail' },
   { id: 'foundation', label: 'Social Impact NGO' },
+  { id: 'pastries', label: 'Food & Beverage' },
 ];
 
 const AUTO_CYCLE_INTERVAL = 5000;
@@ -268,6 +269,22 @@ export const HeroSection: React.FC<HeroSectionProps> = ({ onOpenWizard }) => {
               <p style={{ maxWidth: '520px', fontSize: '0.88rem', opacity: 0.92, marginTop: '0.5rem' }}>Giving Back, Rising Together — Educational mentorship, SkillUp 1.0 outreach, and digital skills empowerment across Ghana.</p>
               <a href="/ansah-delali/index.html" target="_blank" rel="noopener noreferrer" style={{ marginTop: '1.2rem', color: '#FFFFFF', background: '#0052CC', border: '1px solid rgba(255,255,255,0.3)', padding: '0.45rem 1.1rem', borderRadius: '50px', fontWeight: 700, fontSize: '0.84rem', textDecoration: 'none', display: 'inline-flex', alignItems: 'center', gap: '0.4rem', boxShadow: '0 4px 12px rgba(0,0,0,0.2)' }}>
                 <span>Explore Foundation Portal</span>
+                <span>➔</span>
+              </a>
+            </div>
+          )}
+
+          {activeTab === 'pastries' && (
+            <div 
+              key="slide-pastries"
+              className="hero-slide-enter"
+              style={{ minHeight: '340px', display: 'flex', flexDirection: 'column', justifyContent: 'center', alignItems: 'center', backgroundImage: 'linear-gradient(rgba(45, 24, 16, 0.78), rgba(74, 44, 26, 0.82)), url("/susans-pastries/hero-banner.jpg")', backgroundSize: 'cover', backgroundPosition: 'center', color: '#fff', padding: '2rem 2.8rem', textAlign: 'center' }}
+            >
+              <span className="badge-pill gold" style={{ marginBottom: '0.8rem', background: '#E8922F', color: '#fff' }}>FOOD & BEVERAGE SHOWCASE</span>
+              <h2 style={{ fontSize: 'clamp(1.25rem, 4.5vw, 2rem)', fontFamily: 'var(--font-heading)', fontWeight: 800 }}>Susan's Pastries & Drinks</h2>
+              <p style={{ maxWidth: '520px', fontSize: '0.88rem', opacity: 0.92, marginTop: '0.5rem' }}>Artisanal Ghanaian pastries, custom celebration cakes & fresh fruit juices — order directly via WhatsApp.</p>
+              <a href="/susans-pastries/index.html" target="_blank" rel="noopener noreferrer" style={{ marginTop: '1.2rem', color: '#FFFFFF', background: '#E8922F', border: '1px solid rgba(255,255,255,0.3)', padding: '0.45rem 1.1rem', borderRadius: '50px', fontWeight: 700, fontSize: '0.84rem', textDecoration: 'none', display: 'inline-flex', alignItems: 'center', gap: '0.4rem', boxShadow: '0 4px 12px rgba(0,0,0,0.2)' }}>
+                <span>Explore Pastries Showcase</span>
                 <span>➔</span>
               </a>
             </div>
