@@ -1,0 +1,1182 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Susan's Pastries & Drinks | Artisanal Ghanaian Pastries, Cakes & Fresh Juices</title>
+    <meta name="description" content="Susan's Pastries & Drinks: Hot & delicious spring rolls, samosas, custom celebration cakes, and fresh fruit juices in Accra, Ghana. Order via WhatsApp." />
+    <link rel="canonical" href="https://digital.koneacademy.io/susans-pastries/" />
+    <link rel="icon" type="image/jpeg" href="./logo.jpg" />
+
+    <!-- Open Graph / WhatsApp / Social -->
+    <meta property="og:type" content="website" />
+    <meta property="og:url" content="https://digital.koneacademy.io/susans-pastries/" />
+    <meta property="og:site_name" content="Susan's Pastries & Drinks" />
+    <meta property="og:title" content="Susan's Pastries & Drinks | Tasty, Tasty Treats" />
+    <meta property="og:description" content="Artisanal Ghanaian pastries, custom celebration cakes & fresh fruit juices. Spring rolls, samosas, meat pies & more. Order via WhatsApp." />
+    <meta property="og:image" content="https://digital.koneacademy.io/susans-pastries/hero-banner.jpg" />
+    <meta property="og:image:width" content="1200" />
+    <meta property="og:image:height" content="630" />
+    <meta property="og:locale" content="en_GH" />
+
+    <!-- Twitter / X -->
+    <meta name="twitter:card" content="summary_large_image" />
+    <meta name="twitter:title" content="Susan's Pastries & Drinks | Tasty, Tasty Treats" />
+    <meta name="twitter:description" content="Artisanal Ghanaian pastries, custom celebration cakes & fresh fruit juices. Order via WhatsApp." />
+    <meta name="twitter:image" content="https://digital.koneacademy.io/susans-pastries/hero-banner.jpg" />
+
+    <meta name="theme-color" content="#2D1810" />
+
+    <!-- Google Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,600;0,700;0,800;1,600&family=Outfit:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+
+    <style>
+        :root {
+            --warm-orange: #E8922F;
+            --accent-red: #E8354A;
+            --cream: #FFF8F0;
+            --cream-soft: #FDF5EC;
+            --dark-brown: #2D1810;
+            --rich-brown: #4A2C1A;
+            --gold-accent: #D4A750;
+            --text-dark: #2D1810;
+            --text-muted: #8B7355;
+            --green-wa: #25D366;
+            --glass-bg: rgba(45, 24, 16, 0.88);
+            --radius-sm: 6px;
+            --radius-md: 12px;
+            --radius-lg: 20px;
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Outfit', sans-serif;
+            -webkit-font-smoothing: antialiased;
+        }
+
+        body {
+            background-color: var(--cream);
+            color: var(--text-dark);
+            line-height: 1.6;
+            overflow-x: hidden;
+        }
+
+        a {
+            color: inherit;
+            text-decoration: none;
+            transition: all 0.2s ease;
+        }
+
+        img {
+            max-width: 100%;
+            height: auto;
+            display: block;
+        }
+
+        /* --- Top Utility Bar --- */
+        .top-bar {
+            background-color: var(--dark-brown);
+            border-bottom: 1px solid rgba(232, 146, 47, 0.2);
+            font-size: 0.8rem;
+            padding: 0.45rem 6%;
+            color: #d4b896;
+        }
+        .top-bar-inner {
+            max-width: 1280px;
+            margin: 0 auto;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+        .top-bar a {
+            display: inline-flex;
+            align-items: center;
+            gap: 0.4rem;
+            color: var(--warm-orange);
+        }
+        .top-bar-contact {
+            display: inline-flex;
+            align-items: center;
+            gap: 6px;
+            color: var(--warm-orange);
+            padding: 3px 6px;
+            border-radius: var(--radius-sm);
+            transition: all 0.2s ease;
+        }
+        .top-bar-contact:hover {
+            color: #ffffff;
+            background: rgba(232, 146, 47, 0.15);
+            transform: scale(1.05);
+        }
+
+        /* --- Sticky Navigation --- */
+        nav {
+            padding: 1rem 6%;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            position: sticky;
+            top: 0;
+            width: 100%;
+            z-index: 1000;
+            background: rgba(255, 248, 240, 0.96);
+            backdrop-filter: blur(12px);
+            border-bottom: 1px solid rgba(45, 24, 16, 0.1);
+        }
+
+        .brand-logo {
+            display: flex;
+            align-items: center;
+            gap: 12px;
+            text-decoration: none;
+        }
+        .brand-logo-img {
+            width: 48px;
+            height: 48px;
+            border-radius: 50%;
+            object-fit: cover;
+            border: 2px solid var(--warm-orange);
+        }
+        .brand-text {
+            display: flex;
+            flex-direction: column;
+        }
+        .brand-title {
+            font-family: 'Playfair Display', serif;
+            font-size: 1.4rem;
+            font-weight: 800;
+            color: var(--dark-brown);
+            line-height: 1.1;
+        }
+        .brand-title .accent {
+            color: var(--accent-red);
+        }
+        .brand-tagline {
+            font-size: 0.62rem;
+            color: var(--text-muted);
+            letter-spacing: 2.5px;
+            text-transform: uppercase;
+            font-weight: 600;
+        }
+
+        .nav-links {
+            display: flex;
+            gap: 2rem;
+            align-items: center;
+        }
+        .nav-links a {
+            color: var(--rich-brown);
+            font-weight: 600;
+            font-size: 0.88rem;
+            letter-spacing: 0.02em;
+            position: relative;
+        }
+        .nav-links a::after {
+            content: '';
+            position: absolute;
+            bottom: -3px;
+            left: 0;
+            width: 0;
+            height: 2px;
+            background: var(--warm-orange);
+            transition: width 0.3s ease;
+            border-radius: 2px;
+        }
+        .nav-links a:hover::after {
+            width: 100%;
+        }
+        .nav-links .order-btn {
+            background: var(--warm-orange);
+            color: #fff;
+            padding: 0.45rem 1.1rem;
+            border-radius: 50px;
+            font-weight: 700;
+            font-size: 0.82rem;
+            display: inline-flex;
+            align-items: center;
+            gap: 6px;
+            transition: all 0.2s ease;
+            box-shadow: 0 4px 12px rgba(232, 146, 47, 0.3);
+        }
+        .nav-links .order-btn:hover {
+            background: #d17e22;
+            transform: translateY(-1px);
+            box-shadow: 0 6px 18px rgba(232, 146, 47, 0.4);
+        }
+        .nav-links .order-btn::after { display: none; }
+
+        .hamburger {
+            display: none;
+            background: none;
+            border: none;
+            cursor: pointer;
+            padding: 6px;
+            color: var(--dark-brown);
+        }
+
+        /* --- Hero Section --- */
+        .hero {
+            position: relative;
+            min-height: 480px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            text-align: center;
+            padding: 4rem 6%;
+            overflow: hidden;
+        }
+        .hero-bg {
+            position: absolute;
+            inset: 0;
+            background: linear-gradient(135deg, rgba(45, 24, 16, 0.82), rgba(74, 44, 26, 0.75)), url('./hero-banner.jpg');
+            background-size: cover;
+            background-position: center;
+            z-index: 0;
+        }
+        .hero-content {
+            position: relative;
+            z-index: 1;
+            max-width: 700px;
+        }
+        .hero-badge {
+            display: inline-flex;
+            align-items: center;
+            gap: 6px;
+            background: rgba(232, 146, 47, 0.2);
+            border: 1px solid rgba(232, 146, 47, 0.4);
+            padding: 0.3rem 0.9rem;
+            border-radius: 50px;
+            font-size: 0.72rem;
+            font-weight: 700;
+            color: var(--warm-orange);
+            letter-spacing: 1.5px;
+            text-transform: uppercase;
+            margin-bottom: 1.2rem;
+        }
+        .hero h1 {
+            font-family: 'Playfair Display', serif;
+            font-size: clamp(2rem, 6vw, 3.2rem);
+            font-weight: 800;
+            color: #FFFFFF;
+            line-height: 1.15;
+            margin-bottom: 0.8rem;
+        }
+        .hero h1 .warm {
+            color: var(--warm-orange);
+        }
+        .hero p {
+            color: rgba(255, 255, 255, 0.85);
+            font-size: 1.05rem;
+            max-width: 520px;
+            margin: 0 auto 1.8rem;
+        }
+        .hero-actions {
+            display: flex;
+            justify-content: center;
+            gap: 1rem;
+            flex-wrap: wrap;
+        }
+        .hero-cta {
+            background: var(--warm-orange);
+            color: #fff;
+            padding: 0.65rem 1.6rem;
+            border-radius: 50px;
+            font-weight: 700;
+            font-size: 0.92rem;
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+            box-shadow: 0 6px 20px rgba(232, 146, 47, 0.4);
+            transition: all 0.2s ease;
+        }
+        .hero-cta:hover {
+            background: #d17e22;
+            transform: translateY(-2px);
+            box-shadow: 0 8px 25px rgba(232, 146, 47, 0.5);
+        }
+        .hero-cta-secondary {
+            background: rgba(255, 255, 255, 0.12);
+            color: #fff;
+            border: 1px solid rgba(255, 255, 255, 0.25);
+            padding: 0.65rem 1.6rem;
+            border-radius: 50px;
+            font-weight: 600;
+            font-size: 0.92rem;
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+            transition: all 0.2s ease;
+        }
+        .hero-cta-secondary:hover {
+            background: rgba(255, 255, 255, 0.2);
+        }
+
+        /* --- Menu Section --- */
+        .menu-section {
+            padding: 4rem 6%;
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+        .section-header {
+            text-align: center;
+            margin-bottom: 3rem;
+        }
+        .section-badge {
+            display: inline-flex;
+            align-items: center;
+            gap: 6px;
+            background: rgba(232, 146, 47, 0.1);
+            border: 1px solid rgba(232, 146, 47, 0.25);
+            padding: 0.28rem 0.8rem;
+            border-radius: 50px;
+            font-size: 0.7rem;
+            font-weight: 700;
+            color: var(--warm-orange);
+            letter-spacing: 1.5px;
+            text-transform: uppercase;
+            margin-bottom: 0.8rem;
+        }
+        .section-header h2 {
+            font-family: 'Playfair Display', serif;
+            font-size: clamp(1.6rem, 4vw, 2.4rem);
+            font-weight: 800;
+            color: var(--dark-brown);
+            margin-top: 0.5rem;
+        }
+        .section-header h2 .accent {
+            color: var(--accent-red);
+        }
+        .section-header p {
+            color: var(--text-muted);
+            font-size: 0.95rem;
+            margin-top: 0.6rem;
+            max-width: 550px;
+            margin-left: auto;
+            margin-right: auto;
+        }
+
+        .menu-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 1.5rem;
+        }
+
+        .menu-card {
+            background: #fff;
+            border-radius: var(--radius-lg);
+            overflow: hidden;
+            box-shadow: 0 4px 20px rgba(45, 24, 16, 0.08);
+            border: 1px solid rgba(45, 24, 16, 0.06);
+            transition: all 0.3s ease;
+        }
+        .menu-card:hover {
+            transform: translateY(-4px);
+            box-shadow: 0 12px 35px rgba(45, 24, 16, 0.12);
+        }
+        .menu-card-icon {
+            width: 100%;
+            height: 180px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 3.5rem;
+        }
+        .menu-card-body {
+            padding: 1.4rem;
+        }
+        .menu-card-body h3 {
+            font-family: 'Playfair Display', serif;
+            font-size: 1.15rem;
+            font-weight: 700;
+            color: var(--dark-brown);
+            margin-bottom: 0.4rem;
+        }
+        .menu-card-body p {
+            color: var(--text-muted);
+            font-size: 0.85rem;
+            line-height: 1.55;
+            margin-bottom: 1rem;
+        }
+        .menu-card-items {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 0.4rem;
+            margin-bottom: 1rem;
+        }
+        .menu-tag {
+            background: var(--cream-soft);
+            color: var(--rich-brown);
+            padding: 0.2rem 0.6rem;
+            border-radius: 50px;
+            font-size: 0.72rem;
+            font-weight: 600;
+            border: 1px solid rgba(45, 24, 16, 0.08);
+        }
+        .menu-card-order {
+            display: inline-flex;
+            align-items: center;
+            gap: 6px;
+            background: var(--warm-orange);
+            color: #fff;
+            padding: 0.4rem 1rem;
+            border-radius: 50px;
+            font-weight: 700;
+            font-size: 0.78rem;
+            transition: all 0.2s ease;
+            width: 100%;
+            justify-content: center;
+        }
+        .menu-card-order:hover {
+            background: #d17e22;
+            transform: translateY(-1px);
+        }
+
+        /* --- Spring Rolls Pricing Feature Card --- */
+        .pricing-feature {
+            grid-column: 1 / -1;
+            background: linear-gradient(135deg, var(--dark-brown), var(--rich-brown));
+            color: #fff;
+            border-radius: var(--radius-lg);
+            overflow: hidden;
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 0;
+            box-shadow: 0 8px 30px rgba(45, 24, 16, 0.2);
+        }
+        .pricing-feature-img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            min-height: 350px;
+        }
+        .pricing-feature-content {
+            padding: 2.5rem;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+        }
+        .pricing-feature-content h3 {
+            font-family: 'Playfair Display', serif;
+            font-size: 1.6rem;
+            font-weight: 800;
+            margin-bottom: 0.4rem;
+        }
+        .pricing-feature-content .subtitle {
+            color: var(--warm-orange);
+            font-size: 0.82rem;
+            font-weight: 600;
+            margin-bottom: 1.2rem;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+        }
+        .pricing-table {
+            width: 100%;
+            border-collapse: collapse;
+            font-size: 0.82rem;
+            margin-bottom: 1.2rem;
+        }
+        .pricing-table th {
+            text-align: left;
+            padding: 0.5rem 0.6rem;
+            border-bottom: 1px solid rgba(232, 146, 47, 0.3);
+            color: var(--warm-orange);
+            font-weight: 700;
+            font-size: 0.72rem;
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
+        }
+        .pricing-table td {
+            padding: 0.5rem 0.6rem;
+            border-bottom: 1px solid rgba(255, 255, 255, 0.08);
+            color: rgba(255, 255, 255, 0.9);
+        }
+        .protein-tags {
+            display: flex;
+            gap: 0.5rem;
+            margin-bottom: 1.2rem;
+        }
+        .protein-tag {
+            background: rgba(232, 146, 47, 0.15);
+            border: 1px solid rgba(232, 146, 47, 0.35);
+            color: var(--warm-orange);
+            padding: 0.25rem 0.7rem;
+            border-radius: 50px;
+            font-size: 0.72rem;
+            font-weight: 700;
+        }
+        .pricing-order-btn {
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            gap: 8px;
+            background: var(--warm-orange);
+            color: #fff;
+            padding: 0.55rem 1.4rem;
+            border-radius: 50px;
+            font-weight: 700;
+            font-size: 0.85rem;
+            transition: all 0.2s ease;
+            align-self: flex-start;
+        }
+        .pricing-order-btn:hover {
+            background: #d17e22;
+            transform: translateY(-1px);
+        }
+
+        /* --- About / Brand Story Section --- */
+        .about-section {
+            padding: 4rem 6%;
+            background: var(--dark-brown);
+            color: #fff;
+        }
+        .about-inner {
+            max-width: 1100px;
+            margin: 0 auto;
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 3rem;
+            align-items: center;
+        }
+        .about-logo-wrap {
+            display: flex;
+            justify-content: center;
+        }
+        .about-logo-wrap img {
+            max-width: 320px;
+            border-radius: 50%;
+            box-shadow: 0 12px 40px rgba(0, 0, 0, 0.3);
+            border: 4px solid rgba(232, 146, 47, 0.3);
+        }
+        .about-content h2 {
+            font-family: 'Playfair Display', serif;
+            font-size: clamp(1.5rem, 4vw, 2.2rem);
+            font-weight: 800;
+            margin-bottom: 1rem;
+        }
+        .about-content h2 .warm {
+            color: var(--warm-orange);
+        }
+        .about-content p {
+            color: rgba(255, 255, 255, 0.8);
+            font-size: 0.95rem;
+            margin-bottom: 1.5rem;
+            line-height: 1.7;
+        }
+        .about-features {
+            list-style: none;
+        }
+        .about-features li {
+            display: flex;
+            align-items: flex-start;
+            gap: 10px;
+            margin-bottom: 0.8rem;
+            font-size: 0.9rem;
+            color: rgba(255, 255, 255, 0.85);
+        }
+        .about-features li svg {
+            flex-shrink: 0;
+            margin-top: 3px;
+            color: var(--warm-orange);
+        }
+        .about-socials {
+            display: flex;
+            gap: 0.8rem;
+            margin-top: 1.5rem;
+        }
+        .about-socials a {
+            display: inline-flex;
+            align-items: center;
+            gap: 6px;
+            background: rgba(232, 146, 47, 0.15);
+            border: 1px solid rgba(232, 146, 47, 0.3);
+            color: var(--warm-orange);
+            padding: 0.4rem 0.9rem;
+            border-radius: 50px;
+            font-size: 0.78rem;
+            font-weight: 600;
+            transition: all 0.2s ease;
+        }
+        .about-socials a:hover {
+            background: rgba(232, 146, 47, 0.25);
+            transform: translateY(-1px);
+        }
+
+        /* --- Footer --- */
+        footer {
+            background: var(--dark-brown);
+            border-top: 1px solid rgba(232, 146, 47, 0.15);
+            padding: 2.5rem 6% 2rem;
+            text-align: center;
+        }
+        .footer-brand {
+            font-family: 'Playfair Display', serif;
+            font-size: 1.4rem;
+            font-weight: 800;
+            color: var(--warm-orange);
+            letter-spacing: 2px;
+            margin-bottom: 0.3rem;
+        }
+        .footer-tagline {
+            color: rgba(255, 255, 255, 0.5);
+            font-size: 0.82rem;
+            margin-bottom: 1.2rem;
+        }
+        .footer-contacts {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            gap: 1.5rem;
+            flex-wrap: wrap;
+            font-size: 0.88rem;
+            margin-bottom: 1.2rem;
+        }
+        .footer-contacts a {
+            display: inline-flex;
+            align-items: center;
+            gap: 6px;
+            font-weight: 600;
+        }
+        .footer-contacts .divider {
+            opacity: 0.25;
+            color: var(--warm-orange);
+        }
+        .footer-credit {
+            color: rgba(255, 255, 255, 0.4);
+            font-size: 0.78rem;
+        }
+        .footer-credit a {
+            color: var(--warm-orange);
+            font-weight: 700;
+        }
+
+        /* --- Floating WhatsApp Bubble --- */
+        .floating-wa {
+            position: fixed;
+            bottom: 24px;
+            right: 24px;
+            z-index: 999;
+            width: 52px;
+            height: 52px;
+            border-radius: 50%;
+            background: var(--green-wa);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            box-shadow: 0 4px 18px rgba(37, 211, 102, 0.35);
+            transition: all 0.25s ease;
+        }
+        .floating-wa:hover {
+            transform: scale(1.1);
+            box-shadow: 0 6px 25px rgba(37, 211, 102, 0.5);
+        }
+        .floating-wa svg {
+            width: 26px;
+            height: 26px;
+            fill: #fff;
+        }
+
+        /* --- Mobile Drawer --- */
+        .mobile-drawer-overlay {
+            display: none;
+            position: fixed;
+            inset: 0;
+            background: rgba(0, 0, 0, 0.5);
+            z-index: 1100;
+            opacity: 0;
+            transition: opacity 0.3s ease;
+        }
+        .mobile-drawer-overlay.active {
+            display: block;
+            opacity: 1;
+        }
+        .mobile-drawer {
+            position: fixed;
+            top: 0;
+            right: -320px;
+            width: 300px;
+            max-width: 85vw;
+            height: 100vh;
+            background: var(--cream);
+            z-index: 1200;
+            transition: right 0.35s ease;
+            display: flex;
+            flex-direction: column;
+            box-shadow: -6px 0 25px rgba(0, 0, 0, 0.15);
+        }
+        .mobile-drawer.active {
+            right: 0;
+        }
+        .drawer-header {
+            padding: 1.5rem;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            border-bottom: 1px solid rgba(45, 24, 16, 0.1);
+        }
+        .drawer-brand {
+            font-family: 'Playfair Display', serif;
+            font-weight: 800;
+            font-size: 1.1rem;
+            color: var(--dark-brown);
+        }
+        .drawer-brand .accent {
+            color: var(--accent-red);
+        }
+        .drawer-close {
+            background: none;
+            border: none;
+            font-size: 1.5rem;
+            cursor: pointer;
+            color: var(--dark-brown);
+            padding: 4px;
+        }
+        .drawer-nav {
+            padding: 1.5rem;
+            flex: 1;
+        }
+        .drawer-nav a {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 0.9rem 0;
+            font-weight: 700;
+            font-size: 1rem;
+            color: var(--dark-brown);
+            border-bottom: 1px solid rgba(45, 24, 16, 0.06);
+        }
+        .drawer-nav a svg {
+            width: 14px;
+            height: 14px;
+            opacity: 0.4;
+        }
+        .drawer-footer {
+            padding: 1.2rem 1.5rem;
+            border-top: 1px solid rgba(45, 24, 16, 0.1);
+            font-size: 0.82rem;
+        }
+        .drawer-footer a {
+            display: flex;
+            align-items: center;
+            gap: 8px;
+            margin-bottom: 0.6rem;
+            font-weight: 600;
+        }
+
+        /* --- Responsive --- */
+        @media (max-width: 768px) {
+            .nav-links { display: none; }
+            .hamburger { display: block; }
+
+            .pricing-feature {
+                grid-template-columns: 1fr;
+            }
+            .pricing-feature-img {
+                min-height: 220px;
+            }
+            .pricing-feature-content {
+                padding: 1.5rem;
+            }
+
+            .about-inner {
+                grid-template-columns: 1fr;
+                text-align: center;
+            }
+            .about-features li {
+                justify-content: center;
+            }
+            .about-socials {
+                justify-content: center;
+            }
+            .about-logo-wrap img {
+                max-width: 220px;
+            }
+
+            .hero {
+                min-height: 400px;
+                padding: 3rem 6%;
+            }
+            .brand-logo-img {
+                width: 40px;
+                height: 40px;
+            }
+            .brand-title {
+                font-size: 1.15rem;
+            }
+
+            .top-bar .location {
+                display: none;
+            }
+            .top-bar-inner {
+                justify-content: center;
+            }
+        }
+
+        @media (max-width: 480px) {
+            .menu-grid {
+                grid-template-columns: 1fr;
+            }
+            .hero h1 {
+                font-size: 1.7rem;
+            }
+            .hero-actions {
+                flex-direction: column;
+                align-items: center;
+            }
+        }
+
+        /* --- Animations --- */
+        @keyframes fadeInUp {
+            from { opacity: 0; transform: translateY(20px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+        .fade-in-up {
+            animation: fadeInUp 0.6s ease forwards;
+        }
+    </style>
+</head>
+<body>
+
+    <!-- Top Utility Bar -->
+    <div class="top-bar">
+        <div class="top-bar-inner">
+            <span class="location" style="display: inline-flex; align-items: center; gap: 5px;">
+                <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"></path><circle cx="12" cy="10" r="3"></circle></svg>
+                Accra, Ghana
+            </span>
+            <div style="display: flex; align-items: center; gap: 1rem;">
+                <a href="tel:0539332660" class="top-bar-contact" aria-label="Call 053 933 2660">
+                    <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72 12.84 12.84 0 0 0 .7 2.81 2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45 12.84 12.84 0 0 0 2.81.7A2 2 0 0 1 22 16.92z"></path></svg>
+                </a>
+                <a href="https://wa.me/233555950314?text=Hello%20Susan's%20Pastries,%20I%20would%20like%20to%20place%20an%20order." target="_blank" rel="noopener" class="top-bar-contact" aria-label="WhatsApp 055 595 0314">
+                    <svg width="13" height="13" viewBox="0 0 24 24" fill="currentColor"><path d="M12.04 2c-5.46 0-9.91 4.45-9.91 9.91 0 1.75.46 3.45 1.32 4.95L2.05 22l5.25-1.38c1.45.79 3.08 1.21 4.74 1.21 5.46 0 9.91-4.45 9.91-9.91 0-2.65-1.03-5.14-2.9-7.01A9.816 9.816 0 0 0 12.04 2m.01 1.67c2.2 0 4.26.86 5.82 2.42a8.225 8.225 0 0 1 2.41 5.83c0 4.54-3.7 8.24-8.24 8.24-1.48 0-2.93-.4-4.2-1.15l-.3-.18-3.12.82.83-3.04-.2-.31a8.19 8.19 0 0 1-1.26-4.38c0-4.54 3.7-8.24 8.24-8.24M8.53 7.33c-.16 0-.42.06-.64.3-.22.24-.85.83-.85 2.02 0 1.19.87 2.34.99 2.5.12.16 1.7 2.6 4.12 3.65.58.25 1.03.4 1.38.51.58.18 1.11.16 1.53.1.47-.07 1.44-.59 1.64-1.16.2-.57.2-1.06.14-1.16-.06-.1-.22-.16-.46-.28s-1.44-.71-1.66-.79-.38-.12-.54.12c-.16.24-.63.79-.77.95-.14.16-.28.18-.52.06s-1.02-.38-1.94-1.2c-.72-.64-1.2-1.43-1.34-1.67-.14-.24-.02-.37.1-.49.11-.11.24-.28.36-.42.12-.14.16-.24.24-.4.08-.16.04-.3-.02-.42s-.54-1.31-.74-1.79c-.2-.48-.4-.41-.55-.42l-.47-.01z"/></svg>
+                </a>
+            </div>
+        </div>
+    </div>
+
+    <!-- Mobile Drawer Overlay -->
+    <div class="mobile-drawer-overlay" id="mobileDrawerOverlay" onclick="closeMobileMenu()"></div>
+
+    <!-- Mobile Drawer -->
+    <div class="mobile-drawer" id="mobileDrawer">
+        <div class="drawer-header">
+            <div>
+                <div class="drawer-brand">Susan's <span class="accent">Pastries</span></div>
+                <div style="font-size: 0.6rem; color: var(--text-muted); letter-spacing: 2px; text-transform: uppercase; font-weight: 600;">Tasty, Tasty Treats</div>
+            </div>
+            <button class="drawer-close" onclick="closeMobileMenu()" aria-label="Close menu">&times;</button>
+        </div>
+        <div class="drawer-nav">
+            <a href="#menu" onclick="closeMobileMenu()">
+                <span>Our Menu</span>
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="9 18 15 12 9 6"></polyline></svg>
+            </a>
+            <a href="#about" onclick="closeMobileMenu()">
+                <span>Our Story</span>
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="9 18 15 12 9 6"></polyline></svg>
+            </a>
+            <a href="https://wa.me/233555950314?text=Hello%20Susan's%20Pastries,%20I%20would%20like%20to%20place%20an%20order." target="_blank" rel="noopener" onclick="closeMobileMenu()">
+                <span>Order Now</span>
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="9 18 15 12 9 6"></polyline></svg>
+            </a>
+            <a href="https://digital.koneacademy.io" target="_blank" onclick="closeMobileMenu()">
+                <span>Kone Digital Studio</span>
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="9 18 15 12 9 6"></polyline></svg>
+            </a>
+        </div>
+        <div class="drawer-footer">
+            <div style="display: flex; align-items: center; gap: 8px; margin-bottom: 0.5rem;">
+                <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" style="color: var(--text-muted); flex-shrink: 0;"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"></path><circle cx="12" cy="10" r="3"></circle></svg>
+                <span style="color: var(--text-muted);">Accra, Ghana</span>
+            </div>
+            <a href="tel:0539332660" style="color: var(--warm-orange);" aria-label="Call 053 933 2660">
+                <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" style="color: var(--warm-orange); flex-shrink: 0;"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72 12.84 12.84 0 0 0 .7 2.81 2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45 12.84 12.84 0 0 0 2.81.7A2 2 0 0 1 22 16.92z"></path></svg>
+                053 933 2660
+            </a>
+            <a href="https://wa.me/233555950314?text=Hello%20Susan's%20Pastries,%20I%20would%20like%20to%20place%20an%20order." target="_blank" rel="noopener" style="color: var(--green-wa);" aria-label="WhatsApp 055 595 0314">
+                <svg width="14" height="14" viewBox="0 0 24 24" fill="currentColor" style="color: var(--green-wa); flex-shrink: 0;"><path d="M12.04 2c-5.46 0-9.91 4.45-9.91 9.91 0 1.75.46 3.45 1.32 4.95L2.05 22l5.25-1.38c1.45.79 3.08 1.21 4.74 1.21 5.46 0 9.91-4.45 9.91-9.91 0-2.65-1.03-5.14-2.9-7.01A9.816 9.816 0 0 0 12.04 2m.01 1.67c2.2 0 4.26.86 5.82 2.42a8.225 8.225 0 0 1 2.41 5.83c0 4.54-3.7 8.24-8.24 8.24-1.48 0-2.93-.4-4.2-1.15l-.3-.18-3.12.82.83-3.04-.2-.31a8.19 8.19 0 0 1-1.26-4.38c0-4.54 3.7-8.24 8.24-8.24M8.53 7.33c-.16 0-.42.06-.64.3-.22.24-.85.83-.85 2.02 0 1.19.87 2.34.99 2.5.12.16 1.7 2.6 4.12 3.65.58.25 1.03.4 1.38.51.58.18 1.11.16 1.53.1.47-.07 1.44-.59 1.64-1.16.2-.57.2-1.06.14-1.16-.06-.1-.22-.16-.46-.28s-1.44-.71-1.66-.79-.38-.12-.54.12c-.16.24-.63.79-.77.95-.14.16-.28.18-.52.06s-1.02-.38-1.94-1.2c-.72-.64-1.2-1.43-1.34-1.67-.14-.24-.02-.37.1-.49.11-.11.24-.28.36-.42.12-.14.16-.24.24-.4.08-.16.04-.3-.02-.42s-.54-1.31-.74-1.79c-.2-.48-.4-.41-.55-.42l-.47-.01z"/></svg>
+                055 595 0314
+            </a>
+            <div style="display: flex; align-items: center; gap: 8px; margin-top: 0.3rem;">
+                <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" style="color: var(--warm-orange); flex-shrink: 0;"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"></polygon></svg>
+                <span style="color: var(--text-muted); font-size: 0.78rem;">Delivery Available</span>
+            </div>
+        </div>
+    </div>
+
+    <!-- Navigation -->
+    <nav>
+        <a href="#" class="brand-logo">
+            <img src="./logo.jpg" alt="Susan's Pastries Logo" class="brand-logo-img" />
+            <div class="brand-text">
+                <span class="brand-title">Susan's <span class="accent">Pastries</span></span>
+                <span class="brand-tagline">tasty, tasty treats</span>
+            </div>
+        </a>
+        <div class="nav-links">
+            <a href="#menu">Menu</a>
+            <a href="#about">Our Story</a>
+            <a href="https://wa.me/233555950314?text=Hello%20Susan's%20Pastries,%20I%20would%20like%20to%20place%20an%20order." target="_blank" rel="noopener" class="order-btn">
+                <svg width="14" height="14" viewBox="0 0 24 24" fill="currentColor"><path d="M12.04 2c-5.46 0-9.91 4.45-9.91 9.91 0 1.75.46 3.45 1.32 4.95L2.05 22l5.25-1.38c1.45.79 3.08 1.21 4.74 1.21 5.46 0 9.91-4.45 9.91-9.91 0-2.65-1.03-5.14-2.9-7.01A9.816 9.816 0 0 0 12.04 2m.01 1.67c2.2 0 4.26.86 5.82 2.42a8.225 8.225 0 0 1 2.41 5.83c0 4.54-3.7 8.24-8.24 8.24-1.48 0-2.93-.4-4.2-1.15l-.3-.18-3.12.82.83-3.04-.2-.31a8.19 8.19 0 0 1-1.26-4.38c0-4.54 3.7-8.24 8.24-8.24M8.53 7.33c-.16 0-.42.06-.64.3-.22.24-.85.83-.85 2.02 0 1.19.87 2.34.99 2.5.12.16 1.7 2.6 4.12 3.65.58.25 1.03.4 1.38.51.58.18 1.11.16 1.53.1.47-.07 1.44-.59 1.64-1.16.2-.57.2-1.06.14-1.16-.06-.1-.22-.16-.46-.28s-1.44-.71-1.66-.79-.38-.12-.54.12c-.16.24-.63.79-.77.95-.14.16-.28.18-.52.06s-1.02-.38-1.94-1.2c-.72-.64-1.2-1.43-1.34-1.67-.14-.24-.02-.37.1-.49.11-.11.24-.28.36-.42.12-.14.16-.24.24-.4.08-.16.04-.3-.02-.42s-.54-1.31-.74-1.79c-.2-.48-.4-.41-.55-.42l-.47-.01z"/></svg>
+                Order Now
+            </a>
+        </div>
+        <button class="hamburger" onclick="openMobileMenu()" aria-label="Open menu">
+            <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><line x1="3" y1="6" x2="21" y2="6"></line><line x1="3" y1="12" x2="21" y2="12"></line><line x1="3" y1="18" x2="21" y2="18"></line></svg>
+        </button>
+    </nav>
+
+    <!-- Hero Section -->
+    <section class="hero">
+        <div class="hero-bg"></div>
+        <div class="hero-content fade-in-up">
+            <div class="hero-badge">
+                <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"></polygon></svg>
+                ACCRA'S ARTISANAL BAKERY
+            </div>
+            <h1>Hot &amp; Delicious<br><span class="warm">Pastries, Cakes</span><br>&amp; Fresh Juices</h1>
+            <p>Handcrafted spring rolls, samosas, custom celebration cakes &amp; refreshing fruit juices — made fresh daily in Accra.</p>
+            <div class="hero-actions">
+                <a href="https://wa.me/233555950314?text=Hello%20Susan's%20Pastries,%20I%20would%20like%20to%20place%20an%20order." target="_blank" rel="noopener" class="hero-cta">
+                    <svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor"><path d="M12.04 2c-5.46 0-9.91 4.45-9.91 9.91 0 1.75.46 3.45 1.32 4.95L2.05 22l5.25-1.38c1.45.79 3.08 1.21 4.74 1.21 5.46 0 9.91-4.45 9.91-9.91 0-2.65-1.03-5.14-2.9-7.01A9.816 9.816 0 0 0 12.04 2m.01 1.67c2.2 0 4.26.86 5.82 2.42a8.225 8.225 0 0 1 2.41 5.83c0 4.54-3.7 8.24-8.24 8.24-1.48 0-2.93-.4-4.2-1.15l-.3-.18-3.12.82.83-3.04-.2-.31a8.19 8.19 0 0 1-1.26-4.38c0-4.54 3.7-8.24 8.24-8.24M8.53 7.33c-.16 0-.42.06-.64.3-.22.24-.85.83-.85 2.02 0 1.19.87 2.34.99 2.5.12.16 1.7 2.6 4.12 3.65.58.25 1.03.4 1.38.51.58.18 1.11.16 1.53.1.47-.07 1.44-.59 1.64-1.16.2-.57.2-1.06.14-1.16-.06-.1-.22-.16-.46-.28s-1.44-.71-1.66-.79-.38-.12-.54.12c-.16.24-.63.79-.77.95-.14.16-.28.18-.52.06s-1.02-.38-1.94-1.2c-.72-.64-1.2-1.43-1.34-1.67-.14-.24-.02-.37.1-.49.11-.11.24-.28.36-.42.12-.14.16-.24.24-.4.08-.16.04-.3-.02-.42s-.54-1.31-.74-1.79c-.2-.48-.4-.41-.55-.42l-.47-.01z"/></svg>
+                    Order on WhatsApp
+                </a>
+                <a href="#menu" class="hero-cta-secondary">
+                    <span>View Menu</span>
+                    <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="6 9 12 15 18 9"></polyline></svg>
+                </a>
+            </div>
+        </div>
+    </section>
+
+    <!-- Menu Section -->
+    <section class="menu-section" id="menu">
+        <div class="section-header">
+            <div class="section-badge">
+                <svg width="10" height="10" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"></polygon></svg>
+                OUR MENU
+            </div>
+            <h2>Freshly Made <span class="accent">Every Day</span></h2>
+            <p>From savoury finger foods to custom celebration cakes and refreshing fruit juices — everything is handcrafted with love.</p>
+        </div>
+
+        <div class="menu-grid">
+
+            <!-- Featured: Spring Rolls & Samosas Pricing -->
+            <div class="pricing-feature">
+                <img src="./menu-springrolls.jpg" alt="Susan's Pastries Spring Rolls & Samosas Menu" class="pricing-feature-img" />
+                <div class="pricing-feature-content">
+                    <h3>Spring Rolls &amp; Samosas</h3>
+                    <div class="subtitle">Hot &amp; Delicious — Frozen or Freshly Fried</div>
+
+                    <table class="pricing-table">
+                        <thead>
+                            <tr>
+                                <th>Package (50 pcs)</th>
+                                <th>Frozen</th>
+                                <th>Fried</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <td>Veggies Only</td>
+                                <td>GH₵ 120</td>
+                                <td>GH₵ 150</td>
+                            </tr>
+                            <tr>
+                                <td>Protein + Veggies</td>
+                                <td>GH₵ 230</td>
+                                <td>GH₵ 260</td>
+                            </tr>
+                            <tr>
+                                <td>Protein Only</td>
+                                <td>GH₵ 300</td>
+                                <td>GH₵ 330</td>
+                            </tr>
+                        </tbody>
+                    </table>
+
+                    <div class="protein-tags">
+                        <span class="protein-tag">🐄 Beef</span>
+                        <span class="protein-tag">🐔 Chicken</span>
+                    </div>
+
+                    <a href="https://wa.me/233555950314?text=Hello%20Susan's%20Pastries,%20I%20would%20like%20to%20order%20spring%20rolls%20%2F%20samosas.%20Here%20are%20my%20details:" target="_blank" rel="noopener" class="pricing-order-btn">
+                        <svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor"><path d="M12.04 2c-5.46 0-9.91 4.45-9.91 9.91 0 1.75.46 3.45 1.32 4.95L2.05 22l5.25-1.38c1.45.79 3.08 1.21 4.74 1.21 5.46 0 9.91-4.45 9.91-9.91 0-2.65-1.03-5.14-2.9-7.01A9.816 9.816 0 0 0 12.04 2m.01 1.67c2.2 0 4.26.86 5.82 2.42a8.225 8.225 0 0 1 2.41 5.83c0 4.54-3.7 8.24-8.24 8.24-1.48 0-2.93-.4-4.2-1.15l-.3-.18-3.12.82.83-3.04-.2-.31a8.19 8.19 0 0 1-1.26-4.38c0-4.54 3.7-8.24 8.24-8.24M8.53 7.33c-.16 0-.42.06-.64.3-.22.24-.85.83-.85 2.02 0 1.19.87 2.34.99 2.5.12.16 1.7 2.6 4.12 3.65.58.25 1.03.4 1.38.51.58.18 1.11.16 1.53.1.47-.07 1.44-.59 1.64-1.16.2-.57.2-1.06.14-1.16-.06-.1-.22-.16-.46-.28s-1.44-.71-1.66-.79-.38-.12-.54.12c-.16.24-.63.79-.77.95-.14.16-.28.18-.52.06s-1.02-.38-1.94-1.2c-.72-.64-1.2-1.43-1.34-1.67-.14-.24-.02-.37.1-.49.11-.11.24-.28.36-.42.12-.14.16-.24.24-.4.08-.16.04-.3-.02-.42s-.54-1.31-.74-1.79c-.2-.48-.4-.41-.55-.42l-.47-.01z"/></svg>
+                        Order Spring Rolls
+                    </a>
+                </div>
+            </div>
+
+            <!-- Bakery & Snacks -->
+            <div class="menu-card">
+                <div class="menu-card-icon" style="background: linear-gradient(135deg, #FFF0DB, #FFE4C4);">🥧</div>
+                <div class="menu-card-body">
+                    <h3>Bakery &amp; Snacks</h3>
+                    <p>Freshly baked meat pies, golden doughnuts, crunchy cookies, and perfectly fried &amp; baked chips.</p>
+                    <div class="menu-card-items">
+                        <span class="menu-tag">Meat Pies</span>
+                        <span class="menu-tag">Doughnuts</span>
+                        <span class="menu-tag">Cookies</span>
+                        <span class="menu-tag">Fried Chips</span>
+                        <span class="menu-tag">Baked Chips</span>
+                    </div>
+                    <a href="https://wa.me/233555950314?text=Hello%20Susan's%20Pastries,%20I%20would%20like%20to%20order%20some%20bakery%20items%20(pies%2C%20doughnuts%2C%20cookies%2C%20chips)." target="_blank" rel="noopener" class="menu-card-order">
+                        <svg width="14" height="14" viewBox="0 0 24 24" fill="currentColor"><path d="M12.04 2c-5.46 0-9.91 4.45-9.91 9.91 0 1.75.46 3.45 1.32 4.95L2.05 22l5.25-1.38c1.45.79 3.08 1.21 4.74 1.21 5.46 0 9.91-4.45 9.91-9.91 0-2.65-1.03-5.14-2.9-7.01A9.816 9.816 0 0 0 12.04 2m.01 1.67c2.2 0 4.26.86 5.82 2.42a8.225 8.225 0 0 1 2.41 5.83c0 4.54-3.7 8.24-8.24 8.24-1.48 0-2.93-.4-4.2-1.15l-.3-.18-3.12.82.83-3.04-.2-.31a8.19 8.19 0 0 1-1.26-4.38c0-4.54 3.7-8.24 8.24-8.24M8.53 7.33c-.16 0-.42.06-.64.3-.22.24-.85.83-.85 2.02 0 1.19.87 2.34.99 2.5.12.16 1.7 2.6 4.12 3.65.58.25 1.03.4 1.38.51.58.18 1.11.16 1.53.1.47-.07 1.44-.59 1.64-1.16.2-.57.2-1.06.14-1.16-.06-.1-.22-.16-.46-.28s-1.44-.71-1.66-.79-.38-.12-.54.12c-.16.24-.63.79-.77.95-.14.16-.28.18-.52.06s-1.02-.38-1.94-1.2c-.72-.64-1.2-1.43-1.34-1.67-.14-.24-.02-.37.1-.49.11-.11.24-.28.36-.42.12-.14.16-.24.24-.4.08-.16.04-.3-.02-.42s-.54-1.31-.74-1.79c-.2-.48-.4-.41-.55-.42l-.47-.01z"/></svg>
+                        Order Now
+                    </a>
+                </div>
+            </div>
+
+            <!-- Custom Cakes -->
+            <div class="menu-card">
+                <div class="menu-card-icon" style="background: linear-gradient(135deg, #FFE4EC, #FFD0DF);">🎂</div>
+                <div class="menu-card-body">
+                    <h3>Custom Celebration Cakes</h3>
+                    <p>Beautifully designed custom cakes for birthdays, weddings, anniversaries, engagements &amp; special occasions.</p>
+                    <div class="menu-card-items">
+                        <span class="menu-tag">Birthdays</span>
+                        <span class="menu-tag">Weddings</span>
+                        <span class="menu-tag">Anniversaries</span>
+                        <span class="menu-tag">Engagements</span>
+                    </div>
+                    <a href="https://wa.me/233555950314?text=Hello%20Susan's%20Pastries,%20I%20would%20like%20to%20order%20a%20custom%20cake%20for%20my%20event.%20Details:" target="_blank" rel="noopener" class="menu-card-order">
+                        <svg width="14" height="14" viewBox="0 0 24 24" fill="currentColor"><path d="M12.04 2c-5.46 0-9.91 4.45-9.91 9.91 0 1.75.46 3.45 1.32 4.95L2.05 22l5.25-1.38c1.45.79 3.08 1.21 4.74 1.21 5.46 0 9.91-4.45 9.91-9.91 0-2.65-1.03-5.14-2.9-7.01A9.816 9.816 0 0 0 12.04 2m.01 1.67c2.2 0 4.26.86 5.82 2.42a8.225 8.225 0 0 1 2.41 5.83c0 4.54-3.7 8.24-8.24 8.24-1.48 0-2.93-.4-4.2-1.15l-.3-.18-3.12.82.83-3.04-.2-.31a8.19 8.19 0 0 1-1.26-4.38c0-4.54 3.7-8.24 8.24-8.24M8.53 7.33c-.16 0-.42.06-.64.3-.22.24-.85.83-.85 2.02 0 1.19.87 2.34.99 2.5.12.16 1.7 2.6 4.12 3.65.58.25 1.03.4 1.38.51.58.18 1.11.16 1.53.1.47-.07 1.44-.59 1.64-1.16.2-.57.2-1.06.14-1.16-.06-.1-.22-.16-.46-.28s-1.44-.71-1.66-.79-.38-.12-.54.12c-.16.24-.63.79-.77.95-.14.16-.28.18-.52.06s-1.02-.38-1.94-1.2c-.72-.64-1.2-1.43-1.34-1.67-.14-.24-.02-.37.1-.49.11-.11.24-.28.36-.42.12-.14.16-.24.24-.4.08-.16.04-.3-.02-.42s-.54-1.31-.74-1.79c-.2-.48-.4-.41-.55-.42l-.47-.01z"/></svg>
+                        Order Custom Cake
+                    </a>
+                </div>
+            </div>
+
+            <!-- Fresh Juices & Drinks -->
+            <div class="menu-card">
+                <div class="menu-card-icon" style="background: linear-gradient(135deg, #E0F8E6, #C8F0D4);">🍹</div>
+                <div class="menu-card-body">
+                    <h3>Fresh Fruit Juices &amp; Drinks</h3>
+                    <p>Refreshing natural fruit juices — pineapple, watermelon, citrus blends &amp; tropical mixes made from fresh Ghanaian fruits.</p>
+                    <div class="menu-card-items">
+                        <span class="menu-tag">Pineapple</span>
+                        <span class="menu-tag">Watermelon</span>
+                        <span class="menu-tag">Citrus Blends</span>
+                        <span class="menu-tag">Tropical Mix</span>
+                    </div>
+                    <a href="https://wa.me/233555950314?text=Hello%20Susan's%20Pastries,%20I%20would%20like%20to%20order%20some%20fresh%20fruit%20juices." target="_blank" rel="noopener" class="menu-card-order">
+                        <svg width="14" height="14" viewBox="0 0 24 24" fill="currentColor"><path d="M12.04 2c-5.46 0-9.91 4.45-9.91 9.91 0 1.75.46 3.45 1.32 4.95L2.05 22l5.25-1.38c1.45.79 3.08 1.21 4.74 1.21 5.46 0 9.91-4.45 9.91-9.91 0-2.65-1.03-5.14-2.9-7.01A9.816 9.816 0 0 0 12.04 2m.01 1.67c2.2 0 4.26.86 5.82 2.42a8.225 8.225 0 0 1 2.41 5.83c0 4.54-3.7 8.24-8.24 8.24-1.48 0-2.93-.4-4.2-1.15l-.3-.18-3.12.82.83-3.04-.2-.31a8.19 8.19 0 0 1-1.26-4.38c0-4.54 3.7-8.24 8.24-8.24M8.53 7.33c-.16 0-.42.06-.64.3-.22.24-.85.83-.85 2.02 0 1.19.87 2.34.99 2.5.12.16 1.7 2.6 4.12 3.65.58.25 1.03.4 1.38.51.58.18 1.11.16 1.53.1.47-.07 1.44-.59 1.64-1.16.2-.57.2-1.06.14-1.16-.06-.1-.22-.16-.46-.28s-1.44-.71-1.66-.79-.38-.12-.54.12c-.16.24-.63.79-.77.95-.14.16-.28.18-.52.06s-1.02-.38-1.94-1.2c-.72-.64-1.2-1.43-1.34-1.67-.14-.24-.02-.37.1-.49.11-.11.24-.28.36-.42.12-.14.16-.24.24-.4.08-.16.04-.3-.02-.42s-.54-1.31-.74-1.79c-.2-.48-.4-.41-.55-.42l-.47-.01z"/></svg>
+                        Order Juices
+                    </a>
+                </div>
+            </div>
+
+        </div>
+    </section>
+
+    <!-- About / Brand Story Section -->
+    <section class="about-section" id="about">
+        <div class="about-inner">
+            <div class="about-logo-wrap">
+                <img src="./logo.jpg" alt="Susan's Pastries & Drinks Logo" />
+            </div>
+            <div class="about-content">
+                <h2>Made with Love in <span class="warm">Accra</span></h2>
+                <p>
+                    Susan's Pastries & Drinks was born out of a passion for creating tasty, homemade treats that bring people together. From golden, crispy spring rolls to beautifully decorated celebration cakes and refreshing natural fruit juices — every item is handcrafted with care using the freshest local ingredients.
+                </p>
+                <ul class="about-features">
+                    <li>
+                        <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"></polygon></svg>
+                        <span>Fresh Ghanaian Ingredients — Locally Sourced Daily</span>
+                    </li>
+                    <li>
+                        <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"></polygon></svg>
+                        <span>Bulk Orders for Events — Weddings, Birthdays &amp; Corporate</span>
+                    </li>
+                    <li>
+                        <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"></polygon></svg>
+                        <span>Frozen &amp; Fried Options — Convenient for Every Occasion</span>
+                    </li>
+                    <li>
+                        <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"></polygon></svg>
+                        <span>Delivery Available Across Accra — At a Small Fee</span>
+                    </li>
+                </ul>
+                <div class="about-socials">
+                    <a href="https://instagram.com/susanspastriesanddrinks" target="_blank" rel="noopener">
+                        <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="2" y="2" width="20" height="20" rx="5" ry="5"></rect><path d="M16 11.37A4 4 0 1 1 12.63 8 4 4 0 0 1 16 11.37z"></path><line x1="17.5" y1="6.5" x2="17.51" y2="6.5"></line></svg>
+                        Instagram
+                    </a>
+                    <a href="https://tiktok.com/@susanspastriesanddrinks" target="_blank" rel="noopener">
+                        <svg width="14" height="14" viewBox="0 0 24 24" fill="currentColor"><path d="M19.59 6.69a4.83 4.83 0 0 1-3.77-4.25V2h-3.45v13.67a2.89 2.89 0 0 1-2.88 2.5 2.89 2.89 0 0 1 0-5.78 2.92 2.92 0 0 1 .88.13v-3.5a6.37 6.37 0 0 0-.88-.07 6.26 6.26 0 0 0 0 12.52 6.27 6.27 0 0 0 6.26-6.27V8.55a8.16 8.16 0 0 0 3.84.96V6.09a4.84 4.84 0 0 1-.01.6z"/></svg>
+                        TikTok
+                    </a>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer>
+        <div class="footer-brand">SUSAN'S PASTRIES</div>
+        <div class="footer-tagline">Tasty, Tasty Treats — Accra, Ghana</div>
+        <div class="footer-contacts">
+            <a href="tel:0539332660" style="color: var(--warm-orange);" aria-label="Call 053 933 2660">
+                <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72 12.84 12.84 0 0 0 .7 2.81 2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45 12.84 12.84 0 0 0 2.81.7A2 2 0 0 1 22 16.92z"/></svg>
+                <span>053 933 2660</span>
+            </a>
+            <span class="divider">|</span>
+            <a href="https://wa.me/233555950314?text=Hello%20Susan's%20Pastries,%20I%20would%20like%20to%20place%20an%20order." target="_blank" rel="noopener" style="color: var(--green-wa);" aria-label="WhatsApp 055 595 0314">
+                <svg width="14" height="14" viewBox="0 0 24 24" fill="currentColor"><path d="M12.04 2c-5.46 0-9.91 4.45-9.91 9.91 0 1.75.46 3.45 1.32 4.95L2.05 22l5.25-1.38c1.45.79 3.08 1.21 4.74 1.21 5.46 0 9.91-4.45 9.91-9.91 0-2.65-1.03-5.14-2.9-7.01A9.816 9.816 0 0 0 12.04 2m.01 1.67c2.2 0 4.26.86 5.82 2.42a8.225 8.225 0 0 1 2.41 5.83c0 4.54-3.7 8.24-8.24 8.24-1.48 0-2.93-.4-4.2-1.15l-.3-.18-3.12.82.83-3.04-.2-.31a8.19 8.19 0 0 1-1.26-4.38c0-4.54 3.7-8.24 8.24-8.24M8.53 7.33c-.16 0-.42.06-.64.3-.22.24-.85.83-.85 2.02 0 1.19.87 2.34.99 2.5.12.16 1.7 2.6 4.12 3.65.58.25 1.03.4 1.38.51.58.18 1.11.16 1.53.1.47-.07 1.44-.59 1.64-1.16.2-.57.2-1.06.14-1.16-.06-.1-.22-.16-.46-.28s-1.44-.71-1.66-.79-.38-.12-.54.12c-.16.24-.63.79-.77.95-.14.16-.28.18-.52.06s-1.02-.38-1.94-1.2c-.72-.64-1.2-1.43-1.34-1.67-.14-.24-.02-.37.1-.49.11-.11.24-.28.36-.42.12-.14.16-.24.24-.4.08-.16.04-.3-.02-.42s-.54-1.31-.74-1.79c-.2-.48-.4-.41-.55-.42l-.47-.01z"/></svg>
+                <span>055 595 0314</span>
+            </a>
+        </div>
+        <p class="footer-credit">
+            &copy; 2026 Susan's Pastries &amp; Drinks. All rights reserved. Designed &amp; Engineered by <a href="https://digital.koneacademy.io" target="_blank">Kone Digital WaaS</a>.
+        </p>
+    </footer>
+
+    <!-- Floating WhatsApp Bubble -->
+    <a href="https://wa.me/233555950314?text=Hello%20Susan's%20Pastries,%20I%20would%20like%20to%20place%20an%20order." class="floating-wa" target="_blank" rel="noopener" aria-label="Order on WhatsApp">
+        <svg viewBox="0 0 24 24"><path d="M12.04 2c-5.46 0-9.91 4.45-9.91 9.91 0 1.75.46 3.45 1.32 4.95L2.05 22l5.25-1.38c1.45.79 3.08 1.21 4.74 1.21 5.46 0 9.91-4.45 9.91-9.91 0-2.65-1.03-5.14-2.9-7.01A9.816 9.816 0 0 0 12.04 2m.01 1.67c2.2 0 4.26.86 5.82 2.42a8.225 8.225 0 0 1 2.41 5.83c0 4.54-3.7 8.24-8.24 8.24-1.48 0-2.93-.4-4.2-1.15l-.3-.18-3.12.82.83-3.04-.2-.31a8.19 8.19 0 0 1-1.26-4.38c0-4.54 3.7-8.24 8.24-8.24M8.53 7.33c-.16 0-.42.06-.64.3-.22.24-.85.83-.85 2.02 0 1.19.87 2.34.99 2.5.12.16 1.7 2.6 4.12 3.65.58.25 1.03.4 1.38.51.58.18 1.11.16 1.53.1.47-.07 1.44-.59 1.64-1.16.2-.57.2-1.06.14-1.16-.06-.1-.22-.16-.46-.28s-1.44-.71-1.66-.79-.38-.12-.54.12c-.16.24-.63.79-.77.95-.14.16-.28.18-.52.06s-1.02-.38-1.94-1.2c-.72-.64-1.2-1.43-1.34-1.67-.14-.24-.02-.37.1-.49.11-.11.24-.28.36-.42.12-.14.16-.24.24-.4.08-.16.04-.3-.02-.42s-.54-1.31-.74-1.79c-.2-.48-.4-.41-.55-.42l-.47-.01z"/></svg>
+    </a>
+
+    <!-- Mobile Drawer Logic -->
+    <script>
+        function openMobileMenu() {
+            const drawer = document.getElementById('mobileDrawer');
+            const overlay = document.getElementById('mobileDrawerOverlay');
+            if (drawer && overlay) {
+                drawer.classList.add('active');
+                overlay.classList.add('active');
+                document.body.style.overflow = 'hidden';
+            }
+        }
+
+        function closeMobileMenu() {
+            const drawer = document.getElementById('mobileDrawer');
+            const overlay = document.getElementById('mobileDrawerOverlay');
+            if (drawer && overlay) {
+                drawer.classList.remove('active');
+                overlay.classList.remove('active');
+                document.body.style.overflow = '';
+            }
+        }
+
+        // Smooth scroll for anchor links
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function(e) {
+                const href = this.getAttribute('href');
+                if (href && href !== '#') {
+                    e.preventDefault();
+                    const target = document.querySelector(href);
+                    if (target) {
+                        target.scrollIntoView({ behavior: 'smooth', block: 'start' });
+                    }
+                }
+            });
+        });
+    </script>
+
+</body>
+</html>
