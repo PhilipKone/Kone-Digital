@@ -133,9 +133,7 @@ export const Pricing: React.FC = () => {
               onClick={() => setSelectedPlanIndex(index)}
               className={`price-card fade-in-up stagger-${(index % 4) + 1}`}
               style={{
-                background: isSelected ? 'rgba(0, 240, 255, 0.04)' : 'rgba(13, 18, 29, 0.75)',
-                backdropFilter: 'blur(16px)',
-                WebkitBackdropFilter: 'blur(16px)',
+                background: isSelected ? 'rgba(0, 240, 255, 0.06)' : 'rgba(13, 18, 29, 0.94)',
                 borderColor: isSelected ? 'rgba(0, 240, 255, 0.45)' : 'rgba(255, 255, 255, 0.08)',
                 borderWidth: '1px',
                 borderStyle: 'solid',
@@ -147,7 +145,7 @@ export const Pricing: React.FC = () => {
                 boxShadow: isSelected 
                   ? '0 15px 40px -10px rgba(0, 240, 255, 0.18), inset 0 1px 0 rgba(255, 255, 255, 0.12)' 
                   : '0 10px 30px -10px rgba(0, 0, 0, 0.5), inset 0 1px 0 rgba(255, 255, 255, 0.06)',
-                transition: 'all 0.25s cubic-bezier(0.16, 1, 0.3, 1)',
+                transition: 'border-color 0.25s ease, box-shadow 0.25s ease, transform 0.25s cubic-bezier(0.16, 1, 0.3, 1)',
                 cursor: 'pointer',
                 position: 'relative'
               }}

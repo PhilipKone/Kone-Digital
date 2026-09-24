@@ -192,9 +192,7 @@ export const Portfolio: React.FC = () => {
             style={{ 
               borderRadius: '20px', 
               overflow: 'hidden', 
-              background: 'rgba(13, 18, 29, 0.75)',
-              backdropFilter: 'blur(16px)',
-              WebkitBackdropFilter: 'blur(16px)',
+              background: 'rgba(13, 18, 29, 0.94)',
               border: '1px solid rgba(255, 255, 255, 0.08)',
               display: 'flex',
               flexDirection: 'column',

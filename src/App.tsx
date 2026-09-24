@@ -75,8 +75,8 @@ function App() {
         }
       });
     }, { 
-      rootMargin: '0px 0px -40px 0px',
-      threshold: 0.08 
+      rootMargin: '0px 0px 60px 0px',
+      threshold: 0.01 
     });
 
     const observeElements = () => {
@@ -89,21 +89,14 @@ function App() {
     };
 
     observeElements();
-
-    const mutationObserver = new MutationObserver(() => {
-      observeElements();
-    });
-
-    const targetNode = containerRef.current || document.body;
-    if (targetNode) {
-      mutationObserver.observe(targetNode, { childList: true, subtree: true });
-    }
+    // Re-check shortly after mount/route change for any dynamic content
+    const timer = setTimeout(observeElements, 100);
 
     return () => {
+      clearTimeout(timer);
       observer.disconnect();
-      mutationObserver.disconnect();
     };
-  }, []);
+  }, [currentRoute]);
 
   return (
     <div ref={containerRef} className="digital-app-root">

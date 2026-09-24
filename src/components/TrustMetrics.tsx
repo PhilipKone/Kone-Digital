@@ -99,11 +99,10 @@ export const TrustMetrics: React.FC = () => {
       }}>
         {capabilities.map((cap, idx) => (
           <div key={idx} className={`metric-card neon-border fade-in-up stagger-${idx + 1}`} style={{ 
-            background: 'var(--bg-surface)', 
+            background: 'rgba(13, 18, 29, 0.92)', 
             padding: '2rem 1.5rem', 
             borderRadius: '16px', 
-            textAlign: 'center',
-            backdropFilter: 'blur(10px)'
+            textAlign: 'center'
           }}>
             <div style={{ fontSize: '2.6rem', fontWeight: 900, color: cap.color }}>
               {cap.metric}
@@ -119,7 +118,7 @@ export const TrustMetrics: React.FC = () => {
       </div>
 
       {/* Integration Partner Logos with Authentic Brand Marks - Continuous Apple / Stripe Glide */}
-      <div className="fade-in-up" style={{ 
+      <div style={{ 
         display: 'flex', 
         flexDirection: 'column',
         alignItems: 'center', 
