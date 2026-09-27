@@ -225,7 +225,7 @@ export const HeroSection: React.FC<HeroSectionProps> = ({ onOpenWizard }) => {
             <div 
               key="slide-stone"
               className="hero-slide-enter"
-              style={{ minHeight: '340px', display: 'flex', flexDirection: 'column', justifyContent: 'center', alignItems: 'center', backgroundImage: 'linear-gradient(rgba(0,0,0,0.7), rgba(0,0,0,0.7)), url("/sedemson_stone_hero.png")', backgroundSize: 'cover', backgroundPosition: 'center', color: '#fff', padding: '2rem 2.8rem', textAlign: 'center' }}
+              style={{ minHeight: '340px', display: 'flex', flexDirection: 'column', justifyContent: 'center', alignItems: 'center', backgroundImage: 'linear-gradient(rgba(0,0,0,0.7), rgba(0,0,0,0.7)), url("/sedemson_stone_hero.webp")', backgroundSize: 'cover', backgroundPosition: 'center', color: '#fff', padding: '2rem 2.8rem', textAlign: 'center' }}
             >
               <span style={{ fontSize: '0.74rem', fontWeight: 750, letterSpacing: '2px', textTransform: 'uppercase', color: 'var(--gold-accent)', marginBottom: '0.4rem', display: 'block' }}>Featured B2B Client</span>
               <h2 style={{ fontSize: 'clamp(1.25rem, 4.5vw, 2rem)', fontFamily: 'var(--font-heading)', fontWeight: 800 }}>Sedemson Stone Craftsmanship</h2>
@@ -241,7 +241,7 @@ export const HeroSection: React.FC<HeroSectionProps> = ({ onOpenWizard }) => {
             <div 
               key="slide-fashion"
               className="hero-slide-enter"
-              style={{ minHeight: '340px', display: 'flex', flexDirection: 'column', justifyContent: 'center', alignItems: 'center', backgroundImage: 'linear-gradient(rgba(0,0,0,0.7), rgba(0,0,0,0.7)), url("/emewear/emewear_hero.jpg")', backgroundSize: 'cover', backgroundPosition: 'top', color: '#fff', padding: '2rem 2.8rem', textAlign: 'center' }}
+              style={{ minHeight: '340px', display: 'flex', flexDirection: 'column', justifyContent: 'center', alignItems: 'center', backgroundImage: 'linear-gradient(rgba(0,0,0,0.7), rgba(0,0,0,0.7)), url("/emewear/emewear_hero.webp")', backgroundSize: 'cover', backgroundPosition: 'top', color: '#fff', padding: '2rem 2.8rem', textAlign: 'center' }}
             >
               <span style={{ fontSize: '0.74rem', fontWeight: 750, letterSpacing: '2px', textTransform: 'uppercase', color: 'var(--gold-accent)', marginBottom: '0.4rem', display: 'block' }}>E-Commerce Showcase</span>
               <h2 style={{ fontSize: 'clamp(1.25rem, 4.5vw, 2rem)', fontFamily: 'var(--font-heading)', fontWeight: 800 }}>Emewear Plus-Size Ankara</h2>
@@ -257,7 +257,7 @@ export const HeroSection: React.FC<HeroSectionProps> = ({ onOpenWizard }) => {
             <div 
               key="slide-foundation"
               className="hero-slide-enter"
-              style={{ minHeight: '340px', display: 'flex', flexDirection: 'column', justifyContent: 'center', alignItems: 'center', backgroundImage: 'linear-gradient(rgba(7, 30, 74, 0.78), rgba(0, 59, 153, 0.82)), url("/ansah-delali/cohort-group.jpg")', backgroundSize: 'cover', backgroundPosition: 'center', color: '#fff', padding: '2rem 2.8rem', textAlign: 'center' }}
+              style={{ minHeight: '340px', display: 'flex', flexDirection: 'column', justifyContent: 'center', alignItems: 'center', backgroundImage: 'linear-gradient(rgba(7, 30, 74, 0.78), rgba(0, 59, 153, 0.82)), url("/ansah-delali/cohort-group.webp")', backgroundSize: 'cover', backgroundPosition: 'center', color: '#fff', padding: '2rem 2.8rem', textAlign: 'center' }}
             >
               <span style={{ fontSize: '0.74rem', fontWeight: 750, letterSpacing: '2px', textTransform: 'uppercase', color: '#FDBA74', marginBottom: '0.4rem', display: 'block' }}>Featured Social Impact Initiative</span>
               <h2 style={{ fontSize: 'clamp(1.25rem, 4.5vw, 2rem)', fontFamily: 'var(--font-heading)', fontWeight: 800 }}>Ansah Delali Foundation</h2>
@@ -273,7 +273,7 @@ export const HeroSection: React.FC<HeroSectionProps> = ({ onOpenWizard }) => {
             <div 
               key="slide-pastries"
               className="hero-slide-enter"
-              style={{ minHeight: '340px', display: 'flex', flexDirection: 'column', justifyContent: 'center', alignItems: 'center', backgroundImage: 'linear-gradient(rgba(45, 24, 16, 0.78), rgba(74, 44, 26, 0.82)), url("/susans-pastries/hero-banner.jpg")', backgroundSize: 'cover', backgroundPosition: 'center', color: '#fff', padding: '2rem 2.8rem', textAlign: 'center' }}
+              style={{ minHeight: '340px', display: 'flex', flexDirection: 'column', justifyContent: 'center', alignItems: 'center', backgroundImage: 'linear-gradient(rgba(45, 24, 16, 0.78), rgba(74, 44, 26, 0.82)), url("/susans-pastries/hero-banner.webp")', backgroundSize: 'cover', backgroundPosition: 'center', color: '#fff', padding: '2rem 2.8rem', textAlign: 'center' }}
             >
               <span style={{ fontSize: '0.74rem', fontWeight: 750, letterSpacing: '2px', textTransform: 'uppercase', color: '#FDBA74', marginBottom: '0.4rem', display: 'block' }}>Food & Beverage Showcase</span>
               <h2 style={{ fontSize: 'clamp(1.25rem, 4.5vw, 2rem)', fontFamily: 'var(--font-heading)', fontWeight: 800 }}>Susan's Pastries & Drinks</h2>

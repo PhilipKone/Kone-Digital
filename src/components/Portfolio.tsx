@@ -20,7 +20,7 @@ const PROJECTS: ProjectItem[] = [
     category: 'b2b',
     categoryLabel: 'B2B & Architectural Finishing',
     tagline: 'Premium Natural Stone Cladding & Architectural Finishes across Ghana.',
-    image: '/sedemson_stone_hero.png',
+    image: '/sedemson_stone_hero.webp',
     tags: ['WaaS Architecture', 'Catalog Engine', 'Direct WhatsApp RFQs'],
     metric: '+340% Inbound WhatsApp RFQs',
     status: 'Live Production',
@@ -32,7 +32,7 @@ const PROJECTS: ProjectItem[] = [
     category: 'ecommerce',
     categoryLabel: 'Fashion & E-Commerce',
     tagline: 'Ghana-Made Luxury Ankara, Plus-Size Heritage Fashion & Global Delivery.',
-    image: '/emewear/emewear_hero.jpg',
+    image: '/emewear/emewear_hero.webp',
     tags: ['Fashion WaaS', 'MoMo Automated Checkout', 'Automated Dispatch'],
     metric: 'Zero-Friction MoMo Checkout',
     status: 'Live Production',
@@ -44,7 +44,7 @@ const PROJECTS: ProjectItem[] = [
     category: 'nonprofit',
     categoryLabel: 'Non-Profit & Social Impact',
     tagline: 'Empowering Ghanaian tertiary students and underserved youth through mentorship, education & digital skills.',
-    image: '/ansah-delali/cohort-group.jpg',
+    image: '/ansah-delali/cohort-group.webp',
     tags: ['Education WaaS', 'SkillUp 1.0 Outreach', 'Student Mentorship Network'],
     metric: 'SkillUp 1.0 Community Impact',
     status: 'Live Production',
@@ -56,7 +56,7 @@ const PROJECTS: ProjectItem[] = [
     category: 'ecommerce',
     categoryLabel: 'Food & Beverage',
     tagline: "Artisanal Ghanaian pastries, custom celebration cakes & fresh fruit juices — order via WhatsApp.",
-    image: '/susans-pastries/hero-banner.jpg',
+    image: '/susans-pastries/hero-banner.webp',
     tags: ['Food WaaS', 'WhatsApp Ordering', 'Menu Showcase'],
     metric: 'Direct WhatsApp Orders',
     status: 'Live Production',
@@ -65,10 +65,10 @@ const PROJECTS: ProjectItem[] = [
 ];
 
 const PROJECT_IMAGES: Record<string, string> = {
-  'sedemson': '/sedemson_stone_hero.png',
-  'emewear': '/emewear/emewear_hero.jpg',
-  'ansah-delali': '/ansah-delali/cohort-group.jpg',
-  'susans-pastries': '/susans-pastries/hero-banner.jpg'
+  'sedemson': '/sedemson_stone_hero.webp',
+  'emewear': '/emewear/emewear_hero.webp',
+  'ansah-delali': '/ansah-delali/cohort-group.webp',
+  'susans-pastries': '/susans-pastries/hero-banner.webp'
 };
 
 const getSafeProjectLink = (link?: string, title: string = ''): string => {
@@ -215,16 +215,18 @@ export const Portfolio: React.FC = () => {
                 <img 
                   src={PROJECT_IMAGES[proj.id] || ''} 
                   alt={proj.title} 
+                  loading="lazy"
+                  decoding="async"
+                  width="380"
+                  height="220"
                   style={{ width: '100%', height: '100%', objectFit: 'cover', objectPosition: 'center', transition: 'transform 0.5s ease' }} 
                 />
-                <div style={{ position: 'absolute', top: '1rem', right: '1rem' }}>
-                  <span className="badge-pill cyan" style={{ fontSize: '0.72rem', padding: '0.25rem 0.65rem', backdropFilter: 'blur(8px)' }}>
-                    {proj.categoryLabel}
-                  </span>
-                </div>
               </div>
 
               <div className="card-content" style={{ padding: '1.6rem' }}>
+                <div style={{ fontSize: '0.74rem', fontWeight: 750, letterSpacing: '1.5px', textTransform: 'uppercase', color: 'var(--cyan-glow)', marginBottom: '0.35rem' }}>
+                  {proj.categoryLabel}
+                </div>
                 <h3 style={{ fontSize: '1.35rem', color: '#FFFFFF', fontWeight: 850, marginBottom: '0.4rem', letterSpacing: '-0.02em' }}>{proj.title}</h3>
                 
                 <p className="tagline" style={{ color: 'var(--text-muted)', fontSize: '0.9rem', marginBottom: '1.2rem', lineHeight: 1.5, letterSpacing: '-0.01em' }}>
