@@ -35,7 +35,6 @@ export default function ServicesHub({ onSelectService }: { onSelectService: (slu
   return (
     <section className="services-hub-section" id="services">
       <div className="services-hero-header fade-in-up">
-        <span className="services-badge">AGENCY SPECIALIZATIONS</span>
         <h2 className="services-title">Digital Engineering & Design Services</h2>
         <p className="services-subtitle">
           From custom SaaS applications and native mobile apps to corporate brand design and cloud DevOps infrastructure.

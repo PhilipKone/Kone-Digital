@@ -80,11 +80,7 @@ export const TrustMetrics: React.FC = () => {
   return (
     <section className="trust-metrics-section" style={{ padding: '3rem 0', margin: '2rem 0' }}>
       <div className="section-title fade-in-up" style={{ textAlign: 'center', marginBottom: '2.5rem' }}>
-        <span className="badge-pill cyan">
-          <span style={{ width: '6px', height: '6px', borderRadius: '50%', background: 'var(--cyan-glow)' }} />
-          ENTERPRISE ARCHITECTURE • ZERO MAINTENANCE
-        </span>
-        <h2 className="heading-luminance" style={{ fontSize: 'clamp(1.7rem, 5vw, 2.4rem)', marginTop: '0.9rem', fontWeight: 850 }}>
+        <h2 className="heading-luminance" style={{ fontSize: 'clamp(1.7rem, 5vw, 2.4rem)', fontWeight: 850 }}>
           Engineered for <span className="cyan-luminance">Real Business Growth</span>
         </h2>
       </div>

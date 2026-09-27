@@ -42,19 +42,13 @@
 }
 
 .service-badge {
-  display: inline-flex;
-  align-items: center;
-  gap: 0.5rem;
-  background: rgba(0, 240, 255, 0.08);
+  display: block;
   color: var(--cyan-glow, #00F0FF);
-  font-size: 0.75rem;
-  font-weight: 750;
-  padding: 0.35rem 1rem;
-  border-radius: 50px;
-  margin-bottom: 1.2rem;
-  letter-spacing: 0.08em;
-  border: 1px solid rgba(0, 240, 255, 0.25);
-  backdrop-filter: blur(8px);
+  font-size: 0.76rem;
+  font-weight: 800;
+  letter-spacing: 2px;
+  text-transform: uppercase;
+  margin-bottom: 0.75rem;
 }
 
 .service-main-title {

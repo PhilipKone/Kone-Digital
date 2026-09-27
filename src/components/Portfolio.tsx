@@ -13,64 +13,78 @@ interface ProjectItem {
   link?: string;
 }
 
+const PROJECTS: ProjectItem[] = [
+  {
+    id: 'sedemson',
+    title: 'Sedemson Stone',
+    category: 'b2b',
+    categoryLabel: 'B2B & Architectural Finishing',
+    tagline: 'Premium Natural Stone Cladding & Architectural Finishes across Ghana.',
+    image: '/sedemson_stone_hero.png',
+    tags: ['WaaS Architecture', 'Catalog Engine', 'Direct WhatsApp RFQs'],
+    metric: '+340% Inbound WhatsApp RFQs',
+    status: 'Live Production',
+    link: '/sedemson-stone/index.html'
+  },
+  {
+    id: 'emewear',
+    title: 'Emewear Luxury',
+    category: 'ecommerce',
+    categoryLabel: 'Fashion & E-Commerce',
+    tagline: 'Ghana-Made Luxury Ankara, Plus-Size Heritage Fashion & Global Delivery.',
+    image: '/emewear/emewear_hero.jpg',
+    tags: ['Fashion WaaS', 'MoMo Automated Checkout', 'Automated Dispatch'],
+    metric: 'Zero-Friction MoMo Checkout',
+    status: 'Live Production',
+    link: '/emewear/index.html'
+  },
+  {
+    id: 'ansah-delali',
+    title: 'Ansah Delali Foundation',
+    category: 'nonprofit',
+    categoryLabel: 'Non-Profit & Social Impact',
+    tagline: 'Empowering Ghanaian tertiary students and underserved youth through mentorship, education & digital skills.',
+    image: '/ansah-delali/cohort-group.jpg',
+    tags: ['Education WaaS', 'SkillUp 1.0 Outreach', 'Student Mentorship Network'],
+    metric: 'SkillUp 1.0 Community Impact',
+    status: 'Live Production',
+    link: '/ansah-delali/index.html'
+  },
+  {
+    id: 'susans-pastries',
+    title: "Susan's Pastries",
+    category: 'ecommerce',
+    categoryLabel: 'Food & Beverage',
+    tagline: "Artisanal Ghanaian pastries, custom celebration cakes & fresh fruit juices — order via WhatsApp.",
+    image: '/susans-pastries/hero-banner.jpg',
+    tags: ['Food WaaS', 'WhatsApp Ordering', 'Menu Showcase'],
+    metric: 'Direct WhatsApp Orders',
+    status: 'Live Production',
+    link: '/susans-pastries/index.html'
+  }
+];
+
+const PROJECT_IMAGES: Record<string, string> = {
+  'sedemson': '/sedemson_stone_hero.png',
+  'emewear': '/emewear/emewear_hero.jpg',
+  'ansah-delali': '/ansah-delali/cohort-group.jpg',
+  'susans-pastries': '/susans-pastries/hero-banner.jpg'
+};
+
+const getSafeProjectLink = (link?: string, title: string = ''): string => {
+  if (link && link.startsWith('/')) {
+    return link;
+  }
+  return `https://wa.me/233551993820?text=Hi%20Kone%20Digital%2C%20I'd%20like%20to%20learn%20more%20about%20the%20${encodeURIComponent(title)}%20case%20study.`;
+};
+
 export const Portfolio: React.FC = () => {
   const [activeCategory, setActiveCategory] = useState<string>('all');
   const [searchQuery, setSearchQuery] = useState<string>('');
 
-  const projects: ProjectItem[] = [
-    {
-      id: 'sedemson',
-      title: 'Sedemson Stone',
-      category: 'b2b',
-      categoryLabel: 'B2B & Architectural Finishing',
-      tagline: 'Premium Natural Stone Cladding & Architectural Finishes across Ghana.',
-      image: '/sedemson_stone_hero.png',
-      tags: ['WaaS Architecture', 'Catalog Engine', 'Direct WhatsApp RFQs'],
-      metric: '+340% Inbound WhatsApp RFQs',
-      status: 'Live Production',
-      link: '/sedemson-stone/index.html'
-    },
-    {
-      id: 'emewear',
-      title: 'Emewear Luxury',
-      category: 'ecommerce',
-      categoryLabel: 'Fashion & E-Commerce',
-      tagline: 'Ghana-Made Luxury Ankara, Plus-Size Heritage Fashion & Global Delivery.',
-      image: '/emewear/emewear_hero.jpg',
-      tags: ['Fashion WaaS', 'MoMo Automated Checkout', 'Automated Dispatch'],
-      metric: 'Zero-Friction MoMo Checkout',
-      status: 'Live Production',
-      link: '/emewear/index.html'
-    },
-    {
-      id: 'ansah-delali',
-      title: 'Ansah Delali Foundation',
-      category: 'nonprofit',
-      categoryLabel: 'Non-Profit & Social Impact',
-      tagline: 'Empowering Ghanaian tertiary students and underserved youth through mentorship, education & digital skills.',
-      image: '/ansah-delali/cohort-group.jpg',
-      tags: ['Education WaaS', 'SkillUp 1.0 Outreach', 'Student Mentorship Network'],
-      metric: 'SkillUp 1.0 Community Impact',
-      status: 'Live Production',
-      link: '/ansah-delali/index.html'
-    },
-    {
-      id: 'susans-pastries',
-      title: "Susan's Pastries",
-      category: 'ecommerce',
-      categoryLabel: 'Food & Beverage',
-      tagline: "Artisanal Ghanaian pastries, custom celebration cakes & fresh fruit juices — order via WhatsApp.",
-      image: '/susans-pastries/hero-banner.jpg',
-      tags: ['Food WaaS', 'WhatsApp Ordering', 'Menu Showcase'],
-      metric: 'Direct WhatsApp Orders',
-      status: 'Live Production',
-      link: '/susans-pastries/index.html'
-    }
-  ];
-
   const filteredProjects = React.useMemo(() => {
     const cleanSearch = searchQuery.replace(/[^\w\s-]/gi, '').toLowerCase().trim();
-    return projects.filter(p => {
+    return PROJECTS.filter(p => {
       const matchesCategory = activeCategory === 'all' || p.category === activeCategory;
       const matchesSearch = !cleanSearch || 
                             p.title.toLowerCase().includes(cleanSearch) || 
@@ -79,16 +93,12 @@ export const Portfolio: React.FC = () => {
                             p.tags.some(t => t.toLowerCase().includes(cleanSearch));
       return matchesCategory && matchesSearch;
     });
-  }, [searchQuery, activeCategory, projects]);
+  }, [searchQuery, activeCategory]);
 
   return (
     <section className="portfolio-section" id="work" style={{ padding: '3.5rem 1rem', maxWidth: '1200px', margin: '0 auto' }}>
       <div className="portfolio-header fade-in-up" style={{ textAlign: 'center', marginBottom: '3rem' }}>
-        <span className="badge-pill" style={{ marginBottom: '1rem' }}>
-          <span style={{ width: '6px', height: '6px', borderRadius: '50%', background: '#00F0FF' }} />
-          PRODUCTION CASE STUDIES
-        </span>
-        <h2 className="heading-luminance" style={{ fontSize: 'clamp(1.8rem, 5vw, 2.5rem)', fontWeight: 850, marginTop: '0.8rem', letterSpacing: '-0.03em' }}>
+        <h2 className="heading-luminance" style={{ fontSize: 'clamp(1.8rem, 5vw, 2.5rem)', fontWeight: 850, letterSpacing: '-0.03em' }}>
           Featured <span className="cyan-luminance">Client Work</span>
         </h2>
         <p style={{ color: 'var(--text-muted)', fontSize: '1.05rem', marginTop: '0.6rem', letterSpacing: '-0.01em', maxWidth: '640px', margin: '0.6rem auto 0', lineHeight: 1.6 }}>
@@ -203,7 +213,7 @@ export const Portfolio: React.FC = () => {
             <div>
               <div className="card-image-placeholder" style={{ padding: 0, height: '220px', overflow: 'hidden', position: 'relative' }}>
                 <img 
-                  src={proj.image} 
+                  src={PROJECT_IMAGES[proj.id] || ''} 
                   alt={proj.title} 
                   style={{ width: '100%', height: '100%', objectFit: 'cover', objectPosition: 'center', transition: 'transform 0.5s ease' }} 
                 />
@@ -258,7 +268,7 @@ export const Portfolio: React.FC = () => {
               </span>
 
               <a 
-                href={proj.link || `https://wa.me/233551993820?text=Hi%20Kone%20Digital%2C%20I'd%20like%20to%20learn%20more%20about%20the%20${encodeURIComponent(proj.title)}%20case%20study.`}
+                href={getSafeProjectLink(proj.link, proj.title)}
                 target="_blank" 
                 rel="noopener noreferrer"
                 style={{

@@ -65,11 +65,6 @@ export const HeroSection: React.FC<HeroSectionProps> = ({ onOpenWizard }) => {
   return (
     <section className="hub-hero" style={{ padding: '3rem 1rem 4rem', maxWidth: '1200px', margin: '0 auto' }}>
       <div style={{ textAlign: 'center', maxWidth: '850px', margin: '0 auto 3rem' }}>
-        <span className="badge-pill gold" style={{ marginBottom: '1.5rem' }}>
-          <span style={{ width: '6px', height: '6px', borderRadius: '50%', background: 'var(--gold-accent)' }} />
-          48-HOUR MANAGED LAUNCH SLA
-        </span>
-
         <h1 className="heading-luminance" style={{ fontSize: 'clamp(2.4rem, 6vw, 3.8rem)', fontWeight: 900, lineHeight: 1.12, marginBottom: '1.2rem', letterSpacing: '-0.035em' }}>
           Putting Ghana's Best<br />
           <span className="gold-luminance">Businesses Online.</span>
@@ -232,7 +227,7 @@ export const HeroSection: React.FC<HeroSectionProps> = ({ onOpenWizard }) => {
               className="hero-slide-enter"
               style={{ minHeight: '340px', display: 'flex', flexDirection: 'column', justifyContent: 'center', alignItems: 'center', backgroundImage: 'linear-gradient(rgba(0,0,0,0.7), rgba(0,0,0,0.7)), url("/sedemson_stone_hero.png")', backgroundSize: 'cover', backgroundPosition: 'center', color: '#fff', padding: '2rem 2.8rem', textAlign: 'center' }}
             >
-              <span className="badge-pill gold" style={{ marginBottom: '0.8rem' }}>FEATURED B2B CLIENT</span>
+              <span style={{ fontSize: '0.74rem', fontWeight: 750, letterSpacing: '2px', textTransform: 'uppercase', color: 'var(--gold-accent)', marginBottom: '0.4rem', display: 'block' }}>Featured B2B Client</span>
               <h2 style={{ fontSize: 'clamp(1.25rem, 4.5vw, 2rem)', fontFamily: 'var(--font-heading)', fontWeight: 800 }}>Sedemson Stone Craftsmanship</h2>
               <p style={{ maxWidth: '500px', fontSize: '0.88rem', opacity: 0.85, marginTop: '0.5rem' }}>Natural Stone Cladding & Architectural Finishes across Ghana.</p>
               <a href="/sedemson-stone/index.html" target="_blank" rel="noopener noreferrer" style={{ marginTop: '1.2rem', color: '#F8FAFC', background: 'rgba(255,255,255,0.1)', border: '1px solid rgba(255,255,255,0.2)', padding: '0.35rem 0.9rem', borderRadius: '50px', fontWeight: 650, fontSize: '0.8rem', textDecoration: 'none', display: 'inline-flex', alignItems: 'center', gap: '0.3rem' }}>
@@ -248,7 +243,7 @@ export const HeroSection: React.FC<HeroSectionProps> = ({ onOpenWizard }) => {
               className="hero-slide-enter"
               style={{ minHeight: '340px', display: 'flex', flexDirection: 'column', justifyContent: 'center', alignItems: 'center', backgroundImage: 'linear-gradient(rgba(0,0,0,0.7), rgba(0,0,0,0.7)), url("/emewear/emewear_hero.jpg")', backgroundSize: 'cover', backgroundPosition: 'top', color: '#fff', padding: '2rem 2.8rem', textAlign: 'center' }}
             >
-              <span className="badge-pill gold" style={{ marginBottom: '0.8rem' }}>E-COMMERCE SHOWCASE</span>
+              <span style={{ fontSize: '0.74rem', fontWeight: 750, letterSpacing: '2px', textTransform: 'uppercase', color: 'var(--gold-accent)', marginBottom: '0.4rem', display: 'block' }}>E-Commerce Showcase</span>
               <h2 style={{ fontSize: 'clamp(1.25rem, 4.5vw, 2rem)', fontFamily: 'var(--font-heading)', fontWeight: 800 }}>Emewear Plus-Size Ankara</h2>
               <p style={{ maxWidth: '500px', fontSize: '0.88rem', opacity: 0.85, marginTop: '0.5rem' }}>Handcrafted Ankara wide-leg cargo trousers & royal batik palazzo sets.</p>
               <a href="/emewear/index.html" target="_blank" rel="noopener noreferrer" style={{ marginTop: '1.2rem', color: '#F8FAFC', background: 'rgba(255,255,255,0.1)', border: '1px solid rgba(255,255,255,0.2)', padding: '0.35rem 0.9rem', borderRadius: '50px', fontWeight: 650, fontSize: '0.8rem', textDecoration: 'none', display: 'inline-flex', alignItems: 'center', gap: '0.3rem' }}>
@@ -264,7 +259,7 @@ export const HeroSection: React.FC<HeroSectionProps> = ({ onOpenWizard }) => {
               className="hero-slide-enter"
               style={{ minHeight: '340px', display: 'flex', flexDirection: 'column', justifyContent: 'center', alignItems: 'center', backgroundImage: 'linear-gradient(rgba(7, 30, 74, 0.78), rgba(0, 59, 153, 0.82)), url("/ansah-delali/cohort-group.jpg")', backgroundSize: 'cover', backgroundPosition: 'center', color: '#fff', padding: '2rem 2.8rem', textAlign: 'center' }}
             >
-              <span className="badge-pill gold" style={{ marginBottom: '0.8rem', background: '#FA8C16', color: '#fff' }}>FEATURED SOCIAL IMPACT INITIATIVE</span>
+              <span style={{ fontSize: '0.74rem', fontWeight: 750, letterSpacing: '2px', textTransform: 'uppercase', color: '#FDBA74', marginBottom: '0.4rem', display: 'block' }}>Featured Social Impact Initiative</span>
               <h2 style={{ fontSize: 'clamp(1.25rem, 4.5vw, 2rem)', fontFamily: 'var(--font-heading)', fontWeight: 800 }}>Ansah Delali Foundation</h2>
               <p style={{ maxWidth: '520px', fontSize: '0.88rem', opacity: 0.92, marginTop: '0.5rem' }}>Giving Back, Rising Together — Educational mentorship, SkillUp 1.0 outreach, and digital skills empowerment across Ghana.</p>
               <a href="/ansah-delali/index.html" target="_blank" rel="noopener noreferrer" style={{ marginTop: '1.2rem', color: '#FFFFFF', background: '#0052CC', border: '1px solid rgba(255,255,255,0.3)', padding: '0.45rem 1.1rem', borderRadius: '50px', fontWeight: 700, fontSize: '0.84rem', textDecoration: 'none', display: 'inline-flex', alignItems: 'center', gap: '0.4rem', boxShadow: '0 4px 12px rgba(0,0,0,0.2)' }}>
@@ -280,7 +275,7 @@ export const HeroSection: React.FC<HeroSectionProps> = ({ onOpenWizard }) => {
               className="hero-slide-enter"
               style={{ minHeight: '340px', display: 'flex', flexDirection: 'column', justifyContent: 'center', alignItems: 'center', backgroundImage: 'linear-gradient(rgba(45, 24, 16, 0.78), rgba(74, 44, 26, 0.82)), url("/susans-pastries/hero-banner.jpg")', backgroundSize: 'cover', backgroundPosition: 'center', color: '#fff', padding: '2rem 2.8rem', textAlign: 'center' }}
             >
-              <span className="badge-pill gold" style={{ marginBottom: '0.8rem', background: '#E8922F', color: '#fff' }}>FOOD & BEVERAGE SHOWCASE</span>
+              <span style={{ fontSize: '0.74rem', fontWeight: 750, letterSpacing: '2px', textTransform: 'uppercase', color: '#FDBA74', marginBottom: '0.4rem', display: 'block' }}>Food & Beverage Showcase</span>
               <h2 style={{ fontSize: 'clamp(1.25rem, 4.5vw, 2rem)', fontFamily: 'var(--font-heading)', fontWeight: 800 }}>Susan's Pastries & Drinks</h2>
               <p style={{ maxWidth: '520px', fontSize: '0.88rem', opacity: 0.92, marginTop: '0.5rem' }}>Artisanal Ghanaian pastries, custom celebration cakes & fresh fruit juices — order directly via WhatsApp.</p>
               <a href="/susans-pastries/index.html" target="_blank" rel="noopener noreferrer" style={{ marginTop: '1.2rem', color: '#FFFFFF', background: '#E8922F', border: '1px solid rgba(255,255,255,0.3)', padding: '0.45rem 1.1rem', borderRadius: '50px', fontWeight: 700, fontSize: '0.84rem', textDecoration: 'none', display: 'inline-flex', alignItems: 'center', gap: '0.4rem', boxShadow: '0 4px 12px rgba(0,0,0,0.2)' }}>

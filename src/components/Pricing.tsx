@@ -68,11 +68,7 @@ export const Pricing: React.FC = () => {
   return (
     <section className="pricing-section" id="pricing" style={{ padding: '3.5rem 1rem', maxWidth: '1200px', margin: '0 auto', width: '100%', boxSizing: 'border-box', overflowX: 'hidden' }}>
       <div className="pricing-header fade-in-up" style={{ textAlign: 'center', marginBottom: '3rem', width: '100%', boxSizing: 'border-box' }}>
-        <span className="badge-pill" style={{ marginBottom: '1rem', whiteSpace: 'normal', lineHeight: 1.4 }}>
-          <span style={{ width: '6px', height: '6px', borderRadius: '50%', background: '#00F0FF', flexShrink: 0 }} />
-          MANAGED TIERS & SLA
-        </span>
-        <h2 className="heading-luminance" style={{ fontSize: 'clamp(1.8rem, 5vw, 2.5rem)', fontWeight: 850, marginTop: '0.8rem', letterSpacing: '-0.03em' }}>
+        <h2 className="heading-luminance" style={{ fontSize: 'clamp(1.8rem, 5vw, 2.5rem)', fontWeight: 850, letterSpacing: '-0.03em' }}>
           Transparent <span className="cyan-luminance">WaaS Pricing</span>
         </h2>
         <p style={{ color: 'var(--text-muted)', fontSize: '1.05rem', marginTop: '0.6rem', letterSpacing: '-0.01em', maxWidth: '640px', margin: '0.6rem auto 0', lineHeight: 1.6 }}>
