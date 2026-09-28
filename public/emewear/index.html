@@ -662,21 +662,27 @@
 
         .carousel-dots {
             display: flex;
-            gap: 0.7rem;
+            gap: 0.45rem;
+            align-items: center;
+            justify-content: center;
+            flex-wrap: wrap;
+            max-width: 260px;
         }
 
         .dot {
-            width: 9px;
-            height: 9px;
+            width: 7px;
+            height: 7px;
             border-radius: 50%;
             background: rgba(229, 184, 130, 0.25);
             cursor: pointer;
             transition: all 0.3s ease;
+            flex-shrink: 0;
         }
 
         .dot.active {
             background: var(--gold-glow);
-            transform: scale(1.35);
+            transform: scale(1.4);
+            box-shadow: 0 0 8px rgba(243, 211, 162, 0.6);
         }
 
         /* --- Brand Philosophy Section --- */
@@ -1113,16 +1119,46 @@
 
         <div class="carousel-3d-stage" id="carouselStage">
             <div class="carousel-3d-track" id="carouselTrack">
-                
                 <!-- Card 1 -->
                 <div class="carousel-3d-card active" data-index="0">
                     <div class="card-img-wrapper">
-                        <img src="./emewear_cargo_pants.jpg" alt="Ankara Wide-Leg Cargo Trousers" />
+                        <img src="./emewear_piece_01.jpg" alt="Imperial Burgundy Leaf Palazzo" loading="eager" />
                     </div>
                     <div class="card-body">
                         <div>
-                            <h3>Ankara Wide-Leg Cargo Trousers</h3>
-                            <p>High-waist geometric Ankara print trousers with functional cargo pockets and adjustable drawstring waist.</p>
+                            <h3>Imperial Burgundy Leaf Palazzo</h3>
+                            <p>Handcrafted Ghanaian wax print wide-leg palazzo trousers featuring golden autumnal foliage motifs and elasticated high-rise drawstring waist.</p>
+                        </div>
+                        <div>
+                            <div class="size-tags">
+                                <span class="size-badge">UK 16/18</span>
+                                <span class="size-badge">UK 20/22</span>
+                                <span class="size-badge">UK 24/26</span>
+                            </div>
+                            <div class="card-footer">
+                                <span class="status-launching">
+                                    <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"></polygon></svg>
+                                    Exclusive Pre-Order
+                                </span>
+                                <span style="color: var(--gold-glow); font-weight: 800; font-size: 1.1rem;">GH₵ 195</span>
+                            </div>
+                            <a href="https://wa.me/233205244979?text=Hello%20Emewear%2C%20I%20would%20like%20to%20inquire%20about%20the%20Imperial%20Burgundy%20Leaf%20Palazzo%20(GH%E2%82%B5%20195)" target="_blank" rel="noopener" class="btn-card-wa">
+                                <span>Acquire Piece</span>
+                                <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="9 18 15 12 9 6"></polyline></svg>
+                            </a>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Card 2 -->
+                <div class="carousel-3d-card next" data-index="1">
+                    <div class="card-img-wrapper">
+                        <img src="./emewear_piece_02.jpg" alt="Sunburst Geometric Ankara Palazzo" loading="eager" />
+                    </div>
+                    <div class="card-body">
+                        <div>
+                            <h3>Sunburst Geometric Ankara Palazzo</h3>
+                            <p>Vibrant amber gold and sunset orange arched geometric tribal motifs on breathable cotton wax print with flowing wide-leg silhouette.</p>
                         </div>
                         <div>
                             <div class="size-tags">
@@ -1135,40 +1171,9 @@
                                     <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"></polygon></svg>
                                     Exclusive Pre-Order
                                 </span>
-                                <span style="color: var(--gold-glow); font-weight: 800; font-size: 1.1rem;">GH₵ 190</span>
+                                <span style="color: var(--gold-glow); font-weight: 800; font-size: 1.1rem;">GH₵ 210</span>
                             </div>
-                            <a href="https://wa.me/233205244979?text=Hello%20Emewear,%20I%20would%20like%20to%20inquire%20about%20the%20Ankara%20Wide-Leg%20Cargo%20Trousers%20(GH%E2%82%B5%20190)" target="_blank" rel="noopener" class="card-inquire-action">
-                                <span>Acquire Piece</span>
-                                <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="9 18 15 12 9 6"></polyline></svg>
-                            </a>
-                        </div>
-                    </div>
-                </div>
-
-                <!-- Card 2 -->
-                <div class="carousel-3d-card next" data-index="1">
-                    <div class="card-img-wrapper">
-                        <img src="./emewear_batik_palazzo.jpg" alt="Royal Batik Palazzo Set" />
-                    </div>
-                    <div class="card-body">
-                        <div>
-                            <h3>Royal Batik Palazzo &amp; Top Set</h3>
-                            <p>Vibrant hand-dyed Ghanaian indigo batik wide-leg trousers with gold Adinkra motifs paired with a fitted top.</p>
-                        </div>
-                        <div>
-                            <div class="size-tags">
-                                <span class="size-badge">UK 18</span>
-                                <span class="size-badge">UK 22</span>
-                                <span class="size-badge">UK 26</span>
-                            </div>
-                            <div class="card-footer">
-                                <span class="status-launching">
-                                    <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"></polygon></svg>
-                                    Exclusive Pre-Order
-                                </span>
-                                <span style="color: var(--gold-glow); font-weight: 800; font-size: 1.1rem;">GH₵ 240</span>
-                            </div>
-                            <a href="https://wa.me/233205244979?text=Hello%20Emewear,%20I%20would%20like%20to%20inquire%20about%20the%20Royal%20Batik%20Palazzo%20Set%20(GH%E2%82%B5%20240)" target="_blank" rel="noopener" class="card-inquire-action">
+                            <a href="https://wa.me/233205244979?text=Hello%20Emewear%2C%20I%20would%20like%20to%20inquire%20about%20the%20Sunburst%20Geometric%20Ankara%20Palazzo%20(GH%E2%82%B5%20210)" target="_blank" rel="noopener" class="btn-card-wa">
                                 <span>Acquire Piece</span>
                                 <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="9 18 15 12 9 6"></polyline></svg>
                             </a>
@@ -1179,27 +1184,27 @@
                 <!-- Card 3 -->
                 <div class="carousel-3d-card far-right" data-index="2">
                     <div class="card-img-wrapper">
-                        <img src="./emewear_duster_coat.jpg" alt="Heritage Duster Coat & Trouser Duo" />
+                        <img src="./emewear_piece_03.jpg" alt="Royal Mosaic Checkerboard Palazzo" loading="eager" />
                     </div>
                     <div class="card-body">
                         <div>
-                            <h3>Heritage Duster Coat &amp; Trouser Duo</h3>
-                            <p>Floor-length lightweight rich burgundy and gold Ghanaian wax print duster coat tailored for full silhouettes.</p>
+                            <h3>Royal Mosaic Checkerboard Palazzo</h3>
+                            <p>Striking scarlet red and sunshine yellow textured checkerboard Ankara print with curved Adinkra-inspired medallions.</p>
                         </div>
                         <div>
                             <div class="size-tags">
-                                <span class="size-badge">UK 20</span>
-                                <span class="size-badge">UK 24</span>
-                                <span class="size-badge">UK 28/30</span>
+                                <span class="size-badge">UK 18</span>
+                                <span class="size-badge">UK 22</span>
+                                <span class="size-badge">UK 26/28</span>
                             </div>
                             <div class="card-footer">
                                 <span class="status-launching">
                                     <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"></polygon></svg>
                                     Exclusive Pre-Order
                                 </span>
-                                <span style="color: var(--gold-glow); font-weight: 800; font-size: 1.1rem;">GH₵ 290</span>
+                                <span style="color: var(--gold-glow); font-weight: 800; font-size: 1.1rem;">GH₵ 220</span>
                             </div>
-                            <a href="https://wa.me/233205244979?text=Hello%20Emewear,%20I%20would%20like%20to%20inquire%20about%20the%20Heritage%20Duster%20Coat%20(GH%E2%82%B5%20290)" target="_blank" rel="noopener" class="card-inquire-action">
+                            <a href="https://wa.me/233205244979?text=Hello%20Emewear%2C%20I%20would%20like%20to%20inquire%20about%20the%20Royal%20Mosaic%20Checkerboard%20Palazzo%20(GH%E2%82%B5%20220)" target="_blank" rel="noopener" class="btn-card-wa">
                                 <span>Acquire Piece</span>
                                 <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="9 18 15 12 9 6"></polyline></svg>
                             </a>
@@ -1208,29 +1213,29 @@
                 </div>
 
                 <!-- Card 4 -->
-                <div class="carousel-3d-card prev" data-index="3">
+                <div class="carousel-3d-card far-left" data-index="3">
                     <div class="card-img-wrapper">
-                        <img src="./emewear_hero.jpg" alt="Boutique Signature Ankara Wide-Leg Trousers" />
+                        <img src="./emewear_piece_04.jpg" alt="Sunset Azure Crackled Batik Palazzo" loading="lazy" />
                     </div>
                     <div class="card-body">
                         <div>
-                            <h3>Boutique Signature Ankara Trousers</h3>
-                            <p>Hand-crafted red and white wavy Ankara print high-waisted palazzo trousers with silk waistband.</p>
+                            <h3>Sunset Azure Crackled Batik Palazzo</h3>
+                            <p>Vibrant hand-crackled artisan batik blending fiery tangerine and electric ocean azure blue with tailored comfort waistband.</p>
                         </div>
                         <div>
                             <div class="size-tags">
-                                <span class="size-badge">UK 16</span>
-                                <span class="size-badge">UK 20</span>
-                                <span class="size-badge">UK 24</span>
+                                <span class="size-badge">UK 16/18</span>
+                                <span class="size-badge">UK 20/22</span>
+                                <span class="size-badge">UK 24/26</span>
                             </div>
                             <div class="card-footer">
                                 <span class="status-launching">
                                     <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"></polygon></svg>
                                     Exclusive Pre-Order
                                 </span>
-                                <span style="color: var(--gold-glow); font-weight: 800; font-size: 1.1rem;">GH₵ 210</span>
+                                <span style="color: var(--gold-glow); font-weight: 800; font-size: 1.1rem;">GH₵ 240</span>
                             </div>
-                            <a href="https://wa.me/233205244979?text=Hello%20Emewear,%20I%20would%20like%20to%20inquire%20about%20the%20Signature%20Ankara%20Palazzo%20Trousers%20(GH%E2%82%B5%20210)" target="_blank" rel="noopener" class="card-inquire-action">
+                            <a href="https://wa.me/233205244979?text=Hello%20Emewear%2C%20I%20would%20like%20to%20inquire%20about%20the%20Sunset%20Azure%20Crackled%20Batik%20Palazzo%20(GH%E2%82%B5%20240)" target="_blank" rel="noopener" class="btn-card-wa">
                                 <span>Acquire Piece</span>
                                 <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="9 18 15 12 9 6"></polyline></svg>
                             </a>
@@ -1238,6 +1243,315 @@
                     </div>
                 </div>
 
+                <!-- Card 5 -->
+                <div class="carousel-3d-card far-left" data-index="4">
+                    <div class="card-img-wrapper">
+                        <img src="./emewear_piece_05.jpg" alt="Carnival Bloom Botanical Palazzo" loading="lazy" />
+                    </div>
+                    <div class="card-body">
+                        <div>
+                            <h3>Carnival Bloom Botanical Palazzo</h3>
+                            <p>Lively tropical garden motif bursting with magenta blossom, cobalt blue, and sunny yellow florals on midnight canvas.</p>
+                        </div>
+                        <div>
+                            <div class="size-tags">
+                                <span class="size-badge">UK 16</span>
+                                <span class="size-badge">UK 20/22</span>
+                                <span class="size-badge">UK 26/28</span>
+                            </div>
+                            <div class="card-footer">
+                                <span class="status-launching">
+                                    <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"></polygon></svg>
+                                    Exclusive Pre-Order
+                                </span>
+                                <span style="color: var(--gold-glow); font-weight: 800; font-size: 1.1rem;">GH₵ 215</span>
+                            </div>
+                            <a href="https://wa.me/233205244979?text=Hello%20Emewear%2C%20I%20would%20like%20to%20inquire%20about%20the%20Carnival%20Bloom%20Botanical%20Palazzo%20(GH%E2%82%B5%20215)" target="_blank" rel="noopener" class="btn-card-wa">
+                                <span>Acquire Piece</span>
+                                <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="9 18 15 12 9 6"></polyline></svg>
+                            </a>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Card 6 -->
+                <div class="carousel-3d-card far-left" data-index="5">
+                    <div class="card-img-wrapper">
+                        <img src="./emewear_piece_06.jpg" alt="Lavender Lotus Gold Batik Palazzo" loading="lazy" />
+                    </div>
+                    <div class="card-body">
+                        <div>
+                            <h3>Lavender Lotus Gold Batik Palazzo</h3>
+                            <p>Elegant regal purple lotus petals nestled in swirling filigree over textured warm marigold yellow Ghanaian wax print.</p>
+                        </div>
+                        <div>
+                            <div class="size-tags">
+                                <span class="size-badge">UK 18</span>
+                                <span class="size-badge">UK 22/24</span>
+                                <span class="size-badge">UK 28/30</span>
+                            </div>
+                            <div class="card-footer">
+                                <span class="status-launching">
+                                    <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"></polygon></svg>
+                                    Exclusive Pre-Order
+                                </span>
+                                <span style="color: var(--gold-glow); font-weight: 800; font-size: 1.1rem;">GH₵ 230</span>
+                            </div>
+                            <a href="https://wa.me/233205244979?text=Hello%20Emewear%2C%20I%20would%20like%20to%20inquire%20about%20the%20Lavender%20Lotus%20Gold%20Batik%20Palazzo%20(GH%E2%82%B5%20230)" target="_blank" rel="noopener" class="btn-card-wa">
+                                <span>Acquire Piece</span>
+                                <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="9 18 15 12 9 6"></polyline></svg>
+                            </a>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Card 7 -->
+                <div class="carousel-3d-card far-left" data-index="6">
+                    <div class="card-img-wrapper">
+                        <img src="./emewear_piece_07.jpg" alt="Hibiscus & Cobalt Botanical Palazzo" loading="lazy" />
+                    </div>
+                    <div class="card-body">
+                        <div>
+                            <h3>Hibiscus & Cobalt Botanical Palazzo</h3>
+                            <p>Brisk pristine white base crowned with vivid royal blue chrysanthemums and fuchsia hibiscus floral bouquets.</p>
+                        </div>
+                        <div>
+                            <div class="size-tags">
+                                <span class="size-badge">UK 16/18</span>
+                                <span class="size-badge">UK 20/22</span>
+                                <span class="size-badge">UK 24/26</span>
+                            </div>
+                            <div class="card-footer">
+                                <span class="status-launching">
+                                    <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"></polygon></svg>
+                                    Exclusive Pre-Order
+                                </span>
+                                <span style="color: var(--gold-glow); font-weight: 800; font-size: 1.1rem;">GH₵ 225</span>
+                            </div>
+                            <a href="https://wa.me/233205244979?text=Hello%20Emewear%2C%20I%20would%20like%20to%20inquire%20about%20the%20Hibiscus%20%26%20Cobalt%20Botanical%20Palazzo%20(GH%E2%82%B5%20225)" target="_blank" rel="noopener" class="btn-card-wa">
+                                <span>Acquire Piece</span>
+                                <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="9 18 15 12 9 6"></polyline></svg>
+                            </a>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Card 8 -->
+                <div class="carousel-3d-card far-left" data-index="7">
+                    <div class="card-img-wrapper">
+                        <img src="./emewear_piece_08.jpg" alt="Golden Honey Smoke Cloud Batik Palazzo" loading="lazy" />
+                    </div>
+                    <div class="card-body">
+                        <div>
+                            <h3>Golden Honey Smoke Cloud Batik Palazzo</h3>
+                            <p>Warm artisanal amber honey and rich espresso smoke tie-dye cloud wash, hand-dyed by master Ghanaian batik craftswomen.</p>
+                        </div>
+                        <div>
+                            <div class="size-tags">
+                                <span class="size-badge">UK 16/18</span>
+                                <span class="size-badge">UK 20/22</span>
+                                <span class="size-badge">UK 24/28</span>
+                            </div>
+                            <div class="card-footer">
+                                <span class="status-launching">
+                                    <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"></polygon></svg>
+                                    Exclusive Pre-Order
+                                </span>
+                                <span style="color: var(--gold-glow); font-weight: 800; font-size: 1.1rem;">GH₵ 235</span>
+                            </div>
+                            <a href="https://wa.me/233205244979?text=Hello%20Emewear%2C%20I%20would%20like%20to%20inquire%20about%20the%20Golden%20Honey%20Smoke%20Cloud%20Batik%20Palazzo%20(GH%E2%82%B5%20235)" target="_blank" rel="noopener" class="btn-card-wa">
+                                <span>Acquire Piece</span>
+                                <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="9 18 15 12 9 6"></polyline></svg>
+                            </a>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Card 9 -->
+                <div class="carousel-3d-card far-left" data-index="8">
+                    <div class="card-img-wrapper">
+                        <img src="./emewear_piece_09.jpg" alt="Sunrise Orchid Pastel Batik Palazzo" loading="lazy" />
+                    </div>
+                    <div class="card-body">
+                        <div>
+                            <h3>Sunrise Orchid Pastel Batik Palazzo</h3>
+                            <p>Dreamy hand-marbled silk-touch batik in pastel lavender orchid, coral peach, and saffron amber with sweeping flared legs.</p>
+                        </div>
+                        <div>
+                            <div class="size-tags">
+                                <span class="size-badge">UK 18</span>
+                                <span class="size-badge">UK 22</span>
+                                <span class="size-badge">UK 26/30</span>
+                            </div>
+                            <div class="card-footer">
+                                <span class="status-launching">
+                                    <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"></polygon></svg>
+                                    Exclusive Pre-Order
+                                </span>
+                                <span style="color: var(--gold-glow); font-weight: 800; font-size: 1.1rem;">GH₵ 250</span>
+                            </div>
+                            <a href="https://wa.me/233205244979?text=Hello%20Emewear%2C%20I%20would%20like%20to%20inquire%20about%20the%20Sunrise%20Orchid%20Pastel%20Batik%20Palazzo%20(GH%E2%82%B5%20250)" target="_blank" rel="noopener" class="btn-card-wa">
+                                <span>Acquire Piece</span>
+                                <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="9 18 15 12 9 6"></polyline></svg>
+                            </a>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Card 10 -->
+                <div class="carousel-3d-card far-left" data-index="9">
+                    <div class="card-img-wrapper">
+                        <img src="./emewear_piece_10.jpg" alt="Midnight Pillar Geometric Palazzo" loading="lazy" />
+                    </div>
+                    <div class="card-body">
+                        <div>
+                            <h3>Midnight Pillar Geometric Palazzo</h3>
+                            <p>Sophisticated vertical architectural pillar print with golden diamonds and fuchsia jewels on deep obsidian navy.</p>
+                        </div>
+                        <div>
+                            <div class="size-tags">
+                                <span class="size-badge">UK 16</span>
+                                <span class="size-badge">UK 20/22</span>
+                                <span class="size-badge">UK 24/26</span>
+                            </div>
+                            <div class="card-footer">
+                                <span class="status-launching">
+                                    <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"></polygon></svg>
+                                    Exclusive Pre-Order
+                                </span>
+                                <span style="color: var(--gold-glow); font-weight: 800; font-size: 1.1rem;">GH₵ 240</span>
+                            </div>
+                            <a href="https://wa.me/233205244979?text=Hello%20Emewear%2C%20I%20would%20like%20to%20inquire%20about%20the%20Midnight%20Pillar%20Geometric%20Palazzo%20(GH%E2%82%B5%20240)" target="_blank" rel="noopener" class="btn-card-wa">
+                                <span>Acquire Piece</span>
+                                <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="9 18 15 12 9 6"></polyline></svg>
+                            </a>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Card 11 -->
+                <div class="carousel-3d-card far-left" data-index="10">
+                    <div class="card-img-wrapper">
+                        <img src="./emewear_piece_11.jpg" alt="Fiery Crimson & Amber Bark Palazzo" loading="lazy" />
+                    </div>
+                    <div class="card-body">
+                        <div>
+                            <h3>Fiery Crimson & Amber Bark Palazzo</h3>
+                            <p>Bold vertical barcode tree-bark batik print in blazing scarlet crimson, goldenrod, and silver charcoal streaks.</p>
+                        </div>
+                        <div>
+                            <div class="size-tags">
+                                <span class="size-badge">UK 16/18</span>
+                                <span class="size-badge">UK 20/22</span>
+                                <span class="size-badge">UK 24/28</span>
+                            </div>
+                            <div class="card-footer">
+                                <span class="status-launching">
+                                    <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"></polygon></svg>
+                                    Exclusive Pre-Order
+                                </span>
+                                <span style="color: var(--gold-glow); font-weight: 800; font-size: 1.1rem;">GH₵ 220</span>
+                            </div>
+                            <a href="https://wa.me/233205244979?text=Hello%20Emewear%2C%20I%20would%20like%20to%20inquire%20about%20the%20Fiery%20Crimson%20%26%20Amber%20Bark%20Palazzo%20(GH%E2%82%B5%20220)" target="_blank" rel="noopener" class="btn-card-wa">
+                                <span>Acquire Piece</span>
+                                <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="9 18 15 12 9 6"></polyline></svg>
+                            </a>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Card 12 -->
+                <div class="carousel-3d-card far-left" data-index="11">
+                    <div class="card-img-wrapper">
+                        <img src="./emewear_piece_12.jpg" alt="Electric Cobalt Ocean Batik Palazzo" loading="lazy" />
+                    </div>
+                    <div class="card-body">
+                        <div>
+                            <h3>Electric Cobalt Ocean Batik Palazzo</h3>
+                            <p>Dynamic ocean swell batik featuring deep sapphire, electric cyan, and earthy copper bronze splashes.</p>
+                        </div>
+                        <div>
+                            <div class="size-tags">
+                                <span class="size-badge">UK 18</span>
+                                <span class="size-badge">UK 22/24</span>
+                                <span class="size-badge">UK 26/30</span>
+                            </div>
+                            <div class="card-footer">
+                                <span class="status-launching">
+                                    <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"></polygon></svg>
+                                    Exclusive Pre-Order
+                                </span>
+                                <span style="color: var(--gold-glow); font-weight: 800; font-size: 1.1rem;">GH₵ 230</span>
+                            </div>
+                            <a href="https://wa.me/233205244979?text=Hello%20Emewear%2C%20I%20would%20like%20to%20inquire%20about%20the%20Electric%20Cobalt%20Ocean%20Batik%20Palazzo%20(GH%E2%82%B5%20230)" target="_blank" rel="noopener" class="btn-card-wa">
+                                <span>Acquire Piece</span>
+                                <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="9 18 15 12 9 6"></polyline></svg>
+                            </a>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Card 13 -->
+                <div class="carousel-3d-card far-left" data-index="12">
+                    <div class="card-img-wrapper">
+                        <img src="./emewear_piece_13.jpg" alt="Indigo Bullseye Concentric Palazzo" loading="lazy" />
+                    </div>
+                    <div class="card-body">
+                        <div>
+                            <h3>Indigo Bullseye Concentric Palazzo</h3>
+                            <p>Hand-resist shibori concentric hexagonal bullseye motifs in crisp lavender white over rich midnight navy blue.</p>
+                        </div>
+                        <div>
+                            <div class="size-tags">
+                                <span class="size-badge">UK 16/18</span>
+                                <span class="size-badge">UK 20/22</span>
+                                <span class="size-badge">UK 24/26</span>
+                            </div>
+                            <div class="card-footer">
+                                <span class="status-launching">
+                                    <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"></polygon></svg>
+                                    Exclusive Pre-Order
+                                </span>
+                                <span style="color: var(--gold-glow); font-weight: 800; font-size: 1.1rem;">GH₵ 235</span>
+                            </div>
+                            <a href="https://wa.me/233205244979?text=Hello%20Emewear%2C%20I%20would%20like%20to%20inquire%20about%20the%20Indigo%20Bullseye%20Concentric%20Palazzo%20(GH%E2%82%B5%20235)" target="_blank" rel="noopener" class="btn-card-wa">
+                                <span>Acquire Piece</span>
+                                <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="9 18 15 12 9 6"></polyline></svg>
+                            </a>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Card 14 -->
+                <div class="carousel-3d-card prev" data-index="13">
+                    <div class="card-img-wrapper">
+                        <img src="./emewear_piece_14.jpg" alt="Canary Gold & Royal Cobalt Palazzo" loading="lazy" />
+                    </div>
+                    <div class="card-body">
+                        <div>
+                            <h3>Canary Gold & Royal Cobalt Palazzo</h3>
+                            <p>Radiant sunshine canary yellow adorned with classic royal blue geometric Adinkra triangle and scroll motifs.</p>
+                        </div>
+                        <div>
+                            <div class="size-tags">
+                                <span class="size-badge">UK 16</span>
+                                <span class="size-badge">UK 20/22</span>
+                                <span class="size-badge">UK 24/28</span>
+                            </div>
+                            <div class="card-footer">
+                                <span class="status-launching">
+                                    <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"></polygon></svg>
+                                    Exclusive Pre-Order
+                                </span>
+                                <span style="color: var(--gold-glow); font-weight: 800; font-size: 1.1rem;">GH₵ 225</span>
+                            </div>
+                            <a href="https://wa.me/233205244979?text=Hello%20Emewear%2C%20I%20would%20like%20to%20inquire%20about%20the%20Canary%20Gold%20%26%20Royal%20Cobalt%20Palazzo%20(GH%E2%82%B5%20225)" target="_blank" rel="noopener" class="btn-card-wa">
+                                <span>Acquire Piece</span>
+                                <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="9 18 15 12 9 6"></polyline></svg>
+                            </a>
+                        </div>
+                    </div>
+                </div>
             </div>
         </div>
 
@@ -1246,11 +1560,24 @@
             <button class="carousel-btn" id="prevBtn" aria-label="Previous Slide">
                 <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="15 18 9 12 15 6"></polyline></svg>
             </button>
-            <div class="carousel-dots" id="carouselDots">
+            <div style="display: flex; flex-direction: column; align-items: center; gap: 0.6rem;">
+                <span id="runwayCounter" style="color: var(--gold-glow); font-size: 0.82rem; font-weight: 800; letter-spacing: 2px;">01 / 14</span>
+                <div class="carousel-dots" id="carouselDots">
                 <span class="dot active" data-slide="0"></span>
                 <span class="dot" data-slide="1"></span>
                 <span class="dot" data-slide="2"></span>
                 <span class="dot" data-slide="3"></span>
+                <span class="dot" data-slide="4"></span>
+                <span class="dot" data-slide="5"></span>
+                <span class="dot" data-slide="6"></span>
+                <span class="dot" data-slide="7"></span>
+                <span class="dot" data-slide="8"></span>
+                <span class="dot" data-slide="9"></span>
+                <span class="dot" data-slide="10"></span>
+                <span class="dot" data-slide="11"></span>
+                <span class="dot" data-slide="12"></span>
+                <span class="dot" data-slide="13"></span>
+            </div>
             </div>
             <button class="carousel-btn" id="nextBtn" aria-label="Next Slide">
                 <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="9 18 15 12 9 6"></polyline></svg>
@@ -1375,6 +1702,10 @@
                 dots.forEach((dot, i) => {
                     dot.classList.toggle('active', i === currentIndex);
                 });
+                const counter = document.getElementById('runwayCounter');
+                if (counter) {
+                    counter.textContent = `${(currentIndex + 1).toString().padStart(2, '0')} / ${total.toString().padStart(2, '0')}`;
+                }
             }
 
             function nextSlide() {
