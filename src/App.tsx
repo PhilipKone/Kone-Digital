@@ -57,45 +57,10 @@ function App() {
   }, []);
 
   useEffect(() => {
-    const isReactSnap = navigator.userAgent === 'ReactSnap';
-
-    if (isReactSnap) {
-      const elements = document.querySelectorAll('.fade-in-up');
-      elements.forEach(el => {
-        el.classList.add('visible');
-      });
-      return;
-    }
-
-    const observer = new IntersectionObserver((entries, obs) => {
-      entries.forEach(entry => {
-        if (entry.isIntersecting) {
-          entry.target.classList.add('visible');
-          obs.unobserve(entry.target);
-        }
-      });
-    }, { 
-      rootMargin: '0px 0px 60px 0px',
-      threshold: 0.01 
-    });
-
-    const observeElements = () => {
-      const root = containerRef.current || document;
-      const elements = root.querySelectorAll('.fade-in-up:not(.observed)');
-      elements.forEach(el => {
-        observer.observe(el);
-        el.classList.add('observed');
-      });
-    };
-
-    observeElements();
-    // Re-check shortly after mount/route change for any dynamic content
-    const timer = setTimeout(observeElements, 100);
-
-    return () => {
-      clearTimeout(timer);
-      observer.disconnect();
-    };
+    // Zero-lag instant visibility: ensure all elements are immediately rendered with zero scroll jank
+    const root = containerRef.current || document;
+    const elements = root.querySelectorAll('.fade-in-up');
+    elements.forEach(el => el.classList.add('visible'));
   }, [currentRoute]);
 
   return (
