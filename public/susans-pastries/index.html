@@ -40,7 +40,7 @@
       "url": "https://digital.koneacademy.io/susans-pastries/",
       "telephone": "+233539332660",
       "priceRange": "GH₵ 20 - GH₵ 500",
-      "servesCuisine": "Ghanaian Pastries, Meat Pies, Samosas, Spring Rolls & Cakes",
+      "servesCuisine": "Ghanaian Pastries, Meat Pies, Samosas, Spring Rolls, Sausage Rolls, Yam Balls, Quiche, Cookies, Chips, Chilled Sobolo & Fresh Juices",
       "address": {
         "@type": "PostalAddress",
         "addressLocality": "Accra",
@@ -994,6 +994,9 @@
             display: flex;
             flex-direction: column;
             justify-content: space-between;
+            position: sticky;
+            top: 85px;
+            align-self: start;
         }
         .summary-title {
             font-family: 'Playfair Display', serif;
@@ -1923,10 +1926,10 @@
         <!-- 3 Category Cards with Real Food Photos (No Badge Collisions) -->
         <div class="menu-grid">
 
-            <!-- Card 1: Meat Pies & Bakery -->
+            <!-- Card 1: Meat Pies & Savory Bites -->
             <div class="menu-card" id="bakery">
                 <div class="menu-card-img-wrap">
-                    <img src="./meatpies.jpg" alt="Golden Baked Ghanaian Meat Pies" />
+                    <img src="./meatpies.jpg" alt="Golden Baked Ghanaian Meat Pies, Sausage Rolls & Savory Bites" />
                 </div>
                 <div class="menu-card-body">
                     <div class="menu-card-meta">
@@ -1935,17 +1938,20 @@
                             Fresh Daily
                         </span>
                     </div>
-                    <h3>Gourmet Meat Pies</h3>
-                    <div class="menu-card-pricing-badge">10 pcs: GH₵ 120 &bull; 20 pcs: GH₵ 220</div>
+                    <h3>Gourmet Pies &amp; Savory Pastries</h3>
+                    <div class="menu-card-pricing-badge">Pies (10 pcs: GH₵ 120) &bull; Sausage Rolls: GH₵ 25 &bull; Quiche: GH₵ 35</div>
                     <div class="menu-card-tags">
-                        <span class="menu-tag">Flaky Crust</span>
-                        <span class="menu-tag">Seasoned Minced Beef</span>
-                        <span class="menu-tag">Doughnuts (GH₵ 10)</span>
-                        <span class="menu-tag">Cookies &amp; Chips</span>
+                        <span class="menu-tag">Meat Pies (GH₵ 120)</span>
+                        <span class="menu-tag">Sausage Rolls (GH₵ 25)</span>
+                        <span class="menu-tag">Yam Balls 5pcs (GH₵ 30)</span>
+                        <span class="menu-tag">Meat/Fish Balls 5pcs (GH₵ 50)</span>
+                        <span class="menu-tag">Quiche (GH₵ 35)</span>
+                        <span class="menu-tag">Cookies 12pcs (GH₵ 25)</span>
+                        <span class="menu-tag">Chips 500g/1kg (GH₵ 30/55)</span>
                     </div>
-                    <a href="https://wa.me/233555950314?text=Hello%20Susan's%20Pastries,%20I%20would%20like%20to%20order%20Meat%20Pies%20and%20Snacks." target="_blank" rel="noopener" class="menu-card-order">
+                    <a href="https://wa.me/233555950314?text=Hello%20Susan's%20Pastries,%20I%20would%20like%20to%20order%20Pies,%20Sausage%20Rolls%20and%20Savory%20Pastries." target="_blank" rel="noopener" class="menu-card-order">
                         <svg width="15" height="15" viewBox="0 0 24 24" fill="currentColor"><path d="M12.04 2c-5.46 0-9.91 4.45-9.91 9.91 0 1.75.46 3.45 1.32 4.95L2.05 22l5.25-1.38c1.45.79 3.08 1.21 4.74 1.21 5.46 0 9.91-4.45 9.91-9.91 0-2.65-1.03-5.14-2.9-7.01A9.816 9.816 0 0 0 12.04 2m.01 1.67c2.2 0 4.26.86 5.82 2.42a8.225 8.225 0 0 1 2.41 5.83c0 4.54-3.7 8.24-8.24 8.24-1.48 0-2.93-.4-4.2-1.15l-.3-.18-3.12.82.83-3.04-.2-.31a8.19 8.19 0 0 1-1.26-4.38c0-4.54 3.7-8.24 8.24-8.24M8.53 7.33c-.16 0-.42.06-.64.3-.22.24-.85.83-.85 2.02 0 1.19.87 2.34.99 2.5.12.16 1.7 2.6 4.12 3.65.58.25 1.03.4 1.38.51.58.18 1.11.16 1.53.1.47-.07 1.44-.59 1.64-1.16.2-.57.2-1.06.14-1.16-.06-.1-.22-.16-.46-.28s-1.44-.71-1.66-.79-.38-.12-.54.12c-.16.24-.63.79-.77.95-.14.16-.28.18-.52.06s-1.02-.38-1.94-1.2c-.72-.64-1.2-1.43-1.34-1.67-.14-.24-.02-.37.1-.49.11-.11.24-.28.36-.42.12-.14.16-.24.24-.4.08-.16.04-.3-.02-.42s-.54-1.31-.74-1.79c-.2-.48-.4-.41-.55-.42l-.47-.01z"/></svg>
-                        <span>Order Meat Pies &amp; Snacks</span>
+                        <span>Order Savory Pastries &amp; Bites</span>
                     </a>
                 </div>
             </div>
@@ -1977,10 +1983,10 @@
                 </div>
             </div>
 
-            <!-- Card 3: Fresh Fruit Juices -->
+            <!-- Card 3: Natural Juices & Chilled Sobolo -->
             <div class="menu-card" id="juices">
                 <div class="menu-card-img-wrap">
-                    <img src="./juices.jpg" alt="Freshly Pressed Natural Fruit Juices and Smoothies" />
+                    <img src="./juices.jpg" alt="Freshly Pressed Natural Fruit Juices and Chilled Sobolo" />
                 </div>
                 <div class="menu-card-body">
                     <div class="menu-card-meta">
@@ -1989,17 +1995,18 @@
                             100% Natural
                         </span>
                     </div>
-                    <h3>Natural Fruit Juices</h3>
-                    <div class="menu-card-pricing-badge">500ml: GH₵ 20 &bull; 1L: GH₵ 35 &bull; 5L: GH₵ 160</div>
+                    <h3>Natural Juices &amp; Chilled Sobolo</h3>
+                    <div class="menu-card-pricing-badge">Sobolo: 350ml GH₵ 8 &bull; 5L GH₵ 100 | Juices: 500ml GH₵ 20 &bull; 5L GH₵ 160</div>
                     <div class="menu-card-tags">
+                        <span class="menu-tag">Chilled Sobolo (350ml: GH₵ 8)</span>
+                        <span class="menu-tag">5L Party Sobolo (GH₵ 100)</span>
                         <span class="menu-tag">Sweet Pineapple</span>
                         <span class="menu-tag">Watermelon Chill</span>
-                        <span class="menu-tag">Citrus Zest</span>
-                        <span class="menu-tag">Tropical Punch</span>
+                        <span class="menu-tag">5L Party Juices (GH₵ 160)</span>
                     </div>
-                    <a href="https://wa.me/233555950314?text=Hello%20Susan's%20Pastries,%20I%20would%20like%20to%20order%20Natural%20Fruit%20Juices." target="_blank" rel="noopener" class="menu-card-order">
+                    <a href="https://wa.me/233555950314?text=Hello%20Susan's%20Pastries,%20I%20would%20like%20to%20order%20Chilled%20Sobolo%20and%20Natural%20Fruit%20Juices." target="_blank" rel="noopener" class="menu-card-order">
                         <svg width="15" height="15" viewBox="0 0 24 24" fill="currentColor"><path d="M12.04 2c-5.46 0-9.91 4.45-9.91 9.91 0 1.75.46 3.45 1.32 4.95L2.05 22l5.25-1.38c1.45.79 3.08 1.21 4.74 1.21 5.46 0 9.91-4.45 9.91-9.91 0-2.65-1.03-5.14-2.9-7.01A9.816 9.816 0 0 0 12.04 2m.01 1.67c2.2 0 4.26.86 5.82 2.42a8.225 8.225 0 0 1 2.41 5.83c0 4.54-3.7 8.24-8.24 8.24-1.48 0-2.93-.4-4.2-1.15l-.3-.18-3.12.82.83-3.04-.2-.31a8.19 8.19 0 0 1-1.26-4.38c0-4.54 3.7-8.24 8.24-8.24M8.53 7.33c-.16 0-.42.06-.64.3-.22.24-.85.83-.85 2.02 0 1.19.87 2.34.99 2.5.12.16 1.7 2.6 4.12 3.65.58.25 1.03.4 1.38.51.58.18 1.11.16 1.53.1.47-.07 1.44-.59 1.64-1.16.2-.57.2-1.06.14-1.16-.06-.1-.22-.16-.46-.28s-1.44-.71-1.66-.79-.38-.12-.54.12c-.16.24-.63.79-.77.95-.14.16-.28.18-.52.06s-1.02-.38-1.94-1.2c-.72-.64-1.2-1.43-1.34-1.67-.14-.24-.02-.37.1-.49.11-.11.24-.28.36-.42.12-.14.16-.24.24-.4.08-.16.04-.3-.02-.42s-.54-1.31-.74-1.79c-.2-.48-.4-.41-.55-.42l-.47-.01z"/></svg>
-                        <span>Order Fresh Juices</span>
+                        <span>Order Sobolo &amp; Fresh Juices</span>
                     </a>
                 </div>
             </div>
@@ -2048,7 +2055,12 @@
             <div class="builder-grid">
                 <div class="builder-items">
 
-                    <!-- Item 1 -->
+                    <!-- Subheading 1: Finger Foods & Savory Pastries -->
+                    <div style="font-size: 0.76rem; font-weight: 800; letter-spacing: 1.2px; text-transform: uppercase; color: var(--primary-amber-dark); margin: 0.3rem 0 0.1rem; padding-left: 0.2rem; display: flex; align-items: center; gap: 6px;">
+                        <span>Finger Foods &amp; Savory Pastries</span>
+                    </div>
+
+                    <!-- Item 1: Spring Rolls Veggies -->
                     <div class="builder-item-card">
                         <div class="builder-item-info">
                             <h4>Spring Rolls: Veggies Only (50 Pcs)</h4>
@@ -2065,7 +2077,7 @@
                         </div>
                     </div>
 
-                    <!-- Item 2 -->
+                    <!-- Item 2: Spring Rolls Protein + Veg -->
                     <div class="builder-item-card">
                         <div class="builder-item-info">
                             <h4>Spring Rolls: Protein + Veg (50 Pcs)</h4>
@@ -2082,7 +2094,7 @@
                         </div>
                     </div>
 
-                    <!-- Item 3 -->
+                    <!-- Item 3: Spring Rolls Protein Only -->
                     <div class="builder-item-card">
                         <div class="builder-item-info">
                             <h4>Spring Rolls: Protein Only (50 Pcs)</h4>
@@ -2099,7 +2111,7 @@
                         </div>
                     </div>
 
-                    <!-- Item 4 -->
+                    <!-- Item 4: Meat Pies -->
                     <div class="builder-item-card">
                         <div class="builder-item-info">
                             <h4>Gourmet Meat Pies (Box of 10)</h4>
@@ -2116,11 +2128,174 @@
                         </div>
                     </div>
 
-                    <!-- Item 5 -->
+                    <!-- Item 5: Sausage Rolls -->
+                    <div class="builder-item-card">
+                        <div class="builder-item-info">
+                            <h4>Flaky Sausage Rolls</h4>
+                            <span>GH₵ 25</span>
+                        </div>
+                        <div class="builder-qty-controls">
+                            <button class="qty-btn" onclick="updateCart('sausage_rolls', -1)" aria-label="Decrease sausage rolls">
+                                <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round"><line x1="5" y1="12" x2="19" y2="12"></line></svg>
+                            </button>
+                            <span class="qty-val" id="qty_sausage_rolls">0</span>
+                            <button class="qty-btn" onclick="updateCart('sausage_rolls', 1)" aria-label="Increase sausage rolls">
+                                <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round"><line x1="12" y1="5" x2="12" y2="19"></line><line x1="5" y1="12" x2="19" y2="12"></line></svg>
+                            </button>
+                        </div>
+                    </div>
+
+                    <!-- Item 6: Artisanal Quiche -->
+                    <div class="builder-item-card">
+                        <div class="builder-item-info">
+                            <h4>Fresh Artisanal Quiche</h4>
+                            <span>GH₵ 35</span>
+                        </div>
+                        <div class="builder-qty-controls">
+                            <button class="qty-btn" onclick="updateCart('quiche', -1)" aria-label="Decrease quiche">
+                                <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round"><line x1="5" y1="12" x2="19" y2="12"></line></svg>
+                            </button>
+                            <span class="qty-val" id="qty_quiche">0</span>
+                            <button class="qty-btn" onclick="updateCart('quiche', 1)" aria-label="Increase quiche">
+                                <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round"><line x1="12" y1="5" x2="12" y2="19"></line><line x1="5" y1="12" x2="19" y2="12"></line></svg>
+                            </button>
+                        </div>
+                    </div>
+
+                    <!-- Item 7: Yam Balls -->
+                    <div class="builder-item-card">
+                        <div class="builder-item-info">
+                            <h4>Golden Yam Balls (5 Pcs)</h4>
+                            <span>GH₵ 30</span>
+                        </div>
+                        <div class="builder-qty-controls">
+                            <button class="qty-btn" onclick="updateCart('yam_balls_5', -1)" aria-label="Decrease yam balls">
+                                <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round"><line x1="5" y1="12" x2="19" y2="12"></line></svg>
+                            </button>
+                            <span class="qty-val" id="qty_yam_balls_5">0</span>
+                            <button class="qty-btn" onclick="updateCart('yam_balls_5', 1)" aria-label="Increase yam balls">
+                                <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round"><line x1="12" y1="5" x2="12" y2="19"></line><line x1="5" y1="12" x2="19" y2="12"></line></svg>
+                            </button>
+                        </div>
+                    </div>
+
+                    <!-- Item 8: Meat Balls / Fish Balls -->
+                    <div class="builder-item-card">
+                        <div class="builder-item-info">
+                            <h4>Meat Balls / Fish Balls (5 Pcs)</h4>
+                            <span>GH₵ 50</span>
+                        </div>
+                        <div class="builder-qty-controls">
+                            <button class="qty-btn" onclick="updateCart('meat_fish_balls_5', -1)" aria-label="Decrease meat fish balls">
+                                <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round"><line x1="5" y1="12" x2="19" y2="12"></line></svg>
+                            </button>
+                            <span class="qty-val" id="qty_meat_fish_balls_5">0</span>
+                            <button class="qty-btn" onclick="updateCart('meat_fish_balls_5', 1)" aria-label="Increase meat fish balls">
+                                <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round"><line x1="12" y1="5" x2="12" y2="19"></line><line x1="5" y1="12" x2="19" y2="12"></line></svg>
+                            </button>
+                        </div>
+                    </div>
+
+                    <!-- Subheading 2: Snacks, Chips & Cookies -->
+                    <div style="font-size: 0.76rem; font-weight: 800; letter-spacing: 1.2px; text-transform: uppercase; color: var(--primary-amber-dark); margin: 0.8rem 0 0.1rem; padding-left: 0.2rem; display: flex; align-items: center; gap: 6px;">
+                        <span>Snacks, Chips &amp; Cookies</span>
+                    </div>
+
+                    <!-- Item 9: Cookies (12 pcs) -->
+                    <div class="builder-item-card">
+                        <div class="builder-item-info">
+                            <h4>Fresh Baked Cookies (12 Pcs)</h4>
+                            <span>GH₵ 25</span>
+                        </div>
+                        <div class="builder-qty-controls">
+                            <button class="qty-btn" onclick="updateCart('cookies_12', -1)" aria-label="Decrease cookies">
+                                <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round"><line x1="5" y1="12" x2="19" y2="12"></line></svg>
+                            </button>
+                            <span class="qty-val" id="qty_cookies_12">0</span>
+                            <button class="qty-btn" onclick="updateCart('cookies_12', 1)" aria-label="Increase cookies">
+                                <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round"><line x1="12" y1="5" x2="12" y2="19"></line><line x1="5" y1="12" x2="19" y2="12"></line></svg>
+                            </button>
+                        </div>
+                    </div>
+
+                    <!-- Item 10: Chips 500g -->
+                    <div class="builder-item-card">
+                        <div class="builder-item-info">
+                            <h4>Crunchy Chips (500g Pack)</h4>
+                            <span>GH₵ 30</span>
+                        </div>
+                        <div class="builder-qty-controls">
+                            <button class="qty-btn" onclick="updateCart('chips_500g', -1)" aria-label="Decrease chips 500g">
+                                <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round"><line x1="5" y1="12" x2="19" y2="12"></line></svg>
+                            </button>
+                            <span class="qty-val" id="qty_chips_500g">0</span>
+                            <button class="qty-btn" onclick="updateCart('chips_500g', 1)" aria-label="Increase chips 500g">
+                                <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round"><line x1="12" y1="5" x2="12" y2="19"></line><line x1="5" y1="12" x2="19" y2="12"></line></svg>
+                            </button>
+                        </div>
+                    </div>
+
+                    <!-- Item 11: Chips 1kg -->
+                    <div class="builder-item-card">
+                        <div class="builder-item-info">
+                            <h4>Crunchy Chips (1kg Pack)</h4>
+                            <span>GH₵ 55</span>
+                        </div>
+                        <div class="builder-qty-controls">
+                            <button class="qty-btn" onclick="updateCart('chips_1kg', -1)" aria-label="Decrease chips 1kg">
+                                <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round"><line x1="5" y1="12" x2="19" y2="12"></line></svg>
+                            </button>
+                            <span class="qty-val" id="qty_chips_1kg">0</span>
+                            <button class="qty-btn" onclick="updateCart('chips_1kg', 1)" aria-label="Increase chips 1kg">
+                                <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round"><line x1="12" y1="5" x2="12" y2="19"></line><line x1="5" y1="12" x2="19" y2="12"></line></svg>
+                            </button>
+                        </div>
+                    </div>
+
+                    <!-- Subheading 3: Chilled Sobolo & Fresh Juices -->
+                    <div style="font-size: 0.76rem; font-weight: 800; letter-spacing: 1.2px; text-transform: uppercase; color: var(--primary-amber-dark); margin: 0.8rem 0 0.1rem; padding-left: 0.2rem; display: flex; align-items: center; gap: 6px;">
+                        <span>Chilled Sobolo &amp; Fresh Juices</span>
+                    </div>
+
+                    <!-- Item 12: Sobolo 350ml -->
+                    <div class="builder-item-card">
+                        <div class="builder-item-info">
+                            <h4>Chilled Sobolo (350ml Bottle)</h4>
+                            <span>GH₵ 8</span>
+                        </div>
+                        <div class="builder-qty-controls">
+                            <button class="qty-btn" onclick="updateCart('sobolo_350ml', -1)" aria-label="Decrease sobolo 350ml">
+                                <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round"><line x1="5" y1="12" x2="19" y2="12"></line></svg>
+                            </button>
+                            <span class="qty-val" id="qty_sobolo_350ml">0</span>
+                            <button class="qty-btn" onclick="updateCart('sobolo_350ml', 1)" aria-label="Increase sobolo 350ml">
+                                <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round"><line x1="12" y1="5" x2="12" y2="19"></line><line x1="5" y1="12" x2="19" y2="12"></line></svg>
+                            </button>
+                        </div>
+                    </div>
+
+                    <!-- Item 13: Sobolo 5 Liters -->
+                    <div class="builder-item-card">
+                        <div class="builder-item-info">
+                            <h4>Sobolo Party Gallon (5 Liters)</h4>
+                            <span>GH₵ 100</span>
+                        </div>
+                        <div class="builder-qty-controls">
+                            <button class="qty-btn" onclick="updateCart('sobolo_5l', -1)" aria-label="Decrease sobolo 5l">
+                                <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round"><line x1="5" y1="12" x2="19" y2="12"></line></svg>
+                            </button>
+                            <span class="qty-val" id="qty_sobolo_5l">0</span>
+                            <button class="qty-btn" onclick="updateCart('sobolo_5l', 1)" aria-label="Increase sobolo 5l">
+                                <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round"><line x1="12" y1="5" x2="12" y2="19"></line><line x1="5" y1="12" x2="19" y2="12"></line></svg>
+                            </button>
+                        </div>
+                    </div>
+
+                    <!-- Item 14: Fresh Juices 500ml -->
                     <div class="builder-item-card">
                         <div class="builder-item-info">
                             <h4>Fresh Fruit Juices (500ml Bottle)</h4>
-                            <span>GH₵ 20 per bottle (Pineapple / Watermelon)</span>
+                            <span>GH₵ 20 (Pineapple / Watermelon)</span>
                         </div>
                         <div class="builder-qty-controls">
                             <button class="qty-btn" onclick="updateCart('juice_500ml', -1)" aria-label="Decrease juice">
@@ -2328,9 +2503,10 @@
                 <h4>Menu &amp; Packages</h4>
                 <ul>
                     <li><a href="#menu">Spring Rolls &amp; Samosas (50 pcs)</a></li>
-                    <li><a href="#bakery">Flaky Meat Pies</a></li>
-                    <li><a href="#cakes">Birthday &amp; Wedding Cakes</a></li>
-                    <li><a href="#juices">100% Fresh Fruit Juices</a></li>
+                    <li><a href="#bakery">Meat Pies, Sausage Rolls &amp; Quiche</a></li>
+                    <li><a href="#bakery">Yam Balls, Meat/Fish Balls &amp; Chips</a></li>
+                    <li><a href="#cakes">Birthday &amp; Celebration Cakes</a></li>
+                    <li><a href="#juices">Fresh Juices &amp; Chilled Sobolo</a></li>
                     <li><a href="#order-builder">Live Order Calculator</a></li>
                     <li><a href="#delivery">Accra Delivery Zones</a></li>
                 </ul>
@@ -2481,7 +2657,16 @@
             rolls_prot_veg: { name: 'Spring Rolls: Protein+Veg (50 pcs)', price: 230 },
             rolls_prot_only: { name: 'Spring Rolls: Protein Only (50 pcs)', price: 300 },
             meat_pies_10: { name: 'Gourmet Meat Pies (Box of 10)', price: 120 },
-            juice_500ml: { name: 'Fresh Juices (500ml Bottle)', price: 20 }
+            sausage_rolls: { name: 'Flaky Sausage Rolls', price: 25 },
+            quiche: { name: 'Artisanal Quiche', price: 35 },
+            yam_balls_5: { name: 'Golden Yam Balls (5 pcs)', price: 30 },
+            meat_fish_balls_5: { name: 'Meat Balls / Fish Balls (5 pcs)', price: 50 },
+            cookies_12: { name: 'Cookies (12 pcs)', price: 25 },
+            chips_500g: { name: 'Crunchy Chips (500g)', price: 30 },
+            chips_1kg: { name: 'Crunchy Chips (1kg)', price: 55 },
+            sobolo_350ml: { name: 'Chilled Sobolo (350ml)', price: 8 },
+            sobolo_5l: { name: 'Sobolo Party Gallon (5L)', price: 100 },
+            juice_500ml: { name: 'Fresh Juices (500ml)', price: 20 }
         };
 
         const cartState = {
@@ -2489,6 +2674,15 @@
             rolls_prot_veg: 0,
             rolls_prot_only: 0,
             meat_pies_10: 0,
+            sausage_rolls: 0,
+            quiche: 0,
+            yam_balls_5: 0,
+            meat_fish_balls_5: 0,
+            cookies_12: 0,
+            chips_500g: 0,
+            chips_1kg: 0,
+            sobolo_350ml: 0,
+            sobolo_5l: 0,
             juice_500ml: 0
         };
 
