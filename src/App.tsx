@@ -18,42 +18,97 @@ function App() {
     setIsWizardOpen(true);
   };
   
-  const [currentRoute, setCurrentRoute] = useState<'home' | 'services' | 'service-detail' | 'work' | 'pricing'>(() => {
-    const hash = typeof window !== 'undefined' ? window.location.hash : '';
-    if (hash.startsWith('#services/')) return 'service-detail';
-    if (hash.startsWith('#services')) return 'services';
-    if (hash.startsWith('#work')) return 'work';
-    if (hash.startsWith('#pricing')) return 'pricing';
-    return 'home';
-  });
+  const getRouteAndSlugFromLocation = (): { route: 'home' | 'services' | 'service-detail' | 'work' | 'pricing'; slug: string } => {
+    if (typeof window === 'undefined') return { route: 'home', slug: 'web-development' };
+    const pathname = window.location.pathname.replace(/\/$/, '') || '/';
+    const hash = window.location.hash;
 
-  const [activeServiceSlug, setActiveServiceSlug] = useState<string>(() => {
-    const hash = typeof window !== 'undefined' ? window.location.hash : '';
-    if (hash.startsWith('#services/')) return hash.replace('#services/', '');
-    return 'web-development';
-  });
+    // Check service detail
+    if (pathname.startsWith('/services/')) {
+      const slug = pathname.replace('/services/', '');
+      return { route: 'service-detail', slug };
+    }
+    if (hash.startsWith('#services/')) {
+      const slug = hash.replace('#services/', '');
+      return { route: 'service-detail', slug };
+    }
+
+    // Check services hub
+    if (pathname === '/services' || hash.startsWith('#services')) {
+      return { route: 'services', slug: 'web-development' };
+    }
+
+    // Check work / portfolio
+    if (pathname === '/work' || hash.startsWith('#work')) {
+      return { route: 'work', slug: 'web-development' };
+    }
+
+    // Check pricing
+    if (pathname === '/pricing' || hash.startsWith('#pricing')) {
+      return { route: 'pricing', slug: 'web-development' };
+    }
+
+    return { route: 'home', slug: 'web-development' };
+  };
+
+  const initialLocation = getRouteAndSlugFromLocation();
+  const [currentRoute, setCurrentRoute] = useState<'home' | 'services' | 'service-detail' | 'work' | 'pricing'>(initialLocation.route);
+  const [activeServiceSlug, setActiveServiceSlug] = useState<string>(initialLocation.slug);
+
+  const syncLocation = () => {
+    const loc = getRouteAndSlugFromLocation();
+    setCurrentRoute(loc.route);
+    setActiveServiceSlug(loc.slug);
+
+    // Update document title and canonical tag for SEO & prerendering
+    let pageTitle = 'Kone Digital | WaaS Hub';
+    let canonicalUrl = 'https://digital.koneacademy.io/';
+
+    if (loc.route === 'work') {
+      pageTitle = 'Portfolio & Client Work | Kone Digital';
+      canonicalUrl = 'https://digital.koneacademy.io/work';
+    } else if (loc.route === 'pricing') {
+      pageTitle = 'Transparent WaaS Pricing Plans | Kone Digital';
+      canonicalUrl = 'https://digital.koneacademy.io/pricing';
+    } else if (loc.route === 'services') {
+      pageTitle = 'Digital Engineering & Design Services | Kone Digital';
+      canonicalUrl = 'https://digital.koneacademy.io/services';
+    } else if (loc.route === 'service-detail') {
+      const readableSlug = loc.slug.split('-').map(s => s.charAt(0).toUpperCase() + s.slice(1)).join(' ');
+      pageTitle = `${readableSlug} Services | Kone Digital`;
+      canonicalUrl = `https://digital.koneacademy.io/services/${loc.slug}`;
+    }
+
+    document.title = pageTitle;
+    const canonicalTag = document.querySelector<HTMLLinkElement>("link[rel='canonical']");
+    if (canonicalTag) {
+      canonicalTag.href = canonicalUrl;
+    }
+  };
+
+  const navigateTo = (e: React.MouseEvent<HTMLAnchorElement>, path: string) => {
+    e.preventDefault();
+    if (window.location.pathname !== path) {
+      window.history.pushState({}, '', path);
+    }
+    syncLocation();
+    window.scrollTo({ top: 0, behavior: 'instant' });
+  };
 
   useEffect(() => {
-    const handleHashChange = () => {
-      const hash = window.location.hash;
-      if (hash.startsWith('#services/')) {
-        const slug = hash.replace('#services/', '');
-        setActiveServiceSlug(slug);
-        setCurrentRoute('service-detail');
-      } else if (hash.startsWith('#services')) {
-        setCurrentRoute('services');
-      } else if (hash.startsWith('#work')) {
-        setCurrentRoute('work');
-      } else if (hash.startsWith('#pricing')) {
-        setCurrentRoute('pricing');
-      } else {
-        setCurrentRoute('home');
-      }
+    const handleLocationChange = () => {
+      syncLocation();
       window.scrollTo({ top: 0, behavior: 'instant' });
     };
-    window.addEventListener('hashchange', handleHashChange);
-    handleHashChange();
-    return () => window.removeEventListener('hashchange', handleHashChange);
+
+    window.addEventListener('hashchange', handleLocationChange);
+    window.addEventListener('popstate', handleLocationChange);
+    syncLocation();
+
+    return () => {
+      window.removeEventListener('hashchange', handleLocationChange);
+      window.removeEventListener('popstate', handleLocationChange);
+    };
   }, []);
 
   useEffect(() => {
@@ -68,7 +123,7 @@ function App() {
       <header className="hub-header">
         <div className="hub-header-inner">
           <div className="logo" style={{ display: 'flex', alignItems: 'center', gap: '0.75rem' }}>
-            <a href="#" style={{ display: 'flex', alignItems: 'center', gap: '0.75rem', textDecoration: 'none', color: 'inherit' }}>
+            <a href="/" onClick={(e) => navigateTo(e, '/')} style={{ display: 'flex', alignItems: 'center', gap: '0.75rem', textDecoration: 'none', color: 'inherit' }}>
               <img src="/kone-digital-logo.svg" alt="Kone Digital Logo" className="logo-icon neon-logo" width="34" height="34" />
               <span className="logo-text" style={{ fontWeight: 850, letterSpacing: '-0.02em' }}>KONE <span className="neon-text">DIGITAL</span></span>
             </a>
@@ -76,10 +131,10 @@ function App() {
 
           {/* Desktop Navbar */}
           <nav className="hub-nav">
-            <a href="#" className={currentRoute === 'home' ? 'active-nav' : ''}>Overview</a>
-            <a href="#services" className={currentRoute === 'services' || currentRoute === 'service-detail' ? 'active-nav' : ''}>Services</a>
-            <a href="#work" className={currentRoute === 'work' ? 'active-nav' : ''}>Work</a>
-            <a href="#pricing" className={currentRoute === 'pricing' ? 'active-nav' : ''}>Pricing</a>
+            <a href="/" onClick={(e) => navigateTo(e, '/')} className={currentRoute === 'home' ? 'active-nav' : ''}>Overview</a>
+            <a href="/services" onClick={(e) => navigateTo(e, '/services')} className={currentRoute === 'services' || currentRoute === 'service-detail' ? 'active-nav' : ''}>Services</a>
+            <a href="/work" onClick={(e) => navigateTo(e, '/work')} className={currentRoute === 'work' ? 'active-nav' : ''}>Work</a>
+            <a href="/pricing" onClick={(e) => navigateTo(e, '/pricing')} className={currentRoute === 'pricing' ? 'active-nav' : ''}>Pricing</a>
             <a 
               href="https://wa.me/233551993820?text=Hi%20Kone%20Digital%2C%20I'd%20like%20to%20get%20in%20touch%20about%20your%20services." 
               target="_blank" 
@@ -144,33 +199,33 @@ function App() {
 
           <div className="mobile-drawer-links">
             <a 
-              href="#" 
+              href="/" 
               className={`mobile-drawer-link ${currentRoute === 'home' ? 'active-nav' : ''}`}
-              onClick={() => setIsMobileMenuOpen(false)}
+              onClick={(e) => { setIsMobileMenuOpen(false); navigateTo(e, '/'); }}
             >
               <span>Overview</span>
               <span style={{ fontSize: '0.8rem', opacity: 0.6 }}>01</span>
             </a>
             <a 
-              href="#services" 
+              href="/services" 
               className={`mobile-drawer-link ${currentRoute === 'services' || currentRoute === 'service-detail' ? 'active-nav' : ''}`}
-              onClick={() => setIsMobileMenuOpen(false)}
+              onClick={(e) => { setIsMobileMenuOpen(false); navigateTo(e, '/services'); }}
             >
               <span>Services</span>
               <span style={{ fontSize: '0.8rem', opacity: 0.6 }}>02</span>
             </a>
             <a 
-              href="#work" 
+              href="/work" 
               className={`mobile-drawer-link ${currentRoute === 'work' ? 'active-nav' : ''}`}
-              onClick={() => setIsMobileMenuOpen(false)}
+              onClick={(e) => { setIsMobileMenuOpen(false); navigateTo(e, '/work'); }}
             >
               <span>Work</span>
               <span style={{ fontSize: '0.8rem', opacity: 0.6 }}>03</span>
             </a>
             <a 
-              href="#pricing" 
+              href="/pricing" 
               className={`mobile-drawer-link ${currentRoute === 'pricing' ? 'active-nav' : ''}`}
-              onClick={() => setIsMobileMenuOpen(false)}
+              onClick={(e) => { setIsMobileMenuOpen(false); navigateTo(e, '/pricing'); }}
             >
               <span>Pricing</span>
               <span style={{ fontSize: '0.8rem', opacity: 0.6 }}>04</span>
@@ -178,7 +233,7 @@ function App() {
             <a 
               href="https://wa.me/233551993820?text=Hi%20Kone%20Digital%2C%20I'd%20like%20to%20get%20in%20touch%20about%20your%20services." 
               target="_blank" 
-              rel="noopener noreferrer"
+              rel="noopener noreferrer" 
               className="mobile-drawer-link"
               onClick={() => setIsMobileMenuOpen(false)}
             >
@@ -211,13 +266,23 @@ function App() {
         {currentRoute === 'service-detail' ? (
           <ServiceDetail 
             slug={activeServiceSlug} 
-            onBack={() => setCurrentRoute('services')}
+            onBack={() => {
+              if (window.location.pathname !== '/services') {
+                window.history.pushState({}, '', '/services');
+              }
+              syncLocation();
+              window.scrollTo({ top: 0, behavior: 'instant' });
+            }}
           />
         ) : currentRoute === 'services' ? (
           <ServicesHub 
             onSelectService={(slug) => {
-              setActiveServiceSlug(slug);
-              setCurrentRoute('service-detail');
+              const targetPath = `/services/${slug}`;
+              if (window.location.pathname !== targetPath) {
+                window.history.pushState({}, '', targetPath);
+              }
+              syncLocation();
+              window.scrollTo({ top: 0, behavior: 'instant' });
             }} 
           />
         ) : currentRoute === 'work' ? (
@@ -230,8 +295,12 @@ function App() {
             <TrustMetrics />
             <ServicesHub 
               onSelectService={(slug) => {
-                setActiveServiceSlug(slug);
-                setCurrentRoute('service-detail');
+                const targetPath = `/services/${slug}`;
+                if (window.location.pathname !== targetPath) {
+                  window.history.pushState({}, '', targetPath);
+                }
+                syncLocation();
+                window.scrollTo({ top: 0, behavior: 'instant' });
               }} 
             />
             <Portfolio />
@@ -269,10 +338,10 @@ function App() {
 
         {/* Footer Navigation */}
         <div style={{ display: 'flex', gap: '1.2rem', flexWrap: 'wrap', justifyContent: 'center', fontSize: '0.88rem', fontWeight: 600 }}>
-          <a href="#" style={{ color: 'var(--text-muted)', textDecoration: 'none' }}>Overview</a>
-          <a href="#services" style={{ color: 'var(--text-muted)', textDecoration: 'none' }}>Services</a>
-          <a href="#work" style={{ color: 'var(--text-muted)', textDecoration: 'none' }}>Work</a>
-          <a href="#pricing" style={{ color: 'var(--text-muted)', textDecoration: 'none' }}>Pricing</a>
+          <a href="/" onClick={(e) => navigateTo(e, '/')} style={{ color: 'var(--text-muted)', textDecoration: 'none' }}>Overview</a>
+          <a href="/services" onClick={(e) => navigateTo(e, '/services')} style={{ color: 'var(--text-muted)', textDecoration: 'none' }}>Services</a>
+          <a href="/work" onClick={(e) => navigateTo(e, '/work')} style={{ color: 'var(--text-muted)', textDecoration: 'none' }}>Work</a>
+          <a href="/pricing" onClick={(e) => navigateTo(e, '/pricing')} style={{ color: 'var(--text-muted)', textDecoration: 'none' }}>Pricing</a>
         </div>
 
         {/* Social / Channel Buttons */}

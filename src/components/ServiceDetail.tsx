@@ -139,8 +139,8 @@ export default function ServiceDetail({ slug, onBack }: { slug: string; onBack?:
       {/* Top Breadcrumb Nav */}
       <div className="service-nav-bar">
         <a 
-          href="#services" 
-          onClick={(e) => { e.preventDefault(); window.location.hash = '#services'; if (onBack) onBack(); }}
+          href="/services" 
+          onClick={(e) => { e.preventDefault(); if (onBack) onBack(); }}
           className="service-back-btn"
         >
           <svg viewBox="0 0 24 24" width="18" height="18" stroke="currentColor" strokeWidth="2.5" fill="none">

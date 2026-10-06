@@ -70,11 +70,9 @@ export default function ServicesHub({ onSelectService }: { onSelectService: (slu
             </div>
 
             <a 
-              href={`#services/${service.slug}`}
+              href={`/services/${service.slug}`}
               onClick={(e) => {
                 e.preventDefault();
-                window.location.hash = `#services/${service.slug}`;
-                window.scrollTo({ top: 0, behavior: 'instant' });
                 onSelectService(service.slug);
               }}
               className="view-service-btn"
