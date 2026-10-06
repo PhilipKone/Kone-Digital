@@ -5,12 +5,10 @@
     "type":  "module",
     "scripts":  {
                     "dev":  "vite",
-                    "build": "tsc && vite build",
-                    "postbuild": "node -e \"try { require('child_process').execSync('npx react-snap', {stdio: 'inherit'}); } catch (e) { console.log('SPA fallback ready.'); }\"",
+                    "build": "tsc && vite build && node prerender.cjs",
                     "lint":  "eslint . --ext ts,tsx --report-unused-disable-directives --max-warnings 0",
                     "preview":  "vite preview",
-                    "predeploy":  "npm run build",
-                    "deploy":  "gh-pages -d dist --dotfiles",
+                    "deploy":  "npm run build && gh-pages -d dist --dotfiles",
                     "postinstall":  "node patch-react-snap.cjs"
                 },
     "dependencies":  {
