@@ -3,16 +3,16 @@ import './ServiceDetail.css';
 export interface ServiceData {
   id: string;
   slug: string;
+  shortName: string;
   title: string;
   headline: string;
   badge: string;
   summary: string;
   icon: string;
   coverGradient: string;
-  architectureFile: string;
-  architectureMetrics: { label: string; value: string }[];
+  scopeHighlights: { label: string; detail: string }[];
   deliverables: { title: string; spec: string; iconType: string }[];
-  techStack: { name: string; color: string }[];
+  techStack: string[];
   caseStudyHighlight: {
     client: string;
     project: string;
@@ -26,34 +26,26 @@ export const servicesData: Record<string, ServiceData> = {
   'web-development': {
     id: 'web-development',
     slug: 'web-development',
+    shortName: 'Web Development',
     title: 'Custom Web & SaaS Application Engineering',
-    headline: 'High-Performance Web Applications & Custom SaaS Platforms',
+    headline: 'High-Performance Web Applications, Portals & SaaS Platforms',
     badge: 'CORE ENGINEERING',
-    summary: 'We build production-grade, high-speed web applications using React, Next.js, TypeScript, and modern cloud architectures. Optimized for sub-second page loads, SEO dominance, and maximum conversion rates.',
+    summary: 'We build production-grade, ultra-fast web applications using React, Next.js, TypeScript, and modern cloud architectures. Engineered for instant page loads, high conversion, and seamless Ghanaian mobile payments.',
     icon: 'code',
-    coverGradient: 'linear-gradient(135deg, rgba(0, 240, 255, 0.12) 0%, rgba(9, 13, 22, 0.8) 100%)',
-    architectureFile: 'web-architecture.config.ts',
-    architectureMetrics: [
-      { label: 'Uptime SLA', value: '99.98%' },
-      { label: 'Edge Latency', value: '< 60ms' },
-      { label: 'SEO & Speed', value: '100 / 100' },
-      { label: '4G Mobile LCP', value: 'Sub-1.2s' }
+    coverGradient: 'linear-gradient(135deg, rgba(0, 240, 255, 0.08) 0%, rgba(9, 13, 22, 0.85) 100%)',
+    scopeHighlights: [
+      { label: 'Turnaround SLA', detail: '24–48h for Rapid Hubs · 5–10 days for Custom Apps' },
+      { label: 'Payment Rails', detail: 'Automated MTN MoMo, Telecel Cash & AT Money integration' },
+      { label: 'Architecture', detail: 'Modern React 18, Next.js SSR & static pre-rendering' },
+      { label: 'Code Quality', detail: 'Snyk-audited zero-vulnerability & Schema.org SEO indexed' }
     ],
     deliverables: [
-      { title: 'Single-Page & Multi-Page Web Apps', spec: 'Vite / Next.js SSR & static pre-rendering with React 18+', iconType: 'layout' },
-      { title: 'API Integration & Cloud Backends', spec: 'RESTful / GraphQL APIs, Node.js microservices, and Firebase real-time sync', iconType: 'cloud' },
-      { title: 'SEO & Microdata Architecture', spec: 'Schema.org JSON-LD microdata, OpenGraph cards, and Google Search Console indexing', iconType: 'seo' },
-      { title: 'Responsive Ultra-Fast UI', spec: 'Mobile-first design system, glassmorphism UI, sub-second LCP performance', iconType: 'speed' }
+      { title: 'Single-Page & Multi-Page Web Apps', spec: 'Vite & Next.js static prerendering with React 18+ for instant page response', iconType: 'layout' },
+      { title: 'API Integration & Cloud Backends', spec: 'RESTful / GraphQL APIs, Node.js microservices, and Firebase real-time data sync', iconType: 'cloud' },
+      { title: 'SEO & Microdata Architecture', spec: 'Schema.org JSON-LD microdata, OpenGraph social cards, and Google Search Console indexing', iconType: 'seo' },
+      { title: 'Responsive Ultra-Fast UI', spec: 'Mobile-first design system, clean interactions, and sub-second loading speeds', iconType: 'speed' }
     ],
-    techStack: [
-      { name: 'React 18', color: '#00F0FF' },
-      { name: 'TypeScript', color: '#3178C6' },
-      { name: 'Next.js', color: '#FFFFFF' },
-      { name: 'Node.js', color: '#4ADE80' },
-      { name: 'Firebase', color: '#F59E0B' },
-      { name: 'Vite', color: '#C084FC' },
-      { name: 'Tailwind / Vanilla CSS', color: '#38BDF8' }
-    ],
+    techStack: ['React 18', 'TypeScript', 'Next.js', 'Node.js', 'Firebase', 'Vite', 'Tailwind CSS'],
     caseStudyHighlight: {
       client: 'Kone Farms & Agritech',
       project: 'IoT Soil Telemetry & Agritech Research Hub',
@@ -61,25 +53,35 @@ export const servicesData: Record<string, ServiceData> = {
       link: 'https://farms.koneacademy.io'
     },
     faq: [
-      { q: 'How long does a custom web development project take?', a: 'Standard business websites are delivered in 5–10 business days. Complex SaaS platforms take 3–5 weeks.' },
-      { q: 'Is hosting and domain setup included?', a: 'Yes! We configure global CDN deployment (Vercel, Firebase, GitHub Pages), SSL certificates, and custom subdomains.' }
+      { 
+        q: 'How long does a custom web development project take?', 
+        a: 'Rapid business landing pages and WaaS storefronts launch in 24–48 hours. Custom multi-page business websites are delivered in 5–10 business days, and complex SaaS platforms take 2–4 weeks.' 
+      },
+      { 
+        q: 'Is hosting, domain, and SSL setup included?', 
+        a: 'Yes. We configure complete cloud hosting (Vercel, Firebase, GitHub Pages), custom domain DNS, SSL certificates, and Google Search Console indexing.' 
+      },
+      {
+        q: 'Do you integrate Mobile Money (MTN MoMo, Telecel, AT)?',
+        a: 'Yes. We natively integrate automated Ghanaian mobile payment routing so customers can pay directly into your account.'
+      }
     ]
   },
   'mobile-apps': {
     id: 'mobile-apps',
     slug: 'mobile-apps',
+    shortName: 'Mobile Apps',
     title: 'iOS & Android Mobile App Development',
     headline: 'Native Performance Cross-Platform Mobile Applications',
     badge: 'MOBILE SYSTEMS',
     summary: 'From concept to App Store and Google Play publication. We engineer cross-platform mobile apps using React Native and Flutter, delivering native 60fps animations, push notifications, and offline-first database sync.',
     icon: 'smartphone',
-    coverGradient: 'linear-gradient(135deg, rgba(168, 85, 247, 0.12) 0%, rgba(9, 13, 22, 0.8) 100%)',
-    architectureFile: 'native-mobile.spec.ts',
-    architectureMetrics: [
-      { label: 'Render Performance', value: '60 FPS' },
-      { label: 'Database Architecture', value: 'Offline-First' },
-      { label: 'Platforms Supported', value: 'iOS & Android' },
-      { label: 'Push Reliability', value: '99.9%' }
+    coverGradient: 'linear-gradient(135deg, rgba(168, 85, 247, 0.08) 0%, rgba(9, 13, 22, 0.85) 100%)',
+    scopeHighlights: [
+      { label: 'Target Platforms', detail: 'Native iOS (App Store) & Android (Google Play)' },
+      { label: 'Architecture', detail: 'Offline-first database sync & React Native / Flutter' },
+      { label: 'Push & Messaging', detail: 'Automated Firebase FCM & Apple APNs notifications' },
+      { label: 'Turnaround SLA', detail: '2–4 weeks MVP to Store submission' }
     ],
     deliverables: [
       { title: 'Cross-Platform iOS & Android Apps', spec: 'Single codebase compiled to native iOS Swift & Android Kotlin binaries', iconType: 'smartphone' },
@@ -87,14 +89,7 @@ export const servicesData: Record<string, ServiceData> = {
       { title: 'Push Notifications & Deep Linking', spec: 'Firebase Cloud Messaging (FCM) & Apple APNs integration', iconType: 'bell' },
       { title: 'Store Deployment & Compliance', spec: 'Complete Apple App Store & Google Play Store submission & approval management', iconType: 'store' }
     ],
-    techStack: [
-      { name: 'React Native', color: '#00F0FF' },
-      { name: 'Flutter', color: '#02569B' },
-      { name: 'TypeScript', color: '#3178C6' },
-      { name: 'Firebase FCM', color: '#F59E0B' },
-      { name: 'App Store Connect', color: '#A855F7' },
-      { name: 'Google Play Console', color: '#10B981' }
-    ],
+    techStack: ['React Native', 'Flutter', 'TypeScript', 'Firebase FCM', 'App Store Connect', 'Google Play Console'],
     caseStudyHighlight: {
       client: 'Kone Kids Academy',
       project: 'Interactive Mobile Learning Companion',
@@ -102,25 +97,35 @@ export const servicesData: Record<string, ServiceData> = {
       link: 'https://kids.koneacademy.io'
     },
     faq: [
-      { q: 'Do you publish our app directly to the App Store & Google Play?', a: 'Yes, we handle all store listing assets, compliance requirements, privacy manifests, and final submission.' },
-      { q: 'Can the app work offline without internet?', a: 'Yes, we build local caching mechanisms that allow full app functionality offline.' }
+      { 
+        q: 'How long does mobile app development take?', 
+        a: 'Rapid MVP mobile applications launch in 2–4 weeks. Complete multi-platform production builds with store approvals take 4–6 weeks.' 
+      },
+      { 
+        q: 'Do you publish our app directly to the App Store & Google Play?', 
+        a: 'Yes. We manage all store assets, compliance guidelines, privacy manifests, and final submission to both Apple and Google.' 
+      },
+      { 
+        q: 'Can the app work offline without internet?', 
+        a: 'Yes. We build local caching mechanisms that allow core app functionality offline with automatic cloud sync when connected.' 
+      }
     ]
   },
   'brand-design': {
     id: 'brand-design',
     slug: 'brand-design',
+    shortName: 'Brand & UI/UX',
     title: 'Brand Identity & UI/UX Design Systems',
     headline: 'World-Class Logo Systems, Brand Manuals & Figma UI/UX Prototypes',
     badge: 'DESIGN STUDIO',
     summary: 'We craft iconic corporate brand identity systems that command trust and market authority. Includes logo vectors, color tokens, typography scales, interactive Figma UI/UX wireframes, and complete brand manuals.',
     icon: 'palette',
-    coverGradient: 'linear-gradient(135deg, rgba(234, 179, 8, 0.12) 0%, rgba(9, 13, 22, 0.8) 100%)',
-    architectureFile: 'brand-design-system.tokens.ts',
-    architectureMetrics: [
-      { label: 'Scalability Standard', value: 'Vector 4K' },
-      { label: 'Component Library', value: 'Figma High-Fi' },
-      { label: 'Color Contrast', value: 'WCAG AAA' },
-      { label: 'Brand Asset Package', value: 'Full Manual' }
+    coverGradient: 'linear-gradient(135deg, rgba(234, 179, 8, 0.08) 0%, rgba(9, 13, 22, 0.85) 100%)',
+    scopeHighlights: [
+      { label: 'Deliverables', detail: 'Scalable SVG / EPS vectors & full PDF Brand Guidelines' },
+      { label: 'UI/UX Prototypes', detail: 'Interactive high-fidelity Figma component systems' },
+      { label: 'Accessibility', detail: 'WCAG AAA color contrast & responsive design tokens' },
+      { label: 'Turnaround SLA', detail: '48–72h Initial Concepts · 5–7 days Complete Package' }
     ],
     deliverables: [
       { title: 'Vector Logo Systems', spec: 'Scalable SVG, EPS, PNG, and PDF asset packages with dark/light variants', iconType: 'palette' },
@@ -128,13 +133,7 @@ export const servicesData: Record<string, ServiceData> = {
       { title: 'Brand Identity Guidelines', spec: 'PDF brand book detailing typography, color palettes, spacing rules, and usage', iconType: 'book' },
       { title: 'Social & Corporate Marketing Assets', spec: 'Banners, OpenGraph social previews, business cards, and flyer graphics', iconType: 'speed' }
     ],
-    techStack: [
-      { name: 'Figma', color: '#F24E1E' },
-      { name: 'Adobe Illustrator', color: '#FF9A00' },
-      { name: 'Photoshop', color: '#31A8FF' },
-      { name: 'SVG Vector Systems', color: '#FACC15' },
-      { name: 'Design Tokens', color: '#C084FC' }
-    ],
+    techStack: ['Figma', 'Adobe Illustrator', 'Photoshop', 'SVG Vector Systems', 'Design Tokens'],
     caseStudyHighlight: {
       client: 'Kone Consult',
       project: 'Corporate Tech Brand & Design System',
@@ -142,25 +141,35 @@ export const servicesData: Record<string, ServiceData> = {
       link: 'https://consult.koneacademy.io'
     },
     faq: [
-      { q: 'What files do I receive upon project completion?', a: 'You receive all original Figma source files, vector SVG/EPS logos, exportable PNGs, and a PDF Brand Guideline manual.' },
-      { q: 'Can you redesign our existing company logo?', a: 'Absolutely. We specialize in modernizing legacy brand identities for digital-first platforms.' }
+      { 
+        q: 'What is the turnaround time for a complete brand identity?', 
+        a: 'Initial brand concepts and logo marks are delivered in 48–72 hours. Complete vector packages, design systems, and PDF brand manuals are finalized in 5–7 business days.' 
+      },
+      { 
+        q: 'What files and assets do I receive upon completion?', 
+        a: 'You receive all original Figma source files, vector SVG/EPS assets, high-res PNG/PDF exports, and a comprehensive brand guideline manual.' 
+      },
+      { 
+        q: 'Can you redesign our existing company logo?', 
+        a: 'Absolutely. We specialize in modernizing legacy brand identities for digital-first platforms.' 
+      }
     ]
   },
   'cloud-devops': {
     id: 'cloud-devops',
     slug: 'cloud-devops',
+    shortName: 'Cloud & DevOps',
     title: 'Cloud Infrastructure & DevOps Automation',
     headline: 'Scalable Cloud Systems, Automated CI/CD & Security Audits',
     badge: 'CLOUD ARCHITECTURE',
     summary: 'Architecting resilient, self-healing cloud infrastructure on AWS, Firebase, and Cloudflare. We build automated GitHub Actions CI/CD pipelines, SSL/TLS encryption, and real-time uptime monitoring.',
     icon: 'server',
-    coverGradient: 'linear-gradient(135deg, rgba(34, 197, 94, 0.12) 0%, rgba(9, 13, 22, 0.8) 100%)',
-    architectureFile: 'cloud-infrastructure.infra.ts',
-    architectureMetrics: [
-      { label: 'Deploy Downtime', value: 'Zero Downtime' },
-      { label: 'Cluster Architecture', value: 'Self-Healing' },
-      { label: 'Security Standard', value: 'Snyk 0-Issue' },
-      { label: 'Encryption Protocol', value: 'TLS 1.3 / SSL' }
+    coverGradient: 'linear-gradient(135deg, rgba(34, 197, 94, 0.08) 0%, rgba(9, 13, 22, 0.85) 100%)',
+    scopeHighlights: [
+      { label: 'Cloud Platforms', detail: 'AWS, Firebase, Cloudflare DNS & Docker containers' },
+      { label: 'CI/CD Automation', detail: 'GitHub Actions with automated testing & zero-downtime deploys' },
+      { label: 'Security Standard', detail: 'Snyk SAST vulnerability scans & TLS 1.3 / SSL encryption' },
+      { label: 'Turnaround SLA', detail: '24–48h Setup, configuration & zero-downtime migrations' }
     ],
     deliverables: [
       { title: 'Automated CI/CD Deployment Pipelines', spec: 'GitHub Actions workflows for automated build, lint, test, and zero-downtime deployment', iconType: 'speed' },
@@ -168,15 +177,7 @@ export const servicesData: Record<string, ServiceData> = {
       { title: 'Security & Penetration Audits', spec: 'Snyk SAST security scanning, DOM-XSS prevention, and SSL/TLS configuration', iconType: 'shield' },
       { title: 'Uptime & Performance Telemetry', spec: 'Real-time error tracking, automated sitemap submission, and Google Search Console APIs', iconType: 'server' }
     ],
-    techStack: [
-      { name: 'AWS Cloud', color: '#FF9900' },
-      { name: 'Firebase', color: '#F59E0B' },
-      { name: 'Cloudflare', color: '#F38020' },
-      { name: 'GitHub Actions', color: '#2088FF' },
-      { name: 'Docker', color: '#2496ED' },
-      { name: 'Snyk Security', color: '#A855F7' },
-      { name: 'Node.js', color: '#4ADE80' }
-    ],
+    techStack: ['AWS Cloud', 'Firebase', 'Cloudflare', 'GitHub Actions', 'Docker', 'Snyk Security', 'Node.js'],
     caseStudyHighlight: {
       client: 'Kone Code IDE Ecosystem',
       project: 'Cloud Compiler & Data Relay Infrastructure',
@@ -184,8 +185,14 @@ export const servicesData: Record<string, ServiceData> = {
       link: 'https://code.koneacademy.io'
     },
     faq: [
-      { q: 'Can you migrate our legacy server to modern cloud hosting?', a: 'Yes, we perform zero-downtime migrations to Firebase, Vercel, or AWS with SSL configuration.' },
-      { q: 'How do you ensure our customer data is secure?', a: 'We implement hardware-level security rules, CORS isolation, HTTPS encryption, and Snyk SAST vulnerability scans.' }
+      { 
+        q: 'How quickly can cloud infrastructure or CI/CD pipelines be set up?', 
+        a: 'Standard CI/CD automation, cloud hosting migration, and DNS setups are completed within 24–48 hours with zero downtime.' 
+      },
+      { 
+        q: 'How do you ensure our production code and customer data are secure?', 
+        a: 'We perform automated Snyk SAST security scans, enforce HTTPS/TLS 1.3 encryption, and implement strict environment isolation.' 
+      }
     ]
   }
 };
@@ -266,13 +273,19 @@ const renderIcon = (type: string) => {
         </svg>
       );
     case 'server':
-    default:
       return (
         <svg viewBox="0 0 24 24" width="20" height="20" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
           <rect x="2" y="2" width="20" height="8" rx="2" ry="2"></rect>
           <rect x="2" y="14" width="20" height="8" rx="2" ry="2"></rect>
           <line x1="6" y1="6" x2="6.01" y2="6"></line>
           <line x1="6" y1="18" x2="6.01" y2="18"></line>
+        </svg>
+      );
+    default:
+      return (
+        <svg viewBox="0 0 24 24" width="20" height="20" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
+          <polyline points="16 18 22 12 16 6"></polyline>
+          <polyline points="8 6 2 12 8 18"></polyline>
         </svg>
       );
   }
@@ -306,7 +319,7 @@ export default function ServiceDetail({
             Services
           </a>
           <span className="crumb-separator">/</span>
-          <span className="crumb-current">{service.title.split(' ')[0]}</span>
+          <span className="crumb-current">{service.shortName}</span>
         </div>
 
         <a 
@@ -322,14 +335,14 @@ export default function ServiceDetail({
         </a>
       </nav>
 
-      {/* Hero 2-Column Banner */}
+      {/* Hero Banner */}
       <header className="service-hero-banner" style={{ background: service.coverGradient }}>
         <div className="service-hero-grid">
-          {/* Left Column: Headlines & CTAs */}
+          {/* Left Column: Headlines & Actions */}
           <div className="service-hero-content">
             <div className="service-badge-wrapper">
               <span className="service-badge">{service.badge}</span>
-              <span className="service-live-dot">● Production Grade</span>
+              <span className="service-live-dot">Production Grade</span>
             </div>
             <h1 className="service-main-title" itemProp="name">{service.title}</h1>
             <p className="service-headline" itemProp="description">{service.headline}</p>
@@ -354,35 +367,19 @@ export default function ServiceDetail({
             </div>
           </div>
 
-          {/* Right Column: Architectural Terminal Preview Card */}
-          <div className="service-hero-visual-card">
-            <div className="terminal-top-bar">
-              <div className="terminal-dots">
-                <span className="dot dot-red"></span>
-                <span className="dot dot-yellow"></span>
-                <span className="dot dot-green"></span>
-              </div>
-              <span className="terminal-title">{service.architectureFile}</span>
+          {/* Right Column: Clean Scope & Standards Overview (Authentic & Professional) */}
+          <div className="service-scope-panel">
+            <div className="scope-panel-header">
+              <span className="scope-panel-title">Engineering Standards</span>
+              <span className="scope-panel-indicator">Active SLA</span>
             </div>
-            
-            <div className="terminal-body">
-              <div className="terminal-metrics-grid">
-                {service.architectureMetrics.map((metric, idx) => (
-                  <div key={idx} className="terminal-metric-item">
-                    <span className="metric-val">{metric.value}</span>
-                    <span className="metric-lbl">{metric.label}</span>
-                  </div>
-                ))}
-              </div>
-
-              <div className="terminal-code-snippet">
-                <div className="code-line"><span className="code-kw">export const</span> spec = &#123;</div>
-                <div className="code-line indent"><span className="code-prop">standard:</span> <span className="code-str">'enterprise-waas'</span>,</div>
-                <div className="code-line indent"><span className="code-prop">security:</span> <span className="code-str">'snyk-hardened'</span>,</div>
-                <div className="code-line indent"><span className="code-prop">payments:</span> [<span className="code-str">'MTN MoMo'</span>, <span className="code-str">'Telecel'</span>],</div>
-                <div className="code-line indent"><span className="code-prop">indexing:</span> <span className="code-bool">true</span></div>
-                <div className="code-line">&#125;;</div>
-              </div>
+            <div className="scope-highlights-list">
+              {service.scopeHighlights.map((highlight, idx) => (
+                <div key={idx} className="scope-highlight-row">
+                  <span className="scope-label">{highlight.label}</span>
+                  <span className="scope-detail">{highlight.detail}</span>
+                </div>
+              ))}
             </div>
           </div>
         </div>
@@ -390,7 +387,7 @@ export default function ServiceDetail({
 
       {/* Main Deliverables Grid */}
       <section className="service-deliverables-section fade-in-up">
-        <h2 className="section-title">Key Technical Deliverables & Features</h2>
+        <h2 className="section-title">Key Technical Deliverables &amp; Features</h2>
         <div className="deliverables-grid">
           {service.deliverables.map((item, idx) => (
             <div key={idx} className={`deliverable-card fade-in-up stagger-${(idx % 4) + 1}`}>
@@ -411,10 +408,9 @@ export default function ServiceDetail({
       <section className="service-tech-section fade-in-up">
         <h2 className="section-title">Engineering Tech Stack</h2>
         <div className="tech-pills-row">
-          {service.techStack.map((tech) => (
-            <span key={tech.name} className="service-tech-pill">
-              <span className="tech-dot" style={{ backgroundColor: tech.color }}></span>
-              <span>{tech.name}</span>
+          {service.techStack.map((techName) => (
+            <span key={techName} className="service-tech-pill">
+              {techName}
             </span>
           ))}
         </div>
@@ -428,7 +424,7 @@ export default function ServiceDetail({
             <span className="case-client">{service.caseStudyHighlight.client}</span>
           </div>
           <h3 className="case-title">{service.caseStudyHighlight.project}</h3>
-          <p className="case-result">🎯 {service.caseStudyHighlight.result}</p>
+          <p className="case-result">{service.caseStudyHighlight.result}</p>
           {service.caseStudyHighlight.link && (
             <a 
               href={service.caseStudyHighlight.link} 
@@ -449,7 +445,7 @@ export default function ServiceDetail({
 
       {/* FAQ Section */}
       <section className="service-faq-section fade-in-up">
-        <h2 className="section-title">❓ Frequently Asked Questions</h2>
+        <h2 className="section-title">Frequently Asked Questions</h2>
         <div className="faq-grid">
           {service.faq.map((item, idx) => (
             <div key={idx} className={`faq-card fade-in-up stagger-${(idx % 4) + 1}`}>
@@ -467,7 +463,7 @@ export default function ServiceDetail({
       <section className="other-services-section fade-in-up">
         <div className="other-services-header">
           <h2 className="section-title" style={{ marginBottom: '0.4rem' }}>Explore Other Services</h2>
-          <p style={{ color: 'var(--text-muted)', fontSize: '0.92rem' }}>Comprehensive engineering & design capabilities for growing ventures.</p>
+          <p style={{ color: 'var(--text-muted)', fontSize: '0.92rem' }}>Comprehensive engineering &amp; design capabilities for growing ventures.</p>
         </div>
         <div className="other-services-grid">
           {otherServices.map((other) => (

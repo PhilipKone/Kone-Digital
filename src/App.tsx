@@ -332,82 +332,44 @@ function App() {
           <img src="/kone-digital-logo.svg" alt="Kone Digital Logo" className="logo-icon neon-logo" width="36" height="36" />
           <span className="logo-text" style={{ fontSize: '1.2rem', fontWeight: 800 }}>KONE <span className="neon-text">DIGITAL</span></span>
         </div>
-        <p style={{ color: 'var(--text-muted)', fontSize: '0.88rem', maxWidth: '520px', margin: '0 auto', lineHeight: '1.6' }}>
-          Ghana's premier digital studio for high-performance business websites, web apps, & automated WhatsApp lead engines.
+        <p style={{ color: 'var(--text-muted)', fontSize: '0.88rem', maxWidth: '580px', margin: '0 auto', lineHeight: '1.6' }}>
+          Ghana's premier digital studio for high-performance business websites, web apps, mobile apps, desktop apps, &amp; automated WhatsApp lead engines.
         </p>
 
-        {/* Footer Navigation */}
-        <div style={{ display: 'flex', gap: '1.2rem', flexWrap: 'wrap', justifyContent: 'center', fontSize: '0.88rem', fontWeight: 600 }}>
-          <a href="/" onClick={(e) => navigateTo(e, '/')} style={{ color: 'var(--text-muted)', textDecoration: 'none' }}>Overview</a>
-          <a href="/services" onClick={(e) => navigateTo(e, '/services')} style={{ color: 'var(--text-muted)', textDecoration: 'none' }}>Services</a>
-          <a href="/work" onClick={(e) => navigateTo(e, '/work')} style={{ color: 'var(--text-muted)', textDecoration: 'none' }}>Work</a>
-          <a href="/pricing" onClick={(e) => navigateTo(e, '/pricing')} style={{ color: 'var(--text-muted)', textDecoration: 'none' }}>Pricing</a>
+        {/* Footer Navigation: Core Pages */}
+        <div style={{ display: 'flex', gap: '1.4rem', flexWrap: 'wrap', justifyContent: 'center', fontSize: '0.88rem', fontWeight: 650 }}>
+          <a href="/" onClick={(e) => navigateTo(e, '/')} style={{ color: '#E2E8F0', textDecoration: 'none' }}>Overview</a>
+          <a href="/services" onClick={(e) => navigateTo(e, '/services')} style={{ color: '#E2E8F0', textDecoration: 'none' }}>Services</a>
+          <a href="/work" onClick={(e) => navigateTo(e, '/work')} style={{ color: '#E2E8F0', textDecoration: 'none' }}>Work</a>
+          <a href="/pricing" onClick={(e) => navigateTo(e, '/pricing')} style={{ color: '#E2E8F0', textDecoration: 'none' }}>Pricing</a>
         </div>
 
-        {/* Social / Channel Buttons */}
-        <div style={{ display: 'flex', gap: '0.75rem', flexWrap: 'wrap', justifyContent: 'center' }}>
+        {/* Footer Navigation: Specialized Services Directory */}
+        <div style={{ display: 'flex', gap: '1.2rem', flexWrap: 'wrap', justifyContent: 'center', fontSize: '0.82rem', color: 'var(--text-muted)' }}>
+          <a href="/services/web-development" onClick={(e) => navigateTo(e, '/services/web-development')} style={{ color: 'var(--text-muted)', textDecoration: 'none' }}>Web Development</a>
+          <span style={{ opacity: 0.3 }}>•</span>
+          <a href="/services/mobile-apps" onClick={(e) => navigateTo(e, '/services/mobile-apps')} style={{ color: 'var(--text-muted)', textDecoration: 'none' }}>Mobile Apps</a>
+          <span style={{ opacity: 0.3 }}>•</span>
+          <a href="/services/brand-design" onClick={(e) => navigateTo(e, '/services/brand-design')} style={{ color: 'var(--text-muted)', textDecoration: 'none' }}>Brand &amp; UI/UX</a>
+          <span style={{ opacity: 0.3 }}>•</span>
+          <a href="/services/cloud-devops" onClick={(e) => navigateTo(e, '/services/cloud-devops')} style={{ color: 'var(--text-muted)', textDecoration: 'none' }}>Cloud &amp; DevOps</a>
+        </div>
+
+        {/* Contact & Channel Links */}
+        <div style={{ display: 'flex', gap: '0.75rem', alignItems: 'center', justifyContent: 'center', marginTop: '0.2rem' }}>
           <a 
             href="https://whatsapp.com/channel/0029Vb7wdZMJUM2fepkMfR0D" 
             target="_blank" 
             rel="noopener noreferrer" 
+            title="Join WhatsApp Channel"
+            aria-label="Join WhatsApp Channel"
             style={{ 
-              background: 'rgba(37, 211, 102, 0.12)', 
-              border: '1px solid rgba(37, 211, 102, 0.35)', 
+              background: 'rgba(37, 211, 102, 0.1)', 
+              border: '1px solid rgba(37, 211, 102, 0.3)', 
               color: '#25d366', 
-              padding: '0.5rem 1.1rem', 
+              padding: '0.45rem 1rem', 
               borderRadius: '25px', 
-              fontSize: '0.85rem', 
-              fontWeight: 700, 
-              textDecoration: 'none', 
-              display: 'inline-flex', 
-              alignItems: 'center', 
-              gap: '0.5rem',
-              boxShadow: '0 0 12px rgba(37, 211, 102, 0.15)',
-              transition: 'all 0.2s ease'
-            }}
-          >
-            <svg viewBox="0 0 24 24" width="18" height="18" style={{ flexShrink: 0 }}>
-              <path fill="#25D366" d="M12.04 2C6.58 2 2.13 6.45 2.13 11.91c0 1.75.46 3.45 1.32 4.95L2.05 22l5.25-1.38c1.45.79 3.08 1.21 4.74 1.21 5.46 0 9.91-4.45 9.91-9.91 0-2.65-1.03-5.14-2.9-7.01A9.82 9.82 0 0 0 12.04 2z"/>
-              <path fill="#FFFFFF" d="M8.53 7.33c-.16 0-.42.06-.64.3-.22.24-.85.83-.85 2.02 0 1.19.87 2.34.99 2.5.12.16 1.7 2.6 4.12 3.65.58.25 1.03.4 1.38.51.58.18 1.11.16 1.53.1.47-.07 1.44-.59 1.64-1.16.2-.57.2-1.06.14-1.16-.06-.1-.22-.16-.46-.28s-1.44-.71-1.66-.79-.38-.12-.54.12c-.16.24-.63.79-.77.95-.14.16-.28.18-.52.06s-1.02-.38-1.94-1.2c-.72-.64-1.2-1.43-1.34-1.67-.14-.24-.02-.37.1-.49.11-.11.24-.28.36-.42.12-.14.16-.24.24-.4.08-.16.04-.3-.02-.42s-.54-1.31-.74-1.79c-.2-.48-.4-.41-.55-.42l-.47-.01z"/>
-            </svg>
-            <span>WhatsApp Channel</span>
-          </a>
-          <a 
-            href="https://wa.me/233551993820?text=Hi%20Kone%20Digital%2C%20I'd%20like%20to%20get%20in%20touch." 
-            target="_blank" 
-            rel="noopener noreferrer" 
-            style={{ 
-              background: 'rgba(0, 255, 255, 0.08)', 
-              border: '1px solid rgba(0, 255, 255, 0.25)', 
-              color: 'var(--cyan-glow)', 
-              padding: '0.5rem 1.1rem', 
-              borderRadius: '25px', 
-              fontSize: '0.85rem', 
-              fontWeight: 700, 
-              textDecoration: 'none', 
-              display: 'inline-flex', 
-              alignItems: 'center', 
-              gap: '0.5rem',
-              boxShadow: '0 0 12px rgba(0, 255, 255, 0.1)',
-              transition: 'all 0.2s ease'
-            }}
-          >
-            <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.2" strokeLinecap="round" strokeLinejoin="round" style={{ flexShrink: 0 }}>
-              <path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72 12.84 12.84 0 0 0 .7 2.81 2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45 12.84 12.84 0 0 0 2.81.7A2 2 0 0 1 22 16.92z"></path>
-            </svg>
-            <span>Direct Line (+233 55 199 3820)</span>
-          </a>
-          <a 
-            href="https://www.koneacademy.io" 
-            target="_blank" 
-            rel="noopener noreferrer" 
-            style={{ 
-              background: 'rgba(255, 255, 255, 0.05)', 
-              border: '1px solid rgba(255, 255, 255, 0.15)', 
-              color: 'var(--text-muted)', 
-              padding: '0.5rem 1.1rem', 
-              borderRadius: '25px', 
-              fontSize: '0.85rem', 
+              fontSize: '0.84rem', 
               fontWeight: 700, 
               textDecoration: 'none', 
               display: 'inline-flex', 
@@ -416,13 +378,38 @@ function App() {
               transition: 'all 0.2s ease'
             }}
           >
-            <span>🌐</span>
-            <span>Kone Academy Ecosystem</span>
+            <svg viewBox="0 0 24 24" width="16" height="16" style={{ flexShrink: 0 }}>
+              <path fill="#25D366" d="M12.04 2C6.58 2 2.13 6.45 2.13 11.91c0 1.75.46 3.45 1.32 4.95L2.05 22l5.25-1.38c1.45.79 3.08 1.21 4.74 1.21 5.46 0 9.91-4.45 9.91-9.91 0-2.65-1.03-5.14-2.9-7.01A9.82 9.82 0 0 0 12.04 2z"/>
+              <path fill="#FFFFFF" d="M8.53 7.33c-.16 0-.42.06-.64.3-.22.24-.85.83-.85 2.02 0 1.19.87 2.34.99 2.5.12.16 1.7 2.6 4.12 3.65.58.25 1.03.4 1.38.51.58.18 1.11.16 1.53.1.47-.07 1.44-.59 1.64-1.16.2-.57.2-1.06.14-1.16-.06-.1-.22-.16-.46-.28s-1.44-.71-1.66-.79-.38-.12-.54.12c-.16.24-.63.79-.77.95-.14.16-.28.18-.52.06s-1.02-.38-1.94-1.2c-.72-.64-1.2-1.43-1.34-1.67-.14-.24-.02-.37.1-.49.11-.11.24-.28.36-.42.12-.14.16-.24.24-.4.08-.16.04-.3-.02-.42s-.54-1.31-.74-1.79c-.2-.48-.4-.41-.55-.42l-.47-.01z"/>
+            </svg>
+            <span>WhatsApp Channel</span>
+          </a>
+          <a 
+            href="tel:+233551993820" 
+            title="Call +233 55 199 3820" 
+            aria-label="Call +233 55 199 3820"
+            style={{ 
+              background: 'rgba(255, 255, 255, 0.05)', 
+              border: '1px solid rgba(255, 255, 255, 0.15)', 
+              color: '#F8FAFC', 
+              width: '36px', 
+              height: '36px', 
+              borderRadius: '50%', 
+              display: 'inline-flex', 
+              alignItems: 'center', 
+              justifyContent: 'center',
+              textDecoration: 'none', 
+              transition: 'all 0.2s ease'
+            }}
+          >
+            <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.2" strokeLinecap="round" strokeLinejoin="round">
+              <path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72 12.84 12.84 0 0 0 .7 2.81 2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45 12.84 12.84 0 0 0 2.81.7A2 2 0 0 1 22 16.92z"></path>
+            </svg>
           </a>
         </div>
 
-        <div style={{ color: 'var(--text-muted)', fontSize: '0.8rem', marginTop: '0.5rem' }}>
-          © {new Date().getFullYear()} Kone Digital. Powered by Kone Academy. All rights reserved.
+        <div style={{ color: 'var(--text-muted)', fontSize: '0.8rem', marginTop: '0.4rem' }}>
+          &copy; {new Date().getFullYear()} Kone Digital. All rights reserved.
         </div>
       </footer>
       
