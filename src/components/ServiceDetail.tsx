@@ -167,7 +167,7 @@ export default function ServiceDetail({ slug, onBack }: { slug: string; onBack?:
           >
             <span>Book a Technical Consultation</span>
           </a>
-          <a href="#pricing" className="service-secondary-btn">
+          <a href="/pricing" className="service-secondary-btn">
             <span>View Pricing Estimates</span>
           </a>
         </div>
