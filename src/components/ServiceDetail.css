@@ -1,5 +1,5 @@
 .service-detail-container {
-  max-width: 1100px;
+  max-width: 1140px;
   margin: 0 auto;
   padding: 2.5rem 1.5rem 5rem;
   color: #e2e8f0;
@@ -69,8 +69,8 @@
 .service-hero-banner {
   background: rgba(13, 18, 29, 0.94);
   border-radius: 20px;
-  padding: 3rem 2.5rem;
-  margin-bottom: 3.5rem;
+  padding: 2.8rem 2.4rem;
+  margin-bottom: 2.5rem;
   border: 1px solid rgba(255, 255, 255, 0.1);
   box-shadow: 0 20px 50px rgba(0, 0, 0, 0.5), inset 0 1px 0 rgba(255, 255, 255, 0.08);
   position: relative;
@@ -79,9 +79,9 @@
 
 .service-hero-grid {
   display: grid;
-  grid-template-columns: 1.25fr 0.95fr;
+  grid-template-columns: 1.15fr 1.05fr;
   gap: 2.5rem;
-  align-items: stretch;
+  align-items: center;
 }
 
 .service-hero-content {
@@ -118,7 +118,7 @@
 }
 
 .service-main-title {
-  font-size: clamp(1.85rem, 4vw, 2.5rem);
+  font-size: clamp(1.85rem, 3.8vw, 2.5rem);
   font-weight: 850;
   color: #FFFFFF;
   line-height: 1.18;
@@ -197,68 +197,128 @@
   transform: translateY(-1px);
 }
 
-/* Clean Scope & Standards Overview Panel (High-End & Professional) */
-.service-scope-panel {
-  background: rgba(9, 13, 22, 0.85);
-  border: 1px solid rgba(255, 255, 255, 0.1);
+/* High-Fidelity Hero Visual Showcase */
+.service-hero-visual-card {
+  background: rgba(9, 13, 22, 0.9);
+  border: 1px solid rgba(255, 255, 255, 0.12);
   border-radius: 16px;
-  padding: 1.5rem;
+  overflow: hidden;
+  box-shadow: 0 15px 40px rgba(0, 0, 0, 0.6), 0 0 30px rgba(0, 240, 255, 0.08);
   display: flex;
   flex-direction: column;
-  justify-content: center;
-  box-shadow: 0 12px 30px rgba(0, 0, 0, 0.45);
-  backdrop-filter: blur(10px);
 }
 
-.scope-panel-header {
+.visual-browser-bar {
+  background: rgba(255, 255, 255, 0.03);
+  padding: 0.6rem 0.9rem;
   display: flex;
-  justify-content: space-between;
   align-items: center;
-  padding-bottom: 0.9rem;
-  margin-bottom: 1rem;
-  border-bottom: 1px solid rgba(255, 255, 255, 0.08);
+  gap: 0.8rem;
+  border-bottom: 1px solid rgba(255, 255, 255, 0.06);
 }
 
-.scope-panel-title {
-  font-size: 0.78rem;
-  font-weight: 850;
+.browser-dots {
+  display: flex;
+  align-items: center;
+  gap: 0.35rem;
+}
+
+.dot {
+  width: 8px;
+  height: 8px;
+  border-radius: 50%;
+  display: inline-block;
+}
+
+.dot-red { background: #FF5F56; }
+.dot-yellow { background: #FFBD2E; }
+.dot-green { background: #27C93F; }
+
+.browser-url {
+  font-family: var(--font-mono, monospace);
+  font-size: 0.72rem;
   color: #94A3B8;
-  letter-spacing: 1.5px;
+  background: rgba(255, 255, 255, 0.03);
+  padding: 0.15rem 0.6rem;
+  border-radius: 4px;
+}
+
+.visual-frame {
+  position: relative;
+  overflow: hidden;
+  background: #07090E;
+  aspect-ratio: 16 / 9;
+}
+
+.service-hero-img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  display: block;
+  transition: transform 0.4s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+.service-hero-visual-card:hover .service-hero-img {
+  transform: scale(1.03);
+}
+
+.visual-overlay-badge {
+  position: absolute;
+  bottom: 0.85rem;
+  right: 0.85rem;
+  background: rgba(9, 13, 22, 0.85);
+  backdrop-filter: blur(8px);
+  border: 1px solid rgba(0, 240, 255, 0.3);
+  color: #E2E8F0;
+  font-size: 0.72rem;
+  font-weight: 700;
+  padding: 0.3rem 0.7rem;
+  border-radius: 50px;
+  display: flex;
+  align-items: center;
+  gap: 0.45rem;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.4);
+}
+
+.badge-pulse {
+  color: #10B981;
+  font-size: 0.65rem;
+}
+
+/* Engineering Standards Horizontal Strip */
+.service-standards-strip {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+  gap: 1rem;
+  margin-bottom: 3.5rem;
+}
+
+.standard-chip {
+  background: rgba(13, 18, 29, 0.8);
+  border: 1px solid rgba(255, 255, 255, 0.08);
+  border-radius: 12px;
+  padding: 1rem 1.2rem;
+  display: flex;
+  flex-direction: column;
+  gap: 0.25rem;
+  transition: border-color 0.2s ease;
+}
+
+.standard-chip:hover {
+  border-color: rgba(0, 240, 255, 0.3);
+}
+
+.standard-chip-label {
+  font-size: 0.72rem;
+  font-weight: 800;
+  color: var(--cyan-glow, #00F0FF);
+  letter-spacing: 0.5px;
   text-transform: uppercase;
 }
 
-.scope-panel-indicator {
-  font-size: 0.72rem;
-  font-weight: 700;
-  color: #00F0FF;
-  background: rgba(0, 240, 255, 0.08);
-  border: 1px solid rgba(0, 240, 255, 0.2);
-  padding: 0.15rem 0.5rem;
-  border-radius: 50px;
-}
-
-.scope-highlights-list {
-  display: flex;
-  flex-direction: column;
-  gap: 0.95rem;
-}
-
-.scope-highlight-row {
-  display: flex;
-  flex-direction: column;
-  gap: 0.2rem;
-}
-
-.scope-label {
-  font-size: 0.76rem;
-  font-weight: 750;
-  color: #E2E8F0;
-  letter-spacing: 0.2px;
-}
-
-.scope-detail {
+.standard-chip-detail {
   font-size: 0.84rem;
-  color: #94A3B8;
+  color: #E2E8F0;
   line-height: 1.45;
 }
 
@@ -272,6 +332,7 @@
 }
 
 .service-deliverables-section,
+.service-deployments-section,
 .service-tech-section,
 .service-case-section,
 .service-faq-section,
@@ -346,7 +407,113 @@
   letter-spacing: -0.01em;
 }
 
-/* Tech Stack Pills (Clean, Understated & Professional) */
+/* Client Deployments Showcase Grid */
+.section-header-row {
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-end;
+  margin-bottom: 1.5rem;
+  flex-wrap: wrap;
+  gap: 1rem;
+}
+
+.section-view-all-link {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.4rem;
+  color: #00F0FF;
+  font-size: 0.85rem;
+  font-weight: 750;
+  text-decoration: none;
+  transition: gap 0.2s ease;
+}
+
+.section-view-all-link:hover {
+  gap: 0.6rem;
+  color: #FFFFFF;
+}
+
+.client-showcases-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+  gap: 1.4rem;
+}
+
+.client-showcase-card {
+  background: rgba(13, 18, 29, 0.94);
+  border: 1px solid rgba(255, 255, 255, 0.08);
+  border-radius: 16px;
+  overflow: hidden;
+  text-decoration: none;
+  display: flex;
+  flex-direction: column;
+  transition: all 0.25s cubic-bezier(0.16, 1, 0.3, 1);
+  box-shadow: 0 10px 30px -10px rgba(0, 0, 0, 0.5);
+}
+
+.client-showcase-card:hover {
+  border-color: rgba(0, 240, 255, 0.35);
+  transform: translateY(-3px);
+  box-shadow: 0 15px 40px -10px rgba(0, 0, 0, 0.6), 0 0 20px rgba(0, 240, 255, 0.06);
+}
+
+.client-card-image-wrapper {
+  position: relative;
+  aspect-ratio: 16 / 10;
+  overflow: hidden;
+  background: #07090E;
+}
+
+.client-card-img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  display: block;
+  transition: transform 0.4s ease;
+}
+
+.client-showcase-card:hover .client-card-img {
+  transform: scale(1.04);
+}
+
+.client-card-badge {
+  position: absolute;
+  top: 0.75rem;
+  left: 0.75rem;
+  background: rgba(9, 13, 22, 0.85);
+  backdrop-filter: blur(8px);
+  border: 1px solid rgba(0, 240, 255, 0.3);
+  color: #00F0FF;
+  font-size: 0.72rem;
+  font-weight: 750;
+  padding: 0.2rem 0.6rem;
+  border-radius: 50px;
+}
+
+.client-card-info {
+  padding: 1.1rem 1.25rem 1.3rem;
+  display: flex;
+  flex-direction: column;
+  gap: 0.3rem;
+}
+
+.client-card-category {
+  font-size: 0.72rem;
+  font-weight: 700;
+  color: #94A3B8;
+  letter-spacing: 0.5px;
+  text-transform: uppercase;
+}
+
+.client-card-title {
+  font-size: 1.08rem;
+  font-weight: 850;
+  color: #FFFFFF;
+  margin: 0;
+  letter-spacing: -0.015em;
+}
+
+/* Tech Stack Pills */
 .tech-pills-row {
   display: flex;
   flex-wrap: wrap;
@@ -372,14 +539,41 @@
   transform: translateY(-1px);
 }
 
-/* Case Study Highlight */
+/* Featured Case Study Visual Box */
 .case-highlight-card {
   background: rgba(13, 18, 29, 0.94);
   border: 1px solid rgba(255, 255, 255, 0.1);
-  border-left: 3px solid var(--cyan-glow, #00F0FF);
-  border-radius: 16px;
-  padding: 1.8rem;
-  box-shadow: 0 12px 30px -10px rgba(0, 0, 0, 0.5), inset 0 1px 0 rgba(255, 255, 255, 0.06);
+  border-left: 4px solid var(--cyan-glow, #00F0FF);
+  border-radius: 18px;
+  overflow: hidden;
+  box-shadow: 0 15px 40px -10px rgba(0, 0, 0, 0.6), inset 0 1px 0 rgba(255, 255, 255, 0.06);
+}
+
+.case-card-grid {
+  display: grid;
+  grid-template-columns: 1fr 1.25fr;
+  align-items: stretch;
+}
+
+.case-image-col {
+  position: relative;
+  min-height: 220px;
+  background: #07090E;
+  overflow: hidden;
+}
+
+.case-study-img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  display: block;
+}
+
+.case-content-col {
+  padding: 2.2rem;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
 }
 
 .case-meta-header {
@@ -408,17 +602,18 @@
 }
 
 .case-title {
-  font-size: 1.3rem;
+  font-size: 1.35rem;
   font-weight: 850;
   color: #FFFFFF;
   margin-bottom: 0.5rem;
+  line-height: 1.25;
 }
 
 .case-result {
-  font-size: 0.92rem;
+  font-size: 0.94rem;
   color: #CBD5E1;
   line-height: 1.6;
-  margin-bottom: 1.1rem;
+  margin-bottom: 1.2rem;
 }
 
 .case-link {
@@ -562,10 +757,19 @@
 }
 
 /* Responsive Breakpoints */
-@media (max-width: 900px) {
+@media (max-width: 992px) {
   .service-hero-grid {
     grid-template-columns: 1fr;
     gap: 2rem;
+  }
+
+  .case-card-grid {
+    grid-template-columns: 1fr;
+  }
+
+  .case-image-col {
+    min-height: 220px;
+    max-height: 280px;
   }
 }
 
@@ -594,6 +798,10 @@
   .service-primary-btn, .service-secondary-btn {
     width: 100%;
     justify-content: center;
+  }
+
+  .case-content-col {
+    padding: 1.5rem;
   }
 
   .faq-a {

@@ -9,6 +9,7 @@ export interface ServiceData {
   badge: string;
   summary: string;
   icon: string;
+  heroImage: string;
   coverGradient: string;
   scopeHighlights: { label: string; detail: string }[];
   deliverables: { title: string; spec: string; iconType: string }[];
@@ -17,8 +18,16 @@ export interface ServiceData {
     client: string;
     project: string;
     result: string;
+    image: string;
     link?: string;
   };
+  clientShowcases?: {
+    title: string;
+    category: string;
+    image: string;
+    link: string;
+    metric: string;
+  }[];
   faq: { q: string; a: string }[];
 }
 
@@ -32,12 +41,13 @@ export const servicesData: Record<string, ServiceData> = {
     badge: 'CORE ENGINEERING',
     summary: 'We build production-grade, ultra-fast web applications using React, Next.js, TypeScript, and modern cloud architectures. Engineered for instant page loads, high conversion, and seamless Ghanaian mobile payments.',
     icon: 'code',
+    heroImage: '/assets/services/web-dev-showcase.jpg',
     coverGradient: 'linear-gradient(135deg, rgba(0, 240, 255, 0.08) 0%, rgba(9, 13, 22, 0.85) 100%)',
     scopeHighlights: [
       { label: 'Turnaround SLA', detail: '24–48h for Rapid Hubs · 5–10 days for Custom Apps' },
-      { label: 'Payment Rails', detail: 'Automated MTN MoMo, Telecel Cash & AT Money integration' },
+      { label: 'Payment Rails', detail: 'Automated MTN MoMo, Telecel Cash & AT Money' },
       { label: 'Architecture', detail: 'Modern React 18, Next.js SSR & static pre-rendering' },
-      { label: 'Code Quality', detail: 'Snyk-audited zero-vulnerability & Schema.org SEO indexed' }
+      { label: 'Code Quality', detail: 'Snyk-audited zero-vulnerability & Schema.org SEO' }
     ],
     deliverables: [
       { title: 'Single-Page & Multi-Page Web Apps', spec: 'Vite & Next.js static prerendering with React 18+ for instant page response', iconType: 'layout' },
@@ -47,11 +57,35 @@ export const servicesData: Record<string, ServiceData> = {
     ],
     techStack: ['React 18', 'TypeScript', 'Next.js', 'Node.js', 'Firebase', 'Vite', 'Tailwind CSS'],
     caseStudyHighlight: {
-      client: 'Kone Farms & Agritech',
-      project: 'IoT Soil Telemetry & Agritech Research Hub',
-      result: '+85.7% annual yield increase & 100% GSC sitemap indexing across 11 subdomains.',
-      link: 'https://farms.koneacademy.io'
+      client: 'Sedemson Stone Ghana',
+      project: 'B2B Natural Stone Architectural Finishing Hub',
+      result: '+340% inbound wholesale WhatsApp RFQs with sub-second performance across Accra.',
+      image: '/sedemson_stone_hero.webp',
+      link: '/sedemson-stone/index.html'
     },
+    clientShowcases: [
+      {
+        title: 'Sedemson Stone',
+        category: 'B2B & Architectural Finishing',
+        image: '/sedemson_stone_hero.webp',
+        link: '/sedemson-stone/index.html',
+        metric: '+340% WhatsApp RFQs'
+      },
+      {
+        title: "Susan's Pastries",
+        category: 'Artisanal Bakery & E-Commerce',
+        image: '/susans-pastries/hero-banner.webp',
+        link: '/susans-pastries/index.html',
+        metric: 'Direct WhatsApp Orders'
+      },
+      {
+        title: 'Emewear Luxury',
+        category: 'Fashion & Heritage Apparel',
+        image: '/emewear/emewear_hero.webp',
+        link: '/emewear/index.html',
+        metric: 'Automated MoMo Checkout'
+      }
+    ],
     faq: [
       { 
         q: 'How long does a custom web development project take?', 
@@ -61,9 +95,9 @@ export const servicesData: Record<string, ServiceData> = {
         q: 'Is hosting, domain, and SSL setup included?', 
         a: 'Yes. We configure complete cloud hosting (Vercel, Firebase, GitHub Pages), custom domain DNS, SSL certificates, and Google Search Console indexing.' 
       },
-      {
-        q: 'Do you integrate Mobile Money (MTN MoMo, Telecel, AT)?',
-        a: 'Yes. We natively integrate automated Ghanaian mobile payment routing so customers can pay directly into your account.'
+      { 
+        q: 'Do you integrate Mobile Money (MTN MoMo, Telecel, AT)?', 
+        a: 'Yes. We natively integrate automated Ghanaian mobile payment routing so customers can pay directly into your account.' 
       }
     ]
   },
@@ -76,6 +110,7 @@ export const servicesData: Record<string, ServiceData> = {
     badge: 'MOBILE SYSTEMS',
     summary: 'From concept to App Store and Google Play publication. We engineer cross-platform mobile apps using React Native and Flutter, delivering native 60fps animations, push notifications, and offline-first database sync.',
     icon: 'smartphone',
+    heroImage: '/assets/services/mobile-apps-showcase.jpg',
     coverGradient: 'linear-gradient(135deg, rgba(168, 85, 247, 0.08) 0%, rgba(9, 13, 22, 0.85) 100%)',
     scopeHighlights: [
       { label: 'Target Platforms', detail: 'Native iOS (App Store) & Android (Google Play)' },
@@ -94,6 +129,7 @@ export const servicesData: Record<string, ServiceData> = {
       client: 'Kone Kids Academy',
       project: 'Interactive Mobile Learning Companion',
       result: '4.9★ rating with offline course access for students across West Africa.',
+      image: '/assets/services/mobile-apps-showcase.jpg',
       link: 'https://kids.koneacademy.io'
     },
     faq: [
@@ -120,6 +156,7 @@ export const servicesData: Record<string, ServiceData> = {
     badge: 'DESIGN STUDIO',
     summary: 'We craft iconic corporate brand identity systems that command trust and market authority. Includes logo vectors, color tokens, typography scales, interactive Figma UI/UX wireframes, and complete brand manuals.',
     icon: 'palette',
+    heroImage: '/assets/services/brand-design-showcase.jpg',
     coverGradient: 'linear-gradient(135deg, rgba(234, 179, 8, 0.08) 0%, rgba(9, 13, 22, 0.85) 100%)',
     scopeHighlights: [
       { label: 'Deliverables', detail: 'Scalable SVG / EPS vectors & full PDF Brand Guidelines' },
@@ -138,6 +175,7 @@ export const servicesData: Record<string, ServiceData> = {
       client: 'Kone Consult',
       project: 'Corporate Tech Brand & Design System',
       result: 'Unified multi-subdomain corporate visual language for enterprise client acquisition.',
+      image: '/assets/services/brand-design-showcase.jpg',
       link: 'https://consult.koneacademy.io'
     },
     faq: [
@@ -164,6 +202,7 @@ export const servicesData: Record<string, ServiceData> = {
     badge: 'CLOUD ARCHITECTURE',
     summary: 'Architecting resilient, self-healing cloud infrastructure on AWS, Firebase, and Cloudflare. We build automated GitHub Actions CI/CD pipelines, SSL/TLS encryption, and real-time uptime monitoring.',
     icon: 'server',
+    heroImage: '/assets/services/cloud-devops-showcase.jpg',
     coverGradient: 'linear-gradient(135deg, rgba(34, 197, 94, 0.08) 0%, rgba(9, 13, 22, 0.85) 100%)',
     scopeHighlights: [
       { label: 'Cloud Platforms', detail: 'AWS, Firebase, Cloudflare DNS & Docker containers' },
@@ -182,6 +221,7 @@ export const servicesData: Record<string, ServiceData> = {
       client: 'Kone Code IDE Ecosystem',
       project: 'Cloud Compiler & Data Relay Infrastructure',
       result: '99.98% uptime serving thousands of automated compiler executions daily.',
+      image: '/assets/services/cloud-devops-showcase.jpg',
       link: 'https://code.koneacademy.io'
     },
     faq: [
@@ -335,7 +375,7 @@ export default function ServiceDetail({
         </a>
       </nav>
 
-      {/* Hero Banner */}
+      {/* Hero Banner with Product Visual Showcase */}
       <header className="service-hero-banner" style={{ background: service.coverGradient }}>
         <div className="service-hero-grid">
           {/* Left Column: Headlines & Actions */}
@@ -367,23 +407,41 @@ export default function ServiceDetail({
             </div>
           </div>
 
-          {/* Right Column: Clean Scope & Standards Overview (Authentic & Professional) */}
-          <div className="service-scope-panel">
-            <div className="scope-panel-header">
-              <span className="scope-panel-title">Engineering Standards</span>
-              <span className="scope-panel-indicator">Active SLA</span>
+          {/* Right Column: High-Fidelity Visual Mockup */}
+          <div className="service-hero-visual-card">
+            <div className="visual-browser-bar">
+              <div className="browser-dots">
+                <span className="dot dot-red"></span>
+                <span className="dot dot-yellow"></span>
+                <span className="dot dot-green"></span>
+              </div>
+              <span className="browser-url">digital.koneacademy.io/{service.slug}</span>
             </div>
-            <div className="scope-highlights-list">
-              {service.scopeHighlights.map((highlight, idx) => (
-                <div key={idx} className="scope-highlight-row">
-                  <span className="scope-label">{highlight.label}</span>
-                  <span className="scope-detail">{highlight.detail}</span>
-                </div>
-              ))}
+            <div className="visual-frame">
+              <img 
+                src={service.heroImage} 
+                alt={`${service.title} Interface Visual`} 
+                className="service-hero-img"
+                loading="eager"
+              />
+              <div className="visual-overlay-badge">
+                <span className="badge-pulse">●</span>
+                <span>Active Production Architecture</span>
+              </div>
             </div>
           </div>
         </div>
       </header>
+
+      {/* Engineering Standards Horizontal Strip */}
+      <section className="service-standards-strip fade-in-up">
+        {service.scopeHighlights.map((highlight, idx) => (
+          <div key={idx} className="standard-chip">
+            <span className="standard-chip-label">{highlight.label}</span>
+            <span className="standard-chip-detail">{highlight.detail}</span>
+          </div>
+        ))}
+      </section>
 
       {/* Main Deliverables Grid */}
       <section className="service-deliverables-section fade-in-up">
@@ -404,6 +462,46 @@ export default function ServiceDetail({
         </div>
       </section>
 
+      {/* Real Client Deployments Showcase (If available for service) */}
+      {service.clientShowcases && service.clientShowcases.length > 0 && (
+        <section className="service-deployments-section fade-in-up">
+          <div className="section-header-row">
+            <div>
+              <h2 className="section-title" style={{ marginBottom: '0.3rem' }}>Live Client Deployments</h2>
+              <p style={{ color: 'var(--text-muted)', fontSize: '0.92rem', margin: 0 }}>Verified production websites engineered by Kone Digital in active commercial operation.</p>
+            </div>
+            <a href="/work" className="section-view-all-link">
+              <span>View All Work</span>
+              <svg viewBox="0 0 24 24" width="14" height="14" fill="none" stroke="currentColor" strokeWidth="2.5">
+                <line x1="5" y1="12" x2="19" y2="12"></line>
+                <polyline points="12 5 19 12 12 19"></polyline>
+              </svg>
+            </a>
+          </div>
+
+          <div className="client-showcases-grid">
+            {service.clientShowcases.map((client, idx) => (
+              <a 
+                key={idx}
+                href={client.link}
+                target="_blank"
+                rel="noopener noreferrer"
+                className="client-showcase-card"
+              >
+                <div className="client-card-image-wrapper">
+                  <img src={client.image} alt={client.title} className="client-card-img" loading="lazy" />
+                  <span className="client-card-badge">{client.metric}</span>
+                </div>
+                <div className="client-card-info">
+                  <span className="client-card-category">{client.category}</span>
+                  <h3 className="client-card-title">{client.title}</h3>
+                </div>
+              </a>
+            ))}
+          </div>
+        </section>
+      )}
+
       {/* Tech Stack Section */}
       <section className="service-tech-section fade-in-up">
         <h2 className="section-title">Engineering Tech Stack</h2>
@@ -416,30 +514,42 @@ export default function ServiceDetail({
         </div>
       </section>
 
-      {/* Case Study Highlight Box */}
+      {/* Featured Case Study Visual Box */}
       <section className="service-case-section fade-in-up">
         <div className="case-highlight-card">
-          <div className="case-meta-header">
-            <span className="case-label">FEATURED CASE STUDY</span>
-            <span className="case-client">{service.caseStudyHighlight.client}</span>
+          <div className="case-card-grid">
+            <div className="case-image-col">
+              <img 
+                src={service.caseStudyHighlight.image} 
+                alt={service.caseStudyHighlight.project} 
+                className="case-study-img"
+                loading="lazy" 
+              />
+            </div>
+            <div className="case-content-col">
+              <div className="case-meta-header">
+                <span className="case-label">FEATURED CASE STUDY</span>
+                <span className="case-client">{service.caseStudyHighlight.client}</span>
+              </div>
+              <h3 className="case-title">{service.caseStudyHighlight.project}</h3>
+              <p className="case-result">{service.caseStudyHighlight.result}</p>
+              {service.caseStudyHighlight.link && (
+                <a 
+                  href={service.caseStudyHighlight.link} 
+                  target={service.caseStudyHighlight.link.startsWith('http') ? '_blank' : '_self'}
+                  rel="noopener noreferrer"
+                  className="case-link"
+                >
+                  <span>Explore Live Platform</span>
+                  <svg viewBox="0 0 24 24" width="14" height="14" stroke="currentColor" strokeWidth="2" fill="none">
+                    <path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6"></path>
+                    <polyline points="15 3 21 3 21 9"></polyline>
+                    <line x1="10" y1="14" x2="21" y2="3"></line>
+                  </svg>
+                </a>
+              )}
+            </div>
           </div>
-          <h3 className="case-title">{service.caseStudyHighlight.project}</h3>
-          <p className="case-result">{service.caseStudyHighlight.result}</p>
-          {service.caseStudyHighlight.link && (
-            <a 
-              href={service.caseStudyHighlight.link} 
-              target="_blank" 
-              rel="noopener noreferrer"
-              className="case-link"
-            >
-              <span>Explore Live Platform</span>
-              <svg viewBox="0 0 24 24" width="14" height="14" stroke="currentColor" strokeWidth="2" fill="none">
-                <path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6"></path>
-                <polyline points="15 3 21 3 21 9"></polyline>
-                <line x1="10" y1="14" x2="21" y2="3"></line>
-              </svg>
-            </a>
-          )}
         </div>
       </section>
 
