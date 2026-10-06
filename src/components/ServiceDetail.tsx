@@ -689,16 +689,35 @@ export default function ServiceDetail({
         </section>
       )}
 
-      {/* Tech Stack Section */}
+      {/* Tech Stack Gliding Marquee */}
       <section className="service-tech-section fade-in-up">
-        <h2 className="section-title">Engineering Tech Stack</h2>
-        <div className="tech-pills-row">
-          {service.techStack.map((techName) => (
-            <span key={techName} className="service-tech-pill">
-              <span className="tech-pill-icon">{renderTechLogo(techName)}</span>
-              <span className="tech-pill-name">{techName}</span>
-            </span>
-          ))}
+        <div className="tech-header-row">
+          <h2 className="section-title">Engineering Tech Stack</h2>
+          <span className="tech-sub-hint">Production Toolchain &amp; Frameworks</span>
+        </div>
+        <div 
+          className="tech-marquee-wrapper"
+          aria-label="Engineering Tech Stack Marquee"
+        >
+          {/* Track 1 */}
+          <div className="tech-marquee-track">
+            {[...service.techStack, ...service.techStack].map((techName, idx) => (
+              <span key={`tech-t1-${techName}-${idx}`} className="service-tech-pill">
+                <span className="tech-pill-icon">{renderTechLogo(techName)}</span>
+                <span className="tech-pill-name">{techName}</span>
+              </span>
+            ))}
+          </div>
+
+          {/* Track 2 (Seamless Mirror for Infinite 60fps Loop) */}
+          <div className="tech-marquee-track" aria-hidden="true">
+            {[...service.techStack, ...service.techStack].map((techName, idx) => (
+              <span key={`tech-t2-${techName}-${idx}`} className="service-tech-pill">
+                <span className="tech-pill-icon">{renderTechLogo(techName)}</span>
+                <span className="tech-pill-name">{techName}</span>
+              </span>
+            ))}
+          </div>
         </div>
       </section>
 
