@@ -526,17 +526,39 @@
   color: #E2E8F0;
   font-size: 0.84rem;
   font-weight: 600;
-  padding: 0.4rem 0.95rem;
+  padding: 0.42rem 0.95rem;
   border-radius: 50px;
   letter-spacing: -0.01em;
-  transition: all 0.2s ease;
+  display: inline-flex;
+  align-items: center;
+  gap: 0.55rem;
+  transition: all 0.2s cubic-bezier(0.16, 1, 0.3, 1);
 }
 
 .service-tech-pill:hover {
   background: rgba(255, 255, 255, 0.08);
-  border-color: rgba(255, 255, 255, 0.25);
+  border-color: rgba(0, 240, 255, 0.35);
   color: #FFFFFF;
   transform: translateY(-1px);
+}
+
+.tech-pill-icon {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  flex-shrink: 0;
+  width: 17px;
+  height: 17px;
+}
+
+.tech-pill-icon svg {
+  width: 16px;
+  height: 16px;
+  display: block;
+}
+
+.tech-pill-name {
+  white-space: nowrap;
 }
 
 /* Featured Case Study Visual Box */

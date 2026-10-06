@@ -10,6 +10,8 @@ export interface ServiceData {
   summary: string;
   icon: string;
   heroImage: string;
+  heroUrl?: string;
+  heroBadge?: string;
   coverGradient: string;
   scopeHighlights: { label: string; detail: string }[];
   deliverables: { title: string; spec: string; iconType: string }[];
@@ -41,7 +43,9 @@ export const servicesData: Record<string, ServiceData> = {
     badge: 'CORE ENGINEERING',
     summary: 'We build production-grade, ultra-fast web applications using React, Next.js, TypeScript, and modern cloud architectures. Engineered for instant page loads, high conversion, and seamless Ghanaian mobile payments.',
     icon: 'code',
-    heroImage: '/assets/services/web-dev-showcase.jpg',
+    heroImage: '/assets/services/sedemson-live-browser.jpg',
+    heroUrl: 'digital.koneacademy.io/sedemson-stone/',
+    heroBadge: 'Verified Live Production · Sedemson Stone',
     coverGradient: 'linear-gradient(135deg, rgba(0, 240, 255, 0.08) 0%, rgba(9, 13, 22, 0.85) 100%)',
     scopeHighlights: [
       { label: 'Turnaround SLA', detail: '24–48h for Rapid Hubs · 5–10 days for Custom Apps' },
@@ -110,7 +114,9 @@ export const servicesData: Record<string, ServiceData> = {
     badge: 'MOBILE SYSTEMS',
     summary: 'From concept to App Store and Google Play publication. We engineer cross-platform mobile apps using React Native and Flutter, delivering native 60fps animations, push notifications, and offline-first database sync.',
     icon: 'smartphone',
-    heroImage: '/assets/services/mobile-apps-showcase.jpg',
+    heroImage: '/assets/services/mobile-apps-live.jpg',
+    heroUrl: 'kids.koneacademy.io',
+    heroBadge: 'Active Production App · Kone Kids',
     coverGradient: 'linear-gradient(135deg, rgba(168, 85, 247, 0.08) 0%, rgba(9, 13, 22, 0.85) 100%)',
     scopeHighlights: [
       { label: 'Target Platforms', detail: 'Native iOS (App Store) & Android (Google Play)' },
@@ -129,7 +135,7 @@ export const servicesData: Record<string, ServiceData> = {
       client: 'Kone Kids Academy',
       project: 'Interactive Mobile Learning Companion',
       result: '4.9★ rating with offline course access for students across West Africa.',
-      image: '/assets/services/mobile-apps-showcase.jpg',
+      image: '/assets/services/mobile-apps-live.jpg',
       link: 'https://kids.koneacademy.io'
     },
     faq: [
@@ -156,7 +162,9 @@ export const servicesData: Record<string, ServiceData> = {
     badge: 'DESIGN STUDIO',
     summary: 'We craft iconic corporate brand identity systems that command trust and market authority. Includes logo vectors, color tokens, typography scales, interactive Figma UI/UX wireframes, and complete brand manuals.',
     icon: 'palette',
-    heroImage: '/assets/services/brand-design-showcase.jpg',
+    heroImage: '/assets/services/brand-design-live.jpg',
+    heroUrl: 'consult.koneacademy.io',
+    heroBadge: 'Corporate Identity System · Kone Consult',
     coverGradient: 'linear-gradient(135deg, rgba(234, 179, 8, 0.08) 0%, rgba(9, 13, 22, 0.85) 100%)',
     scopeHighlights: [
       { label: 'Deliverables', detail: 'Scalable SVG / EPS vectors & full PDF Brand Guidelines' },
@@ -175,7 +183,7 @@ export const servicesData: Record<string, ServiceData> = {
       client: 'Kone Consult',
       project: 'Corporate Tech Brand & Design System',
       result: 'Unified multi-subdomain corporate visual language for enterprise client acquisition.',
-      image: '/assets/services/brand-design-showcase.jpg',
+      image: '/assets/services/brand-design-live.jpg',
       link: 'https://consult.koneacademy.io'
     },
     faq: [
@@ -202,7 +210,9 @@ export const servicesData: Record<string, ServiceData> = {
     badge: 'CLOUD ARCHITECTURE',
     summary: 'Architecting resilient, self-healing cloud infrastructure on AWS, Firebase, and Cloudflare. We build automated GitHub Actions CI/CD pipelines, SSL/TLS encryption, and real-time uptime monitoring.',
     icon: 'server',
-    heroImage: '/assets/services/cloud-devops-showcase.jpg',
+    heroImage: '/assets/services/cloud-devops-live.jpg',
+    heroUrl: 'code.koneacademy.io',
+    heroBadge: 'High-Availability IDE Infrastructure',
     coverGradient: 'linear-gradient(135deg, rgba(34, 197, 94, 0.08) 0%, rgba(9, 13, 22, 0.85) 100%)',
     scopeHighlights: [
       { label: 'Cloud Platforms', detail: 'AWS, Firebase, Cloudflare DNS & Docker containers' },
@@ -221,7 +231,7 @@ export const servicesData: Record<string, ServiceData> = {
       client: 'Kone Code IDE Ecosystem',
       project: 'Cloud Compiler & Data Relay Infrastructure',
       result: '99.98% uptime serving thousands of automated compiler executions daily.',
-      image: '/assets/services/cloud-devops-showcase.jpg',
+      image: '/assets/services/cloud-devops-live.jpg',
       link: 'https://code.koneacademy.io'
     },
     faq: [
@@ -331,6 +341,183 @@ const renderIcon = (type: string) => {
   }
 };
 
+const renderTechLogo = (techName: string) => {
+  const norm = techName.toLowerCase();
+  if (norm.includes('react native') || norm.includes('react 18') || norm === 'react') {
+    return (
+      <svg viewBox="-11.5 -10.23174 23 20.46348" width="16" height="16" aria-hidden="true" focusable="false">
+        <circle cx="0" cy="0" r="2.05" fill="#61DAFB"/>
+        <g stroke="#61DAFB" strokeWidth="1" fill="none">
+          <ellipse rx="11" ry="4.2"/>
+          <ellipse rx="11" ry="4.2" transform="rotate(60)"/>
+          <ellipse rx="11" ry="4.2" transform="rotate(120)"/>
+        </g>
+      </svg>
+    );
+  }
+  if (norm.includes('typescript')) {
+    return (
+      <svg viewBox="0 0 24 24" width="16" height="16" fill="none" aria-hidden="true" focusable="false">
+        <rect width="24" height="24" rx="4" fill="#3178C6"/>
+        <path d="M11.7 8.5H5.8V10.3H7.8V17.5H9.7V10.3H11.7V8.5Z" fill="#FFFFFF"/>
+        <path d="M18.8 11.2C18.4 10.6 17.7 10.2 16.8 10.2C15.8 10.2 15.1 10.5 14.6 11C14.1 11.5 13.9 12.1 13.9 12.8C13.9 13.5 14.2 14.1 14.7 14.5C15.2 14.9 16 15.3 17.1 15.6C18.1 16 18.8 16.4 19.3 16.9C19.7 17.4 20 18.1 20 18.9C20 19.9 19.6 20.7 18.8 21.3C18 21.8 16.9 22.1 15.5 22.1C14.3 22.1 13.2 21.8 12.3 21.2L13 19.6C13.8 20.1 14.6 20.4 15.6 20.4C16.3 20.4 17 20.2 17.4 19.8C17.9 19.4 18.1 18.9 18.1 18.3C18.1 17.7 17.9 17.2 17.5 16.8C17.1 16.4 16.3 16.1 15.3 15.7C14.2 15.3 13.4 14.8 12.9 14.2C12.4 13.6 12.1 12.8 12.1 11.9C12.1 10.9 12.5 10 13.3 9.4C14.1 8.8 15.2 8.5 16.6 8.5C17.7 8.5 18.6 8.7 19.4 9.1L18.8 11.2Z" fill="#FFFFFF"/>
+      </svg>
+    );
+  }
+  if (norm.includes('next.js')) {
+    return (
+      <svg viewBox="0 0 24 24" width="16" height="16" fill="none" aria-hidden="true" focusable="false">
+        <circle cx="12" cy="12" r="11" fill="#000000" stroke="rgba(255,255,255,0.3)" strokeWidth="1"/>
+        <path d="M14.95 16.65L8.4 8H7v8h1.4v-6.28l6.12 7.72c.16.2.39.31.64.31h.75a.93.93 0 0 0 .93-.93V8h-1.89v8.65z" fill="#FFFFFF"/>
+      </svg>
+    );
+  }
+  if (norm.includes('node.js')) {
+    return (
+      <svg viewBox="0 0 24 24" width="16" height="16" fill="#5FA04E" aria-hidden="true" focusable="false">
+        <path d="M12 0L1.7 5.95v12.1L12 24l10.3-5.95V5.95L12 0zm-1.07 19.34c-3.14 0-4.63-1.63-4.63-3.69 0-1.78 1.13-3.23 3.65-3.57l1.79-.24v-.7c0-.98-.55-1.54-1.62-1.54-.92 0-1.66.42-2.18 1.12l-1.3-.92c.87-1.15 2.07-1.73 3.64-1.73 2.15 0 3.25 1.15 3.25 3.14v4.54c0 .87.35 1.29.98 1.29.35 0 .66-.11.96-.34l.64 1.2c-.52.45-1.18.69-1.95.69-.95 0-1.63-.5-1.89-1.38-.47.88-1.51 1.4-2.34 1.4zm.81-5.74l-1.37.19c-1.67.23-2.34 1.07-2.34 2.17 0 1.25.9 2.19 2.65 2.19.98 0 1.95-.57 2.37-1.39v-2.35l-1.31-.81z"/>
+      </svg>
+    );
+  }
+  if (norm.includes('firebase')) {
+    return (
+      <svg viewBox="0 0 24 24" width="16" height="16" fill="none" aria-hidden="true" focusable="false">
+        <path d="M4.6 17.5L7.3 1.1c.1-.4.5-.5.8-.2l3.4 6.3-6.9 10.3z" fill="#FFA000"/>
+        <path d="M13.7 9.8L11.5 5.7c-.2-.4-.8-.4-.9 0L4.6 17.5l9.1-7.7z" fill="#F57C00"/>
+        <path d="M12.9 21.8l7.6-4.3L16.2 3.6c-.2-.4-.8-.4-.9 0L4.6 17.5l7.3 4.1c.6.3 1.4.3 2 0z" fill="#FFCA28"/>
+        <path d="M12.9 21.8c-.3.2-.7.2-1 0L4.6 17.5l-.2.2c-.3.3-.4.8-.1 1.1l7 7c.4.4 1 .4 1.4 0l7.6-7.6-7.6 3.6z" fill="#FFA000" opacity="0.3"/>
+      </svg>
+    );
+  }
+  if (norm.includes('vite')) {
+    return (
+      <svg viewBox="0 0 24 24" width="16" height="16" fill="none" aria-hidden="true" focusable="false">
+        <path d="M21.7 3.5L12.5 19.8c-.2.4-.8.4-1 0L2.3 3.5c-.3-.5.2-1.1.7-.9l9 3.5 9-3.5c.5-.2 1 .4.7.9z" fill="url(#vite-tech-grad)"/>
+        <path d="M16.5 1.5L8.2 12.2l4.1.2-2.5 6.9 7.7-10.7-3.9-.3 2.9-6.8z" fill="#FFD814"/>
+        <defs>
+          <linearGradient id="vite-tech-grad" x1="2" y1="2" x2="22" y2="20" gradientUnits="userSpaceOnUse">
+            <stop stopColor="#41D1FF"/>
+            <stop offset="1" stopColor="#BD34FE"/>
+          </linearGradient>
+        </defs>
+      </svg>
+    );
+  }
+  if (norm.includes('tailwind')) {
+    return (
+      <svg viewBox="0 0 24 24" width="16" height="16" fill="#38BDF8" aria-hidden="true" focusable="false">
+        <path d="M12.001 4.8c-3.2 0-5.2 1.6-6 4.8 1.2-1.6 2.6-2.2 4.2-1.8.913.228 1.565.89 2.288 1.624C13.666 10.618 15.027 12 18.001 12c3.2 0 5.2-1.6 6-4.8-1.2 1.6-2.6 2.2-4.2 1.8-.913-.228-1.565-.89-2.288-1.624C16.336 6.182 14.975 4.8 12.001 4.8zm-6 7.2c-3.2 0-5.2 1.6-6 4.8 1.2-1.6 2.6-2.2 4.2-1.8.913.228 1.565.89 2.288 1.624 1.177 1.194 2.538 2.576 5.512 2.576 3.2 0 5.2-1.6 6-4.8-1.2 1.6-2.6 2.2-4.2 1.8-.913-.228-1.565-.89-2.288-1.624C10.336 13.382 8.975 12 6.001 12z"/>
+      </svg>
+    );
+  }
+  if (norm.includes('flutter')) {
+    return (
+      <svg viewBox="0 0 24 24" width="16" height="16" fill="none" aria-hidden="true" focusable="false">
+        <path d="M14.3 2L4 12.3l3.2 3.2L20.7 2h-6.4z" fill="#42A5F5"/>
+        <path d="M14.3 12.3L8.8 17.8 12 21l8.7-8.7h-6.4z" fill="#0D47A1"/>
+        <path d="M11.2 15.4l2.4 2.4-2.4 2.4-2.4-2.4 2.4-2.4z" fill="#01579B"/>
+        <path d="M20.7 21h-6.4l-3.1-3.2 3.1-3.2 6.4 6.4z" fill="#29B6F6"/>
+      </svg>
+    );
+  }
+  if (norm.includes('app store') || norm.includes('apple')) {
+    return (
+      <svg viewBox="0 0 24 24" width="16" height="16" fill="#FFFFFF" aria-hidden="true" focusable="false">
+        <path d="M18.71 19.5c-.83 1.24-1.71 2.45-3.05 2.47-1.34.03-1.77-.79-3.29-.79-1.53 0-2 .77-3.27.82-1.31.05-2.3-1.32-3.14-2.53C4.25 17 2.94 12.45 4.7 9.39c.87-1.52 2.43-2.48 4.12-2.51 1.28-.02 2.5.87 3.29.87.78 0 2.26-1.07 3.81-.91.65.03 2.47.26 3.64 1.98-.09.06-2.17 1.28-2.15 3.81.03 3.02 2.65 4.03 2.68 4.05-.03.07-.42 1.44-1.38 2.82M15.97 6.38c.62-.75 1.04-1.8 0.93-2.85-.9.04-1.99.6-2.63 1.35-.57.65-1.06 1.72-.93 2.74 1.01.08 2.01-.49 2.63-1.24z"/>
+      </svg>
+    );
+  }
+  if (norm.includes('google play')) {
+    return (
+      <svg viewBox="0 0 24 24" width="16" height="16" fill="none" aria-hidden="true" focusable="false">
+        <path d="M3.6 2.4C3.2 2.8 3 3.4 3 4.2v15.6c0 .8.2 1.4.6 1.8l9.4-9.8L3.6 2.4z" fill="#00E676"/>
+        <path d="M16.4 8.2l-3.4 3.6 3.4 3.6 3.9-2.2c1.1-.6 1.1-1.7 0-2.3l-3.9-2.7z" fill="#FFD600"/>
+        <path d="M3.6 21.6c.4.4 1.1.5 1.8.1l11-6.3-3.4-3.6-9.4 9.8z" fill="#FF3D00"/>
+        <path d="M3.6 2.4L13 11.8l3.4-3.6L5.4 1.9C4.7 1.5 4 1.6 3.6 2.4z" fill="#00B0FF"/>
+      </svg>
+    );
+  }
+  if (norm.includes('figma')) {
+    return (
+      <svg viewBox="0 0 24 24" width="16" height="16" fill="none" aria-hidden="true" focusable="false">
+        <path d="M8 2h4v5H8a2.5 2.5 0 0 1 0-5z" fill="#F24E1E"/>
+        <path d="M12 2h4a2.5 2.5 0 0 1 0 5h-4V2z" fill="#FF7262"/>
+        <path d="M8 7h4v5H8a2.5 2.5 0 0 1 0-5z" fill="#A259FF"/>
+        <path d="M12 7h4a2.5 2.5 0 1 1 0 5h-4V7z" fill="#1ABCFE"/>
+        <path d="M8 12h4v5H8a2.5 2.5 0 0 1 0-5z" fill="#0ACF83"/>
+        <path d="M8 17h4v2.5A2.5 2.5 0 0 1 8 22a2.5 2.5 0 0 1 0-5z" fill="#0ACF83"/>
+      </svg>
+    );
+  }
+  if (norm.includes('illustrator')) {
+    return (
+      <svg viewBox="0 0 24 24" width="16" height="16" fill="none" aria-hidden="true" focusable="false">
+        <rect width="24" height="24" rx="5" fill="#330000"/>
+        <path d="M6 17.5l3.5-10.5h1.8L15 17.5h-1.8l-.8-2.6H8.3l-.8 2.6H6zm2.8-4.2h3.1l-1.5-4.8h-.1l-1.5 4.8zm8.6-4.9c-.6 0-1.1.4-1.1 1.1s.5 1.1 1.1 1.1 1.1-.5 1.1-1.1-.5-1.1-1.1-1.1zm-.8 9.1V10.8h1.7v6.7h-1.7z" fill="#FF9A00"/>
+      </svg>
+    );
+  }
+  if (norm.includes('photoshop')) {
+    return (
+      <svg viewBox="0 0 24 24" width="16" height="16" fill="none" aria-hidden="true" focusable="false">
+        <rect width="24" height="24" rx="5" fill="#001E36"/>
+        <path d="M6.5 17.5V6.8h4.6c1.6 0 2.8.4 3.6 1.2.8.8 1.2 1.9 1.2 3.2s-.4 2.4-1.2 3.2c-.8.8-2 1.2-3.6 1.2H8.3v1.9H6.5zm1.8-3.5h2.8c1 0 1.8-.2 2.3-.7.5-.5.8-1.2.8-2.1s-.3-1.6-.8-2.1c-.5-.5-1.3-.7-2.3-.7H8.3v5.6zm10.9-1.3c-.6-.4-1.3-.7-2.1-.9-.8-.2-1.3-.5-1.6-.8-.3-.3-.4-.7-.4-1.2 0-.6.3-1 .8-1.4.5-.4 1.2-.6 2.1-.6.7 0 1.4.1 2 .4v1.6c-.6-.3-1.2-.4-1.8-.4-.5 0-.9.1-1.2.3-.3.2-.4.5-.4.8 0 .3.1.5.3.7.2.2.6.4 1.2.6.9.3 1.6.6 2 .9.5.4.7.9.7 1.5 0 .7-.3 1.3-.8 1.7-.5.4-1.3.6-2.3.6-.8 0-1.7-.2-2.4-.5v-1.7c.8.4 1.6.6 2.3.6.6 0 1.1-.1 1.4-.3.3-.2.5-.5.5-.9 0-.3-.1-.6-.3-.7-.2-.2-.6-.4-1.1-.6z" fill="#31A8FF"/>
+      </svg>
+    );
+  }
+  if (norm.includes('aws')) {
+    return (
+      <svg viewBox="0 0 24 24" width="16" height="16" fill="#FF9900" aria-hidden="true" focusable="false">
+        <path d="M18.8 17.4c-2.4 1.8-5.8 2.7-8.8 2.7-4.2 0-8-1.6-10.9-4.2-.2-.2-.2-.5 0-.7.4-.4.8-.8 1.2-1.2.2-.2.5-.2.7 0 2.4 2 5.4 3.2 8.7 3.2 2.5 0 5.3-.8 7.3-2.3.3-.2.6 0 .8.2.3.4.6.8.9 1.3.2.3.1.7-.1.9z"/>
+        <path d="M20.2 14.8c-.3-.4-1.9-.2-2.9-.1-.3 0-.4-.3-.2-.5.8-1.2 2.1-1.7 2.9-1.5.8.2 1.1 1.6.4 2.8-.5.9-1.2 1.6-1.5 1.7-.2.1-.4 0-.4-.2l.1-.9.6-1.3z"/>
+        <path d="M12.7 6.3c-.3 0-.5.2-.5.5v7.4c0 .3.2.5.5.5h1.2c.3 0 .5-.2.5-.5V6.8c0-.3-.2-.5-.5-.5h-1.2z"/>
+      </svg>
+    );
+  }
+  if (norm.includes('cloudflare')) {
+    return (
+      <svg viewBox="0 0 24 24" width="16" height="16" fill="#F38020" aria-hidden="true" focusable="false">
+        <path d="M18.6 10.3c-.4-3.1-3.1-5.5-6.3-5.5-2.7 0-5 1.7-5.9 4.1C6 9 5.5 9 5 9.1 2.8 9.5 1.1 11.4 1 13.7c-.1 2.6 1.9 4.8 4.5 4.9h12.8c2.6 0 4.7-2.1 4.7-4.7 0-2.3-1.7-4.2-3.9-4.5-.2.3-.3.6-.5.9z"/>
+      </svg>
+    );
+  }
+  if (norm.includes('github')) {
+    return (
+      <svg viewBox="0 0 24 24" width="16" height="16" fill="currentColor" aria-hidden="true" focusable="false">
+        <path fillRule="evenodd" clipRule="evenodd" d="M12 2C6.477 2 2 6.477 2 12c0 4.42 2.87 8.17 6.84 9.5.5.08.66-.23.66-.5v-1.69c-2.77.6-3.36-1.34-3.36-1.34-.46-1.16-1.11-1.47-1.11-1.47-.91-.62.07-.6.07-.6 1 .07 1.53 1.03 1.53 1.03.87 1.52 2.34 1.07 2.91.83.1-.65.35-1.09.63-1.34-2.22-.25-4.55-1.11-4.55-4.92 0-1.11.38-2 1.03-2.71-.1-.25-.45-1.29.1-2.64 0 0 .84-.27 2.75 1.02.79-.22 1.65-.33 2.5-.33.85 0 1.71.11 2.5.33 1.91-1.29 2.75-1.02 2.75-1.02.55 1.35.2 2.39.1 2.64.65.71 1.03 1.6 1.03 2.71 0 3.82-2.34 4.66-4.57 4.91.36.31.69.92.69 1.85V21c0 .27.16.59.67.5C19.14 20.16 22 16.42 22 12A10 10 0 0 0 12 2z"/>
+      </svg>
+    );
+  }
+  if (norm.includes('docker')) {
+    return (
+      <svg viewBox="0 0 24 24" width="16" height="16" fill="#2496ED" aria-hidden="true" focusable="false">
+        <path d="M13.9 8.2h2.2v2.1h-2.2V8.2zm-2.7 0h2.2v2.1h-2.2V8.2zm-2.7 0h2.2v2.1H8.5V8.2zm-2.7 0H8v2.1H5.8V8.2zm5.4-2.6h2.2v2.1h-2.2V5.6zm-2.7 0h2.2v2.1H8.5V5.6zm-2.7 0H8v2.1H5.8V5.6zm8.1 0h2.2v2.1h-2.2V5.6zm2.7 2.6h2.2v2.1h-2.2V8.2zm8 3.2c-.4-.3-1.4-.4-2.1-.2-.4-.8-1.1-1.3-1.9-1.4-.2 0-.4 0-.6.1-.1-1.5-1-2.4-2.2-2.4h-.3V13H1.2c-.1.5-.2 1.1-.2 1.7 0 4.2 3.6 7.7 8.3 7.7 5.7 0 9.8-3.6 10.9-8.7.9-.1 1.8-.7 2.3-1.5.3-.4.3-.7.1-1.1z"/>
+      </svg>
+    );
+  }
+  if (norm.includes('snyk')) {
+    return (
+      <svg viewBox="0 0 24 24" width="16" height="16" fill="none" aria-hidden="true" focusable="false">
+        <path d="M12 2L3 6v6c0 5.55 3.84 10.74 9 12 5.16-1.26 9-6.45 9-12V6l-9-4zm-1 14.5l-3.5-3.5 1.41-1.41L11 13.67l5.09-5.09 1.41 1.41L11 16.5z" fill="#7C3AED"/>
+      </svg>
+    );
+  }
+  if (norm.includes('svg') || norm.includes('token') || norm.includes('design')) {
+    return (
+      <svg viewBox="0 0 24 24" width="16" height="16" fill="none" stroke="#F59E0B" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" aria-hidden="true" focusable="false">
+        <circle cx="12" cy="12" r="3"></circle>
+        <path d="M19.4 15a1.65 1.65 0 0 0 .33 1.82l.06.06a2 2 0 0 1 0 2.83 2 2 0 0 1-2.83 0l-.06-.06a1.65 1.65 0 0 0-1.82-.33 1.65 1.65 0 0 0-1 1.51V21a2 2 0 0 1-2 2 2 2 0 0 1-2-2v-.09A1.65 1.65 0 0 0 9 19.4a1.65 1.65 0 0 0-1.82.33l-.06.06a2 2 0 0 1-2.83 0 2 2 0 0 1 0-2.83l.06-.06a1.65 1.65 0 0 0 .33-1.82 1.65 1.65 0 0 0-1.51-1H3a2 2 0 0 1-2-2 2 2 0 0 1 2-2h.09A1.65 1.65 0 0 0 4.6 9a1.65 1.65 0 0 0-.33-1.82l-.06-.06a2 2 0 0 1 0-2.83 2 2 0 0 1 2.83 0l.06.06a1.65 1.65 0 0 0 1.82.33H9a1.65 1.65 0 0 0 1-1.51V3a2 2 0 0 1 2-2 2 2 0 0 1 2 2v.09a1.65 1.65 0 0 0 1 1.51 1.65 1.65 0 0 0 1.82-.33l.06-.06a2 2 0 0 1 2.83 0 2 2 0 0 1 0 2.83l-.06.06a1.65 1.65 0 0 0-.33 1.82V9a1.65 1.65 0 0 0 1.51 1H21a2 2 0 0 1 2 2 2 2 0 0 1-2 2h-.09a1.65 1.65 0 0 0-1.51 1z"></path>
+      </svg>
+    );
+  }
+  return (
+    <svg viewBox="0 0 24 24" width="16" height="16" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" aria-hidden="true" focusable="false">
+      <polyline points="16 18 22 12 16 6"></polyline>
+      <polyline points="8 6 2 12 8 18"></polyline>
+    </svg>
+  );
+};
+
 export default function ServiceDetail({ 
   slug, 
   onBack,
@@ -415,18 +602,18 @@ export default function ServiceDetail({
                 <span className="dot dot-yellow"></span>
                 <span className="dot dot-green"></span>
               </div>
-              <span className="browser-url">digital.koneacademy.io/{service.slug}</span>
+              <span className="browser-url">{service.heroUrl || `digital.koneacademy.io/${service.slug}`}</span>
             </div>
             <div className="visual-frame">
               <img 
                 src={service.heroImage} 
-                alt={`${service.title} Interface Visual`} 
+                alt={`${service.title} Live Production Showcase`} 
                 className="service-hero-img"
                 loading="eager"
               />
               <div className="visual-overlay-badge">
                 <span className="badge-pulse">●</span>
-                <span>Active Production Architecture</span>
+                <span>{service.heroBadge || 'Active Production Architecture'}</span>
               </div>
             </div>
           </div>
@@ -508,7 +695,8 @@ export default function ServiceDetail({
         <div className="tech-pills-row">
           {service.techStack.map((techName) => (
             <span key={techName} className="service-tech-pill">
-              {techName}
+              <span className="tech-pill-icon">{renderTechLogo(techName)}</span>
+              <span className="tech-pill-name">{techName}</span>
             </span>
           ))}
         </div>
