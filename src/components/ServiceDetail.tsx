@@ -616,16 +616,8 @@ export default function ServiceDetail({
             </div>
           </div>
 
-          {/* Right Column: High-Fidelity Visual Mockup */}
+          {/* Right Column: High-Fidelity Visual Showcase */}
           <div className="service-hero-visual-card">
-            <div className="visual-browser-bar">
-              <div className="browser-dots">
-                <span className="dot dot-red"></span>
-                <span className="dot dot-yellow"></span>
-                <span className="dot dot-green"></span>
-              </div>
-              <span className="browser-url">{service.heroUrl || `digital.koneacademy.io/${service.slug}`}</span>
-            </div>
             <div className="visual-frame">
               <img 
                 src={service.heroImage} 

@@ -216,41 +216,6 @@
   flex-direction: column;
 }
 
-.visual-browser-bar {
-  background: rgba(255, 255, 255, 0.03);
-  padding: 0.6rem 0.9rem;
-  display: flex;
-  align-items: center;
-  gap: 0.8rem;
-  border-bottom: 1px solid rgba(255, 255, 255, 0.06);
-}
-
-.browser-dots {
-  display: flex;
-  align-items: center;
-  gap: 0.35rem;
-}
-
-.dot {
-  width: 8px;
-  height: 8px;
-  border-radius: 50%;
-  display: inline-block;
-}
-
-.dot-red { background: #FF5F56; }
-.dot-yellow { background: #FFBD2E; }
-.dot-green { background: #27C93F; }
-
-.browser-url {
-  font-family: var(--font-mono, monospace);
-  font-size: 0.72rem;
-  color: #94A3B8;
-  background: rgba(255, 255, 255, 0.03);
-  padding: 0.15rem 0.6rem;
-  border-radius: 4px;
-}
-
 .visual-frame {
   position: relative;
   overflow: hidden;
