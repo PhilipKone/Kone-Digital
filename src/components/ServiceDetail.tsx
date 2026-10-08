@@ -132,7 +132,7 @@ export const servicesData: Record<string, ServiceData> = {
     ],
     techStack: ['React Native', 'Flutter', 'TypeScript', 'Firebase FCM', 'App Store Connect', 'Google Play Console'],
     caseStudyHighlight: {
-      client: 'Kone Kids Academy',
+      client: 'Kone Kids',
       project: 'Interactive Mobile Learning Companion',
       result: '4.9★ rating with offline course access for students across West Africa.',
       image: '/assets/services/mobile-apps-template.png',
