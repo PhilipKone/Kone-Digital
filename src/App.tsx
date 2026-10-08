@@ -25,11 +25,11 @@ function App() {
 
     // Check service detail
     if (pathname.startsWith('/services/')) {
-      const slug = pathname.replace('/services/', '');
+      const slug = pathname.replace('/services/', '').replace(/\/index\.html$/, '').replace(/\/$/, '');
       return { route: 'service-detail', slug };
     }
     if (hash.startsWith('#services/')) {
-      const slug = hash.replace('#services/', '');
+      const slug = hash.replace('#services/', '').replace(/\/$/, '');
       return { route: 'service-detail', slug };
     }
 
