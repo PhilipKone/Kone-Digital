@@ -39,18 +39,18 @@ export const servicesData: Record<string, ServiceData> = {
     slug: 'web-development',
     shortName: 'Web Development',
     title: 'Custom Web & SaaS Application Engineering',
-    headline: 'High-Performance Web Applications, Portals & SaaS Platforms',
+    headline: 'Full-stack web applications, client portals, and SaaS platforms engineered for scale and speed.',
     badge: 'CORE ENGINEERING',
-    summary: 'We build production-grade, ultra-fast web applications using React, Next.js, TypeScript, and modern cloud architectures. Engineered for instant page loads, high conversion, and seamless Ghanaian mobile payments.',
+    summary: 'We engineer production web applications using React, Next.js, TypeScript, and modern cloud architectures. Designed for high conversion, sub-second page loads, and native Ghanaian mobile payment integrations.',
     icon: 'code',
     heroImage: '/assets/services/sedemson-live-browser.jpg',
     heroUrl: 'digital.koneacademy.io/sedemson-stone/',
-    heroBadge: 'Verified Live Production · Sedemson Stone',
+    heroBadge: 'Verified Live Client · Sedemson Stone',
     coverGradient: 'linear-gradient(135deg, rgba(0, 240, 255, 0.08) 0%, rgba(9, 13, 22, 0.85) 100%)',
     scopeHighlights: [
-      { label: 'Turnaround SLA', detail: '24–48h for Rapid Hubs · 5–10 days for Custom Apps' },
+      { label: 'Turnaround SLA', detail: '5–10 business days for custom apps · 48h for rapid hubs' },
       { label: 'Payment Rails', detail: 'Automated MTN MoMo, Telecel Cash & AT Money' },
-      { label: 'Architecture', detail: 'Modern React 18, Next.js SSR & static pre-rendering' },
+      { label: 'Architecture', detail: 'React 18, Next.js SSR & static prerendering' },
       { label: 'Code Quality', detail: 'Snyk-audited zero-vulnerability & Schema.org SEO' }
     ],
     deliverables: [
@@ -93,7 +93,7 @@ export const servicesData: Record<string, ServiceData> = {
     faq: [
       { 
         q: 'How long does a custom web development project take?', 
-        a: 'Rapid business landing pages and WaaS storefronts launch in 24–48 hours. Custom multi-page business websites are delivered in 5–10 business days, and complex SaaS platforms take 2–4 weeks.' 
+        a: 'Rapid business landing pages launch in 24–48 hours. Custom multi-page business websites and SaaS platforms are delivered in 5–10 business days.' 
       },
       { 
         q: 'Is hosting, domain, and SSL setup included?', 
@@ -110,18 +110,18 @@ export const servicesData: Record<string, ServiceData> = {
     slug: 'mobile-apps',
     shortName: 'Mobile Apps',
     title: 'iOS & Android Mobile App Development',
-    headline: 'Native Performance Cross-Platform Mobile Applications',
-    badge: 'MOBILE SYSTEMS',
+    headline: 'Native-performance cross-platform mobile apps for App Store and Google Play.',
+    badge: 'MOBILE ENGINEERING',
     summary: 'From concept to App Store and Google Play publication. We engineer cross-platform mobile apps using React Native and Flutter, delivering native 60fps animations, push notifications, and offline-first database sync.',
     icon: 'smartphone',
     heroImage: '/assets/services/mobile-apps-live.jpg',
     heroUrl: 'kids.koneacademy.io',
-    heroBadge: 'Active Production App · Kone Kids',
+    heroBadge: 'Verified Live App · Kone Kids Companion',
     coverGradient: 'linear-gradient(135deg, rgba(168, 85, 247, 0.08) 0%, rgba(9, 13, 22, 0.85) 100%)',
     scopeHighlights: [
-      { label: 'Target Platforms', detail: 'Native iOS (App Store) & Android (Google Play)' },
+      { label: 'Target Platforms', detail: 'Apple iOS (App Store) & Android (Google Play)' },
       { label: 'Architecture', detail: 'Offline-first database sync & React Native / Flutter' },
-      { label: 'Push & Messaging', detail: 'Automated Firebase FCM & Apple APNs notifications' },
+      { label: 'Push & Messaging', detail: 'Firebase Cloud Messaging (FCM) & Apple APNs notifications' },
       { label: 'Turnaround SLA', detail: '2–4 weeks MVP to Store submission' }
     ],
     deliverables: [
@@ -158,19 +158,19 @@ export const servicesData: Record<string, ServiceData> = {
     slug: 'brand-design',
     shortName: 'Brand & UI/UX',
     title: 'Brand Identity & UI/UX Design Systems',
-    headline: 'World-Class Logo Systems, Brand Manuals & Figma UI/UX Prototypes',
+    headline: 'Structured corporate identities, scalable vector systems, and interactive Figma prototypes.',
     badge: 'DESIGN STUDIO',
     summary: 'We craft iconic corporate brand identity systems that command trust and market authority. Includes logo vectors, color tokens, typography scales, interactive Figma UI/UX wireframes, and complete brand manuals.',
     icon: 'palette',
     heroImage: '/assets/services/brand-design-live.jpg',
     heroUrl: 'consult.koneacademy.io',
-    heroBadge: 'Corporate Identity System · Kone Consult',
+    heroBadge: 'Verified Live Platform · Kone Consult',
     coverGradient: 'linear-gradient(135deg, rgba(234, 179, 8, 0.08) 0%, rgba(9, 13, 22, 0.85) 100%)',
     scopeHighlights: [
       { label: 'Deliverables', detail: 'Scalable SVG / EPS vectors & full PDF Brand Guidelines' },
-      { label: 'UI/UX Prototypes', detail: 'Interactive high-fidelity Figma component systems' },
-      { label: 'Accessibility', detail: 'WCAG AAA color contrast & responsive design tokens' },
-      { label: 'Turnaround SLA', detail: '48–72h Initial Concepts · 5–7 days Complete Package' }
+      { label: 'UI/UX Prototypes', detail: 'Interactive component systems in Figma' },
+      { label: 'Standards', detail: 'WCAG 2.1 AA color contrast & responsive design tokens' },
+      { label: 'Turnaround SLA', detail: '3–5 business days initial concepts · 7–10 days complete package' }
     ],
     deliverables: [
       { title: 'Vector Logo Systems', spec: 'Scalable SVG, EPS, PNG, and PDF asset packages with dark/light variants', iconType: 'palette' },
@@ -189,7 +189,7 @@ export const servicesData: Record<string, ServiceData> = {
     faq: [
       { 
         q: 'What is the turnaround time for a complete brand identity?', 
-        a: 'Initial brand concepts and logo marks are delivered in 48–72 hours. Complete vector packages, design systems, and PDF brand manuals are finalized in 5–7 business days.' 
+        a: 'Initial brand concepts and logo marks are delivered in 3–5 business days. Complete vector packages, design systems, and PDF brand manuals are finalized in 7–10 business days.' 
       },
       { 
         q: 'What files and assets do I receive upon completion?', 
@@ -206,19 +206,19 @@ export const servicesData: Record<string, ServiceData> = {
     slug: 'cloud-devops',
     shortName: 'Cloud & DevOps',
     title: 'Cloud Infrastructure & DevOps Automation',
-    headline: 'Scalable Cloud Systems, Automated CI/CD & Security Audits',
+    headline: 'Automated CI/CD pipelines, secure cloud hosting, and zero-downtime deployments.',
     badge: 'CLOUD ARCHITECTURE',
-    summary: 'Architecting resilient, self-healing cloud infrastructure on AWS, Firebase, and Cloudflare. We build automated GitHub Actions CI/CD pipelines, SSL/TLS encryption, and real-time uptime monitoring.',
+    summary: 'Architecting resilient cloud infrastructure on AWS, Firebase, and Cloudflare. We build automated GitHub Actions CI/CD pipelines, SSL/TLS encryption, and real-time uptime monitoring.',
     icon: 'server',
     heroImage: '/assets/services/cloud-devops-live.jpg',
     heroUrl: 'code.koneacademy.io',
-    heroBadge: 'High-Availability IDE Infrastructure',
+    heroBadge: 'Verified Live Infrastructure · Kone Code IDE',
     coverGradient: 'linear-gradient(135deg, rgba(34, 197, 94, 0.08) 0%, rgba(9, 13, 22, 0.85) 100%)',
     scopeHighlights: [
       { label: 'Cloud Platforms', detail: 'AWS, Firebase, Cloudflare DNS & Docker containers' },
       { label: 'CI/CD Automation', detail: 'GitHub Actions with automated testing & zero-downtime deploys' },
       { label: 'Security Standard', detail: 'Snyk SAST vulnerability scans & TLS 1.3 / SSL encryption' },
-      { label: 'Turnaround SLA', detail: '24–48h Setup, configuration & zero-downtime migrations' }
+      { label: 'Turnaround SLA', detail: '24–48h setup, configuration & zero-downtime migrations' }
     ],
     deliverables: [
       { title: 'Automated CI/CD Deployment Pipelines', spec: 'GitHub Actions workflows for automated build, lint, test, and zero-downtime deployment', iconType: 'speed' },
@@ -372,10 +372,33 @@ const renderTechLogo = (techName: string) => {
       </svg>
     );
   }
-  if (norm.includes('node.js')) {
+  if (norm.includes('node.js') || norm === 'node') {
     return (
-      <svg viewBox="0 0 24 24" width="16" height="16" fill="#5FA04E" aria-hidden="true" focusable="false">
-        <path d="M12 0L1.7 5.95v12.1L12 24l10.3-5.95V5.95L12 0zm-1.07 19.34c-3.14 0-4.63-1.63-4.63-3.69 0-1.78 1.13-3.23 3.65-3.57l1.79-.24v-.7c0-.98-.55-1.54-1.62-1.54-.92 0-1.66.42-2.18 1.12l-1.3-.92c.87-1.15 2.07-1.73 3.64-1.73 2.15 0 3.25 1.15 3.25 3.14v4.54c0 .87.35 1.29.98 1.29.35 0 .66-.11.96-.34l.64 1.2c-.52.45-1.18.69-1.95.69-.95 0-1.63-.5-1.89-1.38-.47.88-1.51 1.4-2.34 1.4zm.81-5.74l-1.37.19c-1.67.23-2.34 1.07-2.34 2.17 0 1.25.9 2.19 2.65 2.19.98 0 1.95-.57 2.37-1.39v-2.35l-1.31-.81z"/>
+      <svg viewBox="0 0 128 128" width="16" height="16" aria-hidden="true" focusable="false">
+        <path fill="url(#node-grad-a)" d="M66.958.825a6.07 6.07 0 0 0-6.035 0L11.103 29.76c-1.895 1.072-2.96 3.095-2.96 5.24v57.988c0 2.143 1.183 4.167 2.958 5.24l49.82 28.934a6.07 6.07 0 0 0 6.036 0l49.82-28.935c1.894-1.072 2.958-3.096 2.958-5.24V35c0-2.144-1.183-4.167-2.958-5.24z"/>
+        <path fill="url(#node-grad-b)" d="M116.897 29.76 66.841.825A8.161 8.161 0 0 0 65.302.23L9.21 96.798a6.251 6.251 0 0 0 1.657 1.43l50.057 28.934c1.42.833 3.076 1.072 4.615.595l52.66-96.925a3.702 3.702 0 0 0-1.302-1.072z"/>
+        <path fill="url(#node-grad-c)" d="M116.898 98.225c1.42-.833 2.485-2.262 2.958-3.81L65.066.108c-1.42-.238-2.959-.119-4.26.715L11.104 29.639l53.606 98.355c.71-.12 1.54-.358 2.25-.715z"/>
+        <defs>
+          <linearGradient id="node-grad-a" x1="34.513" x2="27.157" y1="15.535" y2="30.448" gradientTransform="translate(-129.242 -73.715) scale(6.18523)" gradientUnits="userSpaceOnUse">
+            <stop stopColor="#3F873F"/>
+            <stop offset=".33" stopColor="#3F8B3D"/>
+            <stop offset=".637" stopColor="#3E9638"/>
+            <stop offset=".934" stopColor="#3DA92E"/>
+            <stop offset="1" stopColor="#3DAE2B"/>
+          </linearGradient>
+          <linearGradient id="node-grad-b" x1="30.009" x2="50.533" y1="23.359" y2="8.288" gradientTransform="translate(-129.242 -73.715) scale(6.18523)" gradientUnits="userSpaceOnUse">
+            <stop offset=".138" stopColor="#3F873F"/>
+            <stop offset=".402" stopColor="#52A044"/>
+            <stop offset=".713" stopColor="#64B749"/>
+            <stop offset=".908" stopColor="#6ABF4B"/>
+          </linearGradient>
+          <linearGradient id="node-grad-c" x1="21.917" x2="40.555" y1="22.261" y2="22.261" gradientTransform="translate(-129.242 -73.715) scale(6.18523)" gradientUnits="userSpaceOnUse">
+            <stop offset=".092" stopColor="#6ABF4B"/>
+            <stop offset=".287" stopColor="#64B749"/>
+            <stop offset=".598" stopColor="#52A044"/>
+            <stop offset=".862" stopColor="#3F873F"/>
+          </linearGradient>
+        </defs>
       </svg>
     );
   }
@@ -569,7 +592,6 @@ export default function ServiceDetail({
           <div className="service-hero-content">
             <div className="service-badge-wrapper">
               <span className="service-badge">{service.badge}</span>
-              <span className="service-live-dot">Production Grade</span>
             </div>
             <h1 className="service-main-title" itemProp="name">{service.title}</h1>
             <p className="service-headline" itemProp="description">{service.headline}</p>
@@ -612,8 +634,8 @@ export default function ServiceDetail({
                 loading="eager"
               />
               <div className="visual-overlay-badge">
-                <span className="badge-pulse">●</span>
-                <span>{service.heroBadge || 'Active Production Architecture'}</span>
+                <span className="visual-badge-dot">●</span>
+                <span>{service.heroBadge || 'Verified Client Deployment'}</span>
               </div>
             </div>
           </div>

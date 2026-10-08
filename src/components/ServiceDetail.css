@@ -100,21 +100,10 @@
 
 .service-badge {
   color: var(--cyan-glow, #00F0FF);
-  font-size: 0.74rem;
-  font-weight: 850;
-  letter-spacing: 2px;
+  font-size: 0.76rem;
+  font-weight: 800;
+  letter-spacing: 1.5px;
   text-transform: uppercase;
-}
-
-.service-live-dot {
-  font-size: 0.72rem;
-  font-weight: 700;
-  color: #10B981;
-  background: rgba(16, 185, 129, 0.1);
-  border: 1px solid rgba(16, 185, 129, 0.25);
-  padding: 0.15rem 0.55rem;
-  border-radius: 50px;
-  letter-spacing: 0.3px;
 }
 
 .service-main-title {
@@ -280,7 +269,7 @@
   box-shadow: 0 4px 12px rgba(0, 0, 0, 0.4);
 }
 
-.badge-pulse {
+.visual-badge-dot {
   color: #10B981;
   font-size: 0.65rem;
 }
