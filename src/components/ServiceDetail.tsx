@@ -114,7 +114,7 @@ export const servicesData: Record<string, ServiceData> = {
     badge: 'MOBILE ENGINEERING',
     summary: 'From concept to App Store and Google Play publication. We engineer cross-platform mobile apps using React Native and Flutter, delivering native 60fps animations, push notifications, and offline-first database sync.',
     icon: 'smartphone',
-    heroImage: '/assets/services/mobile-apps-live.jpg',
+    heroImage: '/assets/services/mobile-apps-template.png',
     heroUrl: 'kids.koneacademy.io',
     heroBadge: 'Verified Live App · Kone Kids Companion',
     coverGradient: 'linear-gradient(135deg, rgba(168, 85, 247, 0.08) 0%, rgba(9, 13, 22, 0.85) 100%)',
@@ -135,7 +135,7 @@ export const servicesData: Record<string, ServiceData> = {
       client: 'Kone Kids Academy',
       project: 'Interactive Mobile Learning Companion',
       result: '4.9★ rating with offline course access for students across West Africa.',
-      image: '/assets/services/mobile-apps-live.jpg',
+      image: '/assets/services/mobile-apps-template.png',
       link: 'https://kids.koneacademy.io'
     },
     faq: [
