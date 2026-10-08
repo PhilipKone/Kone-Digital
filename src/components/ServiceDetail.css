@@ -1,8 +1,11 @@
 .service-detail-container {
+  width: 100%;
   max-width: 1140px;
   margin: 0 auto;
   padding: 2.5rem 1.5rem 5rem;
   color: #e2e8f0;
+  box-sizing: border-box;
+  overflow-x: hidden;
 }
 
 /* Breadcrumbs Nav Bar */
@@ -141,7 +144,7 @@
 
 .service-primary-btn {
   background: #F8FAFC;
-  color: #07090E;
+  color: #07090E !important;
   font-weight: 750;
   font-size: 0.88rem;
   padding: 0.78rem 1.4rem;
@@ -150,17 +153,33 @@
   text-decoration: none;
   display: inline-flex;
   align-items: center;
+  justify-content: center;
   gap: 0.5rem;
   box-shadow: 0 1px 2px rgba(0, 0, 0, 0.15), 0 0 0 1px rgba(255, 255, 255, 0.15);
   transition: all 0.2s cubic-bezier(0.16, 1, 0.3, 1);
   letter-spacing: -0.01em;
 }
 
+.service-primary-btn span {
+  color: #07090E !important;
+}
+
+.service-primary-btn svg {
+  color: #07090E !important;
+  stroke: #07090E !important;
+}
+
 .service-primary-btn:hover {
   background: #FFFFFF;
-  color: #000000;
+  color: #000000 !important;
   box-shadow: 0 4px 16px rgba(255, 255, 255, 0.2);
   transform: translateY(-1px);
+}
+
+.service-primary-btn:hover span,
+.service-primary-btn:hover svg {
+  color: #000000 !important;
+  stroke: #000000 !important;
 }
 
 .service-secondary-btn {
@@ -861,50 +880,225 @@
   .service-hero-grid {
     grid-template-columns: 1fr;
     gap: 2rem;
+    width: 100%;
   }
 
   .case-card-grid {
     grid-template-columns: 1fr;
+    width: 100%;
   }
 
   .case-image-col {
     min-height: 220px;
     max-height: 280px;
+    width: 100%;
   }
 }
 
 @media (max-width: 768px) {
   .service-detail-container {
-    padding: 1.5rem 1rem 4rem;
+    padding: 1.25rem 1rem 4rem;
+    width: 100%;
+    max-width: 100%;
+    box-sizing: border-box;
+    overflow-x: hidden;
   }
 
-  .faq-grid {
-    grid-template-columns: 1fr;
+  .service-nav-bar {
+    margin-bottom: 1.25rem;
+    gap: 0.75rem;
+    width: 100%;
+    box-sizing: border-box;
   }
 
-  .service-main-title {
-    font-size: 1.65rem;
+  .service-breadcrumbs {
+    font-size: 0.78rem;
+    gap: 0.35rem;
+    flex-wrap: wrap;
+  }
+
+  .service-back-btn {
+    font-size: 0.75rem;
+    padding: 0.35rem 0.75rem;
   }
 
   .service-hero-banner {
-    padding: 1.8rem 1.4rem;
+    padding: 1.5rem 1.15rem;
     border-radius: 16px;
+    margin-bottom: 2rem;
+    width: 100%;
+    box-sizing: border-box;
+  }
+
+  .service-hero-grid {
+    grid-template-columns: 1fr;
+    gap: 1.75rem;
+    width: 100%;
+    box-sizing: border-box;
+  }
+
+  .service-hero-content {
+    width: 100%;
+    max-width: 100%;
+    min-width: 0;
+    box-sizing: border-box;
+  }
+
+  .service-main-title {
+    font-size: 1.55rem;
+    line-height: 1.22;
+  }
+
+  .service-headline {
+    font-size: 0.94rem;
+    line-height: 1.45;
   }
 
   .service-summary {
-    font-size: 0.92rem;
+    font-size: 0.88rem;
+    line-height: 1.6;
+    margin-bottom: 1.5rem;
+    max-width: 100%;
+    width: 100%;
+    box-sizing: border-box;
+  }
+
+  .service-hero-cta {
+    flex-direction: column;
+    gap: 0.75rem;
+    width: 100%;
+    box-sizing: border-box;
   }
 
   .service-primary-btn, .service-secondary-btn {
     width: 100%;
+    box-sizing: border-box;
     justify-content: center;
+    text-align: center;
+  }
+
+  .service-standards-strip {
+    grid-template-columns: 1fr;
+    gap: 0.75rem;
+    margin-bottom: 2.5rem;
+    width: 100%;
+    box-sizing: border-box;
+  }
+
+  .standard-chip {
+    padding: 0.9rem 1rem;
+  }
+
+  .service-deliverables-section,
+  .service-deployments-section,
+  .service-tech-section,
+  .service-case-section,
+  .service-faq-section,
+  .other-services-section {
+    margin-bottom: 2.5rem;
+    width: 100%;
+    box-sizing: border-box;
+  }
+
+  .deliverables-grid {
+    grid-template-columns: 1fr;
+    gap: 1rem;
+    width: 100%;
+    box-sizing: border-box;
+  }
+
+  .deliverable-card {
+    padding: 1.2rem;
+  }
+
+  .section-header-row {
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 0.5rem;
+    margin-bottom: 1.2rem;
+  }
+
+  .client-showcases-grid {
+    grid-template-columns: 1fr;
+    gap: 1.2rem;
+    width: 100%;
+    box-sizing: border-box;
+  }
+
+  .tech-header-row {
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 0.35rem;
+  }
+
+  .case-card-grid {
+    grid-template-columns: 1fr;
+    width: 100%;
+  }
+
+  .case-image-col {
+    min-height: 200px;
+    max-height: 240px;
+    width: 100%;
   }
 
   .case-content-col {
-    padding: 1.5rem;
+    padding: 1.35rem 1.15rem;
+    width: 100%;
+    box-sizing: border-box;
+  }
+
+  .case-title {
+    font-size: 1.18rem;
+  }
+
+  .case-result {
+    font-size: 0.88rem;
+  }
+
+  .faq-grid {
+    grid-template-columns: 1fr;
+    gap: 0.85rem;
+    width: 100%;
+    box-sizing: border-box;
+  }
+
+  .faq-card {
+    padding: 1.15rem;
   }
 
   .faq-a {
     padding-left: 0;
+    font-size: 0.84rem;
+  }
+
+  .other-services-grid {
+    grid-template-columns: 1fr;
+    gap: 1rem;
+    width: 100%;
+    box-sizing: border-box;
+  }
+
+  .other-service-card {
+    padding: 1.2rem;
+  }
+}
+
+@media (max-width: 480px) {
+  .service-detail-container {
+    padding: 1rem 0.85rem 3.5rem;
+  }
+
+  .service-hero-banner {
+    padding: 1.35rem 1rem;
+    border-radius: 14px;
+  }
+
+  .service-main-title {
+    font-size: 1.45rem;
+  }
+
+  .service-headline {
+    font-size: 0.9rem;
   }
 }

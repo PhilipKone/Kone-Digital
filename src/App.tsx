@@ -262,7 +262,7 @@ function App() {
       )}
 
       {/* Main Content Area */}
-      <main id="main-content" style={{ flex: '1 0 auto', display: 'flex', flexDirection: 'column', width: '100%', gap: '3rem' }}>
+      <main id="main-content" style={{ flex: '1 0 auto', display: 'flex', flexDirection: 'column', width: '100%', maxWidth: '100%', minWidth: 0, overflowX: 'hidden', gap: '3rem' }}>
         {currentRoute === 'service-detail' ? (
           <ServiceDetail 
             slug={activeServiceSlug} 
