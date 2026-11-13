@@ -1,11 +1,15 @@
 ﻿const CACHE_PREFIX = 'paf-pwa-';
-const CACHE_NAME = `${CACHE_PREFIX}v2`;
+const CACHE_NAME = `${CACHE_PREFIX}v3`;
 const ASSETS = [
   './',
   './index.html',
   './manifest.webmanifest',
   './icons/icon-192.png',
-  './icons/icon-512.png'
+  './icons/icon-512.png',
+  './media/outreach.jpg',
+  './media/media-radio.jpg',
+  './media/team.jpg',
+  './media/founder.jpg'
 ];
 
 self.addEventListener('install', (event) => {
