@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+﻿import React, { useState } from 'react';
 
 interface ProjectItem {
   id: string;
@@ -55,12 +55,24 @@ const PROJECTS: ProjectItem[] = [
     title: "Susan's Pastries",
     category: 'ecommerce',
     categoryLabel: 'Food & Beverage',
-    tagline: "Artisanal Ghanaian pastries, custom celebration cakes & fresh fruit juices — order via WhatsApp.",
+    tagline: "Artisanal Ghanaian pastries, custom celebration cakes & fresh fruit juices â€” order via WhatsApp.",
     image: '/susans-pastries/hero-banner.webp',
     tags: ['Food WaaS', 'WhatsApp Ordering', 'Menu Showcase'],
     metric: 'Direct WhatsApp Orders',
     status: 'Live Production',
     link: '/susans-pastries/index.html'
+  },
+  {
+    id: 'paf',
+    title: 'Potentials Aid Foundation',
+    category: 'nonprofit',
+    categoryLabel: 'Neuro-Clinical & EdTech PWA',
+    tagline: 'Neuro-Clinical SLD screening, multidisciplinary specialist referrals & 10 inclusive skills academies across Ghana.',
+    image: '/paf/hero-banner.jpg',
+    tags: ['Installable Mobile PWA', 'SLD Clinical Screening', 'Specialist Network'],
+    metric: '5-Condition SLD Screening App',
+    status: 'Live Production',
+    link: '/paf/index.html'
   }
 ];
 
@@ -68,7 +80,8 @@ const PROJECT_IMAGES: Record<string, string> = {
   'sedemson': '/sedemson_stone_hero.webp',
   'emewear': '/emewear/emewear_hero.webp',
   'ansah-delali': '/ansah-delali/cohort-group.webp',
-  'susans-pastries': '/susans-pastries/hero-banner.webp'
+  'susans-pastries': '/susans-pastries/hero-banner.webp',
+  'paf': '/paf/hero-banner.jpg'
 };
 
 const getSafeProjectLink = (link?: string, title: string = ''): string => {
@@ -301,3 +314,4 @@ export const Portfolio: React.FC = () => {
     </section>
   );
 };
+
