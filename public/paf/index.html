@@ -367,6 +367,46 @@
 
     .toast.show { opacity: 1; transform: translateX(-50%) translateY(0); }
 
+    .update-pill {
+      position: fixed;
+      bottom: calc(var(--nav-h) + env(safe-area-inset-bottom) + 12px);
+      left: 50%;
+      transform: translateX(-50%) translateY(16px);
+      background: var(--navy);
+      color: #FFFFFF;
+      border: 1px solid var(--gold);
+      padding: 8px 14px;
+      border-radius: 999px;
+      font-family: inherit;
+      font-size: 0.75rem;
+      font-weight: 600;
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      box-shadow: 0 6px 18px rgba(11, 37, 69, 0.28);
+      opacity: 0;
+      pointer-events: none;
+      transition: opacity 0.2s ease, transform 0.2s ease;
+      z-index: 85;
+      cursor: pointer;
+      white-space: nowrap;
+    }
+
+    .update-pill.show {
+      opacity: 1;
+      pointer-events: auto;
+      transform: translateX(-50%) translateY(0);
+    }
+
+    .update-pill .badge {
+      background: var(--gold);
+      color: #FFFFFF;
+      padding: 2px 8px;
+      border-radius: 999px;
+      font-size: 0.68rem;
+      font-weight: 700;
+    }
+
     .sheet-backdrop { display: none; position: fixed; inset: 0; background: rgba(17, 24, 39, 0.55); z-index: 90; align-items: flex-end; justify-content: center; }
     .sheet-backdrop.open { display: flex; }
     .sheet-box { width: 100%; max-width: 480px; background: #FFFFFF; border-top: 1px solid var(--line-strong); border-radius: 14px 14px 0 0; padding: 16px 16px calc(20px + env(safe-area-inset-bottom)); }
@@ -388,6 +428,10 @@
     </header>
 
     <div id="toast" class="toast">Copied</div>
+    <button id="updatePill" class="update-pill" type="button" onclick="window.location.reload()" aria-live="polite">
+      <span>App update ready</span>
+      <span class="badge">Tap to refresh</span>
+    </button>
 
     <main class="content-scroll">
       <section id="view-home" class="view active">
@@ -1032,9 +1076,26 @@
 
     if ('serviceWorker' in navigator) {
       window.addEventListener('load', () => {
-        navigator.serviceWorker.register('./sw.js', { scope: '/paf/' });
+        const hadController = !!navigator.serviceWorker.controller;
+        let updateNotified = false;
+
+        navigator.serviceWorker.addEventListener('controllerchange', () => {
+          if (!hadController || updateNotified) return;
+          updateNotified = true;
+          const pill = document.getElementById('updatePill');
+          if (pill) pill.classList.add('show');
+        });
+
+        navigator.serviceWorker.register('./sw.js', { scope: '/paf/' }).then((reg) => {
+          document.addEventListener('visibilitychange', () => {
+            if (document.visibilityState === 'visible') {
+              reg.update().catch(() => {});
+            }
+          });
+        });
       });
     }
   </script>
 </body>
 </html>
+
