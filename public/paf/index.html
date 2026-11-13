@@ -32,8 +32,8 @@
       --status-mod-ink: #854D0E;
       --status-high-bg: #FEF2F2;
       --status-high-ink: #991B1B;
-      --header-h: 56px;
-      --nav-h: 62px;
+      --header-h: 54px;
+      --nav-h: 60px;
     }
 
     * { box-sizing: border-box; margin: 0; padding: 0; -webkit-tap-highlight-color: transparent; }
@@ -65,7 +65,7 @@
       top: 0;
       z-index: 40;
       height: calc(var(--header-h) + env(safe-area-inset-top));
-      padding: env(safe-area-inset-top) 16px 0;
+      padding: env(safe-area-inset-top) 14px 0;
       background: var(--navy);
       color: #FFFFFF;
       display: flex;
@@ -74,12 +74,12 @@
       border-bottom: 1px solid #1E3A5F;
     }
 
-    .top-brand { display: flex; align-items: center; gap: 10px; }
+    .top-brand { display: flex; align-items: center; gap: 9px; }
 
     .crest-box {
-      width: 34px;
-      height: 34px;
-      border-radius: 8px;
+      width: 32px;
+      height: 32px;
+      border-radius: 7px;
       background: var(--ivory);
       border: 1px solid var(--gold);
       display: flex;
@@ -90,21 +90,21 @@
     }
 
     .crest-box img { width: 100%; height: 100%; object-fit: cover; }
-    .top-title { font-size: 0.92rem; font-weight: 700; letter-spacing: 0.01em; line-height: 1.15; }
-    .top-sub { font-size: 0.68rem; color: #CBD5E1; letter-spacing: 0.02em; }
+    .top-title { font-size: 0.88rem; font-weight: 700; letter-spacing: 0.01em; line-height: 1.15; }
+    .top-sub { font-size: 0.66rem; color: #CBD5E1; letter-spacing: 0.02em; }
 
     .install-btn {
       background: transparent;
       color: #FDE68A;
       border: 1px solid rgba(253, 230, 138, 0.45);
-      padding: 5px 10px;
-      border-radius: 6px;
-      font-size: 0.74rem;
+      padding: 4px 9px;
+      border-radius: 5px;
+      font-size: 0.71rem;
       font-weight: 600;
       cursor: pointer;
     }
 
-    .content-scroll { flex: 1; padding: 14px 14px calc(var(--nav-h) + env(safe-area-inset-bottom) + 20px); }
+    .content-scroll { flex: 1; padding: 12px 14px calc(var(--nav-h) + env(safe-area-inset-bottom) + 18px); }
     .view { display: none; }
     .view.active { display: block; }
 
@@ -112,16 +112,17 @@
       background: var(--surface);
       border: 1px solid var(--line);
       border-radius: 10px;
-      padding: 16px;
+      padding: 14px;
       margin-bottom: 12px;
     }
 
     .panel-ivory { background: var(--ivory); border: 1px solid var(--gold-border); }
-    .eyebrow { font-size: 0.68rem; font-weight: 700; text-transform: uppercase; letter-spacing: 0.06em; color: var(--gold); margin-bottom: 4px; }
-    .h1 { font-size: 1.18rem; font-weight: 700; color: var(--navy); line-height: 1.28; margin-bottom: 6px; letter-spacing: -0.01em; }
-    .lead { font-size: 0.83rem; color: var(--ink-secondary); margin-bottom: 14px; }
-    .section-label { font-size: 0.72rem; font-weight: 700; text-transform: uppercase; letter-spacing: 0.05em; color: var(--ink-muted); margin: 16px 2px 8px; }
+    .eyebrow { font-size: 0.66rem; font-weight: 700; text-transform: uppercase; letter-spacing: 0.06em; color: var(--gold); margin-bottom: 4px; }
+    .h1 { font-size: 1.12rem; font-weight: 700; color: var(--navy); line-height: 1.28; margin-bottom: 6px; letter-spacing: -0.01em; }
+    .lead { font-size: 0.81rem; color: var(--ink-secondary); margin-bottom: 12px; }
+    .section-label { font-size: 0.7rem; font-weight: 700; text-transform: uppercase; letter-spacing: 0.05em; color: var(--ink-muted); margin: 14px 2px 7px; }
 
+    /* Compact Native Button Proportions */
     .btn-pair { display: grid; grid-template-columns: 1fr 1fr; gap: 8px; }
 
     .btn {
@@ -130,11 +131,13 @@
       justify-content: center;
       gap: 6px;
       width: 100%;
-      padding: 10px 14px;
-      border-radius: 8px;
+      min-height: 36px;
+      padding: 7px 12px;
+      border-radius: 7px;
       font-family: inherit;
-      font-size: 0.82rem;
+      font-size: 0.77rem;
       font-weight: 600;
+      line-height: 1.2;
       cursor: pointer;
       text-decoration: none;
       border: 1px solid transparent;
@@ -143,6 +146,7 @@
     .btn-primary { background: var(--navy); color: #FFFFFF; }
     .btn-primary:active { background: var(--navy-hover); }
     .btn-secondary { background: #FFFFFF; color: var(--navy); border-color: var(--line-strong); }
+    .btn-secondary:active { background: #F9FAFB; }
     .btn-gold { background: var(--gold); color: #FFFFFF; }
 
     .list-group { background: var(--surface); border: 1px solid var(--line); border-radius: 10px; overflow: hidden; margin-bottom: 12px; }
@@ -152,10 +156,10 @@
       background: #FFFFFF;
       border: none;
       border-bottom: 1px solid var(--line);
-      padding: 13px 14px;
+      padding: 11px 13px;
       display: flex;
       align-items: center;
-      gap: 12px;
+      gap: 11px;
       text-align: left;
       cursor: pointer;
       font-family: inherit;
@@ -165,9 +169,9 @@
     .list-row:active { background: #F9FAFB; }
 
     .row-icon {
-      width: 34px;
-      height: 34px;
-      border-radius: 8px;
+      width: 32px;
+      height: 32px;
+      border-radius: 7px;
       background: #F3F4F6;
       color: var(--navy);
       display: flex;
@@ -177,8 +181,8 @@
     }
 
     .row-body { flex: 1; min-width: 0; }
-    .row-title { font-size: 0.86rem; font-weight: 600; color: var(--ink); }
-    .row-desc { font-size: 0.75rem; color: var(--ink-muted); white-space: nowrap; overflow: hidden; text-overflow: ellipsis; }
+    .row-title { font-size: 0.84rem; font-weight: 600; color: var(--ink); }
+    .row-desc { font-size: 0.74rem; color: var(--ink-muted); white-space: nowrap; overflow: hidden; text-overflow: ellipsis; }
     .chevron { color: #9CA3AF; flex-shrink: 0; }
 
     .kv-strip {
@@ -186,70 +190,90 @@
       grid-template-columns: repeat(3, 1fr);
       border-top: 1px solid var(--gold-border);
       border-bottom: 1px solid var(--gold-border);
-      margin: 10px 0 12px;
-      padding: 8px 0;
+      margin: 9px 0 11px;
+      padding: 7px 0;
       gap: 8px;
     }
 
-    .kv-item span { display: block; font-size: 0.65rem; text-transform: uppercase; color: var(--ink-muted); font-weight: 600; }
-    .kv-item strong { font-size: 0.76rem; color: var(--navy); font-weight: 700; }
+    .kv-item span { display: block; font-size: 0.63rem; text-transform: uppercase; color: var(--ink-muted); font-weight: 600; }
+    .kv-item strong { font-size: 0.75rem; color: var(--navy); font-weight: 700; }
 
     .sdg-strip { display: grid; grid-template-columns: repeat(4, 1fr); gap: 6px; }
-    .sdg-cell { border: 1px solid var(--line); border-radius: 6px; padding: 8px 6px; background: #FAFAFA; }
-    .sdg-cell strong { display: block; font-size: 0.78rem; color: var(--navy); }
-    .sdg-cell span { display: block; font-size: 0.66rem; color: var(--ink-secondary); margin-top: 1px; }
+    .sdg-cell { border: 1px solid var(--line); border-radius: 6px; padding: 7px 6px; background: #FAFAFA; }
+    .sdg-cell strong { display: block; font-size: 0.76rem; color: var(--navy); }
+    .sdg-cell span { display: block; font-size: 0.64rem; color: var(--ink-secondary); margin-top: 1px; }
 
     .seg-scroll { display: flex; gap: 6px; overflow-x: auto; padding-bottom: 4px; margin-bottom: 10px; scrollbar-width: none; }
     .seg-scroll::-webkit-scrollbar { display: none; }
 
     .seg-btn {
       flex-shrink: 0;
-      padding: 7px 12px;
+      padding: 5px 10px;
       border-radius: 6px;
       border: 1px solid var(--line-strong);
       background: #FFFFFF;
       color: var(--ink-secondary);
       font-family: inherit;
-      font-size: 0.78rem;
+      font-size: 0.74rem;
       font-weight: 600;
       cursor: pointer;
     }
 
     .seg-btn.active { background: var(--navy); color: #FFFFFF; border-color: var(--navy); }
 
-    .check-row { display: flex; align-items: flex-start; gap: 10px; padding: 10px 0; border-bottom: 1px solid var(--line); cursor: pointer; }
+    .check-row { display: flex; align-items: flex-start; gap: 10px; padding: 9px 0; border-bottom: 1px solid var(--line); cursor: pointer; }
     .check-row:last-child { border-bottom: none; }
-    .check-row input[type="checkbox"] { width: 17px; height: 17px; margin-top: 2px; accent-color: var(--navy); flex-shrink: 0; }
-    .check-row span { font-size: 0.81rem; color: var(--ink); }
+    .check-row input[type="checkbox"] { width: 16px; height: 16px; margin-top: 2px; accent-color: var(--navy); flex-shrink: 0; }
+    .check-row span { font-size: 0.8rem; color: var(--ink); }
 
-    .status-bar { margin: 12px 0; padding: 10px 12px; border-radius: 8px; font-size: 0.79rem; border: 1px solid var(--line); }
+    .status-bar { margin: 10px 0; padding: 9px 11px; border-radius: 7px; font-size: 0.77rem; border: 1px solid var(--line); }
     .status-low { background: var(--status-low-bg); color: var(--status-low-ink); }
     .status-mod { background: var(--status-mod-bg); color: var(--status-mod-ink); border-color: #FDE68A; }
     .status-high { background: var(--status-high-bg); color: var(--status-high-ink); border-color: #FECACA; }
 
-    .field { margin-bottom: 10px; }
-    .field label { display: block; font-size: 0.75rem; font-weight: 600; color: var(--ink); margin-bottom: 4px; }
-    .input { width: 100%; padding: 9px 11px; border-radius: 7px; border: 1px solid var(--line-strong); font-family: inherit; font-size: 0.84rem; color: var(--ink); background: #FFFFFF; }
+    .field { margin-bottom: 9px; }
+    .field label { display: block; font-size: 0.73rem; font-weight: 600; color: var(--ink); margin-bottom: 4px; }
+    .input { width: 100%; padding: 8px 10px; border-radius: 7px; border: 1px solid var(--line-strong); font-family: inherit; font-size: 0.82rem; color: var(--ink); background: #FFFFFF; }
     .input:focus { outline: none; border-color: var(--navy); }
     .input[readonly] { background: #F9FAFB; color: var(--navy); font-weight: 600; }
 
-    .spec-row { display: flex; align-items: center; gap: 11px; padding: 11px 14px; border-bottom: 1px solid var(--line); background: #FFFFFF; cursor: pointer; }
+    .spec-row { display: flex; align-items: center; gap: 10px; padding: 10px 13px; border-bottom: 1px solid var(--line); background: #FFFFFF; cursor: pointer; }
     .spec-row:last-child { border-bottom: none; }
     .spec-row.selected { background: var(--ivory); }
-    .spec-num { font-variant-numeric: tabular-nums; font-size: 0.75rem; font-weight: 700; color: var(--ink-muted); width: 22px; }
+    .spec-num { font-variant-numeric: tabular-nums; font-size: 0.73rem; font-weight: 700; color: var(--ink-muted); width: 20px; }
     .spec-row.selected .spec-num { color: var(--gold); }
-    .radio-dot { width: 18px; height: 18px; border-radius: 50%; border: 1.5px solid var(--line-strong); display: flex; align-items: center; justify-content: center; flex-shrink: 0; }
+    .radio-dot { width: 17px; height: 17px; border-radius: 50%; border: 1.5px solid var(--line-strong); display: flex; align-items: center; justify-content: center; flex-shrink: 0; }
     .spec-row.selected .radio-dot { border-color: var(--navy); }
-    .spec-row.selected .radio-dot::after { content: ""; width: 9px; height: 9px; border-radius: 50%; background: var(--navy); }
+    .spec-row.selected .radio-dot::after { content: ""; width: 8px; height: 8px; border-radius: 50%; background: var(--navy); }
 
-    .acad-row { display: flex; align-items: center; justify-content: space-between; gap: 10px; padding: 11px 14px; border-bottom: 1px solid var(--line); background: #FFFFFF; }
+    .acad-row { display: flex; align-items: center; justify-content: space-between; gap: 10px; padding: 10px 13px; border-bottom: 1px solid var(--line); background: #FFFFFF; }
     .acad-row:last-child { border-bottom: none; }
-    .acad-left { display: flex; align-items: flex-start; gap: 10px; }
-    .acad-idx { font-variant-numeric: tabular-nums; font-size: 0.74rem; font-weight: 700; color: var(--gold); padding-top: 2px; }
-    .acad-link { background: #F3F4F6; color: var(--navy); border: 1px solid var(--line-strong); border-radius: 6px; padding: 5px 10px; font-size: 0.74rem; font-weight: 600; cursor: pointer; flex-shrink: 0; }
+    .acad-left { display: flex; align-items: flex-start; gap: 9px; }
+    .acad-idx { font-variant-numeric: tabular-nums; font-size: 0.72rem; font-weight: 700; color: var(--gold); padding-top: 2px; }
+    .acad-link { background: #F3F4F6; color: var(--navy); border: 1px solid var(--line-strong); border-radius: 5px; padding: 4px 9px; font-size: 0.71rem; font-weight: 600; cursor: pointer; flex-shrink: 0; }
 
-    .acct-strip { display: flex; align-items: center; justify-content: space-between; background: #F9FAFB; border: 1px solid var(--line-strong); border-radius: 8px; padding: 10px 12px; margin-top: 10px; }
-    .acct-code { font-family: ui-monospace, SFMono-Regular, Menlo, Consolas, monospace; font-size: 0.98rem; font-weight: 700; color: var(--navy); letter-spacing: 0.04em; }
+    .acct-strip { display: flex; align-items: center; justify-content: space-between; background: #F9FAFB; border: 1px solid var(--line-strong); border-radius: 7px; padding: 8px 11px; margin-top: 9px; }
+    .acct-code { font-family: ui-monospace, SFMono-Regular, Menlo, Consolas, monospace; font-size: 0.94rem; font-weight: 700; color: var(--navy); letter-spacing: 0.04em; }
+
+    /* Icon-led Contact List (No Text Labels or Colons) */
+    .contact-list { display: grid; gap: 9px; margin-top: 8px; }
+    .contact-row { display: flex; align-items: flex-start; gap: 10px; font-size: 0.8rem; color: var(--ink); }
+    .contact-ico {
+      width: 28px;
+      height: 28px;
+      border-radius: 6px;
+      background: #F3F4F6;
+      border: 1px solid var(--line);
+      color: var(--navy);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      flex-shrink: 0;
+    }
+    .contact-val { flex: 1; padding-top: 3px; line-height: 1.38; }
+    .contact-val a { color: var(--navy); text-decoration: none; font-weight: 500; }
+    .contact-val a:hover { text-decoration: underline; }
+    .contact-role { display: block; font-size: 0.7rem; color: var(--ink-muted); }
 
     .tab-bar {
       position: fixed;
@@ -265,20 +289,20 @@
       z-index: 50;
     }
 
-    .tab-item { background: none; border: none; display: flex; flex-direction: column; align-items: center; justify-content: center; gap: 3px; color: var(--ink-muted); font-family: inherit; font-size: 0.65rem; font-weight: 600; cursor: pointer; }
-    .tab-item svg { width: 20px; height: 20px; stroke-width: 1.85; }
+    .tab-item { background: none; border: none; display: flex; flex-direction: column; align-items: center; justify-content: center; gap: 3px; color: var(--ink-muted); font-family: inherit; font-size: 0.64rem; font-weight: 600; cursor: pointer; }
+    .tab-item svg { width: 19px; height: 19px; stroke-width: 1.85; }
     .tab-item.active { color: var(--navy); font-weight: 700; }
 
     .toast {
       position: fixed;
-      top: 68px;
+      top: 64px;
       left: 50%;
       transform: translateX(-50%) translateY(-10px);
       background: var(--ink);
       color: #FFFFFF;
-      padding: 8px 14px;
+      padding: 7px 13px;
       border-radius: 6px;
-      font-size: 0.76rem;
+      font-size: 0.74rem;
       font-weight: 600;
       opacity: 0;
       pointer-events: none;
@@ -290,7 +314,7 @@
 
     .sheet-backdrop { display: none; position: fixed; inset: 0; background: rgba(17, 24, 39, 0.55); z-index: 90; align-items: flex-end; justify-content: center; }
     .sheet-backdrop.open { display: flex; }
-    .sheet-box { width: 100%; max-width: 480px; background: #FFFFFF; border-top: 1px solid var(--line-strong); border-radius: 14px 14px 0 0; padding: 18px 16px calc(22px + env(safe-area-inset-bottom)); }
+    .sheet-box { width: 100%; max-width: 480px; background: #FFFFFF; border-top: 1px solid var(--line-strong); border-radius: 14px 14px 0 0; padding: 16px 16px calc(20px + env(safe-area-inset-bottom)); }
   </style>
 </head>
 <body>
@@ -326,8 +350,8 @@
 
         <div class="panel panel-ivory">
           <div class="eyebrow">Upcoming Exhibition • Decade of Impact</div>
-          <div style="font-size:0.96rem; font-weight:700; color:var(--navy);">Ghana Social Enterprise Forum 2026</div>
-          <p style="font-size:0.79rem; color:var(--ink-secondary); margin-top:3px;">
+          <div style="font-size:0.94rem; font-weight:700; color:var(--navy);">Ghana Social Enterprise Forum 2026</div>
+          <p style="font-size:0.78rem; color:var(--ink-secondary); margin-top:3px;">
             Visit the PAF Exhibition Booth to explore assistive technologies, inclusive workbooks, and clinical partnerships.
           </p>
           <div class="kv-strip">
@@ -344,46 +368,46 @@
         <div class="list-group">
           <button class="list-row" onclick="goTab('clinic')">
             <div class="row-icon">
-              <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M12 6v12M6 12h12"/><rect x="3" y="3" width="18" height="18" rx="3"/></svg>
+              <svg width="17" height="17" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M12 6v12M6 12h12"/><rect x="3" y="3" width="18" height="18" rx="3"/></svg>
             </div>
             <div class="row-body">
               <div class="row-title">Neuro-Clinical SLD Centre</div>
               <div class="row-desc">Dyslexia, Dyscalculia, Dysgraphia, Dyspraxia &amp; ADHD/ADD</div>
             </div>
-            <svg class="chevron" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M9 18l6-6-6-6"/></svg>
+            <svg class="chevron" width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M9 18l6-6-6-6"/></svg>
           </button>
 
           <button class="list-row" onclick="goTab('experts')">
             <div class="row-icon">
-              <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M16 21v-2a4 4 0 0 0-4-4H6a4 4 0 0 0-4 4v2"/><circle cx="9" cy="7" r="4"/><path d="M22 21v-2a4 4 0 0 0-3-3.87M16 3.13a4 4 0 0 1 0 7.75"/></svg>
+              <svg width="17" height="17" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M16 21v-2a4 4 0 0 0-4-4H6a4 4 0 0 0-4 4v2"/><circle cx="9" cy="7" r="4"/><path d="M22 21v-2a4 4 0 0 0-3-3.87M16 3.13a4 4 0 0 1 0 7.75"/></svg>
             </div>
             <div class="row-body">
               <div class="row-title">Multidisciplinary Specialist Network</div>
               <div class="row-desc">OT, Psychology, SEN, Social Work &amp; Mental Health Nursing</div>
             </div>
-            <svg class="chevron" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M9 18l6-6-6-6"/></svg>
+            <svg class="chevron" width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M9 18l6-6-6-6"/></svg>
           </button>
 
           <button class="list-row" onclick="goTab('academies')">
             <div class="row-icon">
-              <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M22 10L12 5 2 10l10 5 10-5z"/><path d="M6 12v5c3 3 9 3 12 0v-5"/></svg>
+              <svg width="17" height="17" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M22 10L12 5 2 10l10 5 10-5z"/><path d="M6 12v5c3 3 9 3 12 0v-5"/></svg>
             </div>
             <div class="row-body">
               <div class="row-title">Unlocking Potentials Academies</div>
               <div class="row-desc">10 practical skills tracks for learners of all abilities</div>
             </div>
-            <svg class="chevron" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M9 18l6-6-6-6"/></svg>
+            <svg class="chevron" width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M9 18l6-6-6-6"/></svg>
           </button>
 
           <button class="list-row" onclick="goTab('support')">
             <div class="row-icon">
-              <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M20.84 4.61a5.5 5.5 0 0 0-7.78 0L12 5.67l-1.06-1.06a5.5 5.5 0 0 0-7.78 7.78l1.06 1.06L12 21.23l7.78-7.78 1.06-1.06a5.5 5.5 0 0 0 0-7.78z"/></svg>
+              <svg width="17" height="17" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M20.84 4.61a5.5 5.5 0 0 0-7.78 0L12 5.67l-1.06-1.06a5.5 5.5 0 0 0-7.78 7.78l1.06 1.06L12 21.23l7.78-7.78 1.06-1.06a5.5 5.5 0 0 0 0-7.78z"/></svg>
             </div>
             <div class="row-body">
               <div class="row-title">Partnerships, Grants &amp; Donations</div>
               <div class="row-desc">First National Bank Ghana details &amp; Accra office contacts</div>
             </div>
-            <svg class="chevron" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M9 18l6-6-6-6"/></svg>
+            <svg class="chevron" width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M9 18l6-6-6-6"/></svg>
           </button>
         </div>
 
@@ -439,8 +463,8 @@
 
         <div class="panel">
           <div class="eyebrow" id="sldDomain">Reading &amp; Phonological Processing</div>
-          <div id="sldHeading" style="font-size:0.96rem; font-weight:700; color:var(--navy); margin-bottom:4px;">Dyslexia Screening Checklist</div>
-          <p id="sldSummary" style="font-size:0.79rem; color:var(--ink-secondary); margin-bottom:10px;"></p>
+          <div id="sldHeading" style="font-size:0.94rem; font-weight:700; color:var(--navy); margin-bottom:4px;">Dyslexia Screening Checklist</div>
+          <p id="sldSummary" style="font-size:0.78rem; color:var(--ink-secondary); margin-bottom:10px;"></p>
 
           <div id="sldChecklist"></div>
 
@@ -448,14 +472,14 @@
             <strong>0 of 5 indicators marked.</strong> Select any observed signs above to include them in the referral note.
           </div>
 
-          <p style="font-size:0.72rem; color:var(--ink-muted);">
+          <p style="font-size:0.71rem; color:var(--ink-muted);">
             Disclaimer: This preliminary screening tool supports early identification only and does not constitute a clinical diagnosis.
           </p>
         </div>
 
         <div class="panel">
           <div class="eyebrow">Step 6 • Clinical Pathway</div>
-          <div style="font-size:0.94rem; font-weight:700; color:var(--navy); margin-bottom:10px;">Specialist Referral Intake</div>
+          <div style="font-size:0.92rem; font-weight:700; color:var(--navy); margin-bottom:10px;">Specialist Referral Intake</div>
 
           <div class="field">
             <label>Learner Full Name &amp; Age</label>
@@ -475,7 +499,7 @@
             </select>
           </div>
           <button class="btn btn-primary" onclick="sendReferral()">
-            Submit Referral to PAF Neuro-Clinical Desk
+            Submit Referral to PAF Clinic
           </button>
         </div>
       </section>
@@ -603,14 +627,14 @@
 
         <div class="panel panel-ivory">
           <div class="eyebrow">Official Foundation Bank Account</div>
-          <div style="font-size:0.92rem; font-weight:700; color:var(--navy);">First National Bank Ghana Ltd.</div>
-          <div style="font-size:0.78rem; color:var(--ink-secondary);">Airport Branch • Potentials Aid Foundation</div>
+          <div style="font-size:0.9rem; font-weight:700; color:var(--navy);">First National Bank Ghana Ltd.</div>
+          <div style="font-size:0.76rem; color:var(--ink-secondary);">Airport Branch • Potentials Aid Foundation</div>
           <div class="acct-strip">
             <div>
-              <div style="font-size:0.65rem; font-weight:700; color:var(--ink-muted);">ACCOUNT NUMBER</div>
+              <div style="font-size:0.63rem; font-weight:700; color:var(--ink-muted);">ACCOUNT NUMBER</div>
               <div class="acct-code">1021005473409</div>
             </div>
-            <button class="btn btn-primary" style="width:auto; padding:7px 12px; font-size:0.75rem;" onclick="copyValue('1021005473409', 'Account number copied')">
+            <button class="btn btn-primary" style="width:auto; min-height:30px; padding:4px 10px; font-size:0.72rem;" onclick="copyValue('1021005473409', 'Account number copied')">
               Copy
             </button>
           </div>
@@ -618,13 +642,48 @@
 
         <div class="panel">
           <div class="eyebrow">Secretariat &amp; Leadership</div>
-          <div style="font-size:0.81rem; display:grid; gap:8px; margin-top:6px;">
-            <div><strong>Founder &amp; Director:</strong> Wilhelm M. Williams</div>
-            <div><strong>Address:</strong> Accra Newtown, P.O. Box NT 837, Kotobabi / Ayawaso North, Accra</div>
-            <div><strong>Telephone:</strong> +233 55 755 4597 / +233 20 749 5762</div>
-            <div><strong>Email:</strong> info@potentialsaid.org</div>
-            <div><strong>Website:</strong> www.potentialsaidfoundation.org</div>
+          <div class="contact-list">
+            <div class="contact-row">
+              <div class="contact-ico" aria-hidden="true">
+                <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2"/><circle cx="12" cy="7" r="4"/></svg>
+              </div>
+              <div class="contact-val">
+                <strong>Wilhelm M. Williams</strong>
+                <span class="contact-role">Founder &amp; Executive Director</span>
+              </div>
+            </div>
+
+            <div class="contact-row">
+              <div class="contact-ico" aria-hidden="true">
+                <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"/><circle cx="12" cy="10" r="3"/></svg>
+              </div>
+              <div class="contact-val">Accra Newtown, P.O. Box NT 837, Kotobabi / Ayawaso North, Accra</div>
+            </div>
+
+            <div class="contact-row">
+              <div class="contact-ico" aria-hidden="true">
+                <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72 12.84 12.84 0 0 0 .7 2.81 2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45 12.84 12.84 0 0 0 2.81.7A2 2 0 0 1 22 16.92z"/></svg>
+              </div>
+              <div class="contact-val">
+                <a href="tel:+233557554597">+233 55 755 4597</a> &nbsp;/&nbsp; <a href="tel:+233207495762">+233 20 749 5762</a>
+              </div>
+            </div>
+
+            <div class="contact-row">
+              <div class="contact-ico" aria-hidden="true">
+                <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><rect x="2" y="4" width="20" height="16" rx="2"/><path d="m22 7-8.97 5.7a1.94 1.94 0 0 1-2.06 0L2 7"/></svg>
+              </div>
+              <div class="contact-val"><a href="mailto:info@potentialsaid.org">info@potentialsaid.org</a></div>
+            </div>
+
+            <div class="contact-row">
+              <div class="contact-ico" aria-hidden="true">
+                <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><line x1="2" y1="12" x2="22" y2="12"/><path d="M12 2a15.3 15.3 0 0 1 4 10 15.3 15.3 0 0 1-4 10 15.3 15.3 0 0 1-4-10 15.3 15.3 0 0 1 4-10z"/></svg>
+              </div>
+              <div class="contact-val"><a href="https://www.potentialsaidfoundation.org" target="_blank" rel="noopener">www.potentialsaidfoundation.org</a></div>
+            </div>
           </div>
+
           <div class="btn-pair" style="margin-top:14px;">
             <button class="btn btn-primary" onclick="sendWhatsApp('Hello Potentials Aid Foundation (PAF), I would like to partner or support your inclusive education work.')">
               WhatsApp Office
@@ -666,13 +725,13 @@
   <div id="installSheet" class="sheet-backdrop" onclick="if(event.target===this) closeSheet()">
     <div class="sheet-box">
       <div style="display:flex; justify-content:space-between; align-items:center; margin-bottom:8px;">
-        <strong style="font-size:0.95rem; color:var(--navy);">Add PAF to Home Screen</strong>
+        <strong style="font-size:0.92rem; color:var(--navy);">Add PAF to Home Screen</strong>
         <button onclick="closeSheet()" style="background:none; border:none; font-size:1.1rem; color:var(--ink-muted); cursor:pointer;">✕</button>
       </div>
-      <p style="font-size:0.8rem; color:var(--ink-secondary); margin-bottom:10px;">
+      <p style="font-size:0.78rem; color:var(--ink-secondary); margin-bottom:10px;">
         Install this web application on your device for full-screen access and offline availability:
       </p>
-      <div style="background:#F9FAFB; border:1px solid var(--line); border-radius:8px; padding:10px 12px; font-size:0.78rem; display:grid; gap:6px;">
+      <div style="background:#F9FAFB; border:1px solid var(--line); border-radius:8px; padding:10px 12px; font-size:0.76rem; display:grid; gap:6px;">
         <div><strong>iOS (Safari):</strong> Tap the <strong>Share</strong> icon in the browser bar, then select <strong>Add to Home Screen</strong>.</div>
         <div><strong>Android (Chrome):</strong> Open the <strong>browser menu (⋮)</strong> and tap <strong>Install app</strong>.</div>
       </div>
