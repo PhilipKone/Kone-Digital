@@ -1,4 +1,4 @@
-import React, { createContext, useContext, useState, useEffect } from 'react';
+﻿import React, { createContext, useContext, useState, useEffect } from 'react';
 
 type Currency = 'GHS' | 'USD';
 
@@ -11,13 +11,19 @@ interface CurrencyContextType {
 }
 
 const CurrencyContext = createContext<CurrencyContextType | undefined>(undefined);
+const RATE_CACHE_KEY = 'kdigital-ghs-usd-rate';
 
 export const CurrencyProvider: React.FC<{ children: React.ReactNode }> = ({ children }) => {
   const [currency, setCurrencyState] = useState<Currency>(() => {
     const saved = localStorage.getItem('kdigital-currency');
     return (saved as Currency) || 'GHS';
   });
-  const [exchangeRate, setExchangeRate] = useState<number>(0.07); // Fallback rate
+
+  const [exchangeRate, setExchangeRate] = useState<number>(() => {
+    const cached = parseFloat(localStorage.getItem(RATE_CACHE_KEY) || '');
+    return Number.isFinite(cached) && cached > 0 ? cached : 0.085;
+  });
+
   const [isLoading, setIsLoading] = useState(true);
 
   const setCurrency = (newCurrency: Currency) => {
@@ -26,22 +32,43 @@ export const CurrencyProvider: React.FC<{ children: React.ReactNode }> = ({ chil
   };
 
   useEffect(() => {
-    const fetchRate = async () => {
-      try {
-        setIsLoading(true);
-        const response = await fetch('https://open.er-api.com/v6/latest/GHS');
-        const data = await response.json();
-        if (data.rates && data.rates.USD) {
-          setExchangeRate(data.rates.USD);
+    const fetchLiveRate = async (): Promise<number | null> => {
+      const providers = [
+        async () => {
+          const res = await fetch('https://cdn.jsdelivr.net/npm/@fawazahmed0/currency-api@latest/v1/currencies/ghs.json');
+          const data = await res.json();
+          return data?.ghs?.usd ?? null;
+        },
+        async () => {
+          const res = await fetch('https://open.er-api.com/v6/latest/GHS');
+          const data = await res.json();
+          return data?.rates?.USD ?? null;
+        },
+        async () => {
+          const res = await fetch('https://api.exchangerate-api.com/v4/latest/GHS');
+          const data = await res.json();
+          return data?.rates?.USD ?? null;
         }
-      } catch (error) {
-        console.error('Failed to fetch exchange rate:', error);
-      } finally {
-        setIsLoading(false);
+      ];
+
+      for (const getRate of providers) {
+        try {
+          const rate = await getRate();
+          if (typeof rate === 'number' && rate > 0) return rate;
+        } catch {
+          // Try next provider
+        }
       }
+      return null;
     };
 
-    fetchRate();
+    fetchLiveRate().then((liveRate) => {
+      if (liveRate) {
+        setExchangeRate(liveRate);
+        localStorage.setItem(RATE_CACHE_KEY, String(liveRate));
+      }
+      setIsLoading(false);
+    });
   }, []);
 
   const formatPrice = (amountGHS: number) => {
@@ -49,8 +76,6 @@ export const CurrencyProvider: React.FC<{ children: React.ReactNode }> = ({ chil
       return `GHS ${amountGHS.toLocaleString(undefined, { minimumFractionDigits: 0, maximumFractionDigits: 0 })}`;
     } else {
       const amountUSD = amountGHS * exchangeRate;
-      // For digital services, maybe keep some decimals or round to nearest 5/10?
-      // Let's keep 2 decimals for USD.
       return `$${amountUSD.toLocaleString(undefined, { minimumFractionDigits: 0, maximumFractionDigits: 0 })}`;
     }
   };
