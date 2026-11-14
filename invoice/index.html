@@ -1,0 +1,325 @@
+﻿<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta name="robots" content="noindex, nofollow" />
+  <meta name="theme-color" content="#0A0F1C" />
+  <title>Kone Digital — Client Invoice</title>
+  <style>
+    :root {
+      --bg: #F1F5F9; --surface: #FFFFFF; --navy: #0A0F1C; --slate: #1E293B;
+      --ink: #0F172A; --muted: #64748B; --line: #E2E8F0; --accent: #0284C7;
+      --cyan: #00F0FF; --emerald: #059669; --emerald-bg: #ECFDF5;
+      --amber: #B45309; --amber-bg: #FFFBEB; --danger: #DC2626;
+    }
+    * { box-sizing: border-box; margin: 0; padding: 0; }
+    body {
+      font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Inter, sans-serif;
+      background: var(--bg); color: var(--ink); line-height: 1.5;
+      padding: 20px 14px 48px; -webkit-font-smoothing: antialiased;
+    }
+    .wrap { max-width: 720px; margin: 0 auto; }
+    .lock-card {
+      max-width: 400px; margin: 48px auto; background: var(--surface);
+      border: 1px solid var(--line); border-radius: 16px; overflow: hidden;
+      box-shadow: 0 12px 32px rgba(10, 15, 28, 0.08); text-align: center;
+    }
+    .lock-head { background: var(--navy); color: #FFFFFF; padding: 24px 20px; }
+    .lock-badge {
+      display: inline-flex; align-items: center; gap: 6px; font-size: 0.7rem;
+      font-weight: 700; letter-spacing: 0.08em; text-transform: uppercase;
+      color: var(--cyan); background: rgba(0, 240, 255, 0.1);
+      border: 1px solid rgba(0, 240, 255, 0.25); padding: 4px 10px;
+      border-radius: 999px; margin-bottom: 10px;
+    }
+    .lock-body { padding: 24px 22px 26px; }
+    .pin-input {
+      width: 180px; margin: 16px auto 12px; display: block; text-align: center;
+      font-size: 1.75rem; font-weight: 800; letter-spacing: 0.45em;
+      padding: 10px 8px 10px 18px; border: 2px solid var(--line);
+      border-radius: 12px; color: var(--navy); background: #F8FAFC; outline: none;
+    }
+    .pin-input:focus { border-color: var(--accent); background: #FFFFFF; }
+    .pin-error { color: var(--danger); font-size: 0.78rem; font-weight: 600; min-height: 20px; margin-bottom: 10px; }
+    .action-bar { display: flex; justify-content: space-between; align-items: center; gap: 10px; margin-bottom: 14px; flex-wrap: wrap; }
+    .btn {
+      display: inline-flex; align-items: center; justify-content: center; gap: 7px;
+      border-radius: 9px; padding: 9px 14px; font-family: inherit; font-size: 0.8rem;
+      font-weight: 700; cursor: pointer; text-decoration: none; border: 1px solid transparent;
+    }
+    .btn:active { transform: scale(0.98); }
+    .btn-dark { background: var(--navy); color: #FFFFFF; }
+    .btn-emerald { background: var(--emerald); color: #FFFFFF; }
+    .btn-outline { background: #FFFFFF; color: var(--ink); border-color: var(--line); }
+    .sheet { background: var(--surface); border: 1px solid var(--line); border-radius: 16px; overflow: hidden; box-shadow: 0 10px 28px rgba(15, 23, 42, 0.06); }
+    .sheet-header { background: var(--navy); color: #FFFFFF; padding: 26px 28px; display: flex; justify-content: space-between; align-items: flex-start; gap: 18px; flex-wrap: wrap; }
+    .brand-title { font-size: 1.15rem; font-weight: 800; letter-spacing: -0.02em; display: flex; align-items: center; gap: 9px; }
+    .brand-sub { font-size: 0.74rem; color: #94A3B8; margin-top: 4px; }
+    .inv-meta { text-align: right; }
+    .inv-tag { font-size: 0.7rem; font-weight: 700; letter-spacing: 0.1em; text-transform: uppercase; color: var(--cyan); }
+    .inv-num { font-size: 1.15rem; font-weight: 800; margin-top: 2px; }
+    .status-pill { display: inline-block; margin-top: 6px; padding: 3px 10px; border-radius: 999px; font-size: 0.68rem; font-weight: 800; letter-spacing: 0.06em; text-transform: uppercase; background: var(--amber-bg); color: var(--amber); }
+    .status-pill.paid { background: var(--emerald-bg); color: var(--emerald); }
+    .sheet-body { padding: 26px 28px; }
+    .parties { display: grid; grid-template-columns: 1.3fr 1fr; gap: 20px; padding-bottom: 22px; border-bottom: 1px solid var(--line); }
+    .label-xs { font-size: 0.68rem; font-weight: 700; text-transform: uppercase; letter-spacing: 0.07em; color: var(--muted); margin-bottom: 4px; }
+    .client-name { font-size: 1.02rem; font-weight: 800; color: var(--ink); }
+    .client-detail { font-size: 0.82rem; color: var(--slate); margin-top: 2px; }
+    .dates-box { text-align: right; font-size: 0.82rem; }
+    .dates-box div { margin-bottom: 4px; }
+    table.items { width: 100%; border-collapse: collapse; margin: 20px 0; }
+    table.items th { text-align: left; font-size: 0.68rem; font-weight: 700; text-transform: uppercase; letter-spacing: 0.06em; color: var(--muted); padding: 10px 8px; border-bottom: 2px solid var(--line); }
+    table.items th.num, table.items td.num { text-align: right; }
+    table.items td { padding: 14px 8px; border-bottom: 1px solid var(--line); font-size: 0.85rem; vertical-align: top; }
+    .item-title { font-weight: 700; color: var(--ink); }
+    .item-desc { font-size: 0.77rem; color: var(--muted); margin-top: 2px; }
+    .totals { display: flex; justify-content: flex-end; margin-top: 8px; }
+    .totals-box { width: 260px; }
+    .total-row { display: flex; justify-content: space-between; padding: 6px 0; font-size: 0.84rem; color: var(--slate); }
+    .total-row.grand { border-top: 2px solid var(--navy); margin-top: 6px; padding-top: 10px; font-size: 1.05rem; font-weight: 800; color: var(--navy); }
+    .pay-box { margin-top: 24px; background: #F8FAFC; border: 1px solid var(--line); border-radius: 12px; padding: 18px 20px; }
+    .pay-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(220px, 1fr)); gap: 12px; margin-top: 10px; }
+    .pay-item { background: #FFFFFF; border: 1px solid var(--line); border-radius: 9px; padding: 10px 12px; display: flex; justify-content: space-between; align-items: center; gap: 10px; }
+    .pay-val { font-family: ui-monospace, SFMono-Regular, Menlo, Consolas, monospace; font-size: 0.86rem; font-weight: 700; color: var(--navy); }
+    .copy-btn { background: var(--navy); color: #FFFFFF; border: none; border-radius: 6px; padding: 5px 10px; font-size: 0.72rem; font-weight: 700; cursor: pointer; }
+    .sheet-footer { margin-top: 22px; padding-top: 16px; border-top: 1px solid var(--line); display: flex; justify-content: space-between; align-items: center; gap: 12px; flex-wrap: wrap; font-size: 0.76rem; color: var(--muted); }
+    .gen-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 12px; margin-top: 14px; }
+    .field { display: flex; flex-direction: column; gap: 4px; }
+    .field.full { grid-column: 1 / -1; }
+    .field label { font-size: 0.72rem; font-weight: 700; color: var(--slate); }
+    .field input, .field select { border: 1px solid var(--line); border-radius: 8px; padding: 9px 11px; font-family: inherit; font-size: 0.84rem; color: var(--ink); }
+    .link-output { margin-top: 14px; background: #F8FAFC; border: 1px dashed var(--accent); border-radius: 10px; padding: 12px; word-break: break-all; font-family: ui-monospace, monospace; font-size: 0.76rem; color: var(--navy); }
+    .toast { position: fixed; bottom: 20px; left: 50%; transform: translateX(-50%) translateY(14px); background: var(--navy); color: #FFFFFF; padding: 8px 16px; border-radius: 999px; font-size: 0.78rem; font-weight: 600; opacity: 0; pointer-events: none; transition: all 0.2s ease; z-index: 99; }
+    .toast.show { opacity: 1; transform: translateX(-50%) translateY(0); }
+    @media (max-width: 600px) { .parties, .gen-grid { grid-template-columns: 1fr; } .dates-box, .inv-meta { text-align: left; } .sheet-header, .sheet-body { padding: 20px 18px; } }
+    @media print { body { background: #FFFFFF; padding: 0; } .no-print { display: none !important; } .sheet { border: none; box-shadow: none; border-radius: 0; } .sheet-header { -webkit-print-color-adjust: exact; print-color-adjust: exact; } }
+  </style>
+</head>
+<body>
+  <div id="app" class="wrap"></div>
+  <div id="toast" class="toast">Copied</div>
+  <script>
+    const app = document.getElementById('app');
+
+    function showToast(msg) {
+      const t = document.getElementById('toast');
+      t.textContent = msg;
+      t.classList.add('show');
+      setTimeout(() => t.classList.remove('show'), 2200);
+    }
+
+    function copyText(val, label) {
+      navigator.clipboard.writeText(val).then(() => showToast(label || 'Copied to clipboard'));
+    }
+
+    document.addEventListener('click', function(e) {
+      const btn = e.target.closest('[data-copy]');
+      if (btn) copyText(btn.getAttribute('data-copy'), btn.getAttribute('data-label'));
+    });
+
+    function b64UrlEncode(buf) {
+      const bytes = new Uint8Array(buf);
+      let bin = '';
+      for (let i = 0; i < bytes.length; i++) bin += String.fromCharCode(bytes[i]);
+      return btoa(bin).replace(/\+/g, '-').replace(/\//g, '_').replace(/=+$/, '');
+    }
+
+    function b64UrlDecode(str) {
+      let b64 = str.replace(/-/g, '+').replace(/_/g, '/');
+      while (b64.length % 4) b64 += '=';
+      const bin = atob(b64);
+      const bytes = new Uint8Array(bin.length);
+      for (let i = 0; i < bin.length; i++) bytes[i] = bin.charCodeAt(i);
+      return bytes;
+    }
+
+    async function deriveKey(pin, salt) {
+      const baseKey = await crypto.subtle.importKey('raw', new TextEncoder().encode(String(pin).trim()), 'PBKDF2', false, ['deriveKey']);
+      return crypto.subtle.deriveKey(
+        { name: 'PBKDF2', salt, iterations: 100000, hash: 'SHA-256' },
+        baseKey, { name: 'AES-GCM', length: 256 }, false, ['encrypt', 'decrypt']
+      );
+    }
+
+    async function encryptInvoice(payloadObj, pin) {
+      const salt = crypto.getRandomValues(new Uint8Array(16));
+      const iv = crypto.getRandomValues(new Uint8Array(12));
+      const key = await deriveKey(pin, salt);
+      const cipherBuf = await crypto.subtle.encrypt({ name: 'AES-GCM', iv }, key, new TextEncoder().encode(JSON.stringify(payloadObj)));
+      const cipherBytes = new Uint8Array(cipherBuf);
+      const combined = new Uint8Array(salt.length + iv.length + cipherBytes.length);
+      combined.set(salt, 0); combined.set(iv, salt.length); combined.set(cipherBytes, salt.length + iv.length);
+      return b64UrlEncode(combined);
+    }
+
+    async function decryptInvoice(hashToken, pin) {
+      const raw = b64UrlDecode(hashToken);
+      if (raw.length < 32) throw new Error('Invalid token');
+      const key = await deriveKey(pin, raw.slice(0, 16));
+      const plainBuf = await crypto.subtle.decrypt({ name: 'AES-GCM', iv: raw.slice(16, 28) }, key, raw.slice(28));
+      return JSON.parse(new TextDecoder().decode(plainBuf));
+    }
+
+    function esc(s) {
+      return String(s || '').replace(/&/g, '&amp;').replace(/</g, '&lt;').replace(/>/g, '&gt;').replace(/"/g, '&quot;');
+    }
+
+    function renderInvoice(inv) {
+      const items = inv.items || [];
+      const subtotal = items.reduce((sum, it) => sum + Number(it.amount || 0), 0);
+      const currency = inv.currency || 'GHS';
+      const fmt = (n) => currency + ' ' + Number(n).toLocaleString(undefined, { minimumFractionDigits: 2, maximumFractionDigits: 2 });
+      const isPaid = String(inv.status || '').toUpperCase() === 'PAID';
+      const refCode = inv.ref || inv.number;
+      const momoClean = (inv.momoNumber || '0551993820').replace(/\s+/g, '');
+      const waMsg = encodeURIComponent('Hello Kone Digital, payment of ' + fmt(subtotal) + ' has been completed for Invoice ' + inv.number + ' (' + inv.clientName + '). Reference: ' + refCode + '.');
+
+      const rowsHtml = items.map(it =>
+        '<tr><td><div class="item-title">' + esc(it.title) + '</div>' +
+        (it.desc ? '<div class="item-desc">' + esc(it.desc) + '</div>' : '') +
+        '</td><td class="num" style="font-weight:700; white-space:nowrap;">' + fmt(it.amount) + '</td></tr>'
+      ).join('');
+
+      app.innerHTML =
+        '<div class="action-bar no-print">' +
+          '<a href="https://digital.codkon.com/" class="btn btn-outline">&larr; Kone Digital</a>' +
+          '<div style="display:flex; gap:8px; flex-wrap:wrap;">' +
+            '<button type="button" class="btn btn-dark" onclick="window.print()">Print / Save PDF</button>' +
+            '<a href="https://wa.me/233551993820?text=' + waMsg + '" target="_blank" rel="noopener" class="btn btn-emerald">Confirm Payment on WhatsApp</a>' +
+          '</div>' +
+        '</div>' +
+        '<div class="sheet">' +
+          '<div class="sheet-header">' +
+            '<div>' +
+              '<div class="brand-title"><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="#00F0FF" stroke-width="2.2"><polygon points="12 2 2 7 12 12 22 7 12 2"/><polyline points="2 17 12 22 22 17"/><polyline points="2 12 12 17 22 12"/></svg><span>KONE DIGITAL</span></div>' +
+              '<div class="brand-sub">A CODKON TECHNOLOGIES Venture &bull; Accra, Ghana</div>' +
+              '<div class="brand-sub">digital.codkon.com &bull; +233 55 199 3820</div>' +
+            '</div>' +
+            '<div class="inv-meta">' +
+              '<div class="inv-tag">Official Client Invoice</div>' +
+              '<div class="inv-num">' + esc(inv.number) + '</div>' +
+              '<div class="status-pill ' + (isPaid ? 'paid' : '') + '">' + esc(inv.status || 'DUE ON RECEIPT') + '</div>' +
+            '</div>' +
+          '</div>' +
+          '<div class="sheet-body">' +
+            '<div class="parties">' +
+              '<div><div class="label-xs">Billed To</div><div class="client-name">' + esc(inv.clientName) + '</div>' +
+              (inv.clientAttn ? '<div class="client-detail">Attn: ' + esc(inv.clientAttn) + '</div>' : '') +
+              (inv.clientPhone ? '<div class="client-detail">Tel: ' + esc(inv.clientPhone) + '</div>' : '') +
+              (inv.clientLocation ? '<div class="client-detail">' + esc(inv.clientLocation) + '</div>' : '') + '</div>' +
+              '<div class="dates-box"><div class="label-xs">Billing Schedule</div><div><strong>Issue Date:</strong> ' + esc(inv.issueDate) + '</div><div><strong>Due Date:</strong> ' + esc(inv.dueDate) + '</div><div><strong>Plan:</strong> ' + esc(inv.plan || 'Managed WaaS') + '</div></div>' +
+            '</div>' +
+            '<table class="items"><thead><tr><th>Service Description</th><th class="num">Amount</th></tr></thead><tbody>' + rowsHtml + '</tbody></table>' +
+            '<div class="totals"><div class="totals-box"><div class="total-row"><span>Subtotal</span><span>' + fmt(subtotal) + '</span></div><div class="total-row"><span>Setup / Onboarding</span><span>' + currency + ' 0.00</span></div><div class="total-row grand"><span>Total Due</span><span>' + fmt(subtotal) + '</span></div></div></div>' +
+            '<div class="pay-box"><div class="label-xs">Payment Instructions</div><div style="font-size:0.8rem; color:var(--slate);">Please settle via Mobile Money using the reference below, then tap <strong>Confirm Payment on WhatsApp</strong> to receive your official digital receipt.</div>' +
+              '<div class="pay-grid">' +
+                '<div class="pay-item"><div><div class="label-xs" style="margin-bottom:1px;">MTN MoMo Number</div><div class="pay-val">' + esc(inv.momoNumber || '055 199 3820') + '</div><div style="font-size:0.72rem; color:var(--muted);">' + esc(inv.accountName || 'Philip Hotor / CODKON TECHNOLOGIES') + '</div></div><button type="button" class="copy-btn no-print" data-copy="' + esc(momoClean) + '" data-label="MoMo number copied">Copy</button></div>' +
+                '<div class="pay-item"><div><div class="label-xs" style="margin-bottom:1px;">Payment Reference</div><div class="pay-val">' + esc(refCode) + '</div><div style="font-size:0.72rem; color:var(--muted);">Include in transfer note</div></div><button type="button" class="copy-btn no-print" data-copy="' + esc(refCode) + '" data-label="Reference copied">Copy</button></div>' +
+              '</div>' +
+            '</div>' +
+            '<div class="sheet-footer"><div>Thank you for partnering with Kone Digital (CODKON TECHNOLOGIES).</div><div>Queries: +233 55 199 3820</div></div>' +
+          '</div>' +
+        '</div>';
+    }
+    function renderLockScreen(hashToken) {
+      app.innerHTML =
+        '<div class="lock-card">' +
+          '<div class="lock-head"><div class="lock-badge">Private Client Invoice</div><div style="font-size:1.1rem; font-weight:800;">KONE DIGITAL</div><div style="font-size:0.75rem; color:#94A3B8; margin-top:3px;">Enter your 4-digit access PIN to view &amp; download</div></div>' +
+          '<div class="lock-body"><input id="pinField" class="pin-input" type="password" inputmode="numeric" pattern="[0-9]*" maxlength="4" placeholder="••••" autocomplete="off" autofocus /><div id="pinErr" class="pin-error"></div><button id="unlockBtn" type="button" class="btn btn-dark" style="width:100%;">Unlock Invoice</button></div>' +
+        '</div>';
+
+      const pinField = document.getElementById('pinField');
+      const pinErr = document.getElementById('pinErr');
+      const unlockBtn = document.getElementById('unlockBtn');
+
+      async function tryUnlock() {
+        const pin = pinField.value.trim();
+        if (pin.length < 4) { pinErr.textContent = 'Enter all 4 digits of your access PIN.'; return; }
+        unlockBtn.disabled = true; unlockBtn.textContent = 'Verifying...'; pinErr.textContent = '';
+        try {
+          renderInvoice(await decryptInvoice(hashToken, pin));
+        } catch (e) {
+          pinErr.textContent = 'Incorrect PIN. Please check the 4-digit code shared with you.';
+          pinField.value = ''; pinField.focus(); unlockBtn.disabled = false; unlockBtn.textContent = 'Unlock Invoice';
+        }
+      }
+
+      pinField.addEventListener('input', () => { if (pinField.value.replace(/\D/g, '').length === 4) tryUnlock(); });
+      pinField.addEventListener('keydown', (e) => { if (e.key === 'Enter') tryUnlock(); });
+      unlockBtn.addEventListener('click', tryUnlock);
+    }
+
+    function renderGenerator() {
+      app.innerHTML =
+        '<div class="sheet">' +
+          '<div class="sheet-header"><div><div class="brand-title">KONE DIGITAL — Private Invoice Generator</div><div class="brand-sub">Generates an AES-256 encrypted, PIN-locked client invoice link (no login required)</div></div><a href="https://digital.codkon.com/" class="btn btn-outline" style="font-size:0.75rem;">&larr; Site</a></div>' +
+          '<div class="sheet-body">' +
+            '<div class="gen-grid">' +
+              '<div class="field"><label>Invoice Number</label><input id="gNum" value="KD-INV-2026-014" /></div>' +
+              '<div class="field"><label>4-Digit Client Access PIN</label><input id="gPin" value="4597" maxlength="6" /></div>' +
+              '<div class="field"><label>Client Organization / Name</label><input id="gClient" value="Potentials Aid Foundation" /></div>' +
+              '<div class="field"><label>Attention / Contact Person</label><input id="gAttn" value="Wilhelm M. Williams (Founder & Executive Director)" /></div>' +
+              '<div class="field"><label>Client Phone</label><input id="gPhone" value="+233 55 755 4597" /></div>' +
+              '<div class="field"><label>Payment Reference</label><input id="gRef" value="PAF-LITE-NOV26" /></div>' +
+              '<div class="field"><label>Issue Date</label><input id="gIssue" value="14 Nov 2026" /></div>' +
+              '<div class="field"><label>Due Date</label><input id="gDue" value="19 Nov 2026" /></div>' +
+              '<div class="field full"><label>Line Item 1 Title</label><input id="gItem1" value="Managed Progressive Web App & Cloud Hosting (Lite Tier — Monthly Plan)" /></div>' +
+              '<div class="field full"><label>Line Item 1 Description</label><input id="gDesc1" value="Production hosting on digital.codkon.com/paf, SLD screening tool, offline PWA support & monthly campaign updates" /></div>' +
+              '<div class="field"><label>Amount (GHS)</label><input id="gAmt1" type="number" step="0.01" value="49.00" /></div>' +
+              '<div class="field"><label>Status</label><select id="gStatus"><option value="DUE ON RECEIPT" selected>DUE ON RECEIPT</option><option value="UNPAID">UNPAID</option><option value="PAID">PAID</option></select></div>' +
+              '<div class="field"><label>Your MTN MoMo Number</label><input id="gMomo" value="055 199 3820" /></div>' +
+              '<div class="field"><label>Account Name</label><input id="gAcctName" value="Philip Hotor / CODKON TECHNOLOGIES" /></div>' +
+            '</div>' +
+            '<div style="margin-top:16px; display:flex; gap:10px; flex-wrap:wrap;"><button id="genBtn" type="button" class="btn btn-dark">Generate Private PIN Link</button><button id="previewBtn" type="button" class="btn btn-outline">Preview Invoice</button></div>' +
+            '<div id="genResult" style="display:none;"><div class="link-output" id="outUrl"></div><div style="margin-top:10px;"><button id="copyLinkBtn" type="button" class="btn btn-emerald">Copy Private Link</button></div></div>' +
+          '</div>' +
+        '</div>';
+
+      function buildPayload() {
+        return {
+          number: document.getElementById('gNum').value.trim(),
+          clientName: document.getElementById('gClient').value.trim(),
+          clientAttn: document.getElementById('gAttn').value.trim(),
+          clientPhone: document.getElementById('gPhone').value.trim(),
+          clientLocation: 'Accra, Ghana',
+          ref: document.getElementById('gRef').value.trim(),
+          issueDate: document.getElementById('gIssue').value.trim(),
+          dueDate: document.getElementById('gDue').value.trim(),
+          plan: 'Lite Tier — GHS 49/month',
+          status: document.getElementById('gStatus').value,
+          currency: 'GHS',
+          momoNumber: document.getElementById('gMomo').value.trim(),
+          accountName: document.getElementById('gAcctName').value.trim(),
+          items: [
+            { title: document.getElementById('gItem1').value.trim(), desc: document.getElementById('gDesc1').value.trim(), amount: parseFloat(document.getElementById('gAmt1').value || '0') },
+            { title: 'Custom UI Engineering & Offline PWA Deployment (Launch Offer — Waived)', desc: 'Zero upfront development fee included with active monthly plan', amount: 0 }
+          ]
+        };
+      }
+
+      document.getElementById('genBtn').addEventListener('click', async function() {
+        const pin = document.getElementById('gPin').value.trim();
+        if (!pin) return alert('Enter a 4-digit PIN.');
+        const token = await encryptInvoice(buildPayload(), pin);
+        document.getElementById('outUrl').textContent = window.location.origin + '/invoice/#' + token;
+        document.getElementById('genResult').style.display = 'block';
+        showToast('Encrypted invoice link generated');
+      });
+
+      document.getElementById('copyLinkBtn').addEventListener('click', function() {
+        copyText(document.getElementById('outUrl').textContent, 'Private invoice link copied');
+      });
+
+      document.getElementById('previewBtn').addEventListener('click', () => renderInvoice(buildPayload()));
+    }
+
+    (function init() {
+      const hash = window.location.hash.replace(/^#/, '').trim();
+      const params = new URLSearchParams(window.location.search);
+      if (params.get('new') === '1' || !hash) renderGenerator();
+      else renderLockScreen(hash);
+    })();
+  </script>
+</body>
+</html>
