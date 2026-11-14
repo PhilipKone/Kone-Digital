@@ -1,5 +1,5 @@
 ﻿const CACHE_PREFIX = 'paf-pwa-';
-const CACHE_NAME = `${CACHE_PREFIX}v8`;
+const CACHE_NAME = `${CACHE_PREFIX}v9`;
 const ASSETS = [
   './',
   './index.html',
