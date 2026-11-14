@@ -14,40 +14,17 @@
       --amber: #B45309; --amber-bg: #FFFBEB; --danger: #DC2626;
     }
     * { box-sizing: border-box; margin: 0; padding: 0; }
-    body {
-      font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Inter, sans-serif;
-      background: var(--bg); color: var(--ink); line-height: 1.5;
-      padding: 20px 14px 48px; -webkit-font-smoothing: antialiased;
-    }
+    body { font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Inter, sans-serif; background: var(--bg); color: var(--ink); line-height: 1.5; padding: 20px 14px 48px; }
     .wrap { max-width: 720px; margin: 0 auto; }
-    .lock-card {
-      max-width: 400px; margin: 48px auto; background: var(--surface);
-      border: 1px solid var(--line); border-radius: 16px; overflow: hidden;
-      box-shadow: 0 12px 32px rgba(10, 15, 28, 0.08); text-align: center;
-    }
+    .lock-card { max-width: 400px; margin: 48px auto; background: var(--surface); border: 1px solid var(--line); border-radius: 16px; overflow: hidden; box-shadow: 0 12px 32px rgba(10, 15, 28, 0.08); text-align: center; }
     .lock-head { background: var(--navy); color: #FFFFFF; padding: 24px 20px; }
-    .lock-badge {
-      display: inline-flex; align-items: center; gap: 6px; font-size: 0.7rem;
-      font-weight: 700; letter-spacing: 0.08em; text-transform: uppercase;
-      color: var(--cyan); background: rgba(0, 240, 255, 0.1);
-      border: 1px solid rgba(0, 240, 255, 0.25); padding: 4px 10px;
-      border-radius: 999px; margin-bottom: 10px;
-    }
+    .lock-badge { display: inline-flex; align-items: center; gap: 6px; font-size: 0.7rem; font-weight: 700; letter-spacing: 0.08em; text-transform: uppercase; color: var(--cyan); background: rgba(0, 240, 255, 0.1); border: 1px solid rgba(0, 240, 255, 0.25); padding: 4px 10px; border-radius: 999px; margin-bottom: 10px; }
     .lock-body { padding: 24px 22px 26px; }
-    .pin-input {
-      width: 180px; margin: 16px auto 12px; display: block; text-align: center;
-      font-size: 1.75rem; font-weight: 800; letter-spacing: 0.45em;
-      padding: 10px 8px 10px 18px; border: 2px solid var(--line);
-      border-radius: 12px; color: var(--navy); background: #F8FAFC; outline: none;
-    }
+    .pin-input { width: 180px; margin: 16px auto 12px; display: block; text-align: center; font-size: 1.75rem; font-weight: 800; letter-spacing: 0.45em; padding: 10px 8px 10px 18px; border: 2px solid var(--line); border-radius: 12px; color: var(--navy); background: #F8FAFC; outline: none; }
     .pin-input:focus { border-color: var(--accent); background: #FFFFFF; }
     .pin-error { color: var(--danger); font-size: 0.78rem; font-weight: 600; min-height: 20px; margin-bottom: 10px; }
     .action-bar { display: flex; justify-content: space-between; align-items: center; gap: 10px; margin-bottom: 14px; flex-wrap: wrap; }
-    .btn {
-      display: inline-flex; align-items: center; justify-content: center; gap: 7px;
-      border-radius: 9px; padding: 9px 14px; font-family: inherit; font-size: 0.8rem;
-      font-weight: 700; cursor: pointer; text-decoration: none; border: 1px solid transparent;
-    }
+    .btn { display: inline-flex; align-items: center; justify-content: center; gap: 7px; border-radius: 9px; padding: 9px 14px; font-family: inherit; font-size: 0.8rem; font-weight: 700; cursor: pointer; text-decoration: none; border: 1px solid transparent; }
     .btn:active { transform: scale(0.98); }
     .btn-dark { background: var(--navy); color: #FFFFFF; }
     .btn-emerald { background: var(--emerald); color: #FFFFFF; }
@@ -89,7 +66,7 @@
     .field.full { grid-column: 1 / -1; }
     .field label { font-size: 0.72rem; font-weight: 700; color: var(--slate); }
     .field input, .field select { border: 1px solid var(--line); border-radius: 8px; padding: 9px 11px; font-family: inherit; font-size: 0.84rem; color: var(--ink); }
-    .link-output { margin-top: 14px; background: #F8FAFC; border: 1px dashed var(--accent); border-radius: 10px; padding: 12px; word-break: break-all; font-family: ui-monospace, monospace; font-size: 0.76rem; color: var(--navy); }
+    .link-output { margin-top: 14px; background: #F8FAFC; border: 1px dashed var(--accent); border-radius: 10px; padding: 12px; word-break: break-all; font-family: ui-monospace, monospace; font-size: 0.74rem; color: var(--navy); max-height: 110px; overflow-y: auto; }
     .toast { position: fixed; bottom: 20px; left: 50%; transform: translateX(-50%) translateY(14px); background: var(--navy); color: #FFFFFF; padding: 8px 16px; border-radius: 999px; font-size: 0.78rem; font-weight: 600; opacity: 0; pointer-events: none; transition: all 0.2s ease; z-index: 99; }
     .toast.show { opacity: 1; transform: translateX(-50%) translateY(0); }
     @media (max-width: 600px) { .parties, .gen-grid { grid-template-columns: 1fr; } .dates-box, .inv-meta { text-align: left; } .sheet-header, .sheet-body { padding: 20px 18px; } }
@@ -126,7 +103,7 @@
     }
 
     function b64UrlDecode(str) {
-      let b64 = str.replace(/-/g, '+').replace(/_/g, '/');
+      let b64 = str.replace(/\s+/g, '').replace(/-/g, '+').replace(/_/g, '/');
       while (b64.length % 4) b64 += '=';
       const bin = atob(b64);
       const bytes = new Uint8Array(bin.length);
@@ -155,7 +132,7 @@
 
     async function decryptInvoice(hashToken, pin) {
       const raw = b64UrlDecode(hashToken);
-      if (raw.length < 32) throw new Error('Invalid token');
+      if (raw.length < 44) throw new Error('INCOMPLETE_LINK');
       const key = await deriveKey(pin, raw.slice(0, 16));
       const plainBuf = await crypto.subtle.decrypt({ name: 'AES-GCM', iv: raw.slice(16, 28) }, key, raw.slice(28));
       return JSON.parse(new TextDecoder().decode(plainBuf));
@@ -164,7 +141,6 @@
     function esc(s) {
       return String(s || '').replace(/&/g, '&amp;').replace(/</g, '&lt;').replace(/>/g, '&gt;').replace(/"/g, '&quot;');
     }
-
     function renderInvoice(inv) {
       const items = inv.items || [];
       const subtotal = items.reduce((sum, it) => sum + Number(it.amount || 0), 0);
@@ -196,11 +172,7 @@
               '<div class="brand-sub">A CODKON TECHNOLOGIES Venture &bull; Accra, Ghana</div>' +
               '<div class="brand-sub">digital.codkon.com &bull; +233 55 199 3820</div>' +
             '</div>' +
-            '<div class="inv-meta">' +
-              '<div class="inv-tag">Official Client Invoice</div>' +
-              '<div class="inv-num">' + esc(inv.number) + '</div>' +
-              '<div class="status-pill ' + (isPaid ? 'paid' : '') + '">' + esc(inv.status || 'DUE ON RECEIPT') + '</div>' +
-            '</div>' +
+            '<div class="inv-meta"><div class="inv-tag">Official Client Invoice</div><div class="inv-num">' + esc(inv.number) + '</div><div class="status-pill ' + (isPaid ? 'paid' : '') + '">' + esc(inv.status || 'DUE ON RECEIPT') + '</div></div>' +
           '</div>' +
           '<div class="sheet-body">' +
             '<div class="parties">' +
@@ -222,6 +194,7 @@
           '</div>' +
         '</div>';
     }
+
     function renderLockScreen(hashToken) {
       app.innerHTML =
         '<div class="lock-card">' +
@@ -237,12 +210,17 @@
         const pin = pinField.value.trim();
         if (pin.length < 4) { pinErr.textContent = 'Enter all 4 digits of your access PIN.'; return; }
         unlockBtn.disabled = true; unlockBtn.textContent = 'Verifying...'; pinErr.textContent = '';
+        let data;
         try {
-          renderInvoice(await decryptInvoice(hashToken, pin));
+          data = await decryptInvoice(hashToken, pin);
         } catch (e) {
-          pinErr.textContent = 'Incorrect PIN. Please check the 4-digit code shared with you.';
+          pinErr.textContent = (e && e.message === 'INCOMPLETE_LINK')
+            ? 'This invoice link appears incomplete. Please request the full link.'
+            : 'Incorrect PIN. Please check the 4-digit code shared with you.';
           pinField.value = ''; pinField.focus(); unlockBtn.disabled = false; unlockBtn.textContent = 'Unlock Invoice';
+          return;
         }
+        renderInvoice(data);
       }
 
       pinField.addEventListener('input', () => { if (pinField.value.replace(/\D/g, '').length === 4) tryUnlock(); });
@@ -272,7 +250,7 @@
               '<div class="field"><label>Account Name</label><input id="gAcctName" value="Philip Hotor / CODKON TECHNOLOGIES" /></div>' +
             '</div>' +
             '<div style="margin-top:16px; display:flex; gap:10px; flex-wrap:wrap;"><button id="genBtn" type="button" class="btn btn-dark">Generate Private PIN Link</button><button id="previewBtn" type="button" class="btn btn-outline">Preview Invoice</button></div>' +
-            '<div id="genResult" style="display:none;"><div class="link-output" id="outUrl"></div><div style="margin-top:10px;"><button id="copyLinkBtn" type="button" class="btn btn-emerald">Copy Private Link</button></div></div>' +
+            '<div id="genResult" style="display:none;"><div class="link-output" id="outUrl"></div><div style="margin-top:10px; display:flex; gap:8px; flex-wrap:wrap;"><button id="copyLinkBtn" type="button" class="btn btn-dark">Copy Link Only</button><button id="copyWaInviteBtn" type="button" class="btn btn-emerald">Copy Full WhatsApp Message</button></div></div>' +
           '</div>' +
         '</div>';
 
@@ -302,13 +280,23 @@
         const pin = document.getElementById('gPin').value.trim();
         if (!pin) return alert('Enter a 4-digit PIN.');
         const token = await encryptInvoice(buildPayload(), pin);
-        document.getElementById('outUrl').textContent = window.location.origin + '/invoice/#' + token;
+        const fullUrl = window.location.origin + '/invoice/#' + token;
+        document.getElementById('outUrl').textContent = fullUrl;
         document.getElementById('genResult').style.display = 'block';
         showToast('Encrypted invoice link generated');
       });
 
       document.getElementById('copyLinkBtn').addEventListener('click', function() {
         copyText(document.getElementById('outUrl').textContent, 'Private invoice link copied');
+      });
+
+      document.getElementById('copyWaInviteBtn').addEventListener('click', function() {
+        const url = document.getElementById('outUrl').textContent;
+        const pin = document.getElementById('gPin').value.trim();
+        const client = document.getElementById('gClient').value.trim();
+        const amt = Number(document.getElementById('gAmt1').value || 0).toFixed(2);
+        const msg = 'Thank you! Here is your private invoice link for ' + client + ' (GHS ' + amt + '/month managed app plan, zero setup fee):\n\n' + url + '\n\nAccess PIN: ' + pin + '\n\nYou can save/print a PDF directly from the invoice page and tap Confirm Payment on WhatsApp once completed.';
+        copyText(msg, 'WhatsApp message & link copied');
       });
 
       document.getElementById('previewBtn').addEventListener('click', () => renderInvoice(buildPayload()));
