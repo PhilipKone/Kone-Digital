@@ -5,6 +5,7 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <meta name="robots" content="noindex, nofollow" />
   <meta name="theme-color" content="#0A0F1C" />
+  <link rel="icon" type="image/svg+xml" href="/kone-digital-logo.svg" />
   <title>Kone Digital — Client Invoice</title>
   <style>
     :root {
@@ -168,7 +169,7 @@
         '<div class="sheet">' +
           '<div class="sheet-header">' +
             '<div>' +
-              '<div class="brand-title"><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="#00F0FF" stroke-width="2.2"><polygon points="12 2 2 7 12 12 22 7 12 2"/><polyline points="2 17 12 22 22 17"/><polyline points="2 12 12 17 22 12"/></svg><span>KONE DIGITAL</span></div>' +
+              '<div class="brand-title"><svg viewBox="0 0 200 200" fill="none" xmlns="http://www.w3.org/2000/svg" width="30" height="30" style="flex-shrink:0; display:block;"> <polygon points="100,10 180,50 180,150 100,190 20,150 20,50" stroke="#00FFFF" stroke-width="6" fill="#090B10" /> <path d="M 100 55 C 100 55 120 75 120 95 C 120 108 111 118 100 122 C 89 118 80 108 80 95 C 80 75 100 55 100 55 Z" fill="#00FFFF" transform="translate(0, 5) scale(1.1)" transform-origin="100 100" /> </svg><span>KONE DIGITAL</span></div>' +
               '<div class="brand-sub">A CODKON TECHNOLOGIES Venture &bull; Accra, Ghana</div>' +
               '<div class="brand-sub">digital.codkon.com &bull; +233 55 199 3820</div>' +
             '</div>' +
@@ -198,7 +199,7 @@
     function renderLockScreen(hashToken) {
       app.innerHTML =
         '<div class="lock-card">' +
-          '<div class="lock-head"><div class="lock-badge">Private Client Invoice</div><div style="font-size:1.1rem; font-weight:800;">KONE DIGITAL</div><div style="font-size:0.75rem; color:#94A3B8; margin-top:3px;">Enter your 4-digit access PIN to view &amp; download</div></div>' +
+          '<div class="lock-head"><div class="lock-badge">Private Client Invoice</div><div style="display:flex; align-items:center; justify-content:center; gap:9px; font-size:1.1rem; font-weight:800;"><svg viewBox="0 0 200 200" fill="none" xmlns="http://www.w3.org/2000/svg" width="28" height="28" style="flex-shrink:0; display:block;"> <polygon points="100,10 180,50 180,150 100,190 20,150 20,50" stroke="#00FFFF" stroke-width="6" fill="#090B10" /> <path d="M 100 55 C 100 55 120 75 120 95 C 120 108 111 118 100 122 C 89 118 80 108 80 95 C 80 75 100 55 100 55 Z" fill="#00FFFF" transform="translate(0, 5) scale(1.1)" transform-origin="100 100" /> </svg><span>KONE DIGITAL</span></div><div style="font-size:0.75rem; color:#94A3B8; margin-top:3px;">Enter your 4-digit access PIN to view &amp; download</div></div>' +
           '<div class="lock-body"><input id="pinField" class="pin-input" type="password" inputmode="numeric" pattern="[0-9]*" maxlength="4" placeholder="••••" autocomplete="off" autofocus /><div id="pinErr" class="pin-error"></div><button id="unlockBtn" type="button" class="btn btn-dark" style="width:100%;">Unlock Invoice</button></div>' +
         '</div>';
 
@@ -231,7 +232,7 @@
     function renderGenerator() {
       app.innerHTML =
         '<div class="sheet">' +
-          '<div class="sheet-header"><div><div class="brand-title">KONE DIGITAL — Private Invoice Generator</div><div class="brand-sub">Generates an AES-256 encrypted, PIN-locked client invoice link (no login required)</div></div><a href="https://digital.codkon.com/" class="btn btn-outline" style="font-size:0.75rem;">&larr; Site</a></div>' +
+          '<div class="sheet-header"><div><div class="brand-title"><svg viewBox="0 0 200 200" fill="none" xmlns="http://www.w3.org/2000/svg" width="28" height="28" style="flex-shrink:0; display:block;"> <polygon points="100,10 180,50 180,150 100,190 20,150 20,50" stroke="#00FFFF" stroke-width="6" fill="#090B10" /> <path d="M 100 55 C 100 55 120 75 120 95 C 120 108 111 118 100 122 C 89 118 80 108 80 95 C 80 75 100 55 100 55 Z" fill="#00FFFF" transform="translate(0, 5) scale(1.1)" transform-origin="100 100" /> </svg><span>KONE DIGITAL — Private Invoice Generator</span></div><div class="brand-sub">Generates an AES-256 encrypted, PIN-locked client invoice link (no login required)</div></div><a href="https://digital.codkon.com/" class="btn btn-outline" style="font-size:0.75rem;">&larr; Site</a></div>' +
           '<div class="sheet-body">' +
             '<div class="gen-grid">' +
               '<div class="field"><label>Invoice Number</label><input id="gNum" value="KD-INV-2026-014" /></div>' +
