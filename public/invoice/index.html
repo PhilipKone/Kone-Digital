@@ -67,6 +67,7 @@
     .field.full { grid-column: 1 / -1; }
     .field label { font-size: 0.72rem; font-weight: 700; color: var(--slate); }
     .field input, .field select { border: 1px solid var(--line); border-radius: 8px; padding: 9px 11px; font-family: inherit; font-size: 0.84rem; color: var(--ink); }
+    .check-row { grid-column: 1 / -1; display: flex; align-items: center; gap: 8px; font-size: 0.8rem; color: var(--slate); padding-top: 2px; }
     .link-output { margin-top: 14px; background: #F8FAFC; border: 1px dashed var(--accent); border-radius: 10px; padding: 12px; word-break: break-all; font-family: ui-monospace, monospace; font-size: 0.74rem; color: var(--navy); max-height: 110px; overflow-y: auto; }
     .toast { position: fixed; bottom: 20px; left: 50%; transform: translateX(-50%) translateY(14px); background: var(--navy); color: #FFFFFF; padding: 8px 16px; border-radius: 999px; font-size: 0.78rem; font-weight: 600; opacity: 0; pointer-events: none; transition: all 0.2s ease; z-index: 99; }
     .toast.show { opacity: 1; transform: translateX(-50%) translateY(0); }
@@ -79,6 +80,8 @@
   <div id="toast" class="toast">Copied</div>
   <script>
     const app = document.getElementById('app');
+    const ADMIN_HASH = '242628a337fb57c044739bc6a59b2b13a8baa75b501c728695078bc69a523890';
+    const ADMIN_KEY = 'kd_inv_admin_v1';
 
     function showToast(msg) {
       const t = document.getElementById('toast');
@@ -95,6 +98,11 @@
       const btn = e.target.closest('[data-copy]');
       if (btn) copyText(btn.getAttribute('data-copy'), btn.getAttribute('data-label'));
     });
+
+    async function sha256Hex(str) {
+      const buf = await crypto.subtle.digest('SHA-256', new TextEncoder().encode(str));
+      return Array.from(new Uint8Array(buf)).map(b => b.toString(16).padStart(2, '0')).join('');
+    }
 
     function b64UrlEncode(buf) {
       const bytes = new Uint8Array(buf);
@@ -142,6 +150,11 @@
     function esc(s) {
       return String(s || '').replace(/&/g, '&amp;').replace(/</g, '&lt;').replace(/>/g, '&gt;').replace(/"/g, '&quot;');
     }
+
+    function fmtDateOffset(days) {
+      const d = new Date(Date.now() + days * 86400000);
+      return d.toLocaleDateString('en-GB', { day: '2-digit', month: 'short', year: 'numeric' });
+    }
     function renderInvoice(inv) {
       const items = inv.items || [];
       const subtotal = items.reduce((sum, it) => sum + Number(it.amount || 0), 0);
@@ -151,6 +164,7 @@
       const refCode = inv.ref || inv.number;
       const momoClean = (inv.momoNumber || '0203256481').replace(/\s+/g, '');
       const waMsg = encodeURIComponent('Hello Kone Digital, payment of ' + fmt(subtotal) + ' has been completed for Invoice ' + inv.number + ' (' + inv.clientName + '). Reference: ' + refCode + '.');
+      const telecelIcon = '<svg width="16" height="16" viewBox="0 0 24 24" aria-hidden="true" style="flex-shrink:0; display:block;"><rect width="24" height="24" rx="5" fill="#E60000"/><path d="M13.2 5.5v3.2h3.1v2.5h-3.1v4.3c0 1 .5 1.5 1.5 1.5.5 0 1.1-.1 1.6-.3v2.4c-.7.3-1.5.4-2.3.4-2.4 0-3.7-1.3-3.7-3.8v-4.5H8.2V8.7h2.1V5.5h2.9z" fill="#FFFFFF"/></svg>';
 
       const rowsHtml = items.map(it =>
         '<tr><td><div class="item-title">' + esc(it.title) + '</div>' +
@@ -187,7 +201,7 @@
             '<div class="totals"><div class="totals-box"><div class="total-row"><span>Subtotal</span><span>' + fmt(subtotal) + '</span></div><div class="total-row"><span>Setup / Onboarding</span><span>' + currency + ' 0.00</span></div><div class="total-row grand"><span>Total Due</span><span>' + fmt(subtotal) + '</span></div></div></div>' +
             '<div class="pay-box"><div class="label-xs">Payment Instructions</div><div style="font-size:0.8rem; color:var(--slate);">Please settle via Mobile Money using the reference below, then tap <strong>Confirm Payment on WhatsApp</strong> to receive your official digital receipt.</div>' +
               '<div class="pay-grid">' +
-                '<div class="pay-item"><div><div class="label-xs" style="margin-bottom:3px; display:flex; align-items:center; gap:6px;"><svg width="16" height="16" viewBox="0 0 24 24" aria-hidden="true" style="flex-shrink:0; display:block;"><rect width="24" height="24" rx="5" fill="#E60000"/><path d="M13.2 5.5v3.2h3.1v2.5h-3.1v4.3c0 1 .5 1.5 1.5 1.5.5 0 1.1-.1 1.6-.3v2.4c-.7.3-1.5.4-2.3.4-2.4 0-3.7-1.3-3.7-3.8v-4.5H8.2V8.7h2.1V5.5h2.9z" fill="#FFFFFF"/></svg><span>TELECEL CASH</span></div><div class="pay-val">' + esc(inv.momoNumber || '020 325 6481') + '</div><div style="font-size:0.72rem; color:var(--muted);">' + esc(inv.accountName || 'Philip Hotor / CODKON TECHNOLOGIES') + '</div></div><button type="button" class="copy-btn no-print" data-copy="' + esc(momoClean) + '" data-label="Telecel Cash number copied">Copy</button></div>' +
+                '<div class="pay-item"><div><div class="label-xs" style="margin-bottom:3px; display:flex; align-items:center; gap:6px;">' + telecelIcon + '<span>TELECEL CASH</span></div><div class="pay-val">' + esc(inv.momoNumber || '020 325 6481') + '</div><div style="font-size:0.72rem; color:var(--muted);">' + esc(inv.accountName || 'Philip Hotor / CODKON TECHNOLOGIES') + '</div></div><button type="button" class="copy-btn no-print" data-copy="' + esc(momoClean) + '" data-label="Telecel Cash number copied">Copy</button></div>' +
                 '<div class="pay-item"><div><div class="label-xs" style="margin-bottom:1px;">Payment Reference</div><div class="pay-val">' + esc(refCode) + '</div><div style="font-size:0.72rem; color:var(--muted);">Include in transfer note</div></div><button type="button" class="copy-btn no-print" data-copy="' + esc(refCode) + '" data-label="Reference copied">Copy</button></div>' +
               '</div>' +
             '</div>' +
@@ -229,26 +243,58 @@
       unlockBtn.addEventListener('click', tryUnlock);
     }
 
+    function renderAdminLock() {
+      app.innerHTML =
+        '<div class="lock-card">' +
+          '<div class="lock-head"><div class="lock-badge">Admin Billing Desk</div><div style="display:flex; align-items:center; justify-content:center; gap:9px; font-size:1.1rem; font-weight:800;"><svg viewBox="0 0 200 200" fill="none" xmlns="http://www.w3.org/2000/svg" width="28" height="28" style="flex-shrink:0; display:block;"> <polygon points="100,10 180,50 180,150 100,190 20,150 20,50" stroke="#00FFFF" stroke-width="6" fill="#090B10" /> <path d="M 100 55 C 100 55 120 75 120 95 C 120 108 111 118 100 122 C 89 118 80 108 80 95 C 80 75 100 55 100 55 Z" fill="#00FFFF" transform="translate(0, 5) scale(1.1)" transform-origin="100 100" /> </svg><span>KONE DIGITAL</span></div><div style="font-size:0.75rem; color:#94A3B8; margin-top:3px;">Enter 4-digit Admin PIN to generate client invoices</div></div>' +
+          '<div class="lock-body"><input id="adminPinField" class="pin-input" type="password" inputmode="numeric" pattern="[0-9]*" maxlength="4" placeholder="••••" autocomplete="off" autofocus /><div id="adminErr" class="pin-error"></div><button id="adminUnlockBtn" type="button" class="btn btn-dark" style="width:100%;">Unlock Billing Desk</button></div>' +
+        '</div>';
+
+      const field = document.getElementById('adminPinField');
+      const err = document.getElementById('adminErr');
+      const btn = document.getElementById('adminUnlockBtn');
+
+      async function tryAdmin() {
+        const pin = field.value.trim();
+        if (pin.length < 4) { err.textContent = 'Enter your 4-digit Admin PIN.'; return; }
+        btn.disabled = true; btn.textContent = 'Checking...'; err.textContent = '';
+        const digest = await sha256Hex('KD-ADMIN-2026:' + pin);
+        if (digest === ADMIN_HASH) {
+          sessionStorage.setItem(ADMIN_KEY, ADMIN_HASH);
+          renderGenerator();
+        } else {
+          err.textContent = 'Invalid Admin PIN.';
+          field.value = ''; field.focus(); btn.disabled = false; btn.textContent = 'Unlock Billing Desk';
+        }
+      }
+
+      field.addEventListener('input', () => { if (field.value.replace(/\D/g, '').length === 4) tryAdmin(); });
+      field.addEventListener('keydown', (e) => { if (e.key === 'Enter') tryAdmin(); });
+      btn.addEventListener('click', tryAdmin);
+    }
+
     function renderGenerator() {
       app.innerHTML =
         '<div class="sheet">' +
-          '<div class="sheet-header"><div><div class="brand-title"><svg viewBox="0 0 200 200" fill="none" xmlns="http://www.w3.org/2000/svg" width="28" height="28" style="flex-shrink:0; display:block;"> <polygon points="100,10 180,50 180,150 100,190 20,150 20,50" stroke="#00FFFF" stroke-width="6" fill="#090B10" /> <path d="M 100 55 C 100 55 120 75 120 95 C 120 108 111 118 100 122 C 89 118 80 108 80 95 C 80 75 100 55 100 55 Z" fill="#00FFFF" transform="translate(0, 5) scale(1.1)" transform-origin="100 100" /> </svg><span>KONE DIGITAL — Private Invoice Generator</span></div><div class="brand-sub">Generates an AES-256 encrypted, PIN-locked client invoice link (no login required)</div></div><a href="https://digital.codkon.com/" class="btn btn-outline" style="font-size:0.75rem;">&larr; Site</a></div>' +
+          '<div class="sheet-header"><div><div class="brand-title"><svg viewBox="0 0 200 200" fill="none" xmlns="http://www.w3.org/2000/svg" width="28" height="28" style="flex-shrink:0; display:block;"> <polygon points="100,10 180,50 180,150 100,190 20,150 20,50" stroke="#00FFFF" stroke-width="6" fill="#090B10" /> <path d="M 100 55 C 100 55 120 75 120 95 C 120 108 111 118 100 122 C 89 118 80 108 80 95 C 80 75 100 55 100 55 Z" fill="#00FFFF" transform="translate(0, 5) scale(1.1)" transform-origin="100 100" /> </svg><span>KONE DIGITAL — Private Invoice Generator</span></div><div class="brand-sub">Generates an AES-256 encrypted, PIN-locked client invoice link (no login required)</div></div><div style="display:flex; gap:8px;"><button id="lockDeskBtn" type="button" class="btn btn-outline" style="font-size:0.75rem;">Lock</button><a href="https://digital.codkon.com/" class="btn btn-outline" style="font-size:0.75rem;">&larr; Site</a></div></div>' +
           '<div class="sheet-body">' +
             '<div class="gen-grid">' +
-              '<div class="field"><label>Invoice Number</label><input id="gNum" value="KD-INV-2026-014" /></div>' +
-              '<div class="field"><label>4-Digit Client Access PIN</label><input id="gPin" value="4597" maxlength="6" /></div>' +
-              '<div class="field"><label>Client Organization / Name</label><input id="gClient" value="Potentials Aid Foundation" /></div>' +
-              '<div class="field"><label>Attention / Contact Person</label><input id="gAttn" value="Wilhelm M. Williams (Founder & Executive Director)" /></div>' +
-              '<div class="field"><label>Client Phone</label><input id="gPhone" value="+233 55 755 4597" /></div>' +
-              '<div class="field"><label>Payment Reference</label><input id="gRef" value="PAF-LITE-NOV26" /></div>' +
-              '<div class="field"><label>Issue Date</label><input id="gIssue" value="14 Nov 2026" /></div>' +
-              '<div class="field"><label>Due Date</label><input id="gDue" value="19 Nov 2026" /></div>' +
-              '<div class="field full"><label>Line Item 1 Title</label><input id="gItem1" value="Managed Progressive Web App & Cloud Hosting (Lite Tier — Monthly Plan)" /></div>' +
-              '<div class="field full"><label>Line Item 1 Description</label><input id="gDesc1" value="Production hosting on digital.codkon.com/paf, SLD screening tool, offline PWA support & monthly campaign updates" /></div>' +
-              '<div class="field"><label>Amount (GHS)</label><input id="gAmt1" type="number" step="0.01" value="49.00" /></div>' +
+              '<div class="field"><label>Invoice Number</label><input id="gNum" value="KD-INV-2026-" placeholder="KD-INV-2026-015" /></div>' +
+              '<div class="field"><label>4-Digit Client Access PIN</label><input id="gPin" inputmode="numeric" maxlength="6" placeholder="e.g. 4-digit code" /></div>' +
+              '<div class="field"><label>Client Organization / Name</label><input id="gClient" placeholder="Organization or full client name" /></div>' +
+              '<div class="field"><label>Attention / Contact Person</label><input id="gAttn" placeholder="Contact person & role (optional)" /></div>' +
+              '<div class="field"><label>Client Phone</label><input id="gPhone" placeholder="+233 XX XXX XXXX" /></div>' +
+              '<div class="field"><label>Payment Reference</label><input id="gRef" placeholder="e.g. CLIENT-NOV26" /></div>' +
+              '<div class="field"><label>Issue Date</label><input id="gIssue" value="' + esc(fmtDateOffset(0)) + '" /></div>' +
+              '<div class="field"><label>Due Date</label><input id="gDue" value="' + esc(fmtDateOffset(5)) + '" /></div>' +
+              '<div class="field"><label>Plan / Tier Label</label><input id="gPlan" value="Lite Tier — GHS 49/month" /></div>' +
               '<div class="field"><label>Status</label><select id="gStatus"><option value="DUE ON RECEIPT" selected>DUE ON RECEIPT</option><option value="UNPAID">UNPAID</option><option value="PAID">PAID</option></select></div>' +
+              '<div class="field full"><label>Line Item 1 Title</label><input id="gItem1" placeholder="e.g. Managed Progressive Web App & Cloud Hosting" /></div>' +
+              '<div class="field full"><label>Line Item 1 Description</label><input id="gDesc1" placeholder="Hosting domain, support scope & deliverables" /></div>' +
+              '<div class="field"><label>Amount (GHS)</label><input id="gAmt1" type="number" step="0.01" placeholder="49.00" /></div>' +
               '<div class="field"><label>Your Telecel Cash Number</label><input id="gMomo" value="020 325 6481" /></div>' +
-              '<div class="field"><label>Account Name</label><input id="gAcctName" value="Philip Hotor / CODKON TECHNOLOGIES" /></div>' +
+              '<div class="field full"><label>Account Name</label><input id="gAcctName" value="Philip Hotor / CODKON TECHNOLOGIES" /></div>' +
+              '<label class="check-row"><input id="gWaived" type="checkbox" checked /><span>Include waived setup fee line item (Launch Offer — GHS 0.00)</span></label>' +
             '</div>' +
             '<div style="margin-top:16px; display:flex; gap:10px; flex-wrap:wrap;"><button id="genBtn" type="button" class="btn btn-dark">Generate Private PIN Link</button><button id="previewBtn" type="button" class="btn btn-outline">Preview Invoice</button></div>' +
             '<div id="genResult" style="display:none;"><div class="link-output" id="outUrl"></div><div style="margin-top:10px; display:flex; gap:8px; flex-wrap:wrap;"><button id="copyLinkBtn" type="button" class="btn btn-dark">Copy Link Only</button><button id="copyWaInviteBtn" type="button" class="btn btn-emerald">Copy Full WhatsApp Message</button></div></div>' +
@@ -256,6 +302,18 @@
         '</div>';
 
       function buildPayload() {
+        const items = [{
+          title: document.getElementById('gItem1').value.trim() || 'Managed Web Application & Cloud Hosting',
+          desc: document.getElementById('gDesc1').value.trim(),
+          amount: parseFloat(document.getElementById('gAmt1').value || '0')
+        }];
+        if (document.getElementById('gWaived').checked) {
+          items.push({
+            title: 'Custom UI Engineering & Offline PWA Deployment (Launch Offer — Waived)',
+            desc: 'Zero upfront development fee included with active monthly plan',
+            amount: 0
+          });
+        }
         return {
           number: document.getElementById('gNum').value.trim(),
           clientName: document.getElementById('gClient').value.trim(),
@@ -265,21 +323,25 @@
           ref: document.getElementById('gRef').value.trim(),
           issueDate: document.getElementById('gIssue').value.trim(),
           dueDate: document.getElementById('gDue').value.trim(),
-          plan: 'Lite Tier — GHS 49/month',
+          plan: document.getElementById('gPlan').value.trim(),
           status: document.getElementById('gStatus').value,
           currency: 'GHS',
           momoNumber: document.getElementById('gMomo').value.trim(),
           accountName: document.getElementById('gAcctName').value.trim(),
-          items: [
-            { title: document.getElementById('gItem1').value.trim(), desc: document.getElementById('gDesc1').value.trim(), amount: parseFloat(document.getElementById('gAmt1').value || '0') },
-            { title: 'Custom UI Engineering & Offline PWA Deployment (Launch Offer — Waived)', desc: 'Zero upfront development fee included with active monthly plan', amount: 0 }
-          ]
+          items
         };
       }
 
+      document.getElementById('lockDeskBtn').addEventListener('click', function() {
+        sessionStorage.removeItem(ADMIN_KEY);
+        renderAdminLock();
+      });
+
       document.getElementById('genBtn').addEventListener('click', async function() {
         const pin = document.getElementById('gPin').value.trim();
-        if (!pin) return alert('Enter a 4-digit PIN.');
+        const client = document.getElementById('gClient').value.trim();
+        if (!client) return alert('Enter the Client Organization / Name.');
+        if (!pin || pin.length < 4) return alert('Enter a 4-digit Client Access PIN.');
         const token = await encryptInvoice(buildPayload(), pin);
         const fullUrl = window.location.origin + '/invoice/#' + token;
         document.getElementById('outUrl').textContent = fullUrl;
@@ -306,8 +368,13 @@
     (function init() {
       const hash = window.location.hash.replace(/^#/, '').trim();
       const params = new URLSearchParams(window.location.search);
-      if (params.get('new') === '1' || !hash) renderGenerator();
-      else renderLockScreen(hash);
+      if (params.get('new') !== '1' && hash) {
+        renderLockScreen(hash);
+      } else if (sessionStorage.getItem(ADMIN_KEY) === ADMIN_HASH) {
+        renderGenerator();
+      } else {
+        renderAdminLock();
+      }
     })();
   </script>
 </body>
