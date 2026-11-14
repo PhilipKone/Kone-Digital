@@ -1197,7 +1197,7 @@
         btn.classList.toggle('active', btn.dataset.pay === channel);
       });
       document.querySelectorAll('.pay-pane').forEach(pane => {
-        pane.classList.toggle('active', pane.id === pay-);
+        pane.classList.toggle('active', pane.id === 'pay-' + channel);
       });
     }
 
