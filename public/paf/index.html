@@ -1,4 +1,4 @@
-﻿<!DOCTYPE html>
+<!DOCTYPE html>
 <html lang="en">
 <head>
   <meta charset="UTF-8" />
@@ -300,6 +300,72 @@
 
     .acct-strip { display: flex; align-items: center; justify-content: space-between; background: #F9FAFB; border: 1px solid var(--line-strong); border-radius: 7px; padding: 8px 11px; margin-top: 9px; }
     .acct-code { font-family: ui-monospace, SFMono-Regular, Menlo, Consolas, monospace; font-size: 0.94rem; font-weight: 700; color: var(--navy); letter-spacing: 0.04em; }
+
+    /* Segmented Payment Switcher */
+    .pay-tabs {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 4px;
+      background: #F3F4F6;
+      border: 1px solid var(--line);
+      border-radius: 8px;
+      padding: 3px;
+      margin: 8px 0 11px;
+    }
+    .pay-tab {
+      background: transparent;
+      border: 1px solid transparent;
+      border-radius: 6px;
+      padding: 7px 4px;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      gap: 3px;
+      font-family: inherit;
+      font-size: 0.7rem;
+      font-weight: 600;
+      color: var(--ink-secondary);
+      cursor: pointer;
+      transition: all 0.15s ease;
+    }
+    .pay-tab svg { width: 16px; height: 16px; stroke-width: 1.85; }
+    .pay-tab.active {
+      background: #FFFFFF;
+      color: var(--navy);
+      font-weight: 700;
+      border-color: var(--line-strong);
+      box-shadow: 0 1px 3px rgba(11, 37, 69, 0.08);
+    }
+    .pay-tab.active svg { color: var(--gold); }
+    .pay-pane { display: none; }
+    .pay-pane.active { display: block; }
+    .pay-meta {
+      display: flex;
+      align-items: center;
+      gap: 8px;
+      font-size: 0.76rem;
+      color: var(--ink-secondary);
+      margin-bottom: 6px;
+    }
+    .pay-meta svg { width: 14px; height: 14px; color: var(--navy); flex-shrink: 0; }
+    .copy-chip {
+      display: inline-flex;
+      align-items: center;
+      gap: 4px;
+      background: #FFFFFF;
+      color: var(--navy);
+      border: 1px solid var(--line-strong);
+      border-radius: 6px;
+      padding: 5px 9px;
+      font-family: inherit;
+      font-size: 0.71rem;
+      font-weight: 600;
+      cursor: pointer;
+      flex-shrink: 0;
+    }
+    .copy-chip:active { background: #F3F4F6; }
+    .copy-chip.primary { background: var(--navy); color: #FFFFFF; border-color: var(--navy); }
 
     /* Icon & Avatar Contact List */
     .contact-list { display: grid; gap: 10px; margin-top: 8px; }
@@ -751,81 +817,103 @@
           </p>
         </div>
 
-        <div class="panel panel-ivory">
-          <div class="eyebrow">MTN Mobile Money (Ghana)</div>
-          <div style="font-size:0.9rem; font-weight:700; color:var(--navy);">Potentials Aid Foundation</div>
-          <div style="font-size:0.75rem; color:var(--ink-secondary);">Instant MoMo Transfer or Merchant Pay</div>
-
-          <div class="acct-strip">
-            <div>
-              <div style="font-size:0.63rem; font-weight:700; color:var(--ink-muted);">MTN MOMO NUMBER</div>
-              <div class="acct-code">055 161 8780</div>
-            </div>
-            <button class="btn btn-primary" style="width:auto; min-height:30px; padding:4px 10px; font-size:0.72rem;" onclick="copyValue('0551618780', 'MoMo number copied')">
-              Copy
-            </button>
-          </div>
-
-          <div class="acct-strip" style="margin-top:7px;">
-            <div>
-              <div style="font-size:0.63rem; font-weight:700; color:var(--ink-muted);">MTN MOMO MERCHANT ID</div>
-              <div class="acct-code">845719</div>
-            </div>
-            <button class="btn btn-secondary" style="width:auto; min-height:30px; padding:4px 10px; font-size:0.72rem;" onclick="copyValue('845719', 'Merchant ID copied')">
-              Copy
-            </button>
-          </div>
-        </div>
-
         <div class="panel">
-          <div class="eyebrow">Local Bank Account (GHS)</div>
-          <div style="font-size:0.9rem; font-weight:700; color:var(--navy);">First National Bank Ghana Ltd.</div>
-          <div style="font-size:0.75rem; color:var(--ink-secondary);">Airport Branch • Potentials Aid Foundation</div>
+          <div class="eyebrow">Official Giving &amp; Grant Channels</div>
+          <div style="font-size:0.92rem; font-weight:700; color:var(--navy);">Potentials Aid Foundation</div>
 
-          <div class="acct-strip">
-            <div>
-              <div style="font-size:0.63rem; font-weight:700; color:var(--ink-muted);">GHS ACCOUNT NUMBER</div>
-              <div class="acct-code">1021005473409</div>
+          <div class="pay-tabs" role="tablist" aria-label="Payment Channels">
+            <button type="button" class="pay-tab active" data-pay="momo" onclick="setPayChannel('momo')">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round"><rect x="6" y="2" width="12" height="20" rx="2.5"/><line x1="12" y1="18" x2="12.01" y2="18"/></svg>
+              <span>MTN MoMo</span>
+            </button>
+            <button type="button" class="pay-tab" data-pay="bank" onclick="setPayChannel('bank')">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round"><polygon points="12 2 2 7 22 7 12 2"/><line x1="6" y1="10" x2="6" y2="17"/><line x1="10" y1="10" x2="10" y2="17"/><line x1="14" y1="10" x2="14" y2="17"/><line x1="18" y1="10" x2="18" y2="17"/><line x1="3" y1="20" x2="21" y2="20"/></svg>
+              <span>Local Bank</span>
+            </button>
+            <button type="button" class="pay-tab" data-pay="intl" onclick="setPayChannel('intl')">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><line x1="2" y1="12" x2="22" y2="12"/><path d="M12 2a15.3 15.3 0 0 1 4 10 15.3 15.3 0 0 1-4 10 15.3 15.3 0 0 1-4-10 15.3 15.3 0 0 1 4-10z"/></svg>
+              <span>Int'l Wire</span>
+            </button>
+          </div>
+
+          <div id="pay-momo" class="pay-pane active">
+            <div class="pay-meta">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M22 11.08V12a10 10 0 1 1-5.93-9.14"/><polyline points="22 4 12 14.01 9 11.01"/></svg>
+              <span>Instant Mobile Money Transfer &amp; Merchant Pay</span>
             </div>
-            <button class="btn btn-primary" style="width:auto; min-height:30px; padding:4px 10px; font-size:0.72rem;" onclick="copyValue('1021005473409', 'GHS account number copied')">
-              Copy
-            </button>
-          </div>
-        </div>
-
-        <div class="panel">
-          <div class="eyebrow">International Wire Transfers</div>
-          <div style="font-size:0.9rem; font-weight:700; color:var(--navy);">First National Bank Ghana Ltd.</div>
-          <div style="font-size:0.75rem; color:var(--ink-secondary);">Foreign &amp; Cross-Border Grants / Donations</div>
-
-          <div class="acct-strip">
-            <div>
-              <div style="font-size:0.63rem; font-weight:700; color:var(--ink-muted);">INT'L ACCOUNT NUMBER</div>
-              <div class="acct-code">62001999288</div>
+            <div class="acct-strip">
+              <div>
+                <div style="font-size:0.62rem; font-weight:700; color:var(--ink-muted);">MTN MOMO NUMBER</div>
+                <div class="acct-code">055 161 8780</div>
+              </div>
+              <button type="button" class="copy-chip primary" onclick="copyValue('0551618780', 'MoMo number copied')">
+                <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="9" y="9" width="13" height="13" rx="2"/><path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1"/></svg>
+                <span>Copy</span>
+              </button>
             </div>
-            <button class="btn btn-primary" style="width:auto; min-height:30px; padding:4px 10px; font-size:0.72rem;" onclick="copyValue('62001999288', 'International account copied')">
-              Copy
-            </button>
-          </div>
-
-          <div class="acct-strip" style="margin-top:7px;">
-            <div>
-              <div style="font-size:0.63rem; font-weight:700; color:var(--ink-muted);">SWIFT / BIC CODE</div>
-              <div class="acct-code">FIRNGHAC</div>
+            <div class="acct-strip" style="margin-top:7px;">
+              <div>
+                <div style="font-size:0.62rem; font-weight:700; color:var(--ink-muted);">MERCHANT ID</div>
+                <div class="acct-code">845719</div>
+              </div>
+              <button type="button" class="copy-chip" onclick="copyValue('845719', 'Merchant ID copied')">
+                <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="9" y="9" width="13" height="13" rx="2"/><path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1"/></svg>
+                <span>Copy</span>
+              </button>
             </div>
-            <button class="btn btn-secondary" style="width:auto; min-height:30px; padding:4px 10px; font-size:0.72rem;" onclick="copyValue('FIRNGHAC', 'SWIFT code copied')">
-              Copy
-            </button>
           </div>
 
-          <div style="font-size:0.73rem; color:var(--ink-secondary); margin-top:8px;">
-            Int'l Transfer Desk: <a href="tel:+233557554597" style="color:var(--navy); font-weight:600; text-decoration:none;">+233 55 755 4597</a> / <a href="tel:+233207494762" style="color:var(--navy); font-weight:600; text-decoration:none;">+233 20 749 4762</a>
+          <div id="pay-bank" class="pay-pane">
+            <div class="pay-meta">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><polygon points="12 2 2 7 22 7 12 2"/><line x1="6" y1="10" x2="6" y2="17"/><line x1="18" y1="10" x2="18" y2="17"/><line x1="3" y1="20" x2="21" y2="20"/></svg>
+              <span>First National Bank Ghana Ltd. • Airport Branch</span>
+            </div>
+            <div class="acct-strip">
+              <div>
+                <div style="font-size:0.62rem; font-weight:700; color:var(--ink-muted);">GHS ACCOUNT NUMBER</div>
+                <div class="acct-code">1021005473409</div>
+              </div>
+              <button type="button" class="copy-chip primary" onclick="copyValue('1021005473409', 'GHS account copied')">
+                <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="9" y="9" width="13" height="13" rx="2"/><path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1"/></svg>
+                <span>Copy</span>
+              </button>
+            </div>
           </div>
-        </div>
-            <button class="btn btn-primary" style="width:auto; min-height:30px; padding:4px 10px; font-size:0.72rem;" onclick="copyValue('1021005473409', 'Account number copied')">
-              Copy
-            </button>
+
+          <div id="pay-intl" class="pay-pane">
+            <div class="pay-meta">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><circle cx="12" cy="12" r="10"/><line x1="2" y1="12" x2="22" y2="12"/><path d="M12 2a15.3 15.3 0 0 1 4 10 15.3 15.3 0 0 1-4 10 15.3 15.3 0 0 1-4-10 15.3 15.3 0 0 1 4-10z"/></svg>
+              <span>First National Bank Ghana Ltd. • Foreign Wire</span>
+            </div>
+            <div class="acct-strip">
+              <div>
+                <div style="font-size:0.62rem; font-weight:700; color:var(--ink-muted);">INT'L ACCOUNT NUMBER</div>
+                <div class="acct-code">62001999288</div>
+              </div>
+              <button type="button" class="copy-chip primary" onclick="copyValue('62001999288', 'International account copied')">
+                <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="9" y="9" width="13" height="13" rx="2"/><path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1"/></svg>
+                <span>Copy</span>
+              </button>
+            </div>
+            <div class="acct-strip" style="margin-top:7px;">
+              <div>
+                <div style="font-size:0.62rem; font-weight:700; color:var(--ink-muted);">SWIFT / BIC CODE</div>
+                <div class="acct-code">FIRNGHAC</div>
+              </div>
+              <button type="button" class="copy-chip" onclick="copyValue('FIRNGHAC', 'SWIFT code copied')">
+                <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="9" y="9" width="13" height="13" rx="2"/><path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1"/></svg>
+                <span>Copy</span>
+              </button>
+            </div>
+            <div class="pay-meta" style="margin-top:8px; margin-bottom:0;">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72 12.84 12.84 0 0 0 .7 2.81 2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45 12.84 12.84 0 0 0 2.81.7A2 2 0 0 1 22 16.92z"/></svg>
+              <span><a href="tel:+233557554597" style="color:var(--navy); font-weight:600; text-decoration:none;">+233 55 755 4597</a> / <a href="tel:+233207494762" style="color:var(--navy); font-weight:600; text-decoration:none;">+233 20 749 4762</a></span>
+            </div>
           </div>
+
+          <button type="button" class="btn btn-secondary" style="margin-top:11px;" onclick="sendWhatsApp('Hello PAF Secretariat, I have completed a contribution/grant transfer and would like to share the payment receipt.')">
+            Share Transfer Receipt via WhatsApp
+          </button>
         </div>
 
         <div class="panel">
@@ -1102,6 +1190,15 @@
 
     function sendWhatsApp(message) {
       window.open(`https://wa.me/${PAF_PHONE}?text=${encodeURIComponent(message)}`, '_blank', 'noopener');
+    }
+
+    function setPayChannel(channel) {
+      document.querySelectorAll('.pay-tab').forEach(btn => {
+        btn.classList.toggle('active', btn.dataset.pay === channel);
+      });
+      document.querySelectorAll('.pay-pane').forEach(pane => {
+        pane.classList.toggle('active', pane.id === pay-);
+      });
     }
 
     function copyValue(text, notice) {
