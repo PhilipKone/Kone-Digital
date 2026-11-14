@@ -149,7 +149,7 @@
       const fmt = (n) => currency + ' ' + Number(n).toLocaleString(undefined, { minimumFractionDigits: 2, maximumFractionDigits: 2 });
       const isPaid = String(inv.status || '').toUpperCase() === 'PAID';
       const refCode = inv.ref || inv.number;
-      const momoClean = (inv.momoNumber || '0551993820').replace(/\s+/g, '');
+      const momoClean = (inv.momoNumber || '0203256481').replace(/\s+/g, '');
       const waMsg = encodeURIComponent('Hello Kone Digital, payment of ' + fmt(subtotal) + ' has been completed for Invoice ' + inv.number + ' (' + inv.clientName + '). Reference: ' + refCode + '.');
 
       const rowsHtml = items.map(it =>
@@ -187,7 +187,7 @@
             '<div class="totals"><div class="totals-box"><div class="total-row"><span>Subtotal</span><span>' + fmt(subtotal) + '</span></div><div class="total-row"><span>Setup / Onboarding</span><span>' + currency + ' 0.00</span></div><div class="total-row grand"><span>Total Due</span><span>' + fmt(subtotal) + '</span></div></div></div>' +
             '<div class="pay-box"><div class="label-xs">Payment Instructions</div><div style="font-size:0.8rem; color:var(--slate);">Please settle via Mobile Money using the reference below, then tap <strong>Confirm Payment on WhatsApp</strong> to receive your official digital receipt.</div>' +
               '<div class="pay-grid">' +
-                '<div class="pay-item"><div><div class="label-xs" style="margin-bottom:1px;">MTN MoMo Number</div><div class="pay-val">' + esc(inv.momoNumber || '055 199 3820') + '</div><div style="font-size:0.72rem; color:var(--muted);">' + esc(inv.accountName || 'Philip Hotor / CODKON TECHNOLOGIES') + '</div></div><button type="button" class="copy-btn no-print" data-copy="' + esc(momoClean) + '" data-label="MoMo number copied">Copy</button></div>' +
+                '<div class="pay-item"><div><div class="label-xs" style="margin-bottom:1px;">Telecel Cash Number</div><div class="pay-val">' + esc(inv.momoNumber || '020 325 6481') + '</div><div style="font-size:0.72rem; color:var(--muted);">' + esc(inv.accountName || 'Philip Hotor / CODKON TECHNOLOGIES') + '</div></div><button type="button" class="copy-btn no-print" data-copy="' + esc(momoClean) + '" data-label="Telecel Cash number copied">Copy</button></div>' +
                 '<div class="pay-item"><div><div class="label-xs" style="margin-bottom:1px;">Payment Reference</div><div class="pay-val">' + esc(refCode) + '</div><div style="font-size:0.72rem; color:var(--muted);">Include in transfer note</div></div><button type="button" class="copy-btn no-print" data-copy="' + esc(refCode) + '" data-label="Reference copied">Copy</button></div>' +
               '</div>' +
             '</div>' +
@@ -247,7 +247,7 @@
               '<div class="field full"><label>Line Item 1 Description</label><input id="gDesc1" value="Production hosting on digital.codkon.com/paf, SLD screening tool, offline PWA support & monthly campaign updates" /></div>' +
               '<div class="field"><label>Amount (GHS)</label><input id="gAmt1" type="number" step="0.01" value="49.00" /></div>' +
               '<div class="field"><label>Status</label><select id="gStatus"><option value="DUE ON RECEIPT" selected>DUE ON RECEIPT</option><option value="UNPAID">UNPAID</option><option value="PAID">PAID</option></select></div>' +
-              '<div class="field"><label>Your MTN MoMo Number</label><input id="gMomo" value="055 199 3820" /></div>' +
+              '<div class="field"><label>Your Telecel Cash Number</label><input id="gMomo" value="020 325 6481" /></div>' +
               '<div class="field"><label>Account Name</label><input id="gAcctName" value="Philip Hotor / CODKON TECHNOLOGIES" /></div>' +
             '</div>' +
             '<div style="margin-top:16px; display:flex; gap:10px; flex-wrap:wrap;"><button id="genBtn" type="button" class="btn btn-dark">Generate Private PIN Link</button><button id="previewBtn" type="button" class="btn btn-outline">Preview Invoice</button></div>' +
