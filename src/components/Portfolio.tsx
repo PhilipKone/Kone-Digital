@@ -117,90 +117,202 @@ export const Portfolio: React.FC = () => {
         <p style={{ color: 'var(--text-muted)', fontSize: '1.05rem', marginTop: '0.6rem', letterSpacing: '-0.01em', maxWidth: '640px', margin: '0.6rem auto 0', lineHeight: 1.6 }}>
           Real-world platforms and Website-as-a-Service solutions engineered for revenue growth and operational excellence.
         </p>
+        {/* Unified Dropdown Filter & Search Bar */}
+        <div
+          style={{
+            display: 'flex',
+            justifyContent: 'center',
+            alignItems: 'center',
+            gap: '0.75rem',
+            flexWrap: 'wrap',
+            marginTop: '2.1rem',
+          }}
+        >
+          {/* Industry Category Dropdown */}
+          <div style={{ position: 'relative', width: 'min(100%, 245px)' }}>
+            <svg
+              width="14"
+              height="14"
+              viewBox="0 0 24 24"
+              fill="none"
+              stroke="#38BDF8"
+              strokeWidth="2.2"
+              strokeLinecap="round"
+              strokeLinejoin="round"
+              style={{
+                position: 'absolute',
+                left: '0.9rem',
+                top: '50%',
+                transform: 'translateY(-50%)',
+                pointerEvents: 'none',
+              }}
+            >
+              <polygon points="22 3 2 3 10 12.46 10 19 14 21 14 12.46 22 3"></polygon>
+            </svg>
 
-        {/* Filter Tabs & Search Bar */}
-        <div style={{ 
-          display: 'flex', 
-          justifyContent: 'center', 
-          alignItems: 'center', 
-          gap: '0.8rem', 
-          flexWrap: 'wrap', 
-          marginTop: '2.2rem'
-        }}>
-          <button 
-            onClick={() => setActiveCategory('all')}
-            className={activeCategory === 'all' ? 'btn-primary' : 'btn-secondary'}
-            style={{
-              padding: '0.45rem 1.15rem',
-              borderRadius: '50px',
-              fontSize: '0.84rem'
-            }}
-          >
-            All Case Studies
-          </button>
+            <select
+              aria-label="Filter case studies by industry"
+              value={activeCategory}
+              onChange={(e) => setActiveCategory(e.target.value)}
+              style={{
+                appearance: 'none',
+                WebkitAppearance: 'none',
+                MozAppearance: 'none',
+                width: '100%',
+                background: activeCategory !== 'all' ? 'rgba(56, 189, 248, 0.12)' : 'rgba(255, 255, 255, 0.05)',
+                border: activeCategory !== 'all' ? '1px solid rgba(56, 189, 248, 0.45)' : '1px solid rgba(255, 255, 255, 0.14)',
+                color: '#FFFFFF',
+                padding: '0.55rem 2.3rem 0.55rem 2.25rem',
+                borderRadius: '999px',
+                fontSize: '0.85rem',
+                fontWeight: 600,
+                cursor: 'pointer',
+                outline: 'none',
+                transition: 'all 0.2s ease',
+              }}
+            >
+              <option value="all" style={{ backgroundColor: '#0B0F19', color: '#FFFFFF' }}>
+                All Case Studies ({PROJECTS.length})
+              </option>
+              <option value="b2b" style={{ backgroundColor: '#0B0F19', color: '#FFFFFF' }}>
+                B2B &amp; Architectural ({PROJECTS.filter((p) => p.category === 'b2b').length})
+              </option>
+              <option value="ecommerce" style={{ backgroundColor: '#0B0F19', color: '#FFFFFF' }}>
+                Fashion &amp; Retail ({PROJECTS.filter((p) => p.category === 'ecommerce').length})
+              </option>
+              <option value="nonprofit" style={{ backgroundColor: '#0B0F19', color: '#FFFFFF' }}>
+                Social Impact / NGO ({PROJECTS.filter((p) => p.category === 'nonprofit').length})
+              </option>
+            </select>
 
-          <button 
-            onClick={() => setActiveCategory('b2b')}
-            className={activeCategory === 'b2b' ? 'btn-primary' : 'btn-secondary'}
-            style={{
-              padding: '0.45rem 1.15rem',
-              borderRadius: '50px',
-              fontSize: '0.84rem'
-            }}
-          >
-            B2B & Architectural
-          </button>
-
-          <button 
-            onClick={() => setActiveCategory('ecommerce')}
-            className={activeCategory === 'ecommerce' ? 'btn-primary' : 'btn-secondary'}
-            style={{
-              padding: '0.45rem 1.15rem',
-              borderRadius: '50px',
-              fontSize: '0.84rem'
-            }}
-          >
-            Fashion & Retail
-          </button>
-
-          <button 
-            onClick={() => setActiveCategory('nonprofit')}
-            className={activeCategory === 'nonprofit' ? 'btn-primary' : 'btn-secondary'}
-            style={{
-              padding: '0.45rem 1.15rem',
-              borderRadius: '50px',
-              fontSize: '0.84rem'
-            }}
-          >
-            Social Impact / NGO
-          </button>
+            <svg
+              width="14"
+              height="14"
+              viewBox="0 0 24 24"
+              fill="none"
+              stroke="#94A3B8"
+              strokeWidth="2.5"
+              strokeLinecap="round"
+              strokeLinejoin="round"
+              style={{
+                position: 'absolute',
+                right: '0.9rem',
+                top: '50%',
+                transform: 'translateY(-50%)',
+                pointerEvents: 'none',
+              }}
+            >
+              <polyline points="6 9 12 15 18 9"></polyline>
+            </svg>
+          </div>
 
           {/* Search Box */}
-          <div style={{ position: 'relative', width: 'min(100%, 240px)' }}>
-            <input 
-              type="text" 
+          <div style={{ position: 'relative', width: 'min(100%, 260px)' }}>
+            <input
+              type="text"
               placeholder="Search case studies..."
               value={searchQuery}
               onChange={(e) => setSearchQuery(e.target.value)}
               style={{
-                background: 'rgba(255, 255, 255, 0.04)',
-                border: '1px solid rgba(255, 255, 255, 0.12)',
+                background: 'rgba(255, 255, 255, 0.05)',
+                border: searchQuery ? '1px solid rgba(56, 189, 248, 0.45)' : '1px solid rgba(255, 255, 255, 0.14)',
                 color: '#FFFFFF',
-                padding: '0.48rem 1.1rem 0.48rem 2.2rem',
-                borderRadius: '30px',
+                padding: '0.55rem 2.1rem 0.55rem 2.25rem',
+                borderRadius: '999px',
                 fontSize: '0.85rem',
                 outline: 'none',
                 width: '100%',
-                transition: 'border-color 0.2s ease'
+                transition: 'border-color 0.2s ease',
               }}
             />
-            <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="#94A3B8" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round" style={{ position: 'absolute', left: '0.8rem', top: '50%', transform: 'translateY(-50%)' }}>
+            <svg
+              width="14"
+              height="14"
+              viewBox="0 0 24 24"
+              fill="none"
+              stroke="#94A3B8"
+              strokeWidth="2.5"
+              strokeLinecap="round"
+              strokeLinejoin="round"
+              style={{
+                position: 'absolute',
+                left: '0.85rem',
+                top: '50%',
+                transform: 'translateY(-50%)',
+                pointerEvents: 'none',
+              }}
+            >
               <circle cx="11" cy="11" r="8"></circle>
               <line x1="21" y1="21" x2="16.65" y2="16.65"></line>
             </svg>
+            {searchQuery && (
+              <button
+                type="button"
+                aria-label="Clear search"
+                onClick={() => setSearchQuery('')}
+                style={{
+                  position: 'absolute',
+                  right: '0.7rem',
+                  top: '50%',
+                  transform: 'translateY(-50%)',
+                  background: 'rgba(255, 255, 255, 0.12)',
+                  border: 'none',
+                  color: '#FFFFFF',
+                  width: '18px',
+                  height: '18px',
+                  borderRadius: '50%',
+                  fontSize: '0.75rem',
+                  lineHeight: 1,
+                  cursor: 'pointer',
+                  display: 'flex',
+                  alignItems: 'center',
+                  justifyContent: 'center',
+                }}
+              >
+                ×
+              </button>
+            )}
           </div>
         </div>
-      </div>
+
+        {(activeCategory !== 'all' || searchQuery.trim() !== '') && (
+          <div
+            style={{
+              marginTop: '0.85rem',
+              display: 'flex',
+              justifyContent: 'center',
+              alignItems: 'center',
+              gap: '0.6rem',
+              fontSize: '0.8rem',
+              color: 'var(--text-muted)',
+            }}
+          >
+            <span>
+              Showing <strong style={{ color: '#FFFFFF' }}>{filteredProjects.length}</strong> of {PROJECTS.length} case studies
+            </span>
+            <span>•</span>
+            <button
+              type="button"
+              onClick={() => {
+                setActiveCategory('all');
+                setSearchQuery('');
+              }}
+              style={{
+                background: 'transparent',
+                border: 'none',
+                color: '#38BDF8',
+                fontWeight: 600,
+                fontSize: '0.8rem',
+                cursor: 'pointer',
+                padding: 0,
+                textDecoration: 'underline',
+              }}
+            >
+              Reset filters
+            </button>
+          </div>
+        )}
+</div>
       
       <div className="portfolio-grid" style={{ 
         display: 'grid', 
