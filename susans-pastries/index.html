@@ -2044,6 +2044,30 @@ div[class*="drawer"] div:has(span:contains("Sun")) {
 </head>
 <body>
 
+    <!-- Clean Mobile Navigation Drawer -->
+    <div id="mobileDrawerOverlay" onclick="closeMobileMenu()" style="display:none; position:fixed; inset:0; background:rgba(15,10,7,0.72); backdrop-filter:blur(3px); z-index:9998;"></div>
+    <aside id="mobileDrawer" aria-hidden="true" style="position:fixed; top:0; right:-100%; width:min(82vw, 320px); height:100vh; background:#1F140F; color:#FDF8F3; z-index:9999; padding:1.5rem; display:flex; flex-direction:column; justify-content:space-between; transition:right 0.28s ease; box-shadow:-12px 0 32px rgba(0,0,0,0.55); border-left:1px solid rgba(217,119,6,0.25);">
+        <div>
+            <div style="display:flex; align-items:center; justify-content:space-between; padding-bottom:1rem; border-bottom:1px solid rgba(255,255,255,0.1);">
+                <span style="font-weight:700; font-size:1rem; color:#F59E0B; letter-spacing:0.03em;">Susan's Pastries</span>
+                <button type="button" onclick="closeMobileMenu()" aria-label="Close Menu" style="background:rgba(255,255,255,0.08); border:none; color:#FDF8F3; width:34px; height:34px; border-radius:8px; font-size:1.25rem; cursor:pointer; display:flex; align-items:center; justify-content:center;">&times;</button>
+            </div>
+            <nav style="display:flex; flex-direction:column; gap:0.35rem; margin-top:1.1rem;">
+                <a href="#menu" onclick="closeMobileMenu()" style="color:#FDF8F3; text-decoration:none; padding:0.65rem 0.5rem; border-bottom:1px solid rgba(255,255,255,0.06); font-size:0.95rem;">Spring Rolls &amp; Samosas</a>
+                <a href="#pies" onclick="closeMobileMenu()" style="color:#FDF8F3; text-decoration:none; padding:0.65rem 0.5rem; border-bottom:1px solid rgba(255,255,255,0.06); font-size:0.95rem;">Gourmet Pies &amp; Bites</a>
+                <a href="#cakes" onclick="closeMobileMenu()" style="color:#FDF8F3; text-decoration:none; padding:0.65rem 0.5rem; border-bottom:1px solid rgba(255,255,255,0.06); font-size:0.95rem;">Celebration Cakes</a>
+                <a href="#juices" onclick="closeMobileMenu()" style="color:#FDF8F3; text-decoration:none; padding:0.65rem 0.5rem; border-bottom:1px solid rgba(255,255,255,0.06); font-size:0.95rem;">Natural Juices &amp; Sobolo</a>
+                <a href="#platters" onclick="closeMobileMenu()" style="color:#FDF8F3; text-decoration:none; padding:0.65rem 0.5rem; border-bottom:1px solid rgba(255,255,255,0.06); font-size:0.95rem;">Party Platter Bundles</a>
+                <a href="#calculator" onclick="closeMobileMenu()" style="color:#FBBF24; font-weight:600; text-decoration:none; padding:0.65rem 0.5rem; border-bottom:1px solid rgba(255,255,255,0.06); font-size:0.95rem;">Live Order Calculator</a>
+                <a href="#delivery" onclick="closeMobileMenu()" style="color:#FDF8F3; text-decoration:none; padding:0.65rem 0.5rem; font-size:0.95rem;">Accra Delivery Zones</a>
+            </nav>
+        </div>
+        <div style="padding-top:1rem; border-top:1px solid rgba(255,255,255,0.1);">
+            <a href="https://wa.me/233555950314" target="_blank" rel="noopener" style="display:flex; align-items:center; justify-content:center; width:100%; padding:0.75rem 1rem; background:#16A34A; color:#FFFFFF; font-weight:600; font-size:0.9rem; border-radius:8px; text-decoration:none;">Order on WhatsApp</a>
+        </div>
+    </aside>
+
+
     <!-- Toast Notification -->
     <div class="toast-msg" id="toastMsg">
         <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="20 6 9 17 4 12"></polyline></svg>
@@ -2833,175 +2857,6 @@ div[class*="drawer"] div:has(span:contains("Sun")) {
 
     <!-- Scripts: Mobile Drawer, Tab Toggle, Order Builder, Clipboard -->
 
-    <script>
-        function openMobileMenu() {
-            const drawer = document.getElementById('mobileDrawer');
-            const overlay = document.getElementById('mobileDrawerOverlay');
-            const bottomBar = document.getElementById('mobileBottomBar');
-            if (drawer && overlay) {
-                drawer.classList.add('active');
-                overlay.classList.add('active');
-                if (bottomBar) bottomBar.style.display = 'none'; // Prevents any overlap with drawer
-                document.body.style.overflow = 'hidden';
-            }
-        }
-
-        function closeMobileMenu() {
-            const drawer = document.getElementById('mobileDrawer');
-            const overlay = document.getElementById('mobileDrawerOverlay');
-            const bottomBar = document.getElementById('mobileBottomBar');
-            if (drawer && overlay) {
-                drawer.classList.remove('active');
-                overlay.classList.remove('active');
-                if (bottomBar) bottomBar.style.display = '';
-                document.body.style.overflow = '';
-            }
-        }
-
-        // Copy to clipboard helper with toast
-        function copyToClipboard(text, message) {
-            navigator.clipboard.writeText(text).then(() => {
-                showToast(message || 'Copied to clipboard!');
-            }).catch(err => {
-                showToast('Number: ' + text);
-            });
-        }
-
-        function showToast(msg) {
-            const toast = document.getElementById('toastMsg');
-            const toastText = document.getElementById('toastText');
-            if (toast && toastText) {
-                toastText.textContent = msg;
-                toast.classList.add('show');
-                setTimeout(() => {
-                    toast.classList.remove('show');
-                }, 2200);
-            }
-        }
-
-        // Interactive Spring Rolls Tab Toggle
-        let currentRollsTab = 'frozen';
-        function switchRollsTab(type) {
-            currentRollsTab = type;
-            const btnFrozen = document.getElementById('btnToggleFrozen');
-            const btnFried = document.getElementById('btnToggleFried');
-            const pVeg = document.getElementById('priceVeggies');
-            const pProtVeg = document.getElementById('priceProteinVeg');
-            const pProtOnly = document.getElementById('priceProteinOnly');
-            const orderBtn = document.getElementById('btnOrderRolls');
-
-            if (type === 'frozen') {
-                btnFrozen.classList.add('active');
-                btnFried.classList.remove('active');
-                pVeg.textContent = 'GH₵ 120';
-                pProtVeg.textContent = 'GH₵ 230';
-                pProtOnly.textContent = 'GH₵ 300';
-                orderBtn.querySelector('span').textContent = 'Order Frozen Spring Rolls Box';
-                orderBtn.href = "https://wa.me/233555950314?text=Hello%20Susan's%20Pastries,%20I%20would%20like%20to%20order%20Frozen%20Spring%20Rolls%20(50%20pcs).";
-            } else {
-                btnFried.classList.add('active');
-                btnFrozen.classList.remove('active');
-                pVeg.textContent = 'GH₵ 150';
-                pProtVeg.textContent = 'GH₵ 260';
-                pProtOnly.textContent = 'GH₵ 330';
-                orderBtn.querySelector('span').textContent = 'Order Freshly Fried Spring Rolls Box';
-                orderBtn.href = "https://wa.me/233555950314?text=Hello%20Susan's%20Pastries,%20I%20would%20like%20to%20order%20Freshly%20Fried%20Spring%20Rolls%20(50%20pcs).";
-            }
-        }
-
-        // Interactive Live Cart / Order Builder
-        const CART_PRICES = {
-            rolls_veg: { name: 'Spring Rolls: Veggies (50 pcs)', price: 120 },
-            rolls_prot_veg: { name: 'Spring Rolls: Protein+Veg (50 pcs)', price: 230 },
-            rolls_prot_only: { name: 'Spring Rolls: Protein Only (50 pcs)', price: 300 },
-            meat_pies_10: { name: 'Gourmet Meat Pies (Box of 10)', price: 120 },
-            sausage_rolls: { name: 'Flaky Sausage Rolls', price: 25 },
-            quiche: { name: 'Artisanal Quiche', price: 35 },
-            yam_balls_5: { name: 'Golden Yam Balls (5 pcs)', price: 30 },
-            meat_fish_balls_5: { name: 'Meat Balls / Fish Balls (5 pcs)', price: 50 },
-            cookies_12: { name: 'Cookies (12 pcs)', price: 25 },
-            chips_500g: { name: 'Crunchy Chips (500g)', price: 30 },
-            chips_1kg: { name: 'Crunchy Chips (1kg)', price: 55 },
-            sobolo_350ml: { name: 'Chilled Sobolo (350ml)', price: 8 },
-            sobolo_5l: { name: 'Sobolo Party Gallon (5L)', price: 100 },
-            juice_500ml: { name: 'Fresh Juices (500ml)', price: 30 }
-        };
-
-        const cartState = {
-            rolls_veg: 0,
-            rolls_prot_veg: 0,
-            rolls_prot_only: 0,
-            meat_pies_10: 0,
-            sausage_rolls: 0,
-            quiche: 0,
-            yam_balls_5: 0,
-            meat_fish_balls_5: 0,
-            cookies_12: 0,
-            chips_500g: 0,
-            chips_1kg: 0,
-            sobolo_350ml: 0,
-            sobolo_5l: 0,
-            juice_500ml: 0
-        };
-
-        function updateCart(key, delta) {
-            cartState[key] = Math.max(0, cartState[key] + delta);
-            const qtyElem = document.getElementById('qty_' + key);
-            if (qtyElem) qtyElem.textContent = cartState[key];
-            renderCartSummary();
-        }
-
-        function renderCartSummary() {
-            const list = document.getElementById('summaryList');
-            const totalElem = document.getElementById('summaryTotal');
-            let total = 0;
-            let itemsHtml = '';
-            let itemCount = 0;
-
-            for (const [k, qty] of Object.entries(cartState)) {
-                if (qty > 0) {
-                    const sub = qty * CART_PRICES[k].price;
-                    total += sub;
-                    itemCount += qty;
-                    itemsHtml += `<li>
-                        <span>${qty}x ${CART_PRICES[k].name}</span>
-                        <strong style="color: var(--primary-amber); white-space: nowrap;">GH₵ ${sub}</strong>
-                    </li>`;
-                }
-            }
-
-            if (itemCount === 0) {
-                list.innerHTML = `<li class="summary-cart-empty">No items selected yet. Tap &plus; on any item to build your box!</li>`;
-            } else {
-                list.innerHTML = itemsHtml;
-            }
-
-            totalElem.textContent = 'GH₵ ' + total;
-        }
-
-        function sendOrderToWhatsApp() {
-            let total = 0;
-            let orderLines = [];
-
-            for (const [k, qty] of Object.entries(cartState)) {
-                if (qty > 0) {
-                    const sub = qty * CART_PRICES[k].price;
-                    total += sub;
-                    orderLines.push(`• ${qty}x ${CART_PRICES[k].name} - GH₵ ${sub}`);
-                }
-            }
-
-            let message = '';
-            if (orderLines.length === 0) {
-                message = "Hello Susan's Pastries, I would like to place an order. Please share your current menu availability!";
-            } else {
-                message = `Hello Susan's Pastries, I would like to place an order:%0A%0A${orderLines.join('%0A')}%0A%0AEstimated Total: GH₵ ${total} (+ Delivery at a fee)%0A%0APreferred Delivery Location:%20`;
-            }
-
-            const waUrl = `https://wa.me/233555950314?text=${message}`;
-            window.open(waUrl, '_blank');
-        }
-    </script>
 
     <script>
         function openMobileMenu() {
@@ -3025,16 +2880,20 @@ div[class*="drawer"] div:has(span:contains("Sun")) {
             document.body.style.overflow = '';
         }
         document.addEventListener('DOMContentLoaded', function () {
-            const header = document.querySelector('header');
-            if (!header) return;
-            const toggleBtn = header.querySelector('button[aria-label*="Menu"], button[onclick*="openMobileMenu"], button');
+            const topBar = document.querySelector('header, nav');
+            if (!topBar) return;
+            const toggleBtn = topBar.querySelector('button[aria-label*="Menu"], button[onclick*="openMobileMenu"], button');
             if (toggleBtn) {
+                toggleBtn.style.cursor = 'pointer';
                 toggleBtn.onclick = function (e) {
                     e.preventDefault();
                     e.stopPropagation();
                     openMobileMenu();
                 };
             }
+        });
+        document.addEventListener('keydown', function (e) {
+            if (e.key === 'Escape') closeMobileMenu();
         });
     </script>
 
