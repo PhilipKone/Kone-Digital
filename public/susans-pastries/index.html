@@ -2832,7 +2832,7 @@ div[class*="drawer"] div:has(span:contains("Sun")) {
     </div>
 
     <!-- Scripts: Mobile Drawer, Tab Toggle, Order Builder, Clipboard -->
-    <script>
+    
         function openMobileMenu() {
             const drawer = document.getElementById('mobileDrawer');
             const overlay = document.getElementById('mobileDrawerOverlay');
@@ -3002,39 +3002,3 @@ div[class*="drawer"] div:has(span:contains("Sun")) {
         }
     </script>
 
-<script>
-document.addEventListener('DOMContentLoaded', () => {
-    const btn = document.querySelector('header button, header .menu-toggle, header [aria-label*="Menu"], header svg');
-    const menu = document.querySelector('.mobile-menu, .drawer, nav div[class*="menu"], nav div[class*="drawer"]');
-    if (btn && menu) {
-        btn.style.cursor = 'pointer';
-        btn.addEventListener('click', (e) => {
-            e.stopPropagation();
-            menu.classList.toggle('active');
-            menu.classList.toggle('hidden');
-            if (menu.style.display === 'block' || menu.style.display === 'flex') {
-                menu.style.display = 'none';
-            } else {
-                menu.style.display = 'flex';
-                menu.style.flexDirection = 'column';
-                menu.style.position = 'fixed';
-                menu.style.top = '70px';
-                menu.style.left = '0';
-                menu.style.width = '100%';
-                menu.style.background = '#1F140F';
-                menu.style.padding = '1.5rem';
-                menu.style.zIndex = '9999';
-                menu.style.boxShadow = '0 10px 25px rgba(0,0,0,0.5)';
-            }
-        });
-        document.addEventListener('click', (e) => {
-            if (!menu.contains(e.target) && !btn.contains(e.target)) {
-                menu.style.display = 'none';
-            }
-        });
-    }
-});
-</script>
-
-</body>
-</html>
