@@ -91,7 +91,7 @@ export const HeroSection: React.FC<HeroSectionProps> = ({ onOpenWizard }) => {
             href="https://wa.me/233551993820?text=Hi%20Kone%20Digital%2C%20I'd%20like%20to%20request%20a%20consultation%20for%20my%20business%20website." 
             target="_blank" 
             rel="noopener noreferrer" 
-            className="btn-secondary"
+            className="btn-secondary hero-secondary-cta"
           >
             <span>Request Consultation</span>
           </a>
@@ -233,7 +233,7 @@ export const HeroSection: React.FC<HeroSectionProps> = ({ onOpenWizard }) => {
               <p style={{ maxWidth: '500px', fontSize: '0.88rem', opacity: 0.85, marginTop: '0.5rem' }}>Natural Stone Cladding & Architectural Finishes across Ghana.</p>
               <a href="/sedemson-stone/index.html" target="_blank" rel="noopener noreferrer" style={{ marginTop: '1.2rem', color: '#F8FAFC', background: 'rgba(255,255,255,0.1)', border: '1px solid rgba(255,255,255,0.2)', padding: '0.35rem 0.9rem', borderRadius: '50px', fontWeight: 650, fontSize: '0.8rem', textDecoration: 'none', display: 'inline-flex', alignItems: 'center', gap: '0.3rem' }}>
                 <span>Explore Client Showcase</span>
-                <span>âž”</span>
+                <span>➔</span>
               </a>
             </div>
           )}
@@ -249,7 +249,7 @@ export const HeroSection: React.FC<HeroSectionProps> = ({ onOpenWizard }) => {
               <p style={{ maxWidth: '500px', fontSize: '0.88rem', opacity: 0.85, marginTop: '0.5rem' }}>Handcrafted Ankara wide-leg cargo trousers & royal batik palazzo sets.</p>
               <a href="/emewear/index.html" target="_blank" rel="noopener noreferrer" style={{ marginTop: '1.2rem', color: '#F8FAFC', background: 'rgba(255,255,255,0.1)', border: '1px solid rgba(255,255,255,0.2)', padding: '0.35rem 0.9rem', borderRadius: '50px', fontWeight: 650, fontSize: '0.8rem', textDecoration: 'none', display: 'inline-flex', alignItems: 'center', gap: '0.3rem' }}>
                 <span>Explore Client Showcase</span>
-                <span>âž”</span>
+                <span>➔</span>
               </a>
             </div>
           )}
@@ -262,10 +262,10 @@ export const HeroSection: React.FC<HeroSectionProps> = ({ onOpenWizard }) => {
             >
               <span style={{ fontSize: '0.74rem', fontWeight: 750, letterSpacing: '2px', textTransform: 'uppercase', color: '#FDBA74', marginBottom: '0.4rem', display: 'block' }}>Featured Social Impact Initiative</span>
               <h2 style={{ fontSize: 'clamp(1.25rem, 4.5vw, 2rem)', fontFamily: 'var(--font-heading)', fontWeight: 800 }}>Ansah Delali Foundation</h2>
-              <p style={{ maxWidth: '520px', fontSize: '0.88rem', opacity: 0.92, marginTop: '0.5rem' }}>Giving Back, Rising Together â€” Educational mentorship, SkillUp 1.0 outreach, and digital skills empowerment across Ghana.</p>
+              <p style={{ maxWidth: '520px', fontSize: '0.88rem', opacity: 0.92, marginTop: '0.5rem' }}>Giving Back, Rising Together — Educational mentorship, SkillUp 1.0 outreach, and digital skills empowerment across Ghana.</p>
               <a href="/ansah-delali/index.html" target="_blank" rel="noopener noreferrer" style={{ marginTop: '1.2rem', color: '#FFFFFF', background: '#0052CC', border: '1px solid rgba(255,255,255,0.3)', padding: '0.45rem 1.1rem', borderRadius: '50px', fontWeight: 700, fontSize: '0.84rem', textDecoration: 'none', display: 'inline-flex', alignItems: 'center', gap: '0.4rem', boxShadow: '0 4px 12px rgba(0,0,0,0.2)' }}>
                 <span>Explore Foundation Portal</span>
-                <span>âž”</span>
+                <span>➔</span>
               </a>
             </div>
           )}
@@ -294,10 +294,10 @@ export const HeroSection: React.FC<HeroSectionProps> = ({ onOpenWizard }) => {
             >
               <span style={{ fontSize: '0.74rem', fontWeight: 750, letterSpacing: '2px', textTransform: 'uppercase', color: '#FDBA74', marginBottom: '0.4rem', display: 'block' }}>Food & Beverage Showcase</span>
               <h2 style={{ fontSize: 'clamp(1.25rem, 4.5vw, 2rem)', fontFamily: 'var(--font-heading)', fontWeight: 800 }}>Susan's Pastries & Drinks</h2>
-              <p style={{ maxWidth: '520px', fontSize: '0.88rem', opacity: 0.92, marginTop: '0.5rem' }}>Artisanal Ghanaian pastries, custom celebration cakes & fresh fruit juices â€” order directly via WhatsApp.</p>
+              <p style={{ maxWidth: '520px', fontSize: '0.88rem', opacity: 0.92, marginTop: '0.5rem' }}>Artisanal Ghanaian pastries, custom celebration cakes & fresh fruit juices — order directly via WhatsApp.</p>
               <a href="/susans-pastries/index.html" target="_blank" rel="noopener noreferrer" style={{ marginTop: '1.2rem', color: '#FFFFFF', background: '#E8922F', border: '1px solid rgba(255,255,255,0.3)', padding: '0.45rem 1.1rem', borderRadius: '50px', fontWeight: 700, fontSize: '0.84rem', textDecoration: 'none', display: 'inline-flex', alignItems: 'center', gap: '0.4rem', boxShadow: '0 4px 12px rgba(0,0,0,0.2)' }}>
                 <span>Explore Pastries Showcase</span>
-                <span>âž”</span>
+                <span>➔</span>
               </a>
             </div>
           )}
