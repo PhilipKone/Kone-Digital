@@ -86,15 +86,6 @@ export const HeroSection: React.FC<HeroSectionProps> = ({ onOpenWizard }) => {
               <polyline points="12 5 19 12 12 19"></polyline>
             </svg>
           </button>
-
-          <a 
-            href="https://wa.me/233551993820?text=Hi%20Kone%20Digital%2C%20I'd%20like%20to%20request%20a%20consultation%20for%20my%20business%20website." 
-            target="_blank" 
-            rel="noopener noreferrer" 
-            className="btn-secondary hero-secondary-cta"
-          >
-            <span>Request Consultation</span>
-          </a>
         </div>
       </div>
 
