@@ -1687,6 +1687,212 @@
                 min-width: 18px;
             }
         }
+    
+/* === Susan's Pastries: Compact Buttons & Zero Clutter === */
+body {
+  padding-bottom: 0 !important;
+}
+
+.sp-clean-tel {
+  color: inherit !important;
+  text-decoration: none !important;
+  font-weight: 600 !important;
+  border-bottom: 1px dotted rgba(217, 119, 6, 0.55) !important;
+}
+.sp-clean-tel:hover {
+  color: #F59E0B !important;
+}
+
+/* Shrink hero & calculator primary/secondary buttons */
+header a[href^="#"],
+header a[href*="wa.me"],
+section a[href="#calculator"],
+section a[href*="wa.me"],
+#calculator button,
+.hero a,
+.btn,
+[class*="btn-"] {
+  padding: 0.48rem 0.95rem !important;
+  font-size: 0.78rem !important;
+  line-height: 1.25 !important;
+  min-height: unset !important;
+  height: auto !important;
+  border-radius: 6px !important;
+  letter-spacing: 0.02em !important;
+}
+
+/* Slim Frozen / Fried toggle tabs */
+[role="tab"],
+.tab-btn,
+button[data-mode],
+button[onclick*="Frozen"],
+button[onclick*="Fried"] {
+  padding: 0.32rem 0.72rem !important;
+  font-size: 0.73rem !important;
+  min-height: unset !important;
+  height: auto !important;
+  border-radius: 5px !important;
+}
+
+/* Convert the 4 menu card buttons into sleek, low-profile inline links */
+a.sp-card-inline-cta {
+  display: inline-flex !important;
+  align-items: center !important;
+  justify-content: flex-start !important;
+  width: auto !important;
+  background: transparent !important;
+  background-color: transparent !important;
+  box-shadow: none !important;
+  border: none !important;
+  border-bottom: 1px solid rgba(217, 119, 6, 0.5) !important;
+  border-radius: 0 !important;
+  padding: 0.25rem 0 !important;
+  margin-top: 0.45rem !important;
+  font-size: 0.8rem !important;
+  font-weight: 700 !important;
+  color: #B45309 !important;
+  gap: 0.35rem !important;
+}
+a.sp-card-inline-cta::after {
+  content: "→";
+  font-size: 0.85rem;
+  transition: transform 0.18s ease;
+}
+a.sp-card-inline-cta:hover {
+  color: #92400E !important;
+  border-bottom-color: #92400E !important;
+}
+a.sp-card-inline-cta:hover::after {
+  transform: translateX(3px);
+}
+
+/* Tiny, crisp +/- stepper buttons inside Live Order Calculator */
+#calculator button[onclick*="-1"],
+#calculator button[onclick*="1)"],
+#calculator .qty-btn,
+#calculator [class*="step"] button,
+#calculator [class*="qty"] button {
+  width: 26px !important;
+  height: 26px !important;
+  min-width: 26px !important;
+  min-height: 26px !important;
+  padding: 0 !important;
+  font-size: 0.85rem !important;
+  border-radius: 5px !important;
+  display: inline-flex !important;
+  align-items: center !important;
+  justify-content: center !important;
+}
+
+/* Ensure no fixed bottom dock remains visible */
+div[style*="position: fixed"][style*="bottom: 0"],
+div[style*="position:fixed"][style*="bottom:0"] {
+  display: none !important;
+}
+
+    
+/* === Susan's Pastries: Compact Buttons & Zero Clutter === */
+body {
+  padding-bottom: 0 !important;
+}
+
+.sp-clean-tel {
+  color: inherit !important;
+  text-decoration: none !important;
+  font-weight: 600 !important;
+  border-bottom: 1px dotted rgba(217, 119, 6, 0.55) !important;
+}
+.sp-clean-tel:hover {
+  color: #F59E0B !important;
+}
+
+/* Shrink hero & calculator primary/secondary buttons */
+header a[href^="#"],
+header a[href*="wa.me"],
+section a[href="#calculator"],
+section a[href*="wa.me"],
+#calculator button,
+.hero a,
+.btn,
+[class*="btn-"] {
+  padding: 0.48rem 0.95rem !important;
+  font-size: 0.78rem !important;
+  line-height: 1.25 !important;
+  min-height: unset !important;
+  height: auto !important;
+  border-radius: 6px !important;
+  letter-spacing: 0.02em !important;
+}
+
+/* Slim Frozen / Fried toggle tabs */
+[role="tab"],
+.tab-btn,
+button[data-mode],
+button[onclick*="Frozen"],
+button[onclick*="Fried"] {
+  padding: 0.32rem 0.72rem !important;
+  font-size: 0.73rem !important;
+  min-height: unset !important;
+  height: auto !important;
+  border-radius: 5px !important;
+}
+
+/* Convert the 4 menu card buttons into sleek, low-profile inline links */
+a.sp-card-inline-cta {
+  display: inline-flex !important;
+  align-items: center !important;
+  justify-content: flex-start !important;
+  width: auto !important;
+  background: transparent !important;
+  background-color: transparent !important;
+  box-shadow: none !important;
+  border: none !important;
+  border-bottom: 1px solid rgba(217, 119, 6, 0.5) !important;
+  border-radius: 0 !important;
+  padding: 0.25rem 0 !important;
+  margin-top: 0.45rem !important;
+  font-size: 0.8rem !important;
+  font-weight: 700 !important;
+  color: #B45309 !important;
+  gap: 0.35rem !important;
+}
+a.sp-card-inline-cta::after {
+  content: "→";
+  font-size: 0.85rem;
+  transition: transform 0.18s ease;
+}
+a.sp-card-inline-cta:hover {
+  color: #92400E !important;
+  border-bottom-color: #92400E !important;
+}
+a.sp-card-inline-cta:hover::after {
+  transform: translateX(3px);
+}
+
+/* Tiny, crisp +/- stepper buttons inside Live Order Calculator */
+#calculator button[onclick*="-1"],
+#calculator button[onclick*="1)"],
+#calculator .qty-btn,
+#calculator [class*="step"] button,
+#calculator [class*="qty"] button {
+  width: 26px !important;
+  height: 26px !important;
+  min-width: 26px !important;
+  min-height: 26px !important;
+  padding: 0 !important;
+  font-size: 0.85rem !important;
+  border-radius: 5px !important;
+  display: inline-flex !important;
+  align-items: center !important;
+  justify-content: center !important;
+}
+
+/* Ensure no fixed bottom dock remains visible */
+div[style*="position: fixed"][style*="bottom: 0"],
+div[style*="position:fixed"][style*="bottom:0"] {
+  display: none !important;
+}
+
     </style>
 </head>
 <body>
@@ -1711,7 +1917,7 @@
                 </span>
             </div>
             <div class="top-bar-right">
-                <span class="top-bar-link" onclick="copyToClipboard('0539332660', '053 933 2660 copied!')" title="Click to copy phone number">
+                <span class="top-bar-link" onclick="copyToClipboard('0539332660', '<a href="tel:+233539332660" class="sp-clean-tel">053 933 2660</a> copied!')" title="Click to copy phone number">
                     <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72 12.84 12.84 0 0 0 .7 2.81 2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45 12.84 12.84 0 0 0 2.81.7A2 2 0 0 1 22 16.92z"></path></svg>
                     <span>053 933 2660</span>
                     <span class="copy-pill">Copy</span>
@@ -1771,9 +1977,9 @@
                 <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"></circle><polyline points="12 6 12 12 16 14"></polyline></svg>
                 <span>Accra, Ghana &bull; Sun – Fri 8am – 6pm (Sat Off)</span>
             </div>
-            <a href="tel:0539332660" style="color: var(--warm-orange);" aria-label="Call 053 933 2660">
+            <a href="tel:0539332660" style="color: var(--warm-orange);" aria-label="Call <a href="tel:+233539332660" class="sp-clean-tel">053 933 2660</a>">
                 <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72 12.84 12.84 0 0 0 .7 2.81 2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45 12.84 12.84 0 0 0 2.81.7A2 2 0 0 1 22 16.92z"></path></svg>
-                <span>Call: 053 933 2660</span>
+                <span>Call: <a href="tel:+233539332660" class="sp-clean-tel">053 933 2660</a></span>
             </a>
             <a href="https://wa.me/233555950314?text=Hello%20Susan's%20Pastries,%20I%20would%20like%20to%20place%20an%20order." target="_blank" rel="noopener" style="color: var(--green-wa);" aria-label="WhatsApp 055 595 0314">
                 <svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor"><path d="M12.04 2c-5.46 0-9.91 4.45-9.91 9.91 0 1.75.46 3.45 1.32 4.95L2.05 22l5.25-1.38c1.45.79 3.08 1.21 4.74 1.21 5.46 0 9.91-4.45 9.91-9.91 0-2.65-1.03-5.14-2.9-7.01A9.816 9.816 0 0 0 12.04 2m.01 1.67c2.2 0 4.26.86 5.82 2.42a8.225 8.225 0 0 1 2.41 5.83c0 4.54-3.7 8.24-8.24 8.24-1.48 0-2.93-.4-4.2-1.15l-.3-.18-3.12.82.83-3.04-.2-.31a8.19 8.19 0 0 1-1.26-4.38c0-4.54 3.7-8.24 8.24-8.24M8.53 7.33c-.16 0-.42.06-.64.3-.22.24-.85.83-.85 2.02 0 1.19.87 2.34.99 2.5.12.16 1.7 2.6 4.12 3.65.58.25 1.03.4 1.38.51.58.18 1.11.16 1.53.1.47-.07 1.44-.59 1.64-1.16.2-.57.2-1.06.14-1.16-.06-.1-.22-.16-.46-.28s-1.44-.71-1.66-.79-.38-.12-.54.12c-.16.24-.63.79-.77.95-.14.16-.28.18-.52.06s-1.02-.38-1.94-1.2c-.72-.64-1.2-1.43-1.34-1.67-.14-.24-.02-.37.1-.49.11-.11.24-.28.36-.42.12-.14.16-.24.24-.4.08-.16.04-.3-.02-.42s-.54-1.31-.74-1.79c-.2-.48-.4-.41-.55-.42l-.47-.01z"/></svg>
@@ -2493,14 +2699,6 @@
                 </ul>
 
                 <div class="about-socials">
-                    <a href="https://www.instagram.com/susanspastries" target="_blank" rel="noopener" aria-label="Follow Susan's Pastries on Instagram (@susanspastries)">
-                        <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="2" y="2" width="20" height="20" rx="5" ry="5"></rect><path d="M16 11.37A4 4 0 1 1 12.63 8 4 4 0 0 1 16 11.37z"></path><line x1="17.5" y1="6.5" x2="17.51" y2="6.5"></line></svg>
-                        <span>Follow @susanspastries</span>
-                    </a>
-                    <a href="https://www.tiktok.com/@susans_pastries_and_more" target="_blank" rel="noopener" aria-label="Watch Susan's Pastries on TikTok (@susans_pastries_and_more)">
-                        <svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor"><path d="M19.59 6.69a4.83 4.83 0 0 1-3.77-4.25V2h-3.45v13.67a2.89 2.89 0 0 1-2.88 2.5 2.89 2.89 0 0 1 0-5.78 2.92 2.92 0 0 1 .88.13v-3.5a6.37 6.37 0 0 0-.88-.07 6.26 6.26 0 0 0 0 12.52 6.27 6.27 0 0 0 6.26-6.27V8.55a8.16 8.16 0 0 0 3.84.96V6.09a4.84 4.84 0 0 1-.01.6z"/></svg>
-                        <span>Watch @susans_pastries_and_more</span>
-                    </a>
                 </div>
             </div>
         </div>
@@ -2554,7 +2752,7 @@
                     <li style="display: flex; align-items: center; gap: 8px;">
                         <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" style="color: var(--primary-amber);"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72 12.84 12.84 0 0 0 .7 2.81 2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45 12.84 12.84 0 0 0 2.81.7A2 2 0 0 1 22 16.92z"></path></svg>
                         <a href="tel:0539332660" style="color: #fff; font-weight: 600;">053 933 2660</a>
-                        <span class="copy-pill" onclick="copyToClipboard('0539332660', '053 933 2660 copied!')" style="cursor: pointer;">Copy</span>
+                        <span class="copy-pill" onclick="copyToClipboard('0539332660', '<a href="tel:+233539332660" class="sp-clean-tel">053 933 2660</a> copied!')" style="cursor: pointer;">Copy</span>
                     </li>
                     <li style="display: flex; align-items: center; gap: 8px;">
                         <svg width="15" height="15" viewBox="0 0 24 24" fill="currentColor" style="color: #6ee7b7;"><path d="M12.04 2c-5.46 0-9.91 4.45-9.91 9.91 0 1.75.46 3.45 1.32 4.95L2.05 22l5.25-1.38c1.45.79 3.08 1.21 4.74 1.21 5.46 0 9.91-4.45 9.91-9.91 0-2.65-1.03-5.14-2.9-7.01A9.816 9.816 0 0 0 12.04 2m.01 1.67c2.2 0 4.26.86 5.82 2.42a8.225 8.225 0 0 1 2.41 5.83c0 4.54-3.7 8.24-8.24 8.24-1.48 0-2.93-.4-4.2-1.15l-.3-.18-3.12.82.83-3.04-.2-.31a8.19 8.19 0 0 1-1.26-4.38c0-4.54 3.7-8.24 8.24-8.24M8.53 7.33c-.16 0-.42.06-.64.3-.22.24-.85.83-.85 2.02 0 1.19.87 2.34.99 2.5.12.16 1.7 2.6 4.12 3.65.58.25 1.03.4 1.38.51.58.18 1.11.16 1.53.1.47-.07 1.44-.59 1.64-1.16.2-.57.2-1.06.14-1.16-.06-.1-.22-.16-.46-.28s-1.44-.71-1.66-.79-.38-.12-.54.12c-.16.24-.63.79-.77.95-.14.16-.28.18-.52.06s-1.02-.38-1.94-1.2c-.72-.64-1.2-1.43-1.34-1.67-.14-.24-.02-.37.1-.49.11-.11.24-.28.36-.42.12-.14.16-.24.24-.4.08-.16.04-.3-.02-.42s-.54-1.31-.74-1.79c-.2-.48-.4-.41-.55-.42l-.47-.01z"/></svg>
@@ -2593,17 +2791,6 @@
     </a>
 
     <!-- Sticky Mobile Bottom Quick Action Bar -->
-    <div class="mobile-bottom-bar" id="mobileBottomBar">
-        <div class="mobile-bottom-bar-inner">
-            <a href="tel:0539332660" class="mobile-bar-btn mobile-bar-call" aria-label="Direct Call">
-                <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72 12.84 12.84 0 0 0 .7 2.81 2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45 12.84 12.84 0 0 0 2.81.7A2 2 0 0 1 22 16.92z"></path></svg>
-                <span>Call 053 933 2660</span>
-            </a>
-            <a href="https://wa.me/233555950314?text=Hello%20Susan's%20Pastries,%20I%20would%20like%20to%20place%20an%20order." target="_blank" rel="noopener" class="mobile-bar-btn mobile-bar-wa" aria-label="WhatsApp Order">
-                <svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor"><path d="M12.04 2c-5.46 0-9.91 4.45-9.91 9.91 0 1.75.46 3.45 1.32 4.95L2.05 22l5.25-1.38c1.45.79 3.08 1.21 4.74 1.21 5.46 0 9.91-4.45 9.91-9.91 0-2.65-1.03-5.14-2.9-7.01A9.816 9.816 0 0 0 12.04 2m.01 1.67c2.2 0 4.26.86 5.82 2.42a8.225 8.225 0 0 1 2.41 5.83c0 4.54-3.7 8.24-8.24 8.24-1.48 0-2.93-.4-4.2-1.15l-.3-.18-3.12.82.83-3.04-.2-.31a8.19 8.19 0 0 1-1.26-4.38c0-4.54 3.7-8.24 8.24-8.24M8.53 7.33c-.16 0-.42.06-.64.3-.22.24-.85.83-.85 2.02 0 1.19.87 2.34.99 2.5.12.16 1.7 2.6 4.12 3.65.58.25 1.03.4 1.38.51.58.18 1.11.16 1.53.1.47-.07 1.44-.59 1.64-1.16.2-.57.2-1.06.14-1.16-.06-.1-.22-.16-.46-.28s-1.44-.71-1.66-.79-.38-.12-.54.12c-.16.24-.63.79-.77.95-.14.16-.28.18-.52.06s-1.02-.38-1.94-1.2c-.72-.64-1.2-1.43-1.34-1.67-.14-.24-.02-.37.1-.49.11-.11.24-.28.36-.42.12-.14.16-.24.24-.4.08-.16.04-.3-.02-.42s-.54-1.31-.74-1.79c-.2-.48-.4-.41-.55-.42l-.47-.01z"/></svg>
-                <span>WhatsApp Order</span>
-            </a>
-        </div>
     </div>
 
     <!-- Scripts: Mobile Drawer, Tab Toggle, Order Builder, Clipboard -->
