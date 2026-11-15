@@ -1237,6 +1237,82 @@
   background: rgba(212, 175, 55, 0.14);
 }
 
+    
+/* === Modal Visual & Cascade Overrides === */
+.emw-modal {
+  color-scheme: dark !important;
+  max-height: 90vh !important;
+  overflow-y: auto !important;
+}
+
+.emw-modal-close {
+  background: transparent !important;
+  border: 1px solid transparent !important;
+  color: rgba(248, 245, 240, 0.72) !important;
+  width: 2rem !important;
+  height: 2rem !important;
+  padding: 0 !important;
+  border-radius: 6px !important;
+  display: inline-flex !important;
+  align-items: center !important;
+  justify-content: center !important;
+  font-size: 1.4rem !important;
+  transition: color 0.2s ease, background 0.2s ease !important;
+}
+
+.emw-modal-close:hover {
+  color: #D4AF37 !important;
+  background: rgba(255, 255, 255, 0.08) !important;
+}
+
+.emw-star-btn {
+  background: rgba(255, 255, 255, 0.05) !important;
+  border: 1px solid rgba(212, 175, 55, 0.28) !important;
+  color: rgba(248, 245, 240, 0.32) !important;
+  padding: 0 !important;
+  display: inline-flex !important;
+  align-items: center !important;
+  justify-content: center !important;
+  transition: all 0.15s ease !important;
+}
+
+.emw-star-btn.active {
+  color: #D4AF37 !important;
+  border-color: #D4AF37 !important;
+  background: rgba(212, 175, 55, 0.16) !important;
+  text-shadow: 0 0 10px rgba(212, 175, 55, 0.35) !important;
+}
+
+.emw-field label {
+  color: rgba(248, 245, 240, 0.85) !important;
+  font-weight: 600 !important;
+  letter-spacing: 0.02em !important;
+}
+
+.emw-field input::placeholder,
+.emw-field textarea::placeholder {
+  color: rgba(248, 245, 240, 0.4) !important;
+}
+
+.emw-field input:focus,
+.emw-field select:focus,
+.emw-field textarea:focus {
+  outline: none !important;
+  border-color: #D4AF37 !important;
+  box-shadow: 0 0 0 3px rgba(212, 175, 55, 0.16) !important;
+}
+
+.emw-field select option {
+  background-color: #161412 !important;
+  color: #F8F5F0 !important;
+}
+
+@media (max-width: 480px) {
+  .emw-modal form > div[style*="grid-template-columns"] {
+    grid-template-columns: 1fr !important;
+  }
+}
+
     </style>
 </head>
 <body>
