@@ -356,7 +356,7 @@ function App() {
         </div>
 
         {/* Contact & Channel Links */}
-        <div style={{ display: 'flex', gap: '0.75rem', alignItems: 'center', justifyContent: 'center', marginTop: '0.2rem' }}>
+        <div style={{ display: 'flex', flexWrap: 'wrap', gap: '0.75rem', alignItems: 'center', justifyContent: 'center', marginTop: '0.2rem', maxWidth: '100%' }}>
           <a 
             href="https://whatsapp.com/channel/0029Vb7wdZMJUM2fepkMfR0D" 
             target="_blank" 
