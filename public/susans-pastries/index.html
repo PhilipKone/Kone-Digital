@@ -1893,6 +1893,108 @@ div[style*="position:fixed"][style*="bottom:0"] {
   display: none !important;
 }
 
+    
+/* === Susan's Pastries: Ultra-Compact Buttons & Zero Bottom Dock === */
+body {
+  padding-bottom: 0 !important;
+}
+
+.sp-clean-tel {
+  color: inherit !important;
+  text-decoration: none !important;
+  font-weight: 600 !important;
+  border-bottom: 1px dotted rgba(217, 119, 6, 0.55) !important;
+}
+
+/* Shrink all primary, hero, and calculator buttons */
+header a[href^="#"],
+header a[href*="wa.me"],
+main a[href="#calculator"],
+main a[href*="wa.me"],
+section a[href="#calculator"],
+section a[href*="wa.me"],
+#calculator button,
+button,
+.btn,
+[class*="btn"] {
+  padding: 0.34rem 0.72rem !important;
+  font-size: 0.72rem !important;
+  line-height: 1.15 !important;
+  min-height: unset !important;
+  height: auto !important;
+  border-radius: 5px !important;
+  letter-spacing: 0.02em !important;
+}
+
+/* Keep Send Order to WhatsApp compact rather than full-bleed */
+#calculator a[href*="wa.me"],
+#calculator button[type="button"],
+#calculator button[type="submit"] {
+  width: auto !important;
+  display: inline-flex !important;
+  padding: 0.4rem 0.85rem !important;
+  font-size: 0.74rem !important;
+}
+
+/* Micro Frozen Box / Freshly Fried toggle tabs */
+[role="tab"],
+button[onclick*="Frozen"],
+button[onclick*="Fried"],
+button[data-mode] {
+  padding: 0.24rem 0.58rem !important;
+  font-size: 0.68rem !important;
+  border-radius: 4px !important;
+}
+
+/* Sleek inline text links on the 4 menu cards */
+a.sp-tiny-link {
+  display: inline-flex !important;
+  align-items: center !important;
+  width: auto !important;
+  background: transparent !important;
+  box-shadow: none !important;
+  border: none !important;
+  border-bottom: 1px solid rgba(217, 119, 6, 0.55) !important;
+  border-radius: 0 !important;
+  padding: 0.15rem 0 !important;
+  margin-top: 0.35rem !important;
+  font-size: 0.74rem !important;
+  font-weight: 700 !important;
+  color: #B45309 !important;
+  gap: 0.3rem !important;
+}
+a.sp-tiny-link::after {
+  content: "→";
+  font-size: 0.78rem;
+}
+
+/* Tiny 22px +/- steppers in Live Order Calculator */
+#calculator button[onclick*="-1"],
+#calculator button[onclick*="1)"],
+#calculator .qty-btn,
+#calculator [class*="step"] button,
+#calculator [class*="qty"] button {
+  width: 22px !important;
+  height: 22px !important;
+  min-width: 22px !important;
+  min-height: 22px !important;
+  padding: 0 !important;
+  font-size: 0.78rem !important;
+  border-radius: 4px !important;
+  display: inline-flex !important;
+  align-items: center !important;
+  justify-content: center !important;
+}
+
+/* Hide any residual fixed bottom bar */
+.fixed.bottom-0,
+[class*="sticky-bar"],
+[class*="mobile-bar"],
+[style*="position: fixed"][style*="bottom"],
+[style*="position:fixed"][style*="bottom"] {
+  display: none !important;
+}
+
     </style>
 </head>
 <body>
