@@ -1,6 +1,9 @@
 ﻿const http=require('http'),fs=require('fs'),path=require('path'),{execSync}=require('child_process');
 const MIME={'.html':'text/html;charset=utf-8','.jpg':'image/jpeg','.jpeg':'image/jpeg','.png':'image/png','.webp':'image/webp'};
 const esc=(s='')=>String(s).replace(/&/g,'&amp;').replace(/</g,'&lt;').replace(/>/g,'&gt;').replace(/"/g,'&quot;');
+const gitPush=()=>{try{execSync('git push',{cwd:__dirname})}catch{execSync('git -c "http.curloptResolve=github.com:443:140.82.121.4" push',{cwd:__dirname})}};
+const trashDir=path.join(__dirname,'.trash');
+
 http.createServer((req,res)=>{
   if(req.method==='GET'&&req.url==='/'){res.writeHead(200,{'Content-Type':MIME['.html']});return res.end(fs.readFileSync(path.join(__dirname,'studio','index.html')))}
   if(req.method==='GET'&&req.url.startsWith('/preview/')){
@@ -10,12 +13,43 @@ http.createServer((req,res)=>{
     res.writeHead(404);return res.end('Not found');
   }
   if(req.method==='GET'&&req.url==='/api/sites'){
-    const p=path.join(__dirname,'public');
-    const s=fs.readdirSync(p,{withFileTypes:true}).filter(d=>d.isDirectory()&&fs.existsSync(path.join(p,d.name,'index.html'))).map(d=>{
-      const m=fs.readFileSync(path.join(p,d.name,'index.html'),'utf8').match(/<title>(.*?)<\/title>/i);
+    const listDir=(base)=>fs.existsSync(base)?fs.readdirSync(base,{withFileTypes:true}).filter(d=>d.isDirectory()&&fs.existsSync(path.join(base,d.name,'index.html'))).map(d=>{
+      const m=fs.readFileSync(path.join(base,d.name,'index.html'),'utf8').match(/<title>(.*?)<\/title>/i);
       return{slug:d.name,title:m?m[1]:d.name,liveUrl:`https://digital.codkon.com/${d.name}/`};
-    });
-    res.writeHead(200,{'Content-Type':'application/json'});return res.end(JSON.stringify(s));
+    }):[];
+    res.writeHead(200,{'Content-Type':'application/json'});return res.end(JSON.stringify({active:listDir(path.join(__dirname,'public')),trash:listDir(trashDir)}));
+  }
+  if(req.method==='POST'&&req.url==='/api/delete'){
+    let b='';req.on('data',c=>b+=c);req.on('end',()=>{
+      try{
+        const slug=String(JSON.parse(b).slug||'').toLowerCase().replace(/[^a-z0-9-]+/g,'');
+        if(!slug)throw new Error('Invalid slug');
+        const target=path.join(__dirname,'public',slug);
+        if(fs.existsSync(target)){
+          fs.mkdirSync(trashDir,{recursive:true});
+          const dest=path.join(trashDir,slug);
+          if(fs.existsSync(dest))fs.rmSync(dest,{recursive:true,force:true});
+          fs.cpSync(target,dest,{recursive:true});
+          fs.rmSync(target,{recursive:true,force:true});
+        }
+        execSync(`git rm -rf --ignore-unmatch public/${slug}`,{cwd:__dirname});
+        const diff=execSync('git status --porcelain',{cwd:__dirname}).toString().trim();
+        let unpublished=false;
+        if(diff){execSync(`git commit -m "chore(client): move ${slug} to trash"`,{cwd:__dirname});gitPush();unpublished=true;}
+        res.writeHead(200,{'Content-Type':'application/json'});res.end(JSON.stringify({ok:true,slug,unpublished}));
+      }catch(e){res.writeHead(400,{'Content-Type':'application/json'});res.end(JSON.stringify({ok:false,error:e.message}))}
+    });return;
+  }
+  if(req.method==='POST'&&req.url==='/api/restore'){
+    let b='';req.on('data',c=>b+=c);req.on('end',()=>{
+      try{
+        const slug=String(JSON.parse(b).slug||'').toLowerCase().replace(/[^a-z0-9-]+/g,'');
+        const src=path.join(trashDir,slug),dest=path.join(__dirname,'public',slug);
+        if(!slug||!fs.existsSync(src))throw new Error('Site not found in trash');
+        fs.cpSync(src,dest,{recursive:true});fs.rmSync(src,{recursive:true,force:true});
+        res.writeHead(200,{'Content-Type':'application/json'});res.end(JSON.stringify({ok:true,slug}));
+      }catch(e){res.writeHead(400,{'Content-Type':'application/json'});res.end(JSON.stringify({ok:false,error:e.message}))}
+    });return;
   }
   if(req.method==='POST'&&req.url==='/api/generate'){
     let b='';req.on('data',c=>b+=c);req.on('end',()=>{
@@ -40,11 +74,7 @@ http.createServer((req,res)=>{
         }
         fs.writeFileSync(path.join(out,'index.html'),html,'utf8');
         let pub=false;
-        if(d.publish){
-          execSync(`git add public/${slug} && git commit -m "feat(client): deploy ${slug}"`,{cwd:__dirname});
-          try{execSync('git push',{cwd:__dirname})}catch{execSync('git -c "http.curloptResolve=github.com:443:140.82.121.4" push',{cwd:__dirname})}
-          pub=true;
-        }
+        if(d.publish){execSync(`git add public/${slug} && git commit -m "feat(client): deploy ${slug}"`,{cwd:__dirname});gitPush();pub=true;}
         res.writeHead(200,{'Content-Type':'application/json'});res.end(JSON.stringify({ok:true,slug,published:pub,liveUrl:`https://digital.codkon.com/${slug}/`}));
       }catch(e){res.writeHead(400,{'Content-Type':'application/json'});res.end(JSON.stringify({ok:false,error:e.message}))}
     });return;

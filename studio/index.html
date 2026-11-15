@@ -50,7 +50,7 @@
       </div>
       <div id="st" style="margin-top:12px;font-size:.86rem"></div>
     </div>
-    <div class="card"><h1>Active Sites</h1><p class="sub">Click to preview or open live</p><div id="list"></div></div>
+    <div class="card"><h1>Active Sites</h1><p class="sub">Click to preview or open live</p><div id="list"></div><div class="sec" style="margin-top:20px">Recently Deleted (Trash)</div><div id="trashList" style="font-size:.8rem;color:var(--mut)">Empty</div></div>
   </div>
   <script>
     const slugEl=document.getElementById('slug');
@@ -67,7 +67,7 @@
       rd.readAsDataURL(f);
     }
     async function load(){
-      const s=await(await fetch('/api/sites')).json();
+      const {active:s,trash:t}=await(await fetch('/api/sites')).json();document.getElementById('trashList').innerHTML=t.length?t.map(x=>`<div class="sc" style="opacity:.85"><div><strong>${x.slug}</strong><div style="font-size:.74rem;color:var(--mut)">${x.title}</div></div><button type="button" onclick="restoreSite('${x.slug}')" style="background:rgba(34,197,94,.16);color:#4ADE80;border:1px solid rgba(34,197,94,.3);border-radius:6px;padding:4px 9px;font-size:.74rem;font-weight:700;cursor:pointer">Restore</button></div>`).join(''):'Empty';
       document.getElementById('list').innerHTML=s.map(x=>`<div class="sc"><div><strong>${x.slug}</strong><div style="font-size:.76rem;color:var(--mut)">${x.title}</div></div><div style="display:flex;gap:8px"><a href="/preview/${x.slug}/" target="_blank">Preview</a><a href="${x.liveUrl}" target="_blank">Live ↗</a></div></div>`).join('');
     }
     async function go(publish){
@@ -82,3 +82,4 @@
   </script>
 </body>
 </html>
+
