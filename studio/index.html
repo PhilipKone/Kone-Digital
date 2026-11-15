@@ -22,7 +22,7 @@
     .sc{background:var(--s2);border:1px solid var(--ln);border-radius:11px;padding:12px;margin-bottom:9px;display:flex;justify-content:space-between;align-items:center;gap:10px}
     .acts{display:flex;align-items:center;gap:8px;flex-shrink:0;white-space:nowrap}
     .acts a{color:var(--acc);font-size:.78rem;font-weight:700;text-decoration:none}
-    .del{background:rgba(239,68,68,.15);color:#F87171;border:1px solid rgba(239,68,68,.3);border-radius:6px;padding:4px 8px;font-size:.73rem;font-weight:700;cursor:pointer}
+    .edt{background:rgba(59,130,246,.16);color:#60A5FA;border:1px solid rgba(59,130,246,.32);border-radius:6px;padding:4px 8px;font-size:.73rem;font-weight:700;cursor:pointer}.del{background:rgba(239,68,68,.15);color:#F87171;border:1px solid rgba(239,68,68,.3);border-radius:6px;padding:4px 8px;font-size:.73rem;font-weight:700;cursor:pointer}
     .rst{background:rgba(34,197,94,.16);color:#4ADE80;border:1px solid rgba(34,197,94,.3);border-radius:6px;padding:4px 9px;font-size:.73rem;font-weight:700;cursor:pointer}
     .core{font-size:.7rem;font-weight:700;color:var(--mut);border:1px solid var(--ln);padding:2px 7px;border-radius:999px}
     @media(max-width:920px){.wrap{grid-template-columns:1fr}.ir{grid-template-columns:1fr}}
@@ -67,7 +67,7 @@
   <script>
     const slugEl=document.getElementById('slug');
     document.getElementById('name').oninput=e=>slugEl.value=e.target.value.toLowerCase().replace(/[^a-z0-9]+/g,'-').replace(/^-|-$/g,'');
-    function addItem(n='',p='',d=''){
+    function addItem(n='',p='',d='',img=''){const r=document.createElement('div');r.className='ir';r.innerHTML=`<input class="in" value="${n}" placeholder="Item Name"/><input class="ip" value="${p}" placeholder="GH₵ 100"/><input class="id" value="${d}" placeholder="Short note"/><label class="up-btn ${img?'ready':''}"><span>${img?'✓ Saved':'Photo'}</span><input type="file" accept="image/*" class="if" data-existing="${img}" hidden onchange="prepImg(this)"/></label><button type="button" class="sm" onclick="this.parentElement.remove()">✕</button>`;document.getElementById('items').appendChild(r);}function _unused(){
       const r=document.createElement('div');r.className='ir';
       r.innerHTML=`<input class="in" value="${n}" placeholder="Item Name"/><input class="ip" value="${p}" placeholder="GH₵ 100"/><input class="id" value="${d}" placeholder="Short note"/><label class="up-btn"><span>Photo</span><input type="file" accept="image/*" class="if" hidden onchange="prepImg(this)"/></label><button type="button" class="sm" onclick="this.parentElement.remove()">✕</button>`;
       document.getElementById('items').appendChild(r);
@@ -81,10 +81,10 @@
     }
     async function load(){
       const {active:s,trash:t}=await(await fetch('/api/sites')).json();
-      document.getElementById('list').innerHTML=s.map(x=>`<div class="sc"><div style="min-width:0"><strong>${x.slug}</strong><div style="font-size:.76rem;color:var(--mut);overflow:hidden;text-overflow:ellipsis;white-space:nowrap">${x.title}</div></div><div class="acts"><a href="/preview/${x.slug}/" target="_blank">Preview</a><a href="${x.liveUrl}" target="_blank">Live ↗</a>${x.slug==='invoice'?'<span class="core">Core</span>':`<button type="button" class="del" onclick="delSite('${x.slug}')">Delete</button>`}</div></div>`).join('');
+      document.getElementById('list').innerHTML=s.map(x=>`<div class="sc"><div style="min-width:0"><strong>${x.slug}</strong><div style="font-size:.76rem;color:var(--mut);overflow:hidden;text-overflow:ellipsis;white-space:nowrap">${x.title}</div></div><div class="acts"><a href="/preview/${x.slug}/" target="_blank">Preview</a><a href="${x.liveUrl}" target="_blank">Live ↗</a>${x.slug==='invoice'?'<span class="core">Core</span>':`<button type="button" class="edt" onclick="editSite('${x.slug}')">Edit</button><button type="button" class="del" onclick="delSite('${x.slug}')">Delete</button>`}</div></div>`).join('');
       document.getElementById('trashList').innerHTML=t.length?t.map(x=>`<div class="sc" style="opacity:.85"><div><strong>${x.slug}</strong><div style="font-size:.74rem;color:var(--mut)">${x.title}</div></div><button type="button" class="rst" onclick="restoreSite('${x.slug}')">Restore</button></div>`).join(''):'Empty';
     }
-    async function delSite(slug){
+    async function editSite(slug){const st=document.getElementById("st");st.style.color="#F59E0B";st.textContent=`Loading ${slug}...`;const r=await(await fetch(`/api/site?slug=${slug}`)).json();if(!r.ok){st.style.color="#F87171";st.textContent="Error: "+r.error;return}const s=r.site;type.value=s.type||"catalog";document.getElementById("name").value=s.name||slug;slugEl.value=s.slug;accent.value=s.accent||"#F59E0B";tagline.value=s.tagline||"";desc.value=s.desc||"";wa.value=s.wa||"233551993820";phone.value=s.phone||"+233 55 199 3820";const box=document.getElementById("items");box.innerHTML="";(s.items&&s.items.length?s.items:[{name:"Signature Piece 01",price:"GH₵ 150",desc:"Available in Accra",imgFile:""}]).forEach(it=>addItem(it.name,it.price,it.desc,it.imgFile||""));st.style.color="#60A5FA";st.textContent=`Editing "${slug}" — update details and click Build or Publish.`;window.scrollTo({top:0,behavior:"smooth"});}async function delSite(slug){
       if(!confirm(`Move "${slug}" to Trash and unpublish from live site?`))return;
       const st=document.getElementById('st');st.style.color='#F59E0B';st.textContent=`Moving ${slug} to trash...`;
       const r=await(await fetch('/api/delete',{method:'POST',headers:{'Content-Type':'application/json'},body:JSON.stringify({slug})})).json();
@@ -99,7 +99,7 @@
     }
     async function go(publish){
       const st=document.getElementById('st');st.style.color='#F59E0B';st.textContent=publish?'Uploading photos & publishing...':'Building local preview...';
-      const items=[...document.querySelectorAll('.ir')].map(r=>({name:r.querySelector('.in').value,price:r.querySelector('.ip').value,desc:r.querySelector('.id').value,imgData:r.querySelector('.if').dataset.img||''}));
+      const items=[...document.querySelectorAll('.ir')].map(r=>({name:r.querySelector('.in').value,price:r.querySelector('.ip').value,desc:r.querySelector('.id').value,imgData:r.querySelector('.if').dataset.img||'',existingImg:r.querySelector('.if').dataset.existing||''}));
       const res=await(await fetch('/api/generate',{method:'POST',headers:{'Content-Type':'application/json'},body:JSON.stringify({type:type.value,name:document.getElementById('name').value,slug:slugEl.value,accent:accent.value,tagline:tagline.value,desc:desc.value,wa:wa.value,phone:phone.value,items,publish})})).json();
       if(!res.ok){st.style.color='#F87171';st.textContent='Error: '+res.error;return}
       st.style.color='#22C55E';st.innerHTML=`Done! <a href="/preview/${res.slug}/" target="_blank" style="color:var(--acc);font-weight:700">Open Preview</a>`+(res.published?` | <a href="${res.liveUrl}" target="_blank" style="color:#22C55E;font-weight:700">Open Live URL</a>`:'');
@@ -109,3 +109,4 @@
   </script>
 </body>
 </html>
+
