@@ -1861,6 +1861,24 @@ nav .btn-nav-estimate {
   letter-spacing: 0.03em !important;
 }
 
+    
+/* === Flush Minimalist Header & No Floating Bubble === */
+@media (min-width: 769px) {
+  nav .nav-menu {
+    margin-left: auto !important;
+    margin-right: 0 !important;
+    gap: 2.25rem !important;
+  }
+  nav .nav-actions-right {
+    display: none !important;
+  }
+}
+a[href*="wa.me"][style*="fixed"],
+.floating-whatsapp,
+.wa-float {
+  display: none !important;
+}
+
     </style>
 </head>
 <body>
@@ -1887,10 +1905,10 @@ nav .btn-nav-estimate {
 
         <ul class="nav-menu">
             <li><a href="#services" class="nav-link">Selected Works</a></li>
+            <li><a href="#contact" class="nav-link">Inquire</a></li>
         </ul>
 
         <div class="nav-actions-right">
-            <a href="#contact" class="btn-nav-estimate">Request Consultation</a>
             <button class="mobile-hamburger-btn" onclick="openMobileMenu()" aria-label="Open Navigation Menu">
                 <span></span>
                 <span></span>
@@ -1911,9 +1929,8 @@ nav .btn-nav-estimate {
         </div>
         <div class="mobile-drawer-body">
             <ul class="mobile-nav-list">
-                <li><a href="#services" class="mobile-nav-link" onclick="closeMobileMenu()"><span>Architectural Works</span> <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" style="opacity:0.5;"><polyline points="9 18 15 12 9 6"></polyline></svg></a></li>
-                <li><a href="#contact" class="mobile-nav-link" onclick="closeMobileMenu()"><span>Direct Consultation</span> <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" style="opacity:0.5;"><polyline points="9 18 15 12 9 6"></polyline></svg></a></li>
-                <li><a href="https://digital.codkon.com" target="_blank" class="mobile-nav-link" onclick="closeMobileMenu()"><span>Kone Digital</span> <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" style="opacity:0.5;"><polyline points="9 18 15 12 9 6"></polyline></svg></a></li>
+                <li><a href="#services" class="mobile-nav-link" onclick="closeMobileMenu()"><span>Selected Works</span> <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" style="opacity:0.5;"><polyline points="9 18 15 12 9 6"></polyline></svg></a></li>
+                <li><a href="#contact" class="mobile-nav-link" onclick="closeMobileMenu()"><span>Inquire</span> <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" style="opacity:0.5;"><polyline points="9 18 15 12 9 6"></polyline></svg></a></li>
             </ul>
 
             <a href="https://wa.me/233551993820?text=Hello%20Sedemson%20Stone,%20I'd%20like%20to%20request%20an%20estimate." target="_blank" rel="noopener" class="mobile-drawer-cta" onclick="closeMobileMenu()">
@@ -2144,11 +2161,6 @@ nav .btn-nav-estimate {
         <p style="font-size: 0.82rem; margin-bottom: 0.4rem;">Registered Enterprise – BN036120125</p>
         <p style="font-size: 0.82rem;">&copy; 2026 Sedemson Stone Craftsmanship Enterprise. Digital Architecture by <strong>Kone Digital</strong>.</p>
     </footer>
-
-    <!-- Floating Minimal WhatsApp Disc (Zero Screen Clutter) -->
-    <a href="https://wa.me/233551993820?text=Hi%20Sedemson%20Stone,%20I'd%20like%20to%20discuss%20an%20architectural%20stone%20project." target="_blank" rel="noopener" class="floating-wa-bubble" aria-label="Direct WhatsApp Consultation">
-        <svg viewBox="0 0 24 24"><path d="M12.04 2c-5.46 0-9.91 4.45-9.91 9.91 0 1.75.46 3.45 1.32 4.95L2.05 22l5.25-1.38c1.45.79 3.08 1.21 4.74 1.21 5.46 0 9.91-4.45 9.91-9.91 0-2.65-1.03-5.14-2.9-7.01A9.816 9.816 0 0 0 12.04 2m.01 1.67c2.2 0 4.26.86 5.82 2.42a8.225 8.225 0 0 1 2.41 5.83c0 4.54-3.7 8.24-8.24 8.24-1.48 0-2.93-.4-4.2-1.15l-.3-.18-3.12.82.83-3.04-.2-.31a8.19 8.19 0 0 1-1.26-4.38c0-4.54 3.7-8.24 8.24-8.24M8.53 7.33c-.16 0-.42.06-.64.3-.22.24-.85.83-.85 2.02 0 1.19.87 2.34.99 2.5.12.16 1.7 2.6 4.12 3.65.58.25 1.03.4 1.38.51.58.18 1.11.16 1.53.1.47-.07 1.44-.59 1.64-1.16.2-.57.2-1.06.14-1.16-.06-.1-.22-.16-.46-.28s-1.44-.71-1.66-.79-.38-.12-.54.12c-.16.24-.63.79-.77.95-.14.16-.28.18-.52.06s-1.02-.38-1.94-1.2c-.72-.64-1.2-1.43-1.34-1.67-.14-.24-.02-.37.1-.49.11-.11.24-.28.36-.42.12-.14.16-.24.24-.4.08-.16.04-.3-.02-.42s-.54-1.31-.74-1.79c-.2-.48-.4-.41-.55-.42l-.47-.01z"/></svg>
-    </a>
 
     <!-- Interactive Navigation Drawer Logic -->
     <script>
