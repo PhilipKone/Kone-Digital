@@ -1,0 +1,88 @@
+﻿<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" /><meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Kone Digital Studio | WaaS Control Center</title>
+  <style>
+    :root{--bg:#090D16;--s1:#111827;--s2:#192234;--ink:#F8FAFC;--mut:#94A3B8;--acc:#F59E0B;--ln:rgba(255,255,255,.1)}
+    *{box-sizing:border-box;margin:0;padding:0}body{font-family:system-ui,sans-serif;background:var(--bg);color:var(--ink);padding:28px 16px;line-height:1.5}
+    .grid-wrap{max-width:1080px;margin:0 auto;display:grid;grid-template-columns:1.4fr 1fr;gap:24px;align-items:start}
+    .card{background:var(--s1);border:1px solid var(--ln);border-radius:18px;padding:28px}
+    h1{font-size:1.4rem;margin-bottom:4px}.sub{color:var(--mut);font-size:.86rem;margin-bottom:20px}
+    .sec{font-size:.75rem;font-weight:700;text-transform:uppercase;letter-spacing:.08em;color:var(--acc);margin:18px 0 10px;border-bottom:1px solid var(--ln);padding-bottom:4px}
+    label{display:block;font-size:.78rem;font-weight:700;color:#CBD5E1;margin-bottom:5px}
+    input,select,textarea{width:100%;padding:10px 12px;background:var(--s2);border:1px solid var(--ln);border-radius:9px;color:var(--ink);font-size:.9rem;margin-bottom:12px}
+    .row{display:grid;grid-template-columns:1fr 1fr;gap:12px}.item-r{display:grid;grid-template-columns:2fr 1fr 2.5fr auto;gap:8px;align-items:center}
+    .btn{width:100%;padding:12px;border:none;border-radius:10px;font-weight:800;font-size:.92rem;cursor:pointer;background:var(--acc);color:#090D16;margin-top:8px}
+    .btn-pub{background:#22C55E;color:#052E16}.btn-sm{padding:6px 12px;font-size:.78rem;width:auto;background:var(--s2);color:var(--ink);border:1px solid var(--ln);border-radius:8px;cursor:pointer}
+    .site-card{background:var(--s2);border:1px solid var(--ln);border-radius:12px;padding:14px;margin-bottom:10px;display:flex;justify-content:space-between;align-items:center;gap:10px}
+    .site-card a{color:var(--acc);font-size:.8rem;font-weight:700}
+    @media(max-width:860px){.grid-wrap{grid-template-columns:1fr}}
+  </style>
+</head>
+<body>
+  <div class="grid-wrap">
+    <div class="card">
+      <h1>Kone Digital Studio</h1>
+      <p class="sub">Build &amp; deploy Accra client sites directly to <code>public/&lt;slug&gt;/</code>.</p>
+      <form id="f">
+        <div class="sec">01. Brand &amp; Template</div>
+        <div class="row">
+          <div><label>Template</label><select id="type"><option value="catalog">Storefront Catalog</option><option value="org">Organization / Service</option></select></div>
+          <div><label>Business Name</label><input id="name" required placeholder="e.g. Osu Velvet Hair" /></div>
+        </div>
+        <div class="row">
+          <div><label>URL Slug</label><input id="slug" required placeholder="osu-velvet-hair" /></div>
+          <div><label>Brand Color</label><input type="color" id="accent" value="#F59E0B" style="height:42px;padding:3px" /></div>
+        </div>
+        <label>Hero Headline</label><input id="tagline" value="Premium Quality & Fast Accra Delivery" required />
+        <label>SEO Description</label><textarea id="desc" rows="2">Order directly via WhatsApp for same-day delivery across Greater Accra.</textarea>
+        <div class="sec">02. WhatsApp &amp; Phone</div>
+        <div class="row">
+          <div><label>WhatsApp (233...)</label><input id="wa" value="233551993820" required /></div>
+          <div><label>Display Phone</label><input id="phone" value="+233 55 199 3820" required /></div>
+        </div>
+        <div class="sec">03. Catalog Items</div>
+        <div id="items">
+          <div class="item-r"><input class="in" value="Signature Item 01" /><input class="ip" value="GH₵ 150" /><input class="id" value="Available in Accra" /><button type="button" class="btn-sm" onclick="this.parentElement.remove()">✕</button></div>
+        </div>
+        <button type="button" class="btn-sm" onclick="addItem()">+ Add Item</button>
+        <div class="row" style="margin-top:14px">
+          <button type="button" class="btn" onclick="submitSite(false)">Build Local Preview</button>
+          <button type="button" class="btn btn-pub" onclick="submitSite(true)">Build &amp; Publish Live</button>
+        </div>
+      </form>
+      <div id="status" style="margin-top:14px;font-size:.88rem;color:#22C55E"></div>
+    </div>
+
+    <div class="card">
+      <h1>Active Client Sites</h1>
+      <p class="sub">Live &amp; local sites in <code>public/</code></p>
+      <div id="siteList">Loading sites...</div>
+    </div>
+  </div>
+  <script>
+    const slugEl = document.getElementById('slug');
+    document.getElementById('name').oninput = e => slugEl.value = e.target.value.toLowerCase().replace(/[^a-z0-9]+/g,'-').replace(/^-|-$/g,'');
+    function addItem() {
+      const d = document.createElement('div'); d.className = 'item-r';
+      d.innerHTML = '<input class="in" placeholder="Item Name"/><input class="ip" placeholder="GH₵ 100"/><input class="id" placeholder="Short note"/><button type="button" class="btn-sm" onclick="this.parentElement.remove()">✕</button>';
+      document.getElementById('items').appendChild(d);
+    }
+    async function loadSites() {
+      const sites = await (await fetch('/api/sites')).json();
+      document.getElementById('siteList').innerHTML = sites.map(s => `<div class="site-card"><div><strong>${s.slug}</strong><div style="font-size:.78rem;color:var(--mut)">${s.title}</div></div><div style="display:flex;gap:8px"><a href="/preview/${s.slug}/" target="_blank">Preview</a><a href="${s.liveUrl}" target="_blank">Live ↗</a></div></div>`).join('');
+    }
+    async function submitSite(publish) {
+      const st = document.getElementById('status'); st.textContent = publish ? 'Building & pushing to GitHub...' : 'Generating local preview...';
+      const items = [...document.querySelectorAll('.item-r')].map(r => ({ name: r.querySelector('.in').value, price: r.querySelector('.ip').value, desc: r.querySelector('.id').value }));
+      const res = await (await fetch('/api/generate', { method: 'POST', headers: {'Content-Type':'application/json'}, body: JSON.stringify({ type: type.value, name: document.getElementById('name').value, slug: slugEl.value, accent: accent.value, tagline: tagline.value, desc: desc.value, wa: wa.value, phone: phone.value, items, publish }) })).json();
+      if (!res.ok) { st.style.color = '#F87171'; st.textContent = 'Error: ' + res.error; return; }
+      st.style.color = '#22C55E';
+      st.innerHTML = `Ready! <a href="/preview/${res.slug}/" target="_blank" style="color:var(--acc);font-weight:700">Open Preview</a>` + (res.published ? ` | <a href="${res.liveUrl}" target="_blank" style="color:#22C55E;font-weight:700">Open Live URL</a>` : '');
+      loadSites();
+    }
+    loadSites();
+  </script>
+</body>
+</html>
