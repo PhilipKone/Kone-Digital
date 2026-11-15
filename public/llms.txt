@@ -6,12 +6,12 @@ Kone Digital builds lightning-fast bespoke web applications, e-commerce storefro
 
 ## Core Capabilities & Services
 
-- [Custom Web & SaaS Engineering](https://digital.koneacademy.io/#services/web-development) - React, Next.js, and bespoke enterprise web architectures.
-- [Mobile App Development](https://digital.koneacademy.io/#services/mobile-apps) - High-performance iOS and Android applications.
-- [Brand Design & UI/UX Systems](https://digital.koneacademy.io/#services/brand-design) - Identity systems, interactive design guidelines, and design tokens.
-- [Cloud & DevOps Infrastructure](https://digital.koneacademy.io/#services/cloud-devops) - Scalable cloud hosting, CI/CD pipelines, and microservices.
-- [Client Work & Case Studies](https://digital.koneacademy.io/#work) - Portfolio of live production apps and client transformations.
-- [Transparent Pricing](https://digital.koneacademy.io/#pricing) - Predictable fixed-price and subscription tiers for digital products.
+- [Custom Web & SaaS Engineering](https://digital.codkon.com/#services/web-development) - React, Next.js, and bespoke enterprise web architectures.
+- [Mobile App Development](https://digital.codkon.com/#services/mobile-apps) - High-performance iOS and Android applications.
+- [Brand Design & UI/UX Systems](https://digital.codkon.com/#services/brand-design) - Identity systems, interactive design guidelines, and design tokens.
+- [Cloud & DevOps Infrastructure](https://digital.codkon.com/#services/cloud-devops) - Scalable cloud hosting, CI/CD pipelines, and microservices.
+- [Client Work & Case Studies](https://digital.codkon.com/#work) - Portfolio of live production apps and client transformations.
+- [Transparent Pricing](https://digital.codkon.com/#pricing) - Predictable fixed-price and subscription tiers for digital products.
 
 ## Parent Ecosystem
 
