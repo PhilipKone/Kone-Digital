@@ -2859,7 +2859,7 @@ div[class*="drawer"] div:has(span:contains("Sun")) {
 
 
     <script>
-        function openMobileMenu() {
+        window.openMobileMenu = function () {
             const drawer = document.getElementById('mobileDrawer');
             const overlay = document.getElementById('mobileDrawerOverlay');
             if (drawer) {
@@ -2868,8 +2868,8 @@ div[class*="drawer"] div:has(span:contains("Sun")) {
             }
             if (overlay) overlay.style.display = 'block';
             document.body.style.overflow = 'hidden';
-        }
-        function closeMobileMenu() {
+        };
+        window.closeMobileMenu = function () {
             const drawer = document.getElementById('mobileDrawer');
             const overlay = document.getElementById('mobileDrawerOverlay');
             if (drawer) {
@@ -2878,7 +2878,7 @@ div[class*="drawer"] div:has(span:contains("Sun")) {
             }
             if (overlay) overlay.style.display = 'none';
             document.body.style.overflow = '';
-        }
+        };
         document.addEventListener('DOMContentLoaded', function () {
             const topBar = document.querySelector('header, nav');
             if (!topBar) return;
@@ -2888,12 +2888,12 @@ div[class*="drawer"] div:has(span:contains("Sun")) {
                 toggleBtn.onclick = function (e) {
                     e.preventDefault();
                     e.stopPropagation();
-                    openMobileMenu();
+                    window.openMobileMenu();
                 };
             }
         });
         document.addEventListener('keydown', function (e) {
-            if (e.key === 'Escape') closeMobileMenu();
+            if (e.key === 'Escape') window.closeMobileMenu();
         });
     </script>
 
