@@ -2041,7 +2041,17 @@ div[class*="drawer"] div:has(span:contains("Sun")) {
 }
 
     
-html, body { width: 100%; max-width: 100%; overflow-x: clip !important; overscroll-behavior-x: none !important; }
+html, body {
+  width: 100% !important;
+  max-width: 100% !important;
+  overflow-x: clip !important;
+  overscroll-behavior-x: none !important;
+  touch-action: pan-y !important;
+  position: relative;
+}
+header, nav, main, section, footer, img, svg {
+  max-width: 100%;
+}
 *, *::before, *::after { box-sizing: border-box; }
 
 </style>
@@ -2050,7 +2060,7 @@ html, body { width: 100%; max-width: 100%; overflow-x: clip !important; overscro
 
     <!-- Clean Mobile Navigation Drawer -->
     <div id="mobileDrawerOverlay" onclick="closeMobileMenu()" style="display:none; position:fixed; inset:0; background:rgba(15,10,7,0.72); backdrop-filter:blur(3px); z-index:9998;"></div>
-    <aside id="mobileDrawer" aria-hidden="true" style="position:fixed; top:0; right:-100%; width:min(82vw, 320px); height:100vh; background:#1F140F; color:#FDF8F3; z-index:9999; padding:1.5rem; display:flex; flex-direction:column; justify-content:space-between; transition:right 0.28s ease; box-shadow:-12px 0 32px rgba(0,0,0,0.55); border-left:1px solid rgba(217,119,6,0.25);">
+    <aside id="mobileDrawer" aria-hidden="true" style="position:fixed; top:0; right:-100%; visibility:hidden; width:min(82vw, 320px); height:100vh; background:#1F140F; color:#FDF8F3; z-index:9999; padding:1.5rem; display:flex; flex-direction:column; justify-content:space-between; transition:right 0.28s ease; box-shadow:-12px 0 32px rgba(0,0,0,0.55); border-left:1px solid rgba(217,119,6,0.25);">
         <div>
             <div style="display:flex; align-items:center; justify-content:space-between; padding-bottom:1rem; border-bottom:1px solid rgba(255,255,255,0.1);">
                 <span style="font-weight:700; font-size:1rem; color:#F59E0B; letter-spacing:0.03em;">Susan's Pastries</span>
@@ -3037,7 +3047,7 @@ html, body { width: 100%; max-width: 100%; overflow-x: clip !important; overscro
             const drawer = document.getElementById('mobileDrawer');
             const overlay = document.getElementById('mobileDrawerOverlay');
             if (drawer) {
-                drawer.style.right = '0';
+                drawer.style.visibility = 'visible'; drawer.style.right = '0';
                 drawer.setAttribute('aria-hidden', 'false');
             }
             if (overlay) overlay.style.display = 'block';
@@ -3047,7 +3057,7 @@ html, body { width: 100%; max-width: 100%; overflow-x: clip !important; overscro
             const drawer = document.getElementById('mobileDrawer');
             const overlay = document.getElementById('mobileDrawerOverlay');
             if (drawer) {
-                drawer.style.right = '-100%';
+                drawer.style.right = '-100%'; drawer.style.visibility = 'hidden';
                 drawer.setAttribute('aria-hidden', 'true');
             }
             if (overlay) overlay.style.display = 'none';
