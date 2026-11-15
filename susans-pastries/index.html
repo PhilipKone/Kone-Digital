@@ -1995,6 +1995,35 @@ a.sp-tiny-link::after {
   display: none !important;
 }
 
+    
+/* === Clean Header & Compact Hero Buttons === */
+.top-bar, .topbar, .announcement-bar {
+  display: none !important;
+}
+
+.hero-btns, .hero-actions, .hero-buttons,
+section:first-of-type div:has(> a[href="#calculator"]) {
+  display: flex !important;
+  flex-wrap: wrap !important;
+  justify-content: center !important;
+  gap: 0.55rem !important;
+}
+
+section:first-of-type a[href="#calculator"],
+section:first-of-type a[href*="wa.me"],
+.hero-btns a, .hero-actions a, .hero-buttons a {
+  width: auto !important;
+  max-width: fit-content !important;
+  display: inline-flex !important;
+  align-items: center !important;
+  gap: 0.4rem !important;
+  padding: 0.45rem 0.9rem !important;
+  font-size: 0.76rem !important;
+  border-radius: 6px !important;
+  min-height: unset !important;
+  height: auto !important;
+}
+
     </style>
 </head>
 <body>
