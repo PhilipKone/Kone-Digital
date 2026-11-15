@@ -1060,6 +1060,183 @@
         .card-inquire-action:hover {
             color: var(--gold-glow);
         }
+    
+/* === Emewear Verified Customer Reviews & Submission Modal === */
+.emw-reviews {
+  max-width: 1120px;
+  margin: 4rem auto;
+  padding: 3rem 1.5rem;
+  border-top: 1px solid rgba(212, 175, 55, 0.22);
+  border-bottom: 1px solid rgba(212, 175, 55, 0.22);
+}
+.emw-reviews-head {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: flex-end;
+  justify-content: space-between;
+  gap: 1.25rem;
+  margin-bottom: 2rem;
+}
+.emw-reviews-kicker {
+  font-size: 0.75rem;
+  letter-spacing: 0.2em;
+  text-transform: uppercase;
+  color: var(--gold, #D4AF37);
+  font-weight: 700;
+  margin-bottom: 0.4rem;
+}
+.emw-reviews-title {
+  font-size: clamp(1.6rem, 3vw, 2.25rem);
+  margin: 0;
+  line-height: 1.2;
+}
+.emw-reviews-summary {
+  font-size: 0.92rem;
+  opacity: 0.85;
+  margin-top: 0.4rem;
+}
+.emw-btn-review {
+  background: linear-gradient(135deg, #D4AF37, #B8860B);
+  color: #111;
+  border: none;
+  padding: 0.8rem 1.4rem;
+  border-radius: 6px;
+  font-weight: 700;
+  font-size: 0.85rem;
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+  cursor: pointer;
+  transition: transform 0.2s ease, box-shadow 0.2s ease;
+}
+.emw-btn-review:hover {
+  transform: translateY(-1px);
+  box-shadow: 0 8px 20px rgba(212, 175, 55, 0.28);
+}
+.emw-reviews-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+  gap: 1.25rem;
+}
+.emw-review-card {
+  background: rgba(255, 255, 255, 0.04);
+  border: 1px solid rgba(212, 175, 55, 0.22);
+  border-radius: 10px;
+  padding: 1.35rem;
+  display: flex;
+  flex-direction: column;
+  gap: 0.65rem;
+}
+.emw-review-stars {
+  color: #D4AF37;
+  letter-spacing: 2px;
+  font-size: 1rem;
+}
+.emw-review-body {
+  font-size: 0.95rem;
+  line-height: 1.6;
+  margin: 0;
+  opacity: 0.92;
+}
+.emw-review-meta {
+  margin-top: auto;
+  padding-top: 0.65rem;
+  border-top: 1px solid rgba(255, 255, 255, 0.08);
+  font-size: 0.8rem;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: 0.5rem;
+  opacity: 0.82;
+}
+.emw-badge {
+  font-size: 0.7rem;
+  padding: 0.2rem 0.55rem;
+  border-radius: 999px;
+  background: rgba(212, 175, 55, 0.16);
+  color: #D4AF37;
+  font-weight: 600;
+}
+.emw-empty-state {
+  padding: 2rem 1.5rem;
+  border: 1px dashed rgba(212, 175, 55, 0.35);
+  border-radius: 10px;
+  text-align: center;
+  background: rgba(255, 255, 255, 0.02);
+}
+.emw-modal-backdrop {
+  position: fixed;
+  inset: 0;
+  background: rgba(8, 8, 10, 0.78);
+  backdrop-filter: blur(6px);
+  display: none;
+  align-items: center;
+  justify-content: center;
+  padding: 1rem;
+  z-index: 9999;
+}
+.emw-modal-backdrop.open { display: flex; }
+.emw-modal {
+  background: #161412;
+  color: #F8F5F0;
+  border: 1px solid rgba(212, 175, 55, 0.35);
+  border-radius: 12px;
+  width: 100%;
+  max-width: 480px;
+  padding: 1.75rem;
+  box-shadow: 0 24px 60px rgba(0, 0, 0, 0.55);
+}
+.emw-modal-head {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 1rem;
+}
+.emw-modal-close {
+  background: transparent;
+  border: none;
+  color: #F8F5F0;
+  font-size: 1.5rem;
+  cursor: pointer;
+  line-height: 1;
+}
+.emw-field {
+  display: flex;
+  flex-direction: column;
+  gap: 0.35rem;
+  margin-bottom: 0.95rem;
+  font-size: 0.85rem;
+}
+.emw-field input,
+.emw-field select,
+.emw-field textarea {
+  background: rgba(255, 255, 255, 0.06);
+  border: 1px solid rgba(212, 175, 55, 0.28);
+  border-radius: 6px;
+  padding: 0.65rem 0.8rem;
+  color: #F8F5F0;
+  font-family: inherit;
+  font-size: 0.92rem;
+}
+.emw-star-picker {
+  display: flex;
+  gap: 0.4rem;
+}
+.emw-star-btn {
+  background: rgba(255, 255, 255, 0.06);
+  border: 1px solid rgba(212, 175, 55, 0.3);
+  color: #888;
+  font-size: 1.25rem;
+  width: 2.4rem;
+  height: 2.4rem;
+  border-radius: 6px;
+  cursor: pointer;
+}
+.emw-star-btn.active {
+  color: #D4AF37;
+  border-color: #D4AF37;
+  background: rgba(212, 175, 55, 0.14);
+}
+
     </style>
 </head>
 <body>
@@ -1662,6 +1839,21 @@
     </section>
 
     <!-- Footer -->
+    
+    <section id="reviews" class="emw-reviews" aria-labelledby="emw-reviews-heading">
+      <div class="emw-reviews-head">
+        <div>
+          <div class="emw-reviews-kicker">Fit &amp; Craftsmanship Feedback</div>
+          <h2 id="emw-reviews-heading" class="emw-reviews-title">Verified Customer Reviews</h2>
+          <div id="emw-reviews-summary" class="emw-reviews-summary">
+            Handcrafted in Accra &amp; Kumasi for UK Sizes 16 &ndash; 30
+          </div>
+        </div>
+        <button type="button" class="emw-btn-review" id="emw-open-review">Write a Review</button>
+      </div>
+      <div id="emw-reviews-container"></div>
+    </section>
+
     <footer>
         <div class="footer-brand">EMEWEAR</div>
         <p class="footer-text">Ghana-Made Plus-Size Fashion &amp; Contemporary African Apparel.</p>
@@ -1853,5 +2045,221 @@
             startAutoplay();
         });
     </script>
+
+    <div class="emw-modal-backdrop" id="emw-review-modal" role="dialog" aria-modal="true" aria-labelledby="emw-modal-title">
+      <div class="emw-modal">
+        <div class="emw-modal-head">
+          <h3 id="emw-modal-title" style="margin:0;font-size:1.25rem;">Share Your Emewear Fit Review</h3>
+          <button type="button" class="emw-modal-close" id="emw-close-review" aria-label="Close">&times;</button>
+        </div>
+        <form id="emw-review-form">
+          <div class="emw-field">
+            <label>Your Rating</label>
+            <div class="emw-star-picker" id="emw-star-picker">
+              <button type="button" class="emw-star-btn active" data-val="1">&#9733;</button>
+              <button type="button" class="emw-star-btn active" data-val="2">&#9733;</button>
+              <button type="button" class="emw-star-btn active" data-val="3">&#9733;</button>
+              <button type="button" class="emw-star-btn active" data-val="4">&#9733;</button>
+              <button type="button" class="emw-star-btn active" data-val="5">&#9733;</button>
+            </div>
+          </div>
+          <div style="display:grid;grid-template-columns:1fr 1fr;gap:0.75rem;">
+            <div class="emw-field">
+              <label for="emw-rev-name">Your Name</label>
+              <input id="emw-rev-name" type="text" required placeholder="e.g. Akosua M." />
+            </div>
+            <div class="emw-field">
+              <label for="emw-rev-city">City</label>
+              <input id="emw-rev-city" type="text" required placeholder="e.g. Accra" />
+            </div>
+          </div>
+          <div style="display:grid;grid-template-columns:1.3fr 0.7fr;gap:0.75rem;">
+            <div class="emw-field">
+              <label for="emw-rev-piece">Palazzo Piece</label>
+              <select id="emw-rev-piece">
+                <option>Imperial Burgundy Leaf Palazzo</option>
+                <option>Sunburst Geometric Ankara Palazzo</option>
+                <option>Royal Mosaic Checkerboard Palazzo</option>
+                <option>Sunset Azure Crackled Batik Palazzo</option>
+                <option>Carnival Bloom Botanical Palazzo</option>
+                <option>Lavender Lotus Gold Batik Palazzo</option>
+                <option>Hibiscus &amp; Cobalt Botanical Palazzo</option>
+                <option>Golden Honey Smoke Cloud Batik Palazzo</option>
+                <option>Sunrise Orchid Pastel Batik Palazzo</option>
+                <option>Midnight Pillar Geometric Palazzo</option>
+                <option>Fiery Crimson &amp; Amber Bark Palazzo</option>
+                <option>Electric Cobalt Ocean Batik Palazzo</option>
+                <option>Indigo Bullseye Concentric Palazzo</option>
+                <option>Canary Gold &amp; Royal Cobalt Palazzo</option>
+              </select>
+            </div>
+            <div class="emw-field">
+              <label for="emw-rev-size">UK Size</label>
+              <select id="emw-rev-size">
+                <option>UK 16</option>
+                <option>UK 18</option>
+                <option>UK 20</option>
+                <option>UK 22</option>
+                <option>UK 24</option>
+                <option>UK 26</option>
+                <option>UK 28</option>
+                <option>UK 30</option>
+              </select>
+            </div>
+          </div>
+          <div class="emw-field">
+            <label for="emw-rev-text">How was the fit, fabric, and tailoring?</label>
+            <textarea id="emw-rev-text" rows="3" required placeholder="Share your experience with the waist comfort, length, and Ankara/Batik quality..."></textarea>
+          </div>
+          <button type="submit" class="emw-btn-review" style="width:100%;">Submit &amp; Verify via WhatsApp</button>
+        </form>
+      </div>
+    </div>
+
+    <script>
+    (function () {
+      // Paste verified buyer reviews here to publish on-page & activate Google Product rich snippets:
+      // Example: { author: "Ama K.", city: "Accra", rating: 5, piece: "Imperial Burgundy Leaf Palazzo", size: "UK 22", date: "2026-11-16", body: "Perfect high-rise fit and rich cotton wax print." }
+      const APPROVED_REVIEWS = [];
+      const STORAGE_KEY = "emewear_pending_reviews_v1";
+      const WA_NUMBER = "233205244979";
+
+      let selectedRating = 5;
+      const modal = document.getElementById("emw-review-modal");
+      const openBtn = document.getElementById("emw-open-review");
+      const closeBtn = document.getElementById("emw-close-review");
+      const form = document.getElementById("emw-review-form");
+      const container = document.getElementById("emw-reviews-container");
+      const summary = document.getElementById("emw-reviews-summary");
+      const starBtns = document.querySelectorAll("#emw-star-picker .emw-star-btn");
+
+      function esc(s) {
+        return String(s).replace(/[&<>"']/g, c => ({ "&": "&amp;", "<": "&lt;", ">": "&gt;", '"': "&quot;", "'": "&#39;" }[c]));
+      }
+
+      function getPending() {
+        try { return JSON.parse(localStorage.getItem(STORAGE_KEY) || "[]"); } catch (_) { return []; }
+      }
+
+      function syncSchema() {
+        if (!APPROVED_REVIEWS.length) return;
+        const avg = (APPROVED_REVIEWS.reduce((acc, r) => acc + Number(r.rating || 5), 0) / APPROVED_REVIEWS.length).toFixed(1);
+        document.querySelectorAll('script[type="application/ld+json"]').forEach(tag => {
+          try {
+            const data = JSON.parse(tag.textContent);
+            const items = Array.isArray(data["@graph"]) ? data["@graph"] : [data];
+            let changed = false;
+            items.forEach(node => {
+              if (node && node["@type"] === "Product") {
+                node.aggregateRating = {
+                  "@type": "AggregateRating",
+                  "ratingValue": avg,
+                  "reviewCount": String(APPROVED_REVIEWS.length),
+                  "bestRating": "5",
+                  "worstRating": "1"
+                };
+                node.review = APPROVED_REVIEWS.map(r => ({
+                  "@type": "Review",
+                  "author": { "@type": "Person", "name": r.author },
+                  "datePublished": r.date,
+                  "reviewBody": r.body,
+                  "reviewRating": {
+                    "@type": "Rating",
+                    "ratingValue": String(r.rating),
+                    "bestRating": "5",
+                    "worstRating": "1"
+                  }
+                }));
+                changed = true;
+              }
+            });
+            if (changed) tag.textContent = JSON.stringify(data);
+          } catch (_) {}
+        });
+      }
+
+      function render() {
+        const pending = getPending();
+        const all = [
+          ...APPROVED_REVIEWS.map(r => ({ ...r, verified: true })),
+          ...pending.map(r => ({ ...r, verified: false }))
+        ];
+
+        if (APPROVED_REVIEWS.length) {
+          const avg = (APPROVED_REVIEWS.reduce((a, r) => a + Number(r.rating || 5), 0) / APPROVED_REVIEWS.length).toFixed(1);
+          summary.textContent = `${avg} / 5.0 average rating across ${APPROVED_REVIEWS.length} verified buyer${APPROVED_REVIEWS.length === 1 ? "" : "s"}`;
+        }
+
+        if (!all.length) {
+          container.innerHTML = '<div class="emw-empty-state"><p style="margin:0 0 0.5rem;font-weight:600;">Ordered an Emewear Palazzo in Accra or Kumasi?</p><p style="margin:0;opacity:0.8;font-size:0.9rem;">Be the first verified buyer to share how your custom-tailored piece fits and feels.</p></div>';
+          return;
+        }
+
+        container.innerHTML = '<div class="emw-reviews-grid">' + all.map(r => {
+          const stars = "&#9733;".repeat(Math.max(1, Math.min(5, Number(r.rating || 5))));
+          const badge = r.verified ? '<span class="emw-badge">Verified Buyer</span>' : '<span class="emw-badge">Pending Verification</span>';
+          return `<article class="emw-review-card">
+            <div style="display:flex;justify-content:space-between;align-items:center;">
+              <span class="emw-review-stars" aria-label="${r.rating} out of 5 stars">${stars}</span>
+              ${badge}
+            </div>
+            <p class="emw-review-body">&ldquo;${esc(r.body)}&rdquo;</p>
+            <div class="emw-review-meta">
+              <span><strong>${esc(r.author)}</strong> &bull; ${esc(r.city)}</span>
+              <span>${esc(r.size)}</span>
+            </div>
+          </article>`;
+        }).join("") + '</div>';
+      }
+
+      starBtns.forEach(btn => {
+        btn.addEventListener("click", () => {
+          selectedRating = Number(btn.dataset.val);
+          starBtns.forEach(b => b.classList.toggle("active", Number(b.dataset.val) <= selectedRating));
+        });
+      });
+
+      openBtn.addEventListener("click", () => modal.classList.add("open"));
+      closeBtn.addEventListener("click", () => modal.classList.remove("open"));
+      modal.addEventListener("click", e => { if (e.target === modal) modal.classList.remove("open"); });
+
+      form.addEventListener("submit", e => {
+        e.preventDefault();
+        const entry = {
+          author: document.getElementById("emw-rev-name").value.trim(),
+          city: document.getElementById("emw-rev-city").value.trim(),
+          rating: selectedRating,
+          piece: document.getElementById("emw-rev-piece").value,
+          size: document.getElementById("emw-rev-size").value,
+          date: new Date().toISOString().slice(0, 10),
+          body: document.getElementById("emw-rev-text").value.trim()
+        };
+        const pending = getPending();
+        pending.unshift(entry);
+        localStorage.setItem(STORAGE_KEY, JSON.stringify(pending.slice(0, 10)));
+        modal.classList.remove("open");
+        form.reset();
+        render();
+
+        const msg = `Hello Emewear! I would like to submit a verified customer review:
+
+` +
+          `Rating: ${entry.rating}/5
+Name: ${entry.author} (${entry.city})
+` +
+          `Piece: ${entry.piece} (${entry.size})
+Review: "${entry.body}"
+
+` +
+          `JSON Entry:
+${JSON.stringify(entry)}`;
+        window.open(`https://wa.me/${WA_NUMBER}?text=${encodeURIComponent(msg)}`, "_blank", "noopener");
+      });
+
+      syncSchema();
+      render();
+    })();
+    </script>
+
 </body>
 </html>
