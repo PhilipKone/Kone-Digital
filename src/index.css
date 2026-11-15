@@ -806,4 +806,22 @@ h1, h2, h3, h4, h5, h6 {
   }
 }
 
+/* App-Shell Horizontal Viewport Lock */
+*, *::before, *::after {
+  box-sizing: border-box;
+}
 
+html, body, #root {
+  width: 100%;
+  max-width: 100%;
+  overflow-x: clip;
+  overscroll-behavior-x: none;
+}
+
+main, section, header, footer, nav {
+  max-width: 100%;
+}
+
+img, svg, video, canvas, iframe {
+  max-width: 100%;
+}
