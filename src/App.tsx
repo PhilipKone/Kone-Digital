@@ -384,6 +384,7 @@ function App() {
             </svg>
             <span>WhatsApp Channel</span>
           </a>
+          <a href="mailto:digital@codkon.com" title="Email digital@codkon.com" aria-label="Email digital@codkon.com" style={{ background: "rgba(255, 255, 255, 0.05)", border: "1px solid rgba(255, 255, 255, 0.15)", color: "#F8FAFC", padding: "0.45rem 0.95rem", borderRadius: "50px", fontSize: "0.82rem", fontWeight: 650, display: "inline-flex", alignItems: "center", gap: "0.45rem", textDecoration: "none", transition: "all 0.2s ease" }}><svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.2" strokeLinecap="round" strokeLinejoin="round" style={{ flexShrink: 0 }}><rect x="2" y="4" width="20" height="16" rx="2"></rect><path d="m22 7-8.97 5.7a1.94 1.94 0 0 1-2.06 0L2 7"></path></svg><span>digital@codkon.com</span></a>
           <a 
             href="tel:+233551993820" 
             title="Call +233 55 199 3820" 
