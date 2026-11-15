@@ -2030,6 +2030,16 @@ section:first-of-type a[href*="wa.me"],
   display: none !important;
 }
 
+    
+/* === Force Hide Residual Mobile Menu Utility Blocks === */
+.mobile-menu div:has(a[href^="tel"]),
+.drawer div:has(a[href^="tel"]),
+.mobile-nav div:has(a[href^="tel"]),
+div[class*="mobile"] div:has(span:contains("Sun")),
+div[class*="drawer"] div:has(span:contains("Sun")) {
+  display: none !important;
+}
+
     </style>
 </head>
 <body>
@@ -2050,9 +2060,6 @@ section:first-of-type a[href*="wa.me"],
                 </span>
                 <span class="top-bar-item" style="opacity: 0.9;">
                     <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"></circle><polyline points="12 6 12 12 16 14"></polyline></svg>
-                    <span>Sun – Fri: 8:00 AM - 6:00 PM (Sat Off)</span>
-                </span>
-            </div>
             
         </div>
     </div>
