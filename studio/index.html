@@ -6,19 +6,26 @@
   <style>
     :root{--bg:#090D16;--s1:#111827;--s2:#192234;--ink:#F8FAFC;--mut:#94A3B8;--acc:#F59E0B;--ln:rgba(255,255,255,.1)}
     *{box-sizing:border-box;margin:0;padding:0}body{font-family:system-ui,sans-serif;background:var(--bg);color:var(--ink);padding:24px 14px;line-height:1.5}
-    .wrap{max-width:1120px;margin:0 auto;display:grid;grid-template-columns:1.55fr 1fr;gap:22px;align-items:start}
+    .wrap{max-width:1160px;margin:0 auto;display:grid;grid-template-columns:1.45fr 1fr;gap:22px;align-items:start}
     .card{background:var(--s1);border:1px solid var(--ln);border-radius:18px;padding:24px}
     h1{font-size:1.35rem;margin-bottom:4px}.sub{color:var(--mut);font-size:.84rem;margin-bottom:18px}
     .sec{font-size:.72rem;font-weight:700;text-transform:uppercase;letter-spacing:.08em;color:var(--acc);margin:16px 0 10px;border-bottom:1px solid var(--ln);padding-bottom:4px}
     label{display:block;font-size:.76rem;font-weight:700;color:#CBD5E1;margin-bottom:4px}
     input,select,textarea{width:100%;padding:9px 11px;background:var(--s2);border:1px solid var(--ln);border-radius:8px;color:var(--ink);font-size:.88rem;margin-bottom:10px}
     .row{display:grid;grid-template-columns:1fr 1fr;gap:10px}
-    .ir{display:grid;grid-template-columns:1.6fr .9fr 1.8fr 1.3fr auto;gap:7px;align-items:center;margin-bottom:6px}
+    .ir{display:grid;grid-template-columns:1.6fr .9fr 1.7fr auto auto;gap:7px;align-items:center;margin-bottom:8px}
     .ir input{margin-bottom:0;font-size:.82rem;padding:8px}
+    .up-btn{display:inline-flex;align-items:center;justify-content:center;padding:8px 11px;background:rgba(255,255,255,.07);border:1px solid var(--ln);border-radius:8px;font-size:.78rem;font-weight:700;color:var(--ink);cursor:pointer;white-space:nowrap;margin:0}
+    .up-btn.ready{background:rgba(34,197,94,.16);border-color:rgba(34,197,94,.35);color:#4ADE80}
     .btn{width:100%;padding:12px;border:none;border-radius:10px;font-weight:800;font-size:.9rem;cursor:pointer;background:var(--acc);color:#090D16;margin-top:8px}
-    .pub{background:#22C55E;color:#052E16}.sm{padding:6px 11px;font-size:.76rem;background:var(--s2);color:var(--ink);border:1px solid var(--ln);border-radius:8px;cursor:pointer}
-    .sc{background:var(--s2);border:1px solid var(--ln);border-radius:11px;padding:12px;margin-bottom:9px;display:flex;justify-content:space-between;align-items:center;gap:8px}
-    .sc a{color:var(--acc);font-size:.78rem;font-weight:700}@media(max-width:880px){.wrap{grid-template-columns:1fr}.ir{grid-template-columns:1fr}}
+    .pub{background:#22C55E;color:#052E16}.sm{padding:7px 11px;font-size:.76rem;background:var(--s2);color:var(--ink);border:1px solid var(--ln);border-radius:8px;cursor:pointer;white-space:nowrap}
+    .sc{background:var(--s2);border:1px solid var(--ln);border-radius:11px;padding:12px;margin-bottom:9px;display:flex;justify-content:space-between;align-items:center;gap:10px}
+    .acts{display:flex;align-items:center;gap:8px;flex-shrink:0;white-space:nowrap}
+    .acts a{color:var(--acc);font-size:.78rem;font-weight:700;text-decoration:none}
+    .del{background:rgba(239,68,68,.15);color:#F87171;border:1px solid rgba(239,68,68,.3);border-radius:6px;padding:4px 8px;font-size:.73rem;font-weight:700;cursor:pointer}
+    .rst{background:rgba(34,197,94,.16);color:#4ADE80;border:1px solid rgba(34,197,94,.3);border-radius:6px;padding:4px 9px;font-size:.73rem;font-weight:700;cursor:pointer}
+    .core{font-size:.7rem;font-weight:700;color:var(--mut);border:1px solid var(--ln);padding:2px 7px;border-radius:999px}
+    @media(max-width:920px){.wrap{grid-template-columns:1fr}.ir{grid-template-columns:1fr}}
   </style>
 </head>
 <body>
@@ -50,25 +57,45 @@
       </div>
       <div id="st" style="margin-top:12px;font-size:.86rem"></div>
     </div>
-    <div class="card"><h1>Active Sites</h1><p class="sub">Click to preview or open live</p><div id="list"></div><div class="sec" style="margin-top:20px">Recently Deleted (Trash)</div><div id="trashList" style="font-size:.8rem;color:var(--mut)">Empty</div></div>
+    <div class="card">
+      <h1>Active Sites</h1><p class="sub">Preview, open live, or move to trash</p>
+      <div id="list"></div>
+      <div class="sec" style="margin-top:20px">Recently Deleted (Trash)</div>
+      <div id="trashList" style="font-size:.8rem;color:var(--mut)">Empty</div>
+    </div>
   </div>
   <script>
     const slugEl=document.getElementById('slug');
     document.getElementById('name').oninput=e=>slugEl.value=e.target.value.toLowerCase().replace(/[^a-z0-9]+/g,'-').replace(/^-|-$/g,'');
     function addItem(n='',p='',d=''){
       const r=document.createElement('div');r.className='ir';
-      r.innerHTML=`<input class="in" value="${n}" placeholder="Item Name"/><input class="ip" value="${p}" placeholder="GH₵ 100"/><input class="id" value="${d}" placeholder="Short note"/><input type="file" accept="image/*" class="if" onchange="prepImg(this)"/><button type="button" class="sm" onclick="this.parentElement.remove()">✕</button>`;
+      r.innerHTML=`<input class="in" value="${n}" placeholder="Item Name"/><input class="ip" value="${p}" placeholder="GH₵ 100"/><input class="id" value="${d}" placeholder="Short note"/><label class="up-btn"><span>Photo</span><input type="file" accept="image/*" class="if" hidden onchange="prepImg(this)"/></label><button type="button" class="sm" onclick="this.parentElement.remove()">✕</button>`;
       document.getElementById('items').appendChild(r);
     }
     function prepImg(inp){
       const f=inp.files[0];if(!f)return;
+      const lbl=inp.parentElement;lbl.classList.add('ready');lbl.querySelector('span').textContent='✓ Photo';
       const img=new Image(),rd=new FileReader();
       rd.onload=e=>{img.onload=()=>{const c=document.createElement('canvas'),s=Math.min(1,900/img.width);c.width=img.width*s;c.height=img.height*s;c.getContext('2d').drawImage(img,0,0,c.width,c.height);inp.dataset.img=c.toDataURL('image/jpeg',0.85)};img.src=e.target.result};
       rd.readAsDataURL(f);
     }
     async function load(){
-      const {active:s,trash:t}=await(await fetch('/api/sites')).json();document.getElementById('trashList').innerHTML=t.length?t.map(x=>`<div class="sc" style="opacity:.85"><div><strong>${x.slug}</strong><div style="font-size:.74rem;color:var(--mut)">${x.title}</div></div><button type="button" onclick="restoreSite('${x.slug}')" style="background:rgba(34,197,94,.16);color:#4ADE80;border:1px solid rgba(34,197,94,.3);border-radius:6px;padding:4px 9px;font-size:.74rem;font-weight:700;cursor:pointer">Restore</button></div>`).join(''):'Empty';
-      document.getElementById('list').innerHTML=s.map(x=>`<div class="sc"><div><strong>${x.slug}</strong><div style="font-size:.76rem;color:var(--mut)">${x.title}</div></div><div style="display:flex;gap:8px"><a href="/preview/${x.slug}/" target="_blank">Preview</a><a href="${x.liveUrl}" target="_blank">Live ↗</a></div></div>`).join('');
+      const {active:s,trash:t}=await(await fetch('/api/sites')).json();
+      document.getElementById('list').innerHTML=s.map(x=>`<div class="sc"><div style="min-width:0"><strong>${x.slug}</strong><div style="font-size:.76rem;color:var(--mut);overflow:hidden;text-overflow:ellipsis;white-space:nowrap">${x.title}</div></div><div class="acts"><a href="/preview/${x.slug}/" target="_blank">Preview</a><a href="${x.liveUrl}" target="_blank">Live ↗</a>${x.slug==='invoice'?'<span class="core">Core</span>':`<button type="button" class="del" onclick="delSite('${x.slug}')">Delete</button>`}</div></div>`).join('');
+      document.getElementById('trashList').innerHTML=t.length?t.map(x=>`<div class="sc" style="opacity:.85"><div><strong>${x.slug}</strong><div style="font-size:.74rem;color:var(--mut)">${x.title}</div></div><button type="button" class="rst" onclick="restoreSite('${x.slug}')">Restore</button></div>`).join(''):'Empty';
+    }
+    async function delSite(slug){
+      if(!confirm(`Move "${slug}" to Trash and unpublish from live site?`))return;
+      const st=document.getElementById('st');st.style.color='#F59E0B';st.textContent=`Moving ${slug} to trash...`;
+      const r=await(await fetch('/api/delete',{method:'POST',headers:{'Content-Type':'application/json'},body:JSON.stringify({slug})})).json();
+      if(!r.ok){st.style.color='#F87171';st.textContent='Error: '+r.error;return}
+      st.style.color='#22C55E';st.textContent=r.unpublished?`Moved ${slug} to Trash & unpublished.`:`Moved local preview ${slug} to Trash.`;load();
+    }
+    async function restoreSite(slug){
+      const st=document.getElementById('st');
+      const r=await(await fetch('/api/restore',{method:'POST',headers:{'Content-Type':'application/json'},body:JSON.stringify({slug})})).json();
+      if(!r.ok){st.style.color='#F87171';st.textContent='Error: '+r.error;return}
+      st.style.color='#22C55E';st.innerHTML=`Restored <strong>${slug}</strong>! <a href="/preview/${slug}/" target="_blank" style="color:var(--acc);font-weight:700">Open Preview</a>`;load();
     }
     async function go(publish){
       const st=document.getElementById('st');st.style.color='#F59E0B';st.textContent=publish?'Uploading photos & publishing...':'Building local preview...';
@@ -82,4 +109,3 @@
   </script>
 </body>
 </html>
-
