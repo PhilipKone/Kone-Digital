@@ -1354,6 +1354,118 @@
   border-radius: 5px !important;
 }
 
+    
+/* === Minimalist Modal & Compact Trigger Overrides === */
+#emw-open-review.emw-btn-review {
+  background: transparent !important;
+  color: #D4AF37 !important;
+  border: 1px solid rgba(212, 175, 55, 0.65) !important;
+  padding: 0.52rem 1.1rem !important;
+  min-height: unset !important;
+  height: auto !important;
+  line-height: 1.2 !important;
+  font-size: 0.72rem !important;
+  letter-spacing: 0.11em !important;
+  border-radius: 4px !important;
+  box-shadow: none !important;
+}
+
+#emw-open-review.emw-btn-review:hover {
+  background: linear-gradient(135deg, #D4AF37, #B8860B) !important;
+  color: #111111 !important;
+  border-color: #D4AF37 !important;
+}
+
+.emw-modal {
+  max-width: 420px !important;
+  padding: 1.3rem 1.35rem !important;
+  border-radius: 10px !important;
+}
+
+.emw-modal-head {
+  margin-bottom: 0.85rem !important;
+  padding-bottom: 0.65rem !important;
+  border-bottom: 1px solid rgba(212, 175, 55, 0.16) !important;
+}
+
+.emw-rating-row {
+  display: flex !important;
+  align-items: center !important;
+  justify-content: space-between !important;
+  padding: 0.45rem 0.7rem !important;
+  margin-bottom: 0.75rem !important;
+  border-radius: 6px !important;
+  background: rgba(255, 255, 255, 0.03) !important;
+  border: 1px solid rgba(212, 175, 55, 0.18) !important;
+}
+
+.emw-star-picker {
+  gap: 0.15rem !important;
+}
+
+.emw-star-btn {
+  background: transparent !important;
+  border: none !important;
+  width: auto !important;
+  height: auto !important;
+  min-height: unset !important;
+  padding: 0 0.14rem !important;
+  font-size: 1.25rem !important;
+  line-height: 1 !important;
+  color: rgba(248, 245, 240, 0.25) !important;
+}
+
+.emw-star-btn.active {
+  background: transparent !important;
+  color: #D4AF37 !important;
+  text-shadow: 0 0 8px rgba(212, 175, 55, 0.35) !important;
+}
+
+.emw-row-2 {
+  display: grid !important;
+  grid-template-columns: 1.15fr 0.85fr !important;
+  gap: 0.6rem !important;
+}
+
+.emw-row-piece {
+  grid-template-columns: 1.38fr 0.62fr !important;
+}
+
+.emw-field {
+  gap: 0.25rem !important;
+  margin-bottom: 0.65rem !important;
+}
+
+.emw-field label {
+  font-size: 0.74rem !important;
+  color: rgba(248, 245, 240, 0.72) !important;
+}
+
+.emw-field input,
+.emw-field select,
+.emw-field textarea {
+  padding: 0.5rem 0.65rem !important;
+  font-size: 0.85rem !important;
+  border-radius: 5px !important;
+}
+
+.emw-modal-submit {
+  width: 100% !important;
+  padding: 0.62rem 1rem !important;
+  min-height: unset !important;
+  height: auto !important;
+  line-height: 1.2 !important;
+  font-size: 0.76rem !important;
+  letter-spacing: 0.09em !important;
+  border-radius: 5px !important;
+}
+
+@media (max-width: 440px) {
+  .emw-row-2, .emw-row-piece {
+    grid-template-columns: 1fr !important;
+  }
+}
+
     </style>
 </head>
 <body>
@@ -2164,34 +2276,41 @@
     <div class="emw-modal-backdrop" id="emw-review-modal" role="dialog" aria-modal="true" aria-labelledby="emw-modal-title">
       <div class="emw-modal">
         <div class="emw-modal-head">
-          <h3 id="emw-modal-title" style="margin:0;font-size:1.25rem;">Share Your Emewear Fit Review</h3>
+          <div>
+            <div style="font-size:0.68rem;letter-spacing:0.18em;text-transform:uppercase;color:#D4AF37;font-weight:700;">Verified Buyer Feedback</div>
+            <h3 id="emw-modal-title" style="margin:0.15rem 0 0;font-size:1.12rem;font-weight:700;">Share Your Fit Review</h3>
+          </div>
           <button type="button" class="emw-modal-close" id="emw-close-review" aria-label="Close">&times;</button>
         </div>
+
         <form id="emw-review-form">
-          <div class="emw-field">
-            <label>Your Rating</label>
+          <div class="emw-rating-row">
+            <span style="font-size:0.82rem;font-weight:600;color:rgba(248,245,240,0.85);">Overall Rating</span>
             <div class="emw-star-picker" id="emw-star-picker">
-              <button type="button" class="emw-star-btn active" data-val="1">&#9733;</button>
-              <button type="button" class="emw-star-btn active" data-val="2">&#9733;</button>
-              <button type="button" class="emw-star-btn active" data-val="3">&#9733;</button>
-              <button type="button" class="emw-star-btn active" data-val="4">&#9733;</button>
-              <button type="button" class="emw-star-btn active" data-val="5">&#9733;</button>
+              <button type="button" class="emw-star-btn active" data-val="1" aria-label="1 star">&#9733;</button>
+              <button type="button" class="emw-star-btn active" data-val="2" aria-label="2 stars">&#9733;</button>
+              <button type="button" class="emw-star-btn active" data-val="3" aria-label="3 stars">&#9733;</button>
+              <button type="button" class="emw-star-btn active" data-val="4" aria-label="4 stars">&#9733;</button>
+              <button type="button" class="emw-star-btn active" data-val="5" aria-label="5 stars">&#9733;</button>
             </div>
           </div>
-          <div style="display:grid;grid-template-columns:1fr 1fr;gap:0.75rem;">
+
+          <div class="emw-row-2">
             <div class="emw-field">
-              <label for="emw-rev-name">Your Name</label>
+              <label for="emw-rev-name">Name</label>
               <input id="emw-rev-name" type="text" required placeholder="e.g. Akosua M." />
             </div>
             <div class="emw-field">
               <label for="emw-rev-city">City</label>
-              <input id="emw-rev-city" type="text" required placeholder="e.g. Accra" />
+              <input id="emw-rev-city" type="text" required placeholder="Accra" />
             </div>
           </div>
-          <div style="display:grid;grid-template-columns:1.3fr 0.7fr;gap:0.75rem;">
+
+          <div class="emw-row-2 emw-row-piece">
             <div class="emw-field">
-              <label for="emw-rev-piece">Palazzo Piece</label>
+              <label for="emw-rev-piece">Piece Purchased</label>
               <select id="emw-rev-piece">
+                <option>Emewear Palazzo Collection</option>
                 <option>Imperial Burgundy Leaf Palazzo</option>
                 <option>Sunburst Geometric Ankara Palazzo</option>
                 <option>Royal Mosaic Checkerboard Palazzo</option>
@@ -2222,11 +2341,13 @@
               </select>
             </div>
           </div>
-          <div class="emw-field">
-            <label for="emw-rev-text">How was the fit, fabric, and tailoring?</label>
-            <textarea id="emw-rev-text" rows="3" required placeholder="Share your experience with the waist comfort, length, and Ankara/Batik quality..."></textarea>
+
+          <div class="emw-field" style="margin-bottom:0.85rem;">
+            <label for="emw-rev-text">Your Review</label>
+            <textarea id="emw-rev-text" rows="2" required placeholder="How did the waistband, length, and Ankara/Batik fabric feel?"></textarea>
           </div>
-          <button type="submit" class="emw-btn-review" style="width:100%;">Submit &amp; Verify via WhatsApp</button>
+
+          <button type="submit" class="emw-btn-review emw-modal-submit">Send via WhatsApp</button>
         </form>
       </div>
     </div>
