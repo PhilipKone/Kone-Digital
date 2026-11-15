@@ -3002,5 +3002,41 @@ div[class*="drawer"] div:has(span:contains("Sun")) {
             window.open(waUrl, '_blank');
         }
     </script>
+
+    <script>
+        function openMobileMenu() {
+            const drawer = document.getElementById('mobileDrawer');
+            const overlay = document.getElementById('mobileDrawerOverlay');
+            if (drawer) {
+                drawer.style.right = '0';
+                drawer.setAttribute('aria-hidden', 'false');
+            }
+            if (overlay) overlay.style.display = 'block';
+            document.body.style.overflow = 'hidden';
+        }
+        function closeMobileMenu() {
+            const drawer = document.getElementById('mobileDrawer');
+            const overlay = document.getElementById('mobileDrawerOverlay');
+            if (drawer) {
+                drawer.style.right = '-100%';
+                drawer.setAttribute('aria-hidden', 'true');
+            }
+            if (overlay) overlay.style.display = 'none';
+            document.body.style.overflow = '';
+        }
+        document.addEventListener('DOMContentLoaded', function () {
+            const header = document.querySelector('header');
+            if (!header) return;
+            const toggleBtn = header.querySelector('button[aria-label*="Menu"], button[onclick*="openMobileMenu"], button');
+            if (toggleBtn) {
+                toggleBtn.onclick = function (e) {
+                    e.preventDefault();
+                    e.stopPropagation();
+                    openMobileMenu();
+                };
+            }
+        });
+    </script>
+
 </body>
 </html>
