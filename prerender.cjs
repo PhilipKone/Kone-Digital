@@ -65,7 +65,7 @@ async function run() {
       console.warn(`⚠️ Puppeteer failed for ${route.path} (${e.message}), applying template fallback`);
       let baseHtml = fs.readFileSync(path.join(distDir, 'index.html'), 'utf8');
       baseHtml = baseHtml.replace(/<title>.*?<\/title>/, `<title>${route.title}</title>`);
-      baseHtml = baseHtml.replace(/<link rel="canonical" href=".*?" \/>/, `<link rel="canonical" href="https://digital.koneacademy.io${route.path}" />`);
+      baseHtml = baseHtml.replace(/<link rel="canonical" href=".*?" \/>/, `<link rel="canonical" href="https://digital.codkon.com${route.path}" />`);
       fs.writeFileSync(path.join(outDir, 'index.html'), baseHtml, 'utf8');
       console.log(`✅ Fallback saved: ${path.relative(distDir, path.join(outDir, 'index.html'))}`);
     }

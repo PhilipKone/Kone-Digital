@@ -62,21 +62,21 @@ function App() {
 
     // Update document title and canonical tag for SEO & prerendering
     let pageTitle = 'Kone Digital | WaaS Hub';
-    let canonicalUrl = 'https://digital.koneacademy.io/';
+    let canonicalUrl = 'https://digital.codkon.com/';
 
     if (loc.route === 'work') {
       pageTitle = 'Portfolio & Client Work | Kone Digital';
-      canonicalUrl = 'https://digital.koneacademy.io/work';
+      canonicalUrl = 'https://digital.codkon.com/work/';
     } else if (loc.route === 'pricing') {
       pageTitle = 'Transparent WaaS Pricing Plans | Kone Digital';
-      canonicalUrl = 'https://digital.koneacademy.io/pricing';
+      canonicalUrl = 'https://digital.codkon.com/pricing/';
     } else if (loc.route === 'services') {
       pageTitle = 'Digital Engineering & Design Services | Kone Digital';
-      canonicalUrl = 'https://digital.koneacademy.io/services';
+      canonicalUrl = 'https://digital.codkon.com/services/';
     } else if (loc.route === 'service-detail') {
       const readableSlug = loc.slug.split('-').map(s => s.charAt(0).toUpperCase() + s.slice(1)).join(' ');
       pageTitle = `${readableSlug} Services | Kone Digital`;
-      canonicalUrl = `https://digital.koneacademy.io/services/${loc.slug}`;
+      canonicalUrl = `https://digital.codkon.com/services/${loc.slug}/`;
     }
 
     document.title = pageTitle;
