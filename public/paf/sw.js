@@ -1,4 +1,4 @@
-const CACHE_PREFIX = 'paf-pwa-';
+const CACHE_PREFIX = 'paf-v202611180431';
 const CACHE_NAME = `${CACHE_PREFIX}v10`;
 const ASSETS = [
   './',
