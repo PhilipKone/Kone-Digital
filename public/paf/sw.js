@@ -1,47 +1,80 @@
-const CACHE_PREFIX = 'paf-v202611180431';
-const CACHE_NAME = `${CACHE_PREFIX}v10`;
-const ASSETS = [
+const CACHE_NAME = 'paf-v202611180433';
+const CORE_ASSETS = [
   './',
   './index.html',
   './manifest.webmanifest',
+  './hero-banner.jpg',
+  './logo.jpg',
   './icons/icon-192.png',
   './icons/icon-512.png',
-  './media/outreach.jpg',
+  './media/founder.jpg',
   './media/media-radio.jpg',
-  './media/team.jpg',
-  './media/founder.jpg'
+  './media/outreach.jpg',
+  './media/team.jpg'
 ];
 
 self.addEventListener('install', (event) => {
-  event.waitUntil(caches.open(CACHE_NAME).then((cache) => cache.addAll(ASSETS)));
   self.skipWaiting();
+  event.waitUntil(
+    caches.open(CACHE_NAME).then((cache) => cache.addAll(CORE_ASSETS))
+  );
 });
 
 self.addEventListener('activate', (event) => {
   event.waitUntil(
-    caches.keys().then((keys) =>
-      Promise.all(
-        keys
-          .filter((key) => key.startsWith(CACHE_PREFIX) && key !== CACHE_NAME)
-          .map((key) => caches.delete(key))
+    caches.keys()
+      .then((keys) =>
+        Promise.all(
+          keys
+            .filter((key) => key !== CACHE_NAME)
+            .map((oldKey) => caches.delete(oldKey))
+        )
       )
-    )
+      .then(() => self.clients.claim())
   );
-  self.clients.claim();
 });
 
 self.addEventListener('fetch', (event) => {
-  if (event.request.method !== 'GET') return;
-  event.respondWith(
-    caches.match(event.request).then((cached) => {
-      return (
-        cached ||
-        fetch(event.request).then((response) => {
-          const clone = response.clone();
-          caches.open(CACHE_NAME).then((cache) => cache.put(event.request, clone));
-          return response;
+  const { request } = event;
+  if (request.method !== 'GET') return;
+
+  const url = new URL(request.url);
+  if (url.origin !== self.location.origin) return;
+
+  // Network-first for HTML & navigation so new deploys load immediately
+  const isHtmlNav =
+    request.mode === 'navigate' ||
+    (request.headers.get('accept') || '').includes('text/html');
+
+  if (isHtmlNav) {
+    event.respondWith(
+      fetch(request)
+        .then((networkRes) => {
+          const copy = networkRes.clone();
+          caches.open(CACHE_NAME).then((cache) => cache.put(request, copy));
+          return networkRes;
         })
-      );
+        .catch(() =>
+          caches.match(request).then((cached) => cached || caches.match('./index.html'))
+        )
+    );
+    return;
+  }
+
+  // Stale-while-revalidate for static assets (icons, media, manifest)
+  event.respondWith(
+    caches.match(request).then((cached) => {
+      const networkFetch = fetch(request)
+        .then((networkRes) => {
+          if (networkRes && networkRes.status === 200) {
+            const copy = networkRes.clone();
+            caches.open(CACHE_NAME).then((cache) => cache.put(request, copy));
+          }
+          return networkRes;
+        })
+        .catch(() => cached);
+
+      return cached || networkFetch;
     })
   );
 });
