@@ -44,7 +44,7 @@ export const servicesData: Record<string, ServiceData> = {
     summary: 'We engineer production web applications using React, Next.js, TypeScript, and modern cloud architectures. Designed for high conversion, sub-second page loads, and native Ghanaian mobile payment integrations.',
     icon: 'code',
     heroImage: '/assets/services/sedemson-live-browser.jpg',
-    heroUrl: 'digital.koneacademy.io/sedemson-stone/',
+    heroUrl: 'digital.codkon.com/sedemson-stone/',
     heroBadge: 'Verified Live Client · Sedemson Stone',
     coverGradient: 'linear-gradient(135deg, rgba(0, 240, 255, 0.08) 0%, rgba(9, 13, 22, 0.85) 100%)',
     scopeHighlights: [
@@ -115,7 +115,7 @@ export const servicesData: Record<string, ServiceData> = {
     summary: 'From concept to App Store and Google Play publication. We engineer cross-platform mobile apps using React Native and Flutter, delivering native 60fps animations, push notifications, and offline-first database sync.',
     icon: 'smartphone',
     heroImage: '/assets/services/mobile-apps-template.png',
-    heroUrl: 'kids.koneacademy.io',
+    heroUrl: 'kids.codkon.com',
     heroBadge: 'Verified Live App · Kone Kids Companion',
     coverGradient: 'linear-gradient(135deg, rgba(168, 85, 247, 0.08) 0%, rgba(9, 13, 22, 0.85) 100%)',
     scopeHighlights: [
@@ -136,7 +136,7 @@ export const servicesData: Record<string, ServiceData> = {
       project: 'Interactive Mobile Learning Companion',
       result: '4.9★ rating with offline course access for students across West Africa.',
       image: '/assets/services/mobile-apps-template.png',
-      link: 'https://kids.koneacademy.io'
+      link: 'https://kids.codkon.com'
     },
     faq: [
       { 
@@ -163,7 +163,7 @@ export const servicesData: Record<string, ServiceData> = {
     summary: 'We craft iconic corporate brand identity systems that command trust and market authority. Includes logo vectors, color tokens, typography scales, interactive Figma UI/UX wireframes, and complete brand manuals.',
     icon: 'palette',
     heroImage: '/assets/services/brand-design-live.jpg',
-    heroUrl: 'consult.koneacademy.io',
+    heroUrl: 'consult.codkon.com',
     heroBadge: 'Verified Live Platform · Kone Consult',
     coverGradient: 'linear-gradient(135deg, rgba(234, 179, 8, 0.08) 0%, rgba(9, 13, 22, 0.85) 100%)',
     scopeHighlights: [
@@ -184,7 +184,7 @@ export const servicesData: Record<string, ServiceData> = {
       project: 'Corporate Tech Brand & Design System',
       result: 'Unified multi-subdomain corporate visual language for enterprise client acquisition.',
       image: '/assets/services/brand-design-live.jpg',
-      link: 'https://consult.koneacademy.io'
+      link: 'https://consult.codkon.com'
     },
     faq: [
       { 
@@ -211,7 +211,7 @@ export const servicesData: Record<string, ServiceData> = {
     summary: 'Architecting resilient cloud infrastructure on AWS, Firebase, and Cloudflare. We build automated GitHub Actions CI/CD pipelines, SSL/TLS encryption, and real-time uptime monitoring.',
     icon: 'server',
     heroImage: '/assets/services/cloud-devops-live.jpg',
-    heroUrl: 'code.koneacademy.io',
+    heroUrl: 'code.codkon.com',
     heroBadge: 'Verified Live Infrastructure · Kone Code IDE',
     coverGradient: 'linear-gradient(135deg, rgba(34, 197, 94, 0.08) 0%, rgba(9, 13, 22, 0.85) 100%)',
     scopeHighlights: [
@@ -232,7 +232,7 @@ export const servicesData: Record<string, ServiceData> = {
       project: 'Cloud Compiler & Data Relay Infrastructure',
       result: '99.98% uptime serving thousands of automated compiler executions daily.',
       image: '/assets/services/cloud-devops-live.jpg',
-      link: 'https://code.koneacademy.io'
+      link: 'https://code.codkon.com'
     },
     faq: [
       { 
